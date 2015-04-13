@@ -3,7 +3,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <WebView
-        android:id="@+id/yemekhane_page"
+        android:id="@+id/ekampus_page"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />menu3_layout.xml
+        android:layout_height="match_parent" />menu4_layout.xml
 </RelativeLayout>

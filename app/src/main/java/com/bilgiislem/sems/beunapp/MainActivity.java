@@ -61,6 +61,10 @@ public class MainActivity extends ActionBarActivity
                 break;
             case 2:
                 objFragment = new Menu3_Fragment();
+                break;
+            case 3:
+                objFragment = new Menu4_Fragment();
+                break;
 
         }
         fragmentManager.beginTransaction().replace(R.id.container,objFragment).commit();
@@ -81,6 +85,9 @@ public class MainActivity extends ActionBarActivity
                 break;
             case 3:
                 mTitle = getString(R.string.title_section3);
+                break;
+            case 4:
+                mTitle = getString(R.string.title_section4);
                 break;
         }
     }
