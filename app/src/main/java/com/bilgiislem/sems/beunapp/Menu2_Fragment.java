@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
+import org.json.JSONArray;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -19,8 +20,9 @@ import org.jsoup.select.Elements;
 public class Menu2_Fragment extends Fragment{
     View rootview;
 
-    String Url ="http://www.google.com/";
-    String html = "<html><body class=\"arkaplan\" onload=\"baslangic()\"><div class=\"sayfa\"><div class=\"govde\"><table style=\"margin-left: 4px;\"><tbody><tr><td id=\"yazilar\"><div id=\"yazi-baslik\">Duyurular</div></td></tr></tbody></table></div></div></body></html>";
+
+    String Url ="http://w3.beun.edu.tr/";
+    String html = "div#none.govde td#yazilar";
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
