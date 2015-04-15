@@ -1,5 +1,6 @@
 package com.bilgiislem.sems.beunapp;
 
+
 import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -12,7 +13,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
+import com.bilgiislem.sems.beunapp.AnaSayfa.Menu1_Fragment_AnaSayfa;
+import com.bilgiislem.sems.beunapp.Neredeyim.Menu3_Fragment_Neredeyim;
 
+/*
+C:\Users\pc>"C:\Program Files\Java\jdk1.8.0_31\bin\keytool.exe" -list -v -alias
+Sems -keystore "C:\Users\pc\keystore.jks" -storepass 2470417m -keypass 2470417m
+
+
+ for keystore
+*/
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
@@ -39,6 +49,7 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
     }
 
     @Override

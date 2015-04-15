@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp;
+package com.bilgiislem.sems.beunapp.AnaSayfa;
 
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -9,12 +9,14 @@ import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.Toast;
 
+import com.bilgiislem.sems.beunapp.R;
+
 
 public class AnaSayfa_WebPage extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final String AnaUrl="http://w2.beun.edu.tr/";
+        final String AnaUrl="http://w3.beun.edu.tr/";
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ana_sayfa__web_page);
