@@ -2,8 +2,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <WebView
-        android:id="@+id/main_menu"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />menu1_layout.xml
+        android:layout_height="match_parent"
+        android:id="@+id/imageView"
+        android:src="@drawable/beun_logo"
+        android:layout_above="@+id/ana_sayfa_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="164dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ana Sayfa"
+        android:id="@+id/ana_sayfa_button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Bülent Ecevit Üniversitesi Mobil Uygulamasına    Hoş Geldiniz.
+        Ana sayfaya gitmek için lütfen aşağıdan      'Ana Sayfa' Butonuna basınız .
+        "
+        android:gravity="center"
+        android:id="@+id/textView"
+        android:layout_above="@+id/ana_sayfa_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

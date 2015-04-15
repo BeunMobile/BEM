@@ -17,7 +17,7 @@ import org.jsoup.select.Elements;
 /**
  * Created by sems on 17.03.2015.
  */
-public class Menu2_Fragment extends Fragment{
+public class Menu2_Fragment_Duyurular extends Fragment{
     View rootview;
 
 

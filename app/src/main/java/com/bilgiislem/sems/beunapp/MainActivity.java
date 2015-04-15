@@ -4,19 +4,13 @@ import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity
@@ -54,16 +48,16 @@ public class MainActivity extends ActionBarActivity
 
         switch (position){
             case 0:
-                objFragment = new Menu1_Fragment();
+                objFragment = new Menu1_Fragment_AnaSayfa();
                 break;
             case 1:
-                objFragment = new Menu2_Fragment();
+                objFragment = new Menu2_Fragment_Duyurular();
                 break;
             case 2:
-                objFragment = new Menu3_Fragment();
+                objFragment = new Menu3_Fragment_Neredeyim();
                 break;
             case 3:
-                objFragment = new Menu4_Fragment();
+                objFragment = new Menu4_Fragment_Ogrenci();
                 break;
 
         }
@@ -156,7 +150,7 @@ public class MainActivity extends ActionBarActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            View rootView = inflater.inflate(R.layout.activity_main, container, false);
             return rootView;
         }
 
