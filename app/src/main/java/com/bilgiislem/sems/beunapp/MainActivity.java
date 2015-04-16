@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
 import com.bilgiislem.sems.beunapp.AnaSayfa.Menu1_Fragment_AnaSayfa;
+import com.bilgiislem.sems.beunapp.Duyurular.Menu2_Fragment_Duyurular;
 import com.bilgiislem.sems.beunapp.Neredeyim.Menu3_Fragment_Neredeyim;
 
 /*

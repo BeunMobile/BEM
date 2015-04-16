@@ -49,13 +49,13 @@ public class FarabiActivity extends FragmentActivity {
         if (!isNetwork && !isGPS) {
             new AlertDialog.Builder(this)
                     .setTitle("Lokasyon")
-                    .setMessage("Konum ayarlarýnýz kapalý açýlsýn mý?")
+                    .setMessage("Konum ayarlariniz kapali acilsin mi?")
                     .setPositiveButton("Evet", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
                         }
-                    }).setNegativeButton("Hayýr", new DialogInterface.OnClickListener() {
+                    }).setNegativeButton("Hayir", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
@@ -120,7 +120,7 @@ public class FarabiActivity extends FragmentActivity {
 
         CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(41.450777, 31.762411)).zoom(17).tilt(25).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-        //animate camera kamerayý hareket ettirme animasyonlu bir þekilde .move camera dediðimizde animasyonsuz hýzlý bir þekilde orada olur .
+        //animate camera kamerayï¿½ hareket ettirme animasyonlu bir ï¿½ekilde .move camera dediï¿½imizde animasyonsuz hï¿½zlï¿½ bir ï¿½ekilde orada olur .
         mMap.animateCamera(cameraUpdate);
         Toast.makeText(this, "Farabi Kampusu", Toast.LENGTH_SHORT).show();
 
