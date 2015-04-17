@@ -1,23 +1,21 @@
-package com.bilgiislem.sems.beunapp.AnaSayfa;
+package com.bilgiislem.sems.beunapp.Beu3D;
 
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.R;
 
 
-public class AnaSayfa_WebPage extends ActionBarActivity {
+public class Beu_3DPage extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final String AnaUrl="http://w3.beun.edu.tr/";
-
+        final String AnaUrl = "https://photosynth.net/preview/embed/283b433e-508f-41bd-b385-1a011d358a6c?delayload=false&autoplay=true&fromsite=true";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ana_sayfa__web_page);
         WebView webview = (WebView) findViewById(R.id.ana_sayfa_wp);
@@ -29,7 +27,6 @@ public class AnaSayfa_WebPage extends ActionBarActivity {
 
         setTitle("Bülent Ecevit Üniversitesi Ana Sayfa");
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 // Inflate the menu; this adds items to the action bar if it is present.
@@ -37,7 +34,6 @@ public class AnaSayfa_WebPage extends ActionBarActivity {
 
         return true;
     }
-
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
 import com.bilgiislem.sems.beunapp.AnaSayfa.Menu1_Fragment_AnaSayfa;
+import com.bilgiislem.sems.beunapp.Beu3D.Menu5_Fragment_Beu3D;
 import com.bilgiislem.sems.beunapp.Duyurular.Menu2_Fragment_Duyurular;
 import com.bilgiislem.sems.beunapp.Neredeyim.Menu3_Fragment_Neredeyim;
 
@@ -58,7 +59,7 @@ public class MainActivity extends ActionBarActivity
         android.app.Fragment objFragment = null;
         android.app.FragmentManager fragmentManager = getFragmentManager();
 
-        switch (position){
+        switch (position) {
             case 0:
                 objFragment = new Menu1_Fragment_AnaSayfa();
                 break;
@@ -71,9 +72,12 @@ public class MainActivity extends ActionBarActivity
             case 3:
                 objFragment = new Menu4_Fragment_Ogrenci();
                 break;
+            case 4:
+                objFragment = new Menu5_Fragment_Beu3D();
+                break;
 
         }
-        fragmentManager.beginTransaction().replace(R.id.container,objFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.container, objFragment).commit();
         /*update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
        fragmentManager.beginTransaction()
@@ -94,6 +98,9 @@ public class MainActivity extends ActionBarActivity
                 break;
             case 4:
                 mTitle = getString(R.string.title_section4);
+                break;
+            case 5:
+                mTitle = getString(R.string.title_section5);
                 break;
         }
     }
