@@ -42,7 +42,7 @@ public class Menu2_Fragment_Duyurular extends Fragment {
         last_text = jsonobject.getString("icerik");
         /*
          * Document doc = Jsoup.connect("http://en.wikipedia.org/").get();
-		 * Elements newsHeadlines = doc.select("#sdau a");
+		 * Elements newsHeadlines = doc.select("td#yazilar");
 		 */
 
         bufferedReader.close();
@@ -51,8 +51,8 @@ public class Menu2_Fragment_Duyurular extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootview = inflater.inflate(R.layout.menu4_layout, container, false);
-        WebView webView = (WebView) rootview.findViewById(R.id.ekampus_page);
+        View rootview = inflater.inflate(R.layout.menu2_layout, container, false);
+        WebView webView = (WebView) rootview.findViewById(R.id.duyurular_page);
         webView.loadData(last_text, "text/html", "utc-8");
         return rootview;
     }

@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp;
+package com.bilgiislem.sems.beunapp.NavigationAndMain;
 
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
@@ -21,6 +21,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.bilgiislem.sems.beunapp.R;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -107,6 +109,7 @@ public class NavigationDrawerFragment extends Fragment {
                         getString(R.string.title_section3),
                         getString(R.string.title_section4),
                         getString(R.string.title_section5),
+                        getString(R.string.title_section6),
 
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);

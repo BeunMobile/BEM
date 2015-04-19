@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp;
+package com.bilgiislem.sems.beunapp.NavigationAndMain;
 
 
 import android.app.Activity;
@@ -17,6 +17,9 @@ import com.bilgiislem.sems.beunapp.AnaSayfa.Menu1_Fragment_AnaSayfa;
 import com.bilgiislem.sems.beunapp.Beu3D.Menu5_Fragment_Beu3D;
 import com.bilgiislem.sems.beunapp.Duyurular.Menu2_Fragment_Duyurular;
 import com.bilgiislem.sems.beunapp.Neredeyim.Menu3_Fragment_Neredeyim;
+import com.bilgiislem.sems.beunapp.Ogrenci.Menu4_Fragment_Ogrenci;
+import com.bilgiislem.sems.beunapp.R;
+import com.bilgiislem.sems.beunapp.YemekListesi.Menu6_Fragment_YemekListesi;
 
 /*
 C:\Users\pc>"C:\Program Files\Java\jdk1.8.0_31\bin\keytool.exe" -list -v -alias
@@ -75,6 +78,9 @@ public class MainActivity extends ActionBarActivity
             case 4:
                 objFragment = new Menu5_Fragment_Beu3D();
                 break;
+            case 5:
+                objFragment = new Menu6_Fragment_YemekListesi();
+                break;
 
         }
         fragmentManager.beginTransaction().replace(R.id.container, objFragment).commit();
@@ -101,6 +107,9 @@ public class MainActivity extends ActionBarActivity
                 break;
             case 5:
                 mTitle = getString(R.string.title_section5);
+                break;
+            case 6:
+                mTitle = getString(R.string.title_section6);
                 break;
         }
     }

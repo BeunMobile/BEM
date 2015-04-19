@@ -6,17 +6,25 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.webkit.WebView;
+import android.widget.Toast;
+import android.graphics.Bitmap;
+import android.view.KeyEvent;
+import android.webkit.WebViewClient;
 
 import com.bilgiislem.sems.beunapp.R;
 
 public class Beu_3DPage extends Activity {
+    WebView webview;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String Url_3D = "https://photosynth.net/preview/embed/283b433e-508f-41bd-b385-1a011d358a6c?delayload=false&autoplay=true&fromsite=true";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.beu_3dpage_layout);
-        WebView webview = (WebView) findViewById(R.id.beu_3d_page);
+        webview = (WebView) findViewById(R.id.beu_3d_page);
         webview.getSettings().setJavaScriptEnabled(true);
-        webview.loadUrl("https://photosynth.net/preview/embed/283b433e-508f-41bd-b385-1a011d358a6c?delayload=false&autoplay=true&fromsite=true");
+        webview.loadUrl(Url_3D);
+        Toast.makeText(Beu_3DPage.this, "Bülent Ecevit Üniversitesi 3 Boyutlu olarak\nyükleniyor bu biraz zaman alabilir.", Toast.LENGTH_LONG).show();
     }
 
     @Override
