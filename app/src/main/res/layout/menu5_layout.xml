@@ -10,15 +10,4 @@
         android:id="@+id/beu_3d_button"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Bület Ecevit Üniversitesini 3Boyutlu bir şekilde gezinmek için lütfen aşağıdaki butona basınız."
-        android:gravity="center"
-        android:id="@+id/textView"
-        android:layout_above="@+id/beu_3d_button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 </RelativeLayout>
