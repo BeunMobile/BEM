@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp.Beu3D;
+package com.bilgiislem.sems.beunapp.Beu3D_DEGISECEK;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
@@ -7,9 +7,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.webkit.WebView;
 import android.widget.Toast;
-import android.graphics.Bitmap;
-import android.view.KeyEvent;
-import android.webkit.WebViewClient;
 
 import com.bilgiislem.sems.beunapp.R;
 
@@ -24,7 +21,7 @@ public class Beu_3DPage extends Activity {
         webview = (WebView) findViewById(R.id.beu_3d_page);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.loadUrl(Url_3D);
-        Toast.makeText(Beu_3DPage.this, "Bülent Ecevit Üniversitesi 3 Boyutlu olarak\nyükleniyor bu biraz zaman alabilir.", Toast.LENGTH_LONG).show();
+        Toast.makeText(Beu_3DPage.this, "Bï¿½lent Ecevit ï¿½niversitesi 3 Boyutlu olarak\nyï¿½kleniyor bu biraz zaman alabilir.", Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -10,18 +10,14 @@
         android:id="@+id/button_ibnisina"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="62dp"
-        android:layout_marginEnd="62dp" />
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="135dp"
         android:layout_height="wrap_content"
         android:text="Farabi"
         android:id="@+id/button_farabi"
-        android:layout_alignTop="@+id/button_ibnisina"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="86dp"
-        android:layout_marginStart="86dp" />
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

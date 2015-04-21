@@ -1,17 +1,14 @@
-package com.bilgiislem.sems.beunapp.Ogrenci;
+package com.bilgiislem.sems.beunapp.Ogrenci_DEGISECEK;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.bilgiislem.sems.beunapp.R;
 
-public class Eposta_WebPage extends Activity {
+public class Ekampus_WebPage extends Activity {
 
     //private Button button;
     private WebView webView;
@@ -19,14 +16,12 @@ public class Eposta_WebPage extends Activity {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eposta__web_page);
+        setContentView(R.layout.activity_ekampus__web_page);
 
         //Get webview
-        webView = (WebView) findViewById(R.id.e_posta_wp);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().getDisplayZoomControls();
+        webView = (WebView) findViewById(R.id.e_kampus_wp);
 
-        startWebView("http://ue.beun.edu.tr/Account/Login?ReturnUrl=%2f");
+        startWebView("https://ekampus.beun.edu.tr/Yonetim/Kullanici/Giris?ReturnUrl=%2f");
 
     }
 
@@ -48,8 +43,8 @@ public class Eposta_WebPage extends Activity {
             public void onLoadResource(WebView view, String url) {
                 if (progressDialog == null) {
                     // in standard case YourActivity.this
-                    progressDialog = new ProgressDialog(Eposta_WebPage.this);
-                    progressDialog.setMessage("Yükleniyor...");
+                    progressDialog = new ProgressDialog(Ekampus_WebPage.this);
+                    progressDialog.setMessage("Yï¿½kleniyor...");
                     progressDialog.show();
                 }
             }

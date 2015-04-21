@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp.Duyurular;
+package com.bilgiislem.sems.beunapp.EtkinlikTakvimi;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -9,6 +9,9 @@ import android.webkit.WebView;
 
 import com.bilgiislem.sems.beunapp.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,10 +19,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class Menu2_Fragment_Duyurular extends Fragment {
+public class Menu4_Fragment_Etkinlik_Takvimi extends Fragment {
 
     public static String line = "";
     public static String sonuc = "";
@@ -51,8 +51,8 @@ public class Menu2_Fragment_Duyurular extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootview = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
-        WebView webView = (WebView) rootview.findViewById(R.id.duyurular_page);
+        View rootview = inflater.inflate(R.layout.menu4_layout_etkinlikler, container, false);
+        WebView webView = (WebView) rootview.findViewById(R.id.etkinlik_takvimi_page);
         webView.loadData(last_text, "text/html", "utc-8");
         return rootview;
     }

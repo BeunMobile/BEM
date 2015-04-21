@@ -14,7 +14,7 @@ import com.bilgiislem.sems.beunapp.R;
 public class Menu1_Fragment_AnaSayfa extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.menu1_layout, container, false);
+        View view = inflater.inflate(R.layout.menu1_layout_anasayfa, container, false);
 
         final Button sendFreeTextButton = (Button) view.findViewById(R.id.ana_sayfa_button);
         sendFreeTextButton.setOnClickListener(new View.OnClickListener() {

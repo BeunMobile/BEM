@@ -14,12 +14,15 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
 import com.bilgiislem.sems.beunapp.AnaSayfa.Menu1_Fragment_AnaSayfa;
-import com.bilgiislem.sems.beunapp.Beu3D.Menu5_Fragment_Beu3D;
 import com.bilgiislem.sems.beunapp.Duyurular.Menu2_Fragment_Duyurular;
-import com.bilgiislem.sems.beunapp.Neredeyim.Menu3_Fragment_Neredeyim;
-import com.bilgiislem.sems.beunapp.Ogrenci.Menu4_Fragment_Ogrenci;
+import com.bilgiislem.sems.beunapp.E_Kapmus.Menu6_Fragment_E_Kapmus;
+import com.bilgiislem.sems.beunapp.E_Posta.Menu7_Fragment_E_Posta;
+import com.bilgiislem.sems.beunapp.EtkinlikTakvimi.Menu4_Fragment_Etkinlik_Takvimi;
+import com.bilgiislem.sems.beunapp.Etkinlikler.Menu3_Fragment_Etkinlikler;
+import com.bilgiislem.sems.beunapp.KampusGorunumu.Menu9_Fragment_Kampus_Gorunumu;
 import com.bilgiislem.sems.beunapp.R;
-import com.bilgiislem.sems.beunapp.YemekListesi.Menu6_Fragment_YemekListesi;
+import com.bilgiislem.sems.beunapp.UZEM.Menu8_Fragment_UZEM;
+import com.bilgiislem.sems.beunapp.YemekListesi.Menu5_Fragment_YemekListesi;
 
 /*
 C:\Users\pc>"C:\Program Files\Java\jdk1.8.0_31\bin\keytool.exe" -list -v -alias
@@ -70,16 +73,25 @@ public class MainActivity extends ActionBarActivity
                 objFragment = new Menu2_Fragment_Duyurular();
                 break;
             case 2:
-                objFragment = new Menu3_Fragment_Neredeyim();
+                objFragment = new Menu3_Fragment_Etkinlikler();
                 break;
             case 3:
-                objFragment = new Menu4_Fragment_Ogrenci();
+                objFragment = new Menu4_Fragment_Etkinlik_Takvimi();
                 break;
             case 4:
-                objFragment = new Menu5_Fragment_Beu3D();
+                objFragment = new Menu5_Fragment_YemekListesi();
                 break;
             case 5:
-                objFragment = new Menu6_Fragment_YemekListesi();
+                objFragment = new Menu6_Fragment_E_Kapmus();
+                break;
+            case 6:
+                objFragment = new Menu7_Fragment_E_Posta();
+                break;
+            case 7:
+                objFragment = new Menu8_Fragment_UZEM();
+                break;
+            case 8:
+                objFragment = new Menu9_Fragment_Kampus_Gorunumu();
                 break;
 
         }
@@ -110,6 +122,15 @@ public class MainActivity extends ActionBarActivity
                 break;
             case 6:
                 mTitle = getString(R.string.title_section6);
+                break;
+            case 7:
+                mTitle = getString(R.string.title_section7);
+                break;
+            case 8:
+                mTitle = getString(R.string.title_section8);
+                break;
+            case 9:
+                mTitle = getString(R.string.title_section9);
                 break;
         }
     }
