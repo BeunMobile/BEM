@@ -13,7 +13,8 @@ https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend
     string in this file.
 
 
-
+windows sha-1
+F5:5B:B6:38:5E:FB:DD:EE:23:CE:E5:FC:FD:14:22:3E:28:6A:65:FE
 
     SHA-1 api key
     AIzaSyBeqS-xnnU9sbCMxyyZAo07596AQFap-AU /Windows 8.1
@@ -32,6 +33,6 @@ https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend
 
     -->
     <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">
-        AIzaSyDHofXanHroI5BaROeS35ingoAsgg-usWI
+        AIzaSyC72hI1naF1pM0xXJReC7R4s2ll8Wo0jnA
     </string>
 </resources>
