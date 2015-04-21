@@ -5,5 +5,5 @@
     <WebView
         android:id="@+id/ana_sayfa_wp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />anasayfa_webpage_layout.xml
+        android:layout_height="match_parent" />anasayfa_webpage_layou.xml
 </RelativeLayout>
