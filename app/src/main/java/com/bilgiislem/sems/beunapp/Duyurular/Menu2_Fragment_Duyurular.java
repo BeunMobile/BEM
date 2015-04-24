@@ -1,84 +1,93 @@
 package com.bilgiislem.sems.beunapp.Duyurular;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 
 import com.bilgiislem.sems.beunapp.R;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
+import java.io.IOException;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 public class Menu2_Fragment_Duyurular extends Fragment {
-
-    View rootView;
-
+    View rootview;
+    Document doc;
+    WebView webView;
+    String url_duyurular = "http://w3.beun.edu.tr/";
+    ProgressDialog mProgressDialog;
+    String data = "";
+    Element div;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
-        new AsyncTaskParseJson().execute();
-        return rootView;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootview = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
+
+        new ListRefresher().execute();
+        webView.loadData(data, "text/html", null);
+        return rootview;
     }
 
-    public class AsyncTaskParseJson extends AsyncTask<String, String, String> {
+    private void LoadData(){
+        WebView webView = (WebView) rootview.findViewById(R.id.duyurular_page);
+        webView.getSettings().setJavaScriptEnabled(true);
+        try {
+            doc = Jsoup.connect(url_duyurular).get();
+            Element div = doc.select("#yazilar").get(0);
+            data += div;
 
-        final String TAG = "AsyncTaskParseJson.java";
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    protected Dialog onCreateDialog(int id) {
+        if(id == LOADING_DIALOG){
+            ProgressDialog loadingDialog = new ProgressDialog(this);
+            loadingDialog.setMessage("Loading records ...");
+            loadingDialog.setIndeterminate(true);
+            loadingDialog.setCancelable(true);
+            return loadingDialog;
+        }
+        return super.onCreateDialog(id);
+    }
+    private class ListRefresher extends AsyncTask {
 
-        // set your json string url here
-        String yourJsonStringUrl = "http://demo.codeofaninja.com/tutorials/json-example-with-php/index.php";
-
-        // contacts JSONArray
-        JSONArray dataJsonArr = null;
-
+        /**
+         * This is executed in the UI thread. The only place where we can show the dialog.
+         */
         @Override
-        protected void onPreExecute() {}
+        protected void onPreExecute() {
+            showDialog(LOADING_DIALOG);
+        }
 
+        /**
+         * This is executed in the background thread.
+         */
         @Override
-        protected String doInBackground(String... arg0) {
-
-            try {
-
-                // instantiate our json parser
-                JsonParser jParser = new JsonParser();
-
-                // get json string from url
-                JSONObject json = jParser.getJSONFromUrl(yourJsonStringUrl);
-
-                // get the array of users
-                dataJsonArr = json.getJSONArray("Users");
-
-                // loop through all users
-                for (int i = 0; i < dataJsonArr.length(); i++) {
-
-                    JSONObject c = dataJsonArr.getJSONObject(i);
-
-                    // Storing each json item in variable
-                    String firstname = c.getString("firstname");
-                    String lastname = c.getString("lastname");
-                    String username = c.getString("username");
-
-                    // show the values in our logcat
-                    Log.e(TAG, "firstname: " + firstname
-                            + ", lastname: " + lastname
-                            + ", username: " + username);
-
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
+        protected Void doInBackground(Uri... params) {
+            LoadData();
             return null;
         }
 
+        /**
+         * This is executed in the UI thread. The only place where we can show the dialog.
+         */
         @Override
-        protected void onPostExecute(String strFromDoInBg) {}
+        protected void onPostExecute(Void unused) {
+            dismissDialog(LOADING_DIALOG);
+        }
     }
 
+}
 }

@@ -28,7 +28,6 @@ import com.bilgiislem.sems.beunapp.YemekListesi.Menu5_Fragment_YemekListesi;
 C:\Users\pc>"C:\Program Files\Java\jdk1.8.0_31\bin\keytool.exe" -list -v -alias
 Sems -keystore "C:\Users\pc\keystore.jks" -storepass 2470417m -keypass 2470417m
 
-
  for keystore
 */
 public class MainActivity extends ActionBarActivity
