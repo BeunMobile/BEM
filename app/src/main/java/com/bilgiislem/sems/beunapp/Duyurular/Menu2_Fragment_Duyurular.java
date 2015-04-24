@@ -1,59 +1,84 @@
 package com.bilgiislem.sems.beunapp.Duyurular;
 
 import android.app.Fragment;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 
 import com.bilgiislem.sems.beunapp.R;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
-
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 public class Menu2_Fragment_Duyurular extends Fragment {
 
-    public static String line = "";
-    public static String sonuc = "";
-    public static String last_text = "";
+    View rootView;
 
-    public static void main(String[] args) throws IOException, JSONException {
-        readFromOracle();
-    }
-
-    private static void readFromOracle() throws IOException, JSONException {
-        URL url = new URL("http://w3.beun.edu.tr/veri/haberler/1222/");
-        URLConnection httpUrlConnection = url.openConnection();
-        InputStream inputStream = httpUrlConnection.getInputStream();
-        BufferedReader bufferedReader = new BufferedReader(
-                new InputStreamReader(inputStream));
-        while ((line = bufferedReader.readLine()) != null) {
-            sonuc = sonuc + line;
-        }
-        JSONObject jsonobject = new JSONObject(sonuc);
-        last_text = jsonobject.getString("icerik");
-        /*
-         * Document doc = Jsoup.connect("http://en.wikipedia.org/").get();
-		 * Elements newsHeadlines = doc.select("td#yazilar");
-		 */
-
-        bufferedReader.close();
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        View rootview = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
-        WebView webView = (WebView) rootview.findViewById(R.id.duyurular_page);
-        webView.loadData(last_text, "text/html", "utc-8");
-        return rootview;
+        rootView = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
+        new AsyncTaskParseJson().execute();
+        return rootView;
     }
+
+    public class AsyncTaskParseJson extends AsyncTask<String, String, String> {
+
+        final String TAG = "AsyncTaskParseJson.java";
+
+        // set your json string url here
+        String yourJsonStringUrl = "http://demo.codeofaninja.com/tutorials/json-example-with-php/index.php";
+
+        // contacts JSONArray
+        JSONArray dataJsonArr = null;
+
+        @Override
+        protected void onPreExecute() {}
+
+        @Override
+        protected String doInBackground(String... arg0) {
+
+            try {
+
+                // instantiate our json parser
+                JsonParser jParser = new JsonParser();
+
+                // get json string from url
+                JSONObject json = jParser.getJSONFromUrl(yourJsonStringUrl);
+
+                // get the array of users
+                dataJsonArr = json.getJSONArray("Users");
+
+                // loop through all users
+                for (int i = 0; i < dataJsonArr.length(); i++) {
+
+                    JSONObject c = dataJsonArr.getJSONObject(i);
+
+                    // Storing each json item in variable
+                    String firstname = c.getString("firstname");
+                    String lastname = c.getString("lastname");
+                    String username = c.getString("username");
+
+                    // show the values in our logcat
+                    Log.e(TAG, "firstname: " + firstname
+                            + ", lastname: " + lastname
+                            + ", username: " + username);
+
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String strFromDoInBg) {}
+    }
+
 }
