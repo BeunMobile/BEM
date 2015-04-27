@@ -24,7 +24,7 @@ public class Menu8_Fragment_UZEM extends Fragment {
         webView.loadUrl(url_uzem);
         webView.getSettings().setBuiltInZoomControls(true);
         webView.setInitialScale(50);
-        Toast.makeText(getActivity(), "Yemek Listesi Yukleniyor...", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "UZEM Sayfanız Yukleniyor...", Toast.LENGTH_LONG).show();
         return rootview;
     }
 }

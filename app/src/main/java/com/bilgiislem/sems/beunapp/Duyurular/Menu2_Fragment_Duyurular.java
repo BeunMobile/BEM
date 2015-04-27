@@ -6,10 +6,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
 import com.bilgiislem.sems.beunapp.R;
+
 import java.io.IOException;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -26,6 +30,8 @@ public class Menu2_Fragment_Duyurular extends Fragment {
         View rootview = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
         final WebView webView = (WebView) rootview.findViewById(R.id.duyurular_page);
         webView.getSettings().setJavaScriptEnabled(true);
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setDefaultTextEncodingName("utf-8");
         ThreadparsingUrl.start();
         webView.setWebViewClient(new WebViewClient() {
             @Override
@@ -39,17 +45,17 @@ public class Menu2_Fragment_Duyurular extends Fragment {
         return rootview;
     }
 
-        Thread ThreadparsingUrl = new Thread() {
-            public void run() {
-                try {
-                    doc = Jsoup.connect(url_duyurular).get();
-                    div = doc.select("#yazilar").get(0);
-                    data += div;
-                    Log.i("Words", data);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+    Thread ThreadparsingUrl = new Thread() {
+        public void run() {
+            try {
+                doc = Jsoup.connect(url_duyurular).get();
+                div = doc.select("#yazilar").get(0);
+                data += div;
+                Log.i("Words", data);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        };
+        }
+    };
 
 }

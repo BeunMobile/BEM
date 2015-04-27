@@ -47,7 +47,7 @@ public class Menu4_Fragment_Etkinlik_Takvimi extends Fragment {
         public void run() {
             try {
                 doc = Jsoup.connect(url_duyurular).get();
-                div = doc.select("#yazilar").get(1);
+                div = doc.select("#yazilar").get(2);
                 data += div;
                 Log.i("Words", data);
             } catch (IOException e) {

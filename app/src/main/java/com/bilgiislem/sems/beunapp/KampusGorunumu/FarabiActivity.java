@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.bilgiislem.sems.beunapp.Beu3D_DEGISECEK.Beu_3DPage;
 import com.bilgiislem.sems.beunapp.R;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -17,9 +18,10 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class FarabiActivity extends FragmentActivity {
+public class FarabiActivity extends FragmentActivity implements GoogleMap.OnInfoWindowClickListener {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
 
@@ -31,6 +33,7 @@ public class FarabiActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farabi);
         setUpMapIfNeeded();
+        mMap.setOnInfoWindowClickListener(this);
 
         lm = (LocationManager) getSystemService(LOCATION_SERVICE);
         boolean isGPS = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
@@ -95,7 +98,9 @@ public class FarabiActivity extends FragmentActivity {
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(41.450812, 31.761550)).title("Bilgi Islem Daire Baskanligi"));
+        Marker marker1;
+
+        marker1=mMap.addMarker(new MarkerOptions().position(new LatLng(41.450812, 31.761550)).title("Bilgi Islem Daire Baskanligi"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(41.451392, 31.763058)).title("Rektorluk"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(41.450396, 31.762356)).title("Elektrik Elektronik Muhendisligi"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(41.450911, 31.761371)).title("BEU Sem"));
@@ -113,5 +118,12 @@ public class FarabiActivity extends FragmentActivity {
         mMap.animateCamera(cameraUpdate);
         Toast.makeText(this, "Farabi Kampusu", Toast.LENGTH_SHORT).show();
 
+
+    }
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        Intent intent = new Intent(FarabiActivity.this, Beu_3DPage.class);
+        startActivity(intent);
     }
 }

@@ -10,7 +10,6 @@ import com.bilgiislem.sems.beunapp.R;
 
 public class AnaSayfa_WebPage extends Activity {
 
-    //private Button button;
     private WebView webView;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -18,7 +17,6 @@ public class AnaSayfa_WebPage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ana_sayfa__web_page);
 
-        //Get webview
         webView = (WebView) findViewById(R.id.ana_sayfa_wp);
 
         startWebView("http://w3.beun.edu.tr/");
@@ -26,23 +24,14 @@ public class AnaSayfa_WebPage extends Activity {
     }
 
     private void startWebView(String url) {
-
-        //Create new webview Client to show progress dialog
-        //When opening a url or click on link
-
         webView.setWebViewClient(new WebViewClient() {
             ProgressDialog progressDialog;
-
-            //If you will not use this method url links are opeen in new brower not in webview
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
                 return true;
             }
-
-            //Show loader on url load
             public void onLoadResource(WebView view, String url) {
                 if (progressDialog == null) {
-                    // in standard case YourActivity.this
                     progressDialog = new ProgressDialog(AnaSayfa_WebPage.this);
                     progressDialog.setMessage("Yükleniyor...");
                     progressDialog.show();
@@ -61,8 +50,6 @@ public class AnaSayfa_WebPage extends Activity {
             }
 
         });
-
-        // Javascript inabled on webview
         webView.getSettings().setJavaScriptEnabled(true);
 
         // Other webview options
@@ -79,21 +66,15 @@ public class AnaSayfa_WebPage extends Activity {
          webview.loadData(summary, "text/html", null);
          */
 
-        //Load url in webview
         webView.loadUrl(url);
 
 
     }
-
-    // Open previous opened link from history on webview when back button pressed
-
     @Override
-    // Detect when the back button is pressed
     public void onBackPressed() {
         if (webView.canGoBack()) {
             webView.goBack();
         } else {
-            // Let the system handle the back button
             super.onBackPressed();
         }
     }
