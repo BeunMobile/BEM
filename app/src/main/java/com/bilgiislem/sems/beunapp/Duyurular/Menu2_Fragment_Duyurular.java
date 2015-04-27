@@ -2,7 +2,6 @@ package com.bilgiislem.sems.beunapp.Duyurular;
 
 
 import android.app.Fragment;
-import android.app.ProgressDialog;
 
 import android.os.Bundle;
 
@@ -24,7 +23,6 @@ import org.jsoup.nodes.Element;
 
 
 public class Menu2_Fragment_Duyurular extends Fragment {
-    View rootview;
     Document doc;
     String url_duyurular = "http://w3.beun.edu.tr/";
     String data = "";
