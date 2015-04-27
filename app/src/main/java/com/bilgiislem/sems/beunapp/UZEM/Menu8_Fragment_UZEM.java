@@ -13,7 +13,7 @@ import com.bilgiislem.sems.beunapp.R;
 
 public class Menu8_Fragment_UZEM extends Fragment {
     View rootview;
-    private String Url_Yemek = "http://w3.beun.edu.tr/dosyalar/genel/nisan-yemek.pdf";
+    private String url_uzem = "http://ue.beun.edu.tr/Account/Login?ReturnUrl=%2f";
 
     @Nullable
     @Override
@@ -21,7 +21,7 @@ public class Menu8_Fragment_UZEM extends Fragment {
         View rootview = inflater.inflate(R.layout.menu8_layout_uzem, container, false);
         WebView webView = (WebView) rootview.findViewById(R.id.uzem_page);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("http://docs.google.com/gview?embedded=true&url=" + Url_Yemek);
+        webView.loadUrl(url_uzem);
         webView.getSettings().setBuiltInZoomControls(true);
         webView.setInitialScale(50);
         Toast.makeText(getActivity(), "Yemek Listesi Yukleniyor...", Toast.LENGTH_LONG).show();

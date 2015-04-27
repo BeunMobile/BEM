@@ -12,6 +12,14 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    signingConfigs {
+        release {
+            storeFile file("keystore.jks")
+            storePassword "2470417m"
+            keyAlias "Sems"
+            keyPassword "2470417m"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false

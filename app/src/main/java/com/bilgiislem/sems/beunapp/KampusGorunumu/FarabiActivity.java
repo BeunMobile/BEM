@@ -110,7 +110,6 @@ public class FarabiActivity extends FragmentActivity {
 
         CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(41.450777, 31.762411)).zoom(17).tilt(25).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-        //animate camera kameray� hareket ettirme animasyonlu bir �ekilde .move camera dedi�imizde animasyonsuz h�zl� bir �ekilde orada olur .
         mMap.animateCamera(cameraUpdate);
         Toast.makeText(this, "Farabi Kampusu", Toast.LENGTH_SHORT).show();
 

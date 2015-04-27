@@ -16,7 +16,7 @@ import com.bilgiislem.sems.beunapp.R;
  */
 public class Menu5_Fragment_YemekListesi extends Fragment {
     View rootview;
-    private String Url_Yemek = "http://w3.beun.edu.tr/dosyalar/genel/nisan-yemek.pdf";
+    private String url_yemek = "http://w3.beun.edu.tr/dosyalar/genel/nisan-yemek.pdf";
 
     @Nullable
     @Override
@@ -25,7 +25,7 @@ public class Menu5_Fragment_YemekListesi extends Fragment {
         WebView webView = (WebView) rootview.findViewById(R.id.yemek_page);
 
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("http://docs.google.com/gview?embedded=true&url=" + Url_Yemek);
+        webView.loadUrl("http://docs.google.com/gview?embedded=true&url=" + url_yemek);
         webView.getSettings().setBuiltInZoomControls(true);
         webView.setInitialScale(50);
         Toast.makeText(getActivity(), "Yemek Listesi Yukleniyor...", Toast.LENGTH_LONG).show();

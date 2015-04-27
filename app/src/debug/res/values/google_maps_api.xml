@@ -11,28 +11,8 @@ https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend
 
     Once you have your key (it starts with "AIza"), replace the "google_maps_key"
     string in this file.
-
-
-windows sha-1
-F5:5B:B6:38:5E:FB:DD:EE:23:CE:E5:FC:FD:14:22:3E:28:6A:65:FE
-
-    SHA-1 api key
-    AIzaSyBeqS-xnnU9sbCMxyyZAo07596AQFap-AU /Windows 8.1
-    Test api key
-    AIzaSyDHofXanHroI5BaROeS35ingoAsgg-usWI /Windows 8.1
-
-
-    Ubuntuis SHA-1 key
-    93:C5:FA:97:39:2F:43:DE:1B:E9:96:75:45:03:6C:7E:98:01:53:6A;com.bilgiislem.sems.beunapp
-
-    SHA-1 api key
-    AIzaSyDomcT0M_mC5XvZxwUHwOMwUJePZNEl4tI /Ubuntuis
-    Test api key
-    AIzaSyC7DZf0MGQqFqAd8WxDSGXj-prq4cBLBAE /Ubuntuis
-
-
     -->
     <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">
-        AIzaSyC72hI1naF1pM0xXJReC7R4s2ll8Wo0jnA
+        AIzaSyDw7OeFe3-TPVWyhZmCe7x6e6cm8Z2EAN0
     </string>
 </resources>

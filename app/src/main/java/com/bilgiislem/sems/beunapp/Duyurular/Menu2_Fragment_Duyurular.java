@@ -1,26 +1,18 @@
 package com.bilgiislem.sems.beunapp.Duyurular;
 
-
 import android.app.Fragment;
-
 import android.os.Bundle;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
 import com.bilgiislem.sems.beunapp.R;
-
 import java.io.IOException;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-
 
 public class Menu2_Fragment_Duyurular extends Fragment {
     Document doc;
@@ -47,12 +39,11 @@ public class Menu2_Fragment_Duyurular extends Fragment {
         return rootview;
     }
 
-
         Thread ThreadparsingUrl = new Thread() {
             public void run() {
                 try {
                     doc = Jsoup.connect(url_duyurular).get();
-                    div = doc.select("#yazilar").get(1);
+                    div = doc.select("#yazilar").get(0);
                     data += div;
                     Log.i("Words", data);
                 } catch (IOException e) {
