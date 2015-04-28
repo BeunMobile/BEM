@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.bilgiislem.sems.beunapp.R;
 
@@ -18,8 +19,8 @@ public class Menu9_Fragment_Kampus_Gorunumu extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.menu9_layout_kampus_gorunumu, container, false);
 
-        final Button sendFreeTextButton = (Button) view.findViewById(R.id.button_farabi);
-        sendFreeTextButton.setOnClickListener(new View.OnClickListener() {
+        ImageButton buttonfarabi = (ImageButton) view.findViewById(R.id.button_farabi);
+        buttonfarabi.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), FarabiActivity.class);
                 Menu9_Fragment_Kampus_Gorunumu.this.startActivity(intent);
