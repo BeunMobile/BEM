@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -29,12 +30,14 @@ public class Menu3_Fragment_Etkinlikler extends Fragment {
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.menu3_layout_etkinlikler, container, false);
         final WebView webView = (WebView) rootview.findViewById(R.id.etkinlikler_page);
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setDefaultTextEncodingName("utf-8");
         webView.getSettings().setJavaScriptEnabled(true);
         ThreadparsingUrl.start();
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
-                webView.loadData(data, "text/html", null);
+                webView.loadData(data, "text/html; charset=utf-8", "utf-8");
             }
         });
 

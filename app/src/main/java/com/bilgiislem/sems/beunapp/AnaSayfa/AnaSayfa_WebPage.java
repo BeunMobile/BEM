@@ -26,10 +26,12 @@ public class AnaSayfa_WebPage extends Activity {
     private void startWebView(String url) {
         webView.setWebViewClient(new WebViewClient() {
             ProgressDialog progressDialog;
+
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
                 return true;
             }
+
             public void onLoadResource(WebView view, String url) {
                 if (progressDialog == null) {
                     progressDialog = new ProgressDialog(AnaSayfa_WebPage.this);
@@ -51,25 +53,15 @@ public class AnaSayfa_WebPage extends Activity {
 
         });
         webView.getSettings().setJavaScriptEnabled(true);
-
-        // Other webview options
-        /*
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
         webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
         webView.setScrollbarFadingEnabled(false);
         webView.getSettings().setBuiltInZoomControls(true);
-        */
-
-        /*
-         String summary = "<html><body>You scored <b>192</b> points.</body></html>";
-         webview.loadData(summary, "text/html", null);
-         */
-
         webView.loadUrl(url);
 
-
     }
+
     @Override
     public void onBackPressed() {
         if (webView.canGoBack()) {
@@ -80,33 +72,6 @@ public class AnaSayfa_WebPage extends Activity {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*
