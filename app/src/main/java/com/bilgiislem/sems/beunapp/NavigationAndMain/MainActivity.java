@@ -2,6 +2,7 @@ package com.bilgiislem.sems.beunapp.NavigationAndMain;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,7 @@ import com.bilgiislem.sems.beunapp.E_Posta.Menu7_Fragment_E_Posta;
 import com.bilgiislem.sems.beunapp.EtkinlikTakvimi.Menu4_Fragment_Etkinlik_Takvimi;
 import com.bilgiislem.sems.beunapp.Etkinlikler.Menu3_Fragment_Etkinlikler;
 import com.bilgiislem.sems.beunapp.KampusGorunumu.Menu9_Fragment_Kampus_Gorunumu;
+import com.bilgiislem.sems.beunapp.Ogrenci_DEGISECEK.Ekampus_WebPage;
 import com.bilgiislem.sems.beunapp.R;
 import com.bilgiislem.sems.beunapp.UZEM.Menu8_Fragment_UZEM;
 import com.bilgiislem.sems.beunapp.YemekListesi.Menu5_Fragment_YemekListesi;
@@ -59,9 +61,12 @@ public class MainActivity extends ActionBarActivity
 
     }
 
+    Intent i1;
+
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         android.app.Fragment objFragment = null;
+        //Intent objActivity;
         android.app.FragmentManager fragmentManager = getFragmentManager();
 
         switch (position) {
@@ -94,6 +99,7 @@ public class MainActivity extends ActionBarActivity
                 break;
 
         }
+
         fragmentManager.beginTransaction().replace(R.id.container, objFragment).commit();
         /*update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();

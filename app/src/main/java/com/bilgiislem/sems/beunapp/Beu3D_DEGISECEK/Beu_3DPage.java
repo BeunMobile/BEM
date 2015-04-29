@@ -15,13 +15,13 @@ public class Beu_3DPage extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String Url_3D = "https://photosynth.net/preview/embed/283b433e-508f-41bd-b385-1a011d358a6c?delayload=false&autoplay=true&fromsite=true";
+        String Url_3D = "https://photosynth.net/preview/view/354a8940-5d76-4ead-a6fe-e67f4a6ab003?delayload=false&autoplay=true&fromsite=false";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.beu_3dpage_layout);
         webview = (WebView) findViewById(R.id.beu_3d_page);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.loadUrl(Url_3D);
-        Toast.makeText(Beu_3DPage.this, "B�lent Ecevit �niversitesi 3 Boyutlu olarak\ny�kleniyor bu biraz zaman alabilir.", Toast.LENGTH_LONG).show();
+        Toast.makeText(Beu_3DPage.this, Beu_3DPage.this.getResources().getString(R.string.beu3d), Toast.LENGTH_LONG).show();
     }
 
     @Override
