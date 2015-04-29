@@ -1,15 +1,12 @@
 package com.bilgiislem.sems.beunapp.Duyurular;
 
-import android.app.Activity;
 import android.app.Fragment;
-import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
@@ -24,44 +21,89 @@ import org.jsoup.nodes.Element;
 
 public class Menu2_Fragment_Duyurular extends Fragment {
     Document doc;
-    String url_duyurular = "http://w3.beun.edu.tr/";
+    WebView webView;
+    String url_duyurular="http://w3.beun.edu.tr/";
+    ProgressBar progressBar_duyurular;
+    private Bundle webViewBundle;
     String data = "";
     Element div;
-    private ProgressBar duyurular_pb;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootview = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
-        final WebView webView = (WebView) rootview.findViewById(R.id.duyurular_page);
-        duyurular_pb=(ProgressBar) rootview.findViewById(R.id.duyurular_progress);
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.menu2_layout_duyurular,container,false);
+
+        progressBar_duyurular = (ProgressBar) view.findViewById(R.id.duyurular_progress);
+        webView = (WebView) view.findViewById(R.id.duyurular_page);
         webView.getSettings().setJavaScriptEnabled(true);
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setDefaultTextEncodingName("utf-8");
         ThreadparsingUrl.start();
         webView.setWebViewClient(new WebViewClient() {
-            /*
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                duyurular_pb.setVisibility(View.VISIBLE);
-                duyurular_pb.setProgress(progress);
-                if (progress==100){
-                    duyurular_pb.setVisibility(View.GONE);
-                }
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                webView.loadUrl(url_duyurular);
 
             }
-            */
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                // TODO Auto-generated method stub
+                super.onPageStarted(view, url, favicon);
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                // TODO Auto-generated method stub
+
+                webView.loadUrl(url);
+                return true;
+
+            }
+
             @Override
             public void onPageFinished(WebView view, String url) {
-                duyurular_pb.setVisibility(View.VISIBLE);
+                // TODO Auto-generated method stub
+                super.onPageFinished(view, url);
+
+                progressBar_duyurular.setVisibility(View.GONE);
                 webView.loadData(data, "text/html; charset=utf-8", "utf-8");
             }
         });
-
-
         webView.loadUrl(url_duyurular);
 
-        return rootview;
+        // Just load whatever URL this fragment is
+        // created with.
+        return view;
+    }
+
+    // This is the method the pager adapter will use
+    // to create a new fragment
+    public static Fragment newInstance(String url) {
+        Menu2_Fragment_Duyurular f = new Menu2_Fragment_Duyurular();
+        f.url_duyurular = url;
+        return f;
+    }
+
+    /**
+     * Sla webview op
+     */
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        webViewBundle = new Bundle();
+        webView.saveState(webViewBundle);
+    }
+
+    /**
+     * Herstel staat van webview
+     */
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if (webViewBundle != null) {
+            webView.restoreState(webViewBundle);
+        }
     }
 
     Thread ThreadparsingUrl = new Thread() {
