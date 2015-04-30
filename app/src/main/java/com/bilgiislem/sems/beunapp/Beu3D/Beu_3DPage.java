@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp.Beu3D_DEGISECEK;
+package com.bilgiislem.sems.beunapp.Beu3D;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;

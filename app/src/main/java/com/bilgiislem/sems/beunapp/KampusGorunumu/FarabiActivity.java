@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.bilgiislem.sems.beunapp.Beu3D_DEGISECEK.Beu_3DPage;
+import com.bilgiislem.sems.beunapp.Beu3D.Beu_3DPage;
 import com.bilgiislem.sems.beunapp.R;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;

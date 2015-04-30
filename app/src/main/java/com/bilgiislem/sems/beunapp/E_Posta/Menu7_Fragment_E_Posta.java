@@ -13,7 +13,7 @@ import com.bilgiislem.sems.beunapp.R;
 
 public class Menu7_Fragment_E_Posta extends Fragment {
     View rootview;
-    private String url_eposta = "stu.karaelmas.edu.tr/sm/src/login.php";
+    private String url_eposta = "http://stu.karaelmas.edu.tr/sm/src/login.php";
 
     @Nullable
     @Override
