@@ -12,12 +12,9 @@ import android.widget.ProgressBar;
 
 import com.bilgiislem.sems.beunapp.R;
 
-public class Menu6_Fragment_E_Kapmus  extends Fragment {
-
-
-
+public class Menu6_Fragment_E_Kapmus extends Fragment {
     WebView webView;
-    String url="https://ekampus.beun.edu.tr/Yonetim/Kullanici/Giris?ReturnUrl=%2f";
+    String url_ekampus = "https://ekampus.beun.edu.tr/Yonetim/Kullanici/Giris?ReturnUrl=%2f";
     ProgressBar progressBar_ekampus;
     private Bundle webViewBundle;
 
@@ -26,13 +23,13 @@ public class Menu6_Fragment_E_Kapmus  extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View view=inflater.inflate(
+        View view = inflater.inflate(
                 R.layout.menu6_layout_e_kampus,
                 container,
                 false);
 
-        progressBar_ekampus = (ProgressBar)view.findViewById(R.id.ekampus_progress);
-        webView =(WebView)view.findViewById(R.id.ekampus_page);
+        progressBar_ekampus = (ProgressBar) view.findViewById(R.id.ekampus_progress);
+        webView = (WebView) view.findViewById(R.id.ekampus_page);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDisplayZoomControls(true);
         webView.setWebViewClient(new WebViewClient() {
@@ -64,7 +61,7 @@ public class Menu6_Fragment_E_Kapmus  extends Fragment {
                 progressBar_ekampus.setVisibility(View.GONE);
             }
         });
-        webView.loadUrl(url);
+        webView.loadUrl(url_ekampus);
 
         // Just load whatever URL this fragment is
         // created with.
@@ -73,18 +70,17 @@ public class Menu6_Fragment_E_Kapmus  extends Fragment {
 
     // This is the method the pager adapter will use
     // to create a new fragment
-    public static Fragment newInstance(String url)
-    {
-        Menu6_Fragment_E_Kapmus f=new Menu6_Fragment_E_Kapmus();
-        f.url=url;
+    public static Fragment newInstance(String url) {
+        Menu6_Fragment_E_Kapmus f = new Menu6_Fragment_E_Kapmus();
+        f.url_ekampus = url;
         return f;
     }
+
     /**
      * Sla webview op
      */
     @Override
-    public void onPause()
-    {
+    public void onPause() {
         super.onPause();
 
         webViewBundle = new Bundle();
@@ -95,12 +91,10 @@ public class Menu6_Fragment_E_Kapmus  extends Fragment {
      * Herstel staat van webview
      */
     @Override
-    public void onActivityCreated(Bundle savedInstanceState)
-    {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        if (webViewBundle != null)
-        {
+        if (webViewBundle != null) {
             webView.restoreState(webViewBundle);
         }
     }
