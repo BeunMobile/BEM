@@ -24,7 +24,7 @@ public class Menu7_Fragment_E_Posta extends Fragment {
         webView.loadUrl(url_eposta);
         webView.getSettings().setBuiltInZoomControls(true);
         webView.setInitialScale(50);
-        Toast.makeText(getActivity(), "E-Posta Sayfanız Yukleniyor...", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "E-Posta Sayfaniz gecici olarak servis disidir...", Toast.LENGTH_LONG).show();
         return rootview;
     }
 }
