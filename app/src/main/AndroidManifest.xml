@@ -48,14 +48,6 @@
             android:name=".Beu3D.Beu_3DPage"
             android:label="@string/title_activity_beu_3_dpage" >
         </activity>
-        <activity
-            android:name=".Ogrenci_DEGISECEK.Ekampus_WebPage"
-            android:label="@string/title_activity_ekampus__web_page" >
-        </activity>
-        <activity
-            android:name=".Ogrenci_DEGISECEK.Eposta_WebPage"
-            android:label="@string/title_activity_eposta__web_page" >
-        </activity>
     </application>
 
 </manifest>

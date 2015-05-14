@@ -22,7 +22,7 @@ import org.jsoup.nodes.Element;
 public class Menu2_Fragment_Duyurular extends Fragment {
     Document doc;
     WebView webView;
-    String url_duyurular="http://w3.beun.edu.tr/";
+    String url_duyurular = "http://w3.beun.edu.tr/";
     ProgressBar progressBar_duyurular;
     private Bundle webViewBundle;
     String data = "";
@@ -32,7 +32,7 @@ public class Menu2_Fragment_Duyurular extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.menu2_layout_duyurular,container,false);
+        View view = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
 
         progressBar_duyurular = (ProgressBar) view.findViewById(R.id.duyurular_progress);
         webView = (WebView) view.findViewById(R.id.duyurular_page);

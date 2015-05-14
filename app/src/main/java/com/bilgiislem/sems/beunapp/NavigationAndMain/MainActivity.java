@@ -21,7 +21,6 @@ import com.bilgiislem.sems.beunapp.E_Posta.Menu7_Fragment_E_Posta;
 import com.bilgiislem.sems.beunapp.EtkinlikTakvimi.Menu4_Fragment_Etkinlik_Takvimi;
 import com.bilgiislem.sems.beunapp.Etkinlikler.Menu3_Fragment_Etkinlikler;
 import com.bilgiislem.sems.beunapp.KampusGorunumu.Menu9_Fragment_Kampus_Gorunumu;
-import com.bilgiislem.sems.beunapp.Ogrenci_DEGISECEK.Ekampus_WebPage;
 import com.bilgiislem.sems.beunapp.R;
 import com.bilgiislem.sems.beunapp.UZEM.Menu8_Fragment_UZEM;
 import com.bilgiislem.sems.beunapp.YemekListesi.Menu5_Fragment_YemekListesi;
