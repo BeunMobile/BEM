@@ -41,6 +41,7 @@ public class Menu8_Fragment_UZEM extends Fragment {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 // TODO Auto-generated method stub
                 super.onPageStarted(view, url, favicon);
+                progressBar_uzem.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -57,7 +58,7 @@ public class Menu8_Fragment_UZEM extends Fragment {
                 // TODO Auto-generated method stub
                 super.onPageFinished(view, url);
 
-                progressBar_uzem.setVisibility(View.GONE);
+                progressBar_uzem.setVisibility(View.INVISIBLE);
             }
         });
         webView.loadUrl(url_uzem);
@@ -99,19 +100,3 @@ public class Menu8_Fragment_UZEM extends Fragment {
     }
 
 }
-
-    /*
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootview = inflater.inflate(R.layout.menu8_layout_uzem, container, false);
-        WebView webView = (WebView) rootview.findViewById(R.id.uzem_page);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl(url_uzem);
-        webView.getSettings().setBuiltInZoomControls(true);
-        webView.setInitialScale(50);
-        Toast.makeText(getActivity(), "UZEM Sayfanız Yukleniyor...", Toast.LENGTH_LONG).show();
-        return rootview;
-    }
-}
-*/
