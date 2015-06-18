@@ -18,7 +18,7 @@
 
     <string name="action_settings">Şems Turgut</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_ana_sayfa__web_page">AnaSayfa_WebPage</string>
 
@@ -29,15 +29,15 @@
     <string name="title_activity_eposta__web_page">Eposta_WebPage</string>
 
 
-
+    //Anasayfa
+    <string name="loading">Yükleniyor</string>
+    <string name="waitfor">Lütfen biraz bekleyiniz ...</string>
 
 
     //Toasts
     <string name="ekampus">E-Kampüs Sayfanız Yukleniyor...</string>
     <string name="beu3d">Bülent Ecevit Üniversitesi 3 Boyutlu olarak
 yükleniyor bu biraz zaman alabilir.</string>
-
-
 
 
 </resources>
