@@ -18,14 +18,19 @@ public class AnaSayfa_WebPage extends Activity {
     WebView mWeb;
     ProgressDialog mProgress;
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         // no need to use title bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         // set webview as main content only
         mWeb = new WebView(this);
         setContentView(mWeb);
+
+
         // set Javascript
         WebSettings settings = mWeb.getSettings();
         settings.setJavaScriptEnabled(true);

@@ -3,6 +3,8 @@ package com.bilgiislem.sems.beunapp.Duyurular;
 import android.app.Fragment;
 import android.app.ListFragment;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,11 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -41,9 +45,10 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
 
     private ProgressDialog pDialog;
 
+
     // URL to get contacts JSON
     private static String url = "http://w3.beun.edu.tr/mobil-duyurular/";
-
+    ListView listView;
     // JSON Node names
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
@@ -61,6 +66,7 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
 
+        listView = new ListView(getActivity());
 
         return view;
     }
@@ -71,14 +77,21 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
 
         contactList = new ArrayList<HashMap<String, String>>();
 
-        ListView listView = getListView();
+        listView = getListView();
 
         // Calling async task to get json
         new GetContacts().execute();
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getActivity().getApplicationContext(), "Yeah", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         super.onActivityCreated(savedInstanceState);
     }
+
 
     /**
      * Async task class to get json by making HTTP call
