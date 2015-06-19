@@ -1,50 +1,34 @@
 package com.bilgiislem.sems.beunapp.Duyurular;
 
-import android.app.Fragment;
+
 import android.app.ListFragment;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.bilgiislem.sems.beunapp.NavigationAndMain.MainActivity;
 import com.bilgiislem.sems.beunapp.R;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.w3c.dom.Text;
 
 public class Menu2_Fragment_Duyurular extends ListFragment {
 
     private ProgressDialog pDialog;
-
+    Button button;
 
     // URL to get contacts JSON
     private static String url = "http://w3.beun.edu.tr/mobil-duyurular/";
@@ -53,7 +37,6 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
-
 
     JSONArray contacts = null;
 
@@ -65,11 +48,22 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
+        button = (Button) view.findViewById(R.id.button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
         listView = new ListView(getActivity());
 
+
         return view;
     }
+
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -125,7 +119,6 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
 
                     // Getting JSON Array node
                     contacts = jsonObj.getJSONArray(TAG_S1);
-
                     // looping through All Contacts
                     for (int i = 0; i < contacts.length(); i++) {
                         JSONObject c = contacts.getJSONObject(i);
