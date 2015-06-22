@@ -1,6 +1,8 @@
 package com.bilgiislem.sems.beunapp.Duyurular;
 
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -48,12 +50,15 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
-        button = (Button) view.findViewById(R.id.button);
+        button = (Button) view.findViewById(R.id.button_json);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Menu2_Fragment_2 fragment_2 = new Menu2_Fragment_2();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_menu2_framgent_2_id, fragment_2);
             }
         });
 
