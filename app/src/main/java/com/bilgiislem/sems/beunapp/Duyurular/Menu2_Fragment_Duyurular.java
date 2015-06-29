@@ -30,8 +30,6 @@ import org.json.JSONObject;
 public class Menu2_Fragment_Duyurular extends ListFragment {
 
     private ProgressDialog pDialog;
-    Button button;
-
     // URL to get contacts JSON
     private static String url = "http://w3.beun.edu.tr/mobil-duyurular/";
     ListView listView;
@@ -50,18 +48,6 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
-        button = (Button) view.findViewById(R.id.button_json);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Menu2_Fragment_2 fragment_2 = new Menu2_Fragment_2();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_menu2_framgent_2_id, fragment_2);
-            }
-        });
-
 
         listView = new ListView(getActivity());
 
@@ -69,6 +55,10 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
         return view;
     }
 
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {

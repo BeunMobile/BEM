@@ -16,9 +16,6 @@ public class Menu2_Fragment_2 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_menu2__fragment_2, container, false);
 
 
-
-
-
         return view;
     }
 
