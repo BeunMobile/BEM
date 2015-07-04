@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bilgiislem.sems.beunapp">
 
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="17" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -13,10 +17,6 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
-    <uses-sdk
-        android:minSdkVersion="11"
-        android:targetSdkVersion="17" />
 
     <application
         android:allowBackup="true"
@@ -34,7 +34,7 @@
         </activity>
         <activity
             android:name=".AnaSayfa.AnaSayfa_WebPage"
-            android:label="@string/title_activity_ana_sayfa__web_page"></activity>
+            android:label="@string/title_activity_ana_sayfa__web_page" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -45,10 +45,13 @@
 
         <activity
             android:name=".KampusGorunumu.FarabiActivity"
-            android:label="@string/title_activity_farabi"></activity>
+            android:label="@string/title_activity_farabi" />
         <activity
             android:name=".Beu3D.Beu_3DPage"
-            android:label="@string/title_activity_beu_3_dpage"></activity>
+            android:label="@string/title_activity_beu_3_dpage" />
+        <activity
+            android:name=".Duyurular.Menu2_Icerik_Activity"
+            android:label="@string/title_activity_menu2__icerik_" />
     </application>
 
 </manifest>

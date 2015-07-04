@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +27,7 @@ import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
 
 public class Menu2_Fragment_Duyurular extends ListFragment {
 
@@ -37,7 +39,6 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
-
     JSONArray contacts = null;
 
 
@@ -50,7 +51,6 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
         View view = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
 
         listView = new ListView(getActivity());
-
 
         return view;
     }
@@ -67,16 +67,21 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
         contactList = new ArrayList<HashMap<String, String>>();
 
         listView = getListView();
-
-        // Calling async task to get json
-        new GetContacts().execute();
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity().getApplicationContext(), "Yeah", Toast.LENGTH_SHORT).show();
+                String adres2 = contactList.get(position).get("adres");
+                String baslik2 = contactList.get(position).get("baslik");
+                Intent intent = new Intent(getActivity(), Menu2_Icerik_Activity.class);
+                intent.putExtra("key", adres2);
+                intent.putExtra("key2", baslik2);
+                startActivity(intent);
             }
         });
+
+
+        // Calling async task to get json
+        new GetContacts().execute();
 
         super.onActivityCreated(savedInstanceState);
     }
@@ -126,8 +131,13 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
                         HashMap<String, String> contact = new HashMap<String, String>();
 
                         // adding each child node to HashMap key => value
+
+                        baslik = html2text(baslik);
+
                         contact.put(TAG_BASLIK, baslik);
                         contact.put(TAG_ADRES, adres);
+
+                        Log.i("baslik", baslik);
 
                         // adding contact to contact list
                         contactList.add(contact);
@@ -142,6 +152,7 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
             return null;
         }
 
+
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
@@ -154,12 +165,16 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
 
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), contactList,
-                    R.layout.json_items, new String[]{TAG_BASLIK, TAG_ADRES}, new int[]{R.id.name, R.id.adres});
+                    R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.name});
 
             setListAdapter(adapter);
         }
 
 
+    }
+
+    public static String html2text(String html) {
+        return Jsoup.parse(html).text();
     }
 
 
