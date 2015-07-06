@@ -30,6 +30,7 @@ import org.json.JSONObject;
 import org.jsoup.Jsoup;
 
 public class Menu2_Fragment_Duyurular extends ListFragment {
+
     private ProgressDialog pDialog;
     private static String url = "http://w3.beun.edu.tr/mobil-duyurular/";
     ListView listView;

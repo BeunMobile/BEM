@@ -2,9 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bilgiislem.sems.beunapp.Duyurular.Menu2_Icerik_Activity"
+    android:background="@color/background_floating_material_light"
     android:baselineAligned="false"
-    android:background="@color/background_floating_material_light">
+    tools:context="com.bilgiislem.sems.beunapp.Duyurular.Menu2_Icerik_Activity">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -14,8 +14,8 @@
 
         <WebView
             android:id="@+id/icerik_http_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:textSize="16sp" />
     </ScrollView>
 
