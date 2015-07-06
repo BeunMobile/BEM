@@ -119,9 +119,12 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
 
                     // Getting JSON Array node
                     contacts = jsonObj.getJSONArray(TAG_S1);
+
+
                     // looping through All Contacts
                     for (int i = 0; i < contacts.length(); i++) {
                         JSONObject c = contacts.getJSONObject(i);
+
 
                         String baslik = c.getString(TAG_BASLIK);
                         String adres = c.getString(TAG_ADRES);
@@ -137,7 +140,7 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
                         contact.put(TAG_BASLIK, baslik);
                         contact.put(TAG_ADRES, adres);
 
-                        Log.i("baslik", baslik);
+
 
                         // adding contact to contact list
                         contactList.add(contact);
