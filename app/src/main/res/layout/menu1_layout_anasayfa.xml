@@ -41,5 +41,6 @@
     and some uses problems."
         android:id="@+id/infocrash_text"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical" />
 </RelativeLayout>
