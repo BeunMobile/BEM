@@ -50,7 +50,7 @@
             android:name=".Beu3D.Beu_3DPage"
             android:label="@string/title_activity_beu_3_dpage" />
         <activity
-            android:name=".Duyurular.Menu2_Icerik_Activity"
+            android:name=".Duyurular.Icerik_Activity"
             android:label="@string/title_activity_menu2__icerik_" />
     </application>
 

@@ -1,8 +1,6 @@
 package com.bilgiislem.sems.beunapp.Duyurular;
 
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,11 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.R;
 
@@ -64,7 +60,7 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String adres2 = contactList.get(position).get("adres");
                 String baslik2 = contactList.get(position).get("baslik");
-                Intent intent = new Intent(getActivity(), Menu2_Icerik_Activity.class);
+                Intent intent = new Intent(getActivity(), Icerik_Activity.class);
                 intent.putExtra("key", adres2);
                 intent.putExtra("key2", baslik2);
                 startActivity(intent);

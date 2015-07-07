@@ -6,19 +6,16 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
 
 import com.bilgiislem.sems.beunapp.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.jsoup.Jsoup;
 
 
-public class Menu2_Icerik_Activity extends ActionBarActivity {
+public class Icerik_Activity extends ActionBarActivity {
 
     private static final String TAG_ICERIK = "icerik";
 
@@ -35,7 +32,7 @@ public class Menu2_Icerik_Activity extends ActionBarActivity {
         url = "http://w3.beun.edu.tr/veri" + http_plus;
 
         getSupportActionBar().setTitle(baslik_plus);
-        setContentView(R.layout.activity_menu2__icerik_);
+        setContentView(R.layout.icerik_layout);
 
         webView = (WebView) findViewById(R.id.icerik_http_text);
 
@@ -48,7 +45,7 @@ public class Menu2_Icerik_Activity extends ActionBarActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Menu2_Icerik_Activity.this);
+            pDialog = new ProgressDialog(Icerik_Activity.this);
             pDialog.setTitle(getString(R.string.loading));
             pDialog.setMessage(getString(R.string.waitfor));
             pDialog.setIndeterminate(false);
