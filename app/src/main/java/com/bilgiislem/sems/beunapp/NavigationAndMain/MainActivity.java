@@ -54,9 +54,10 @@ public class MainActivity extends ActionBarActivity
         mTitle = getTitle();
 
         // Set up the drawer.
+        DrawerLayout drawerlayout;
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
-                (DrawerLayout) findViewById(R.id.drawer_layout));
+                drawerlayout = (DrawerLayout) findViewById(R.id.drawer_layout));
 
     }
 
