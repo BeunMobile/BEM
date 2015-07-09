@@ -4,15 +4,19 @@ package com.bilgiislem.sems.beunapp.Duyurular;
 import android.app.ListFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 
 import com.bilgiislem.sems.beunapp.R;
@@ -30,6 +34,7 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
     private ProgressDialog pDialog;
     private static String url = "http://w3.beun.edu.tr/mobil-duyurular/";
     ListView listView;
+    ImageView imageView;
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
@@ -41,7 +46,18 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
         listView = new ListView(getActivity());
+
+        /*RelativeLayout rl = (RelativeLayout) inflater.inflate(R.layout.json_items, null);
+        imageView = (ImageView) getView().findViewById(R.id.image_json_items);
+        imageView.setImageDrawable(getResources().getDrawable(R.drawable.beu50));
+        */
         return view;
+    }
+
+    @Nullable
+    @Override
+    public View getView() {
+        return super.getView();
     }
 
     @Override
@@ -99,6 +115,11 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
                         String baslik = c.getString(TAG_BASLIK);
                         String adres = c.getString(TAG_ADRES);
                         HashMap<String, String> contact = new HashMap<String, String>();
+                        if (baslik.contains("<b>") || baslik.contains("<strong>")) {
+                            Log.i("indexOf", "Index of <strong> or <b>." + " " + i);
+                        } else {
+                            Log.i("indexOf", "Index of empty." + " " + i);
+                        }
                         baslik = html2text(baslik);
                         contact.put(TAG_BASLIK, baslik);
                         contact.put(TAG_ADRES, adres);
