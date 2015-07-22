@@ -36,6 +36,7 @@ public class AnaSayfa_WebPage extends Activity {
                 return true;
             }
 
+
             public void onPageFinished(WebView view, String url) {
                 if (mProgress.isShowing()) {
                     Log.i("onPageFinished", "Page is just finished.");
