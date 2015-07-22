@@ -20,7 +20,7 @@ public class Menu1_Fragment_AnaSayfa extends Fragment {
         sendFreeTextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AnaSayfa_WebPage.class);
-                Menu1_Fragment_AnaSayfa.this.startActivity(intent);
+                //Menu1_Fragment_AnaSayfa.this.startActivity(intent);
             }
         });
         return view;
