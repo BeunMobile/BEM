@@ -4,10 +4,8 @@ package com.bilgiislem.sems.beunapp.Duyurular;
 import android.app.ListFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,13 +14,14 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
+
 import android.widget.SimpleAdapter;
 
 import com.bilgiislem.sems.beunapp.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,6 +34,7 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
     private static String url = "http://w3.beun.edu.tr/mobil-duyurular/";
     ListView listView;
     ImageView imageView;
+    List<Integer> list = new ArrayList<>();
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
@@ -47,18 +47,9 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
         View view = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
         listView = new ListView(getActivity());
 
-        /*RelativeLayout rl = (RelativeLayout) inflater.inflate(R.layout.json_items, null);
-        imageView = (ImageView) getView().findViewById(R.id.image_json_items);
-        imageView.setImageDrawable(getResources().getDrawable(R.drawable.beu50));
-        */
         return view;
     }
 
-    @Nullable
-    @Override
-    public View getView() {
-        return super.getView();
-    }
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
@@ -116,9 +107,7 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
                         String adres = c.getString(TAG_ADRES);
                         HashMap<String, String> contact = new HashMap<String, String>();
                         if (baslik.contains("<b>") || baslik.contains("<strong>")) {
-                            Log.i("indexOf", "Index of <strong> or <b>." + " " + i);
-                        } else {
-                            Log.i("indexOf", "Index of empty." + " " + i);
+                            list.add(i);
                         }
                         baslik = html2text(baslik);
                         contact.put(TAG_BASLIK, baslik);
@@ -135,12 +124,13 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
             return null;
         }
 
-
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            if (pDialog.isShowing())
+            if (pDialog.isShowing()) {
                 pDialog.dismiss();
+            }
+            Log.i("TAG_BASLIK", TAG_BASLIK);
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), contactList,
                     R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.name});

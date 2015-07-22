@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.Window;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -28,6 +29,7 @@ public class AnaSayfa_WebPage extends Activity {
         mWeb.setInitialScale(100);
         settings.setBuiltInZoomControls(true);
         mProgress = ProgressDialog.show(this, this.getString(R.string.loading), this.getString(R.string.waitfor));
+        mProgress.setCancelable(true);
         mWeb.setWebViewClient(new WebViewClient() {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
@@ -36,6 +38,7 @@ public class AnaSayfa_WebPage extends Activity {
 
             public void onPageFinished(WebView view, String url) {
                 if (mProgress.isShowing()) {
+                    Log.i("onPageFinished", "Page is just finished.");
                     mProgress.dismiss();
                 }
             }
