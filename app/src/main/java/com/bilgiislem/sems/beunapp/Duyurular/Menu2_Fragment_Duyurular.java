@@ -130,13 +130,13 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
             if (pDialog.isShowing()) {
                 pDialog.dismiss();
             }
-            Log.i("TAG_BASLIK", TAG_BASLIK);
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), contactList,
                     R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.name});
             setListAdapter(adapter);
         }
     }
+
 
     public static String html2text(String html) {
         return Jsoup.parse(html).text();
