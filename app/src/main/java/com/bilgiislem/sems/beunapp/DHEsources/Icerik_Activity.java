@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp.Duyurular;
+package com.bilgiislem.sems.beunapp.DHEsources;
 
 import android.app.ProgressDialog;
 import android.content.Intent;

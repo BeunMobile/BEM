@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp.UZEM;
+package com.bilgiislem.sems.beunapp.EEU;
 
 import android.app.Fragment;
 import android.graphics.Bitmap;
@@ -8,32 +8,30 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
 
 import com.bilgiislem.sems.beunapp.R;
 
-public class Menu8_Fragment_UZEM extends Fragment {
+public class Menu6_Fragment_E_Kapmus extends Fragment {
     WebView webView;
-    String url_uzem = "http://ue.beun.edu.tr/Account/Login?ReturnUrl=%2f";
-    ProgressBar progressBar_uzem;
+    String url_ekampus = "https://ekampus.beun.edu.tr/Yonetim/Kullanici/Giris?ReturnUrl=%2f";
     private Bundle webViewBundle;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(
-                R.layout.menu8_layout_uzem,
+                R.layout.web_page_layout,
                 container,
                 false);
 
-        progressBar_uzem = (ProgressBar) view.findViewById(R.id.uzem_progress);
-        webView = (WebView) view.findViewById(R.id.uzem_page);
+        webView = (WebView) view.findViewById(R.id.web_page);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDisplayZoomControls(true);
         webView.setWebViewClient(new WebViewClient() {
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                webView.loadUrl(url_uzem);
+                webView.loadUrl("https://ekampus.beun.edu.tr/Yonetim/Kullanici/Giris?ReturnUrl=%2f");
 
             }
 
@@ -41,7 +39,6 @@ public class Menu8_Fragment_UZEM extends Fragment {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 // TODO Auto-generated method stub
                 super.onPageStarted(view, url, favicon);
-                progressBar_uzem.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -57,11 +54,9 @@ public class Menu8_Fragment_UZEM extends Fragment {
             public void onPageFinished(WebView view, String url) {
                 // TODO Auto-generated method stub
                 super.onPageFinished(view, url);
-
-                progressBar_uzem.setVisibility(View.INVISIBLE);
             }
         });
-        webView.loadUrl(url_uzem);
+        webView.loadUrl(url_ekampus);
 
         // Just load whatever URL this fragment is
         // created with.
@@ -71,8 +66,8 @@ public class Menu8_Fragment_UZEM extends Fragment {
     // This is the method the pager adapter will use
     // to create a new fragment
     public static Fragment newInstance(String url) {
-        Menu8_Fragment_UZEM f = new Menu8_Fragment_UZEM();
-        f.url_uzem = url;
+        Menu6_Fragment_E_Kapmus f = new Menu6_Fragment_E_Kapmus();
+        f.url_ekampus = url;
         return f;
     }
 
@@ -100,3 +95,21 @@ public class Menu8_Fragment_UZEM extends Fragment {
     }
 
 }
+
+    /*
+    View rootview;
+    private String url_ekampus = "https://ekampus.beun.edu.tr/Yonetim/Kullanici/Giris?ReturnUrl=%2f";
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootview = inflater.inflate(R.layout.menu8_layout_uzem, container, false);
+        WebView webView = (WebView) rootview.findViewById(R.id.uzem_page);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl(url_ekampus);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.setInitialScale(50);
+        Toast.makeText(getActivity(), this.getString(R.string.ekampus), Toast.LENGTH_LONG).show();
+        return rootview;
+    }
+}*/

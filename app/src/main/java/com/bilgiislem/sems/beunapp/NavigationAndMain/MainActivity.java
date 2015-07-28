@@ -15,14 +15,14 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
 import com.bilgiislem.sems.beunapp.AnaSayfa.Menu1_Fragment_AnaSayfa;
-import com.bilgiislem.sems.beunapp.Duyurular.Menu2_Fragment_Duyurular;
-import com.bilgiislem.sems.beunapp.E_Kapmus.Menu6_Fragment_E_Kapmus;
-import com.bilgiislem.sems.beunapp.E_Posta.Menu7_Fragment_E_Posta;
-import com.bilgiislem.sems.beunapp.EtkinlikTakvimi.Menu4_Fragment_Etkinlik_Takvimi;
-import com.bilgiislem.sems.beunapp.Etkinlikler.Menu3_Fragment_Etkinlikler;
+import com.bilgiislem.sems.beunapp.DHE.Menu2_Fragment_Duyurular;
+import com.bilgiislem.sems.beunapp.EEU.Menu6_Fragment_E_Kapmus;
+import com.bilgiislem.sems.beunapp.EEU.Menu7_Fragment_E_Posta;
+import com.bilgiislem.sems.beunapp.DHE.Menu4_Fragment_Etkinlik_Takvimi;
+import com.bilgiislem.sems.beunapp.DHE.Menu3_Fragment_Haberler;
 import com.bilgiislem.sems.beunapp.KampusGorunumu.Menu9_Fragment_Kampus_Gorunumu;
 import com.bilgiislem.sems.beunapp.R;
-import com.bilgiislem.sems.beunapp.UZEM.Menu8_Fragment_UZEM;
+import com.bilgiislem.sems.beunapp.EEU.Menu8_Fragment_UZEM;
 import com.bilgiislem.sems.beunapp.YemekListesi.Menu5_Fragment_YemekListesi;
 
 /*
@@ -77,7 +77,7 @@ public class MainActivity extends ActionBarActivity
                 objFragment = new Menu2_Fragment_Duyurular();
                 break;
             case 2:
-                objFragment = new Menu3_Fragment_Etkinlikler();
+                objFragment = new Menu3_Fragment_Haberler();
                 break;
             case 3:
                 objFragment = new Menu4_Fragment_Etkinlik_Takvimi();

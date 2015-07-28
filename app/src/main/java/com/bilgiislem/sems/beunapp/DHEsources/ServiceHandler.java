@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp.Duyurular;
+package com.bilgiislem.sems.beunapp.DHEsources;
 
 /**
  * Created by sems on 18.06.2015.

@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp.Beu3D;
+package com.bilgiislem.sems.beunapp.KampusGorunumu;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
@@ -17,8 +17,8 @@ public class Beu_3DPage extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         String Url_3D = "https://photosynth.net/preview/view/354a8940-5d76-4ead-a6fe-e67f4a6ab003?delayload=false&autoplay=true&fromsite=false";
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.beu_3dpage_layout);
-        webview = (WebView) findViewById(R.id.beu_3d_page);
+        setContentView(R.layout.web_page_layout);
+        webview = (WebView) findViewById(R.id.web_page);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.loadUrl(Url_3D);
         Toast.makeText(Beu_3DPage.this, Beu_3DPage.this.getResources().getString(R.string.beu3d), Toast.LENGTH_LONG).show();

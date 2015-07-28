@@ -3,7 +3,7 @@
 
     <string name="title_section1">Ana Sayfa</string>
     <string name="title_section2">Duyurular</string>
-    <string name="title_section3">Etkinlikler</string>
+    <string name="title_section3">Haberler</string>
     <string name="title_section4">Etkinlik Takvimi</string>
     <string name="title_section5">Yemek Listesi</string>
     <string name="title_section6">E-Kampüs</string>
@@ -25,10 +25,14 @@
     <string name="title_activity_eposta__web_page">Eposta_WebPage</string>
     <string name="title_activity_menu2__icerik_">Menu2_Icerik_Activity</string>
 
+
+    <string name="title_tum_duyurular">Tüm Duyurular</string>
+    <string name="title_tum_haberler">Tüm Haberler</string>
+    <string name="title_tum_etkinlikler">Tüm Etkinlikler</string>
+
     //Anasayfa
     <string name="loading">Yükleniyor</string>
     <string name="waitfor">Lütfen biraz bekleyiniz ...</string>
-
 
     //Toasts
     <string name="ekampus">E-Kampüs Sayfanız Yukleniyor...</string>

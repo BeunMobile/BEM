@@ -1,6 +1,6 @@
-package com.bilgiislem.sems.beunapp.EtkinlikTakvimi;
+package com.bilgiislem.sems.beunapp.DHE;
 
-import android.app.Fragment;
+import android.app.DialogFragment;
 import android.app.ListFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,35 +10,33 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
-import com.bilgiislem.sems.beunapp.Duyurular.Icerik_Activity;
-import com.bilgiislem.sems.beunapp.Duyurular.ServiceHandler;
+import com.bilgiislem.sems.beunapp.DHEsources.DatePickerFragment;
+import com.bilgiislem.sems.beunapp.DHEsources.Icerik_Activity;
+import com.bilgiislem.sems.beunapp.DHEsources.ServiceHandler;
 import com.bilgiislem.sems.beunapp.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
+public class Menu3_Fragment_Haberler extends ListFragment {
 
     private ProgressDialog pDialog;
-    private static String url = "http://w3.beun.edu.tr/mobil-etkinlikler/";
+    private static String url = "http://w3.beun.edu.tr/mobil-haberler/";
     ListView listView;
+    Button thbutton;
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
@@ -48,7 +46,22 @@ public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
+        View view = inflater.inflate(R.layout.dhe_layout, container, false);
+
+
+        thbutton = (Button) view.findViewById(R.id.tumbutton);
+
+        thbutton.setText(R.string.title_tum_haberler);
+
+        thbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment newFragment = new DatePickerFragment();
+                newFragment.show(getFragmentManager(), "Date Picker");
+            }
+        });
+
+
         listView = new ListView(getActivity());
         return view;
     }
@@ -140,3 +153,43 @@ public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
         return Jsoup.parse(html).text();
     }
 }
+    /*
+    Document doc;
+    String url_duyurular = "http://w3.beun.edu.tr/";
+    String data = "";
+    Element div;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootview = inflater.inflate(R.layout.menu3_layout_etkinlikler, container, false);
+        final WebView webView = (WebView) rootview.findViewById(R.id.etkinlikler_page);
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setDefaultTextEncodingName("utf-8");
+        webView.getSettings().setJavaScriptEnabled(true);
+        ThreadparsingUrl.start();
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                webView.loadData(data, "text/html; charset=utf-8", "utf-8");
+            }
+        });
+
+        webView.loadUrl(url_duyurular);
+
+        return rootview;
+    }
+
+    Thread ThreadparsingUrl = new Thread() {
+        public void run() {
+            try {
+                doc = Jsoup.connect(url_duyurular).get();
+                div = doc.select("#yazilar").get(1);
+                data += div;
+                Log.i("Words", data);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+*/

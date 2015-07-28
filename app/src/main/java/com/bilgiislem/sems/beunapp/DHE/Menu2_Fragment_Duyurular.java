@@ -1,6 +1,8 @@
-package com.bilgiislem.sems.beunapp.Duyurular;
+package com.bilgiislem.sems.beunapp.DHE;
 
 
+import android.app.DatePickerDialog;
+import android.app.DialogFragment;
 import android.app.ListFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,15 +13,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
+import com.bilgiislem.sems.beunapp.DHEsources.DatePickerFragment;
+import com.bilgiislem.sems.beunapp.DHEsources.Icerik_Activity;
+import com.bilgiislem.sems.beunapp.DHEsources.ServiceHandler;
 import com.bilgiislem.sems.beunapp.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -33,7 +42,7 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
     private ProgressDialog pDialog;
     private static String url = "http://w3.beun.edu.tr/mobil-duyurular/";
     ListView listView;
-    ImageView imageView;
+    Button tdbutton;
     List<Integer> list = new ArrayList<>();
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
@@ -44,11 +53,21 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
+        View view = inflater.inflate(R.layout.dhe_layout, container, false);
+
+        tdbutton = (Button) view.findViewById(R.id.tumbutton);
+
+        tdbutton.setText(R.string.title_tum_duyurular);
+
+        tdbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment newFragment = new DatePickerFragment();
+                newFragment.show(getFragmentManager(), "Date Picker");
+            }
+        });
+
         listView = new ListView(getActivity());
-
-
-        imageView = (ImageView) view.findViewById(R.id.image_json_items);
 
         return view;
     }
@@ -81,10 +100,6 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
         super.onActivityCreated(savedInstanceState);
     }
 
-
-    /**
-     * Async task class to get json by making HTTP call
-     */
     private class GetContacts extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
@@ -133,10 +148,14 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
             if (pDialog.isShowing()) {
                 pDialog.dismiss();
             }
+
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), contactList,
                     R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.name});
+
             setListAdapter(adapter);
+
+
         }
     }
 

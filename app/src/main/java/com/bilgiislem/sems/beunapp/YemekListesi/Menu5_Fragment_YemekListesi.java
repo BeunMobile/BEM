@@ -21,8 +21,8 @@ public class Menu5_Fragment_YemekListesi extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootview = inflater.inflate(R.layout.menu5_layout_yemeklistesi, container, false);
-        WebView webView = (WebView) rootview.findViewById(R.id.yemek_page);
+        View rootview = inflater.inflate(R.layout.web_page_layout, container, false);
+        WebView webView = (WebView) rootview.findViewById(R.id.web_page);
 
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("http://docs.google.com/gview?embedded=true&url=" + url_yemek);

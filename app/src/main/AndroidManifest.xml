@@ -47,10 +47,10 @@
             android:name=".KampusGorunumu.FarabiActivity"
             android:label="@string/title_activity_farabi" />
         <activity
-            android:name=".Beu3D.Beu_3DPage"
+            android:name=".KampusGorunumu.Beu_3DPage"
             android:label="@string/title_activity_beu_3_dpage" />
         <activity
-            android:name=".Duyurular.Icerik_Activity"
+            android:name=".DHEsources.Icerik_Activity"
             android:label="@string/title_activity_menu2__icerik_" />
     </application>
 

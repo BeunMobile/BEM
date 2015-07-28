@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_floating_material_light"
     android:baselineAligned="false"
-    tools:context="com.bilgiislem.sems.beunapp.Duyurular.Icerik_Activity">
+    tools:context="com.bilgiislem.sems.beunapp.DHEsources.Icerik_Activity">
 
     <ScrollView
         android:id="@+id/scrollView"
