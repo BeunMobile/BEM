@@ -47,6 +47,9 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
         View view = inflater.inflate(R.layout.menu2_layout_duyurular, container, false);
         listView = new ListView(getActivity());
 
+
+        imageView = (ImageView) view.findViewById(R.id.image_json_items);
+
         return view;
     }
 
