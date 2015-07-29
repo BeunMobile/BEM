@@ -3,10 +3,13 @@ package com.bilgiislem.sems.beunapp.DHEsources;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DialogFragment;
+import android.app.FragmentTransaction;
+import android.app.ListFragment;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
+
 import android.widget.DatePicker;
 import android.app.Dialog;
 import android.widget.Toast;
@@ -19,6 +22,8 @@ import java.util.Calendar;
  * A simple {@link Fragment} subclass.
  */
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+
+    String dhe;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -45,7 +50,11 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
             @Override
             protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
+
+                dhe = getShownIndex();
+
                 int day = getContext().getResources().getIdentifier("android:id/day", null, null);
+
                 if (day != 0) {
                     View dayPicker = findViewById(day);
                     if (dayPicker != null) {
@@ -58,9 +67,38 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         return dpd;
     }
 
+    public String getShownIndex() {
+        Bundle bundle = this.getArguments();
+        dhe = bundle.getString("dhe");
+        return dhe;
+    }
+
     public void onDateSet(DatePicker view, int year, int month, int day) {
         //Do something with the date chosen by the user
-        String stringOfDate = month+1 + "/" + year;
-        Toast.makeText(getActivity(), stringOfDate, Toast.LENGTH_SHORT).show();
+        String stringOfLink = "?yil=" + year + "&ay=" + (month + 1) + "&cins=" + dhe;
+
+        if (dhe == "duyuru") {
+            Fragment dhemyf = new Fragment();
+            Bundle dbundle = new Bundle();
+            dbundle.putString("dhelink", stringOfLink);
+            dhemyf.setArguments(dbundle);
+            Log.i("duyuru", stringOfLink);
+        } else if (dhe == "haber") {
+            ListFragment dhemyf = new ListFragment();
+            Bundle dbundle = new Bundle();
+            dbundle.putString("dhelink", stringOfLink);
+            dhemyf.setArguments(dbundle);
+        } else if (dhe == "etkinlik") {
+            ListFragment dhemyf = new ListFragment();
+            Bundle dbundle = new Bundle();
+            dbundle.putString("dhelink", stringOfLink);
+            dhemyf.setArguments(dbundle);
+        }
+
+        DHE_Month_Year dhe_month_year = new DHE_Month_Year();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.dhe_layout, dhe_month_year);
+        ft.addToBackStack(null);
+        ft.commit();
     }
 }

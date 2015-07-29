@@ -16,6 +16,7 @@ import android.support.v4.widget.DrawerLayout;
 
 import com.bilgiislem.sems.beunapp.AnaSayfa.Menu1_Fragment_AnaSayfa;
 import com.bilgiislem.sems.beunapp.DHE.Menu2_Fragment_Duyurular;
+import com.bilgiislem.sems.beunapp.DHEsources.DHE_Month_Year;
 import com.bilgiislem.sems.beunapp.EEU.Menu6_Fragment_E_Kapmus;
 import com.bilgiislem.sems.beunapp.EEU.Menu7_Fragment_E_Posta;
 import com.bilgiislem.sems.beunapp.DHE.Menu4_Fragment_Etkinlik_Takvimi;
@@ -97,6 +98,9 @@ public class MainActivity extends ActionBarActivity
             case 8:
                 objFragment = new Menu9_Fragment_Kampus_Gorunumu();
                 break;
+            /*case 9:
+                objFragment = new DHE_Month_Year();
+                break;*/
 
         }
 
@@ -137,6 +141,9 @@ public class MainActivity extends ActionBarActivity
             case 9:
                 mTitle = getString(R.string.title_section9);
                 break;
+            /*case 10:
+                mTitle = getString(R.string.title_section10);
+                break;*/
         }
     }
 

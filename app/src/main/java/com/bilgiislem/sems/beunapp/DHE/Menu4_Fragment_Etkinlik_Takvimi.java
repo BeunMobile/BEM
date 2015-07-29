@@ -50,13 +50,13 @@ public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
 
 
         tebutton = (Button) view.findViewById(R.id.tumbutton);
-
-        tebutton.setText(R.string.title_tum_duyurular);
-
         tebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment newFragment = new DatePickerFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("dhe", "etkinlik");
+                newFragment.setArguments(bundle);
                 newFragment.show(getFragmentManager(), "Date Picker");
             }
         });

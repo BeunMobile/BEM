@@ -50,13 +50,13 @@ public class Menu3_Fragment_Haberler extends ListFragment {
 
 
         thbutton = (Button) view.findViewById(R.id.tumbutton);
-
-        thbutton.setText(R.string.title_tum_haberler);
-
         thbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment newFragment = new DatePickerFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("dhe", "haber");
+                newFragment.setArguments(bundle);
                 newFragment.show(getFragmentManager(), "Date Picker");
             }
         });

@@ -1,8 +1,8 @@
 package com.bilgiislem.sems.beunapp.DHE;
 
 
-import android.app.DatePickerDialog;
 import android.app.DialogFragment;
+import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,21 +14,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.ImageView;
+
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
+import com.bilgiislem.sems.beunapp.DHEsources.DHE_Month_Year;
 import com.bilgiislem.sems.beunapp.DHEsources.DatePickerFragment;
 import com.bilgiislem.sems.beunapp.DHEsources.Icerik_Activity;
 import com.bilgiislem.sems.beunapp.DHEsources.ServiceHandler;
 import com.bilgiislem.sems.beunapp.R;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -53,16 +51,16 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.dhe_layout, container, false);
+        final View view = inflater.inflate(R.layout.dhe_layout, container, false);
 
         tdbutton = (Button) view.findViewById(R.id.tumbutton);
-
-        tdbutton.setText(R.string.title_tum_duyurular);
-
         tdbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment newFragment = new DatePickerFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("dhe", "duyuru");
+                newFragment.setArguments(bundle);
                 newFragment.show(getFragmentManager(), "Date Picker");
             }
         });

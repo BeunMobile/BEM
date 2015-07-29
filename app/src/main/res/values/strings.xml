@@ -10,6 +10,8 @@
     <string name="title_section7">E-Posta</string>
     <string name="title_section8">UZEM</string>
     <string name="title_section9">Kampüs Görünümü</string>
+    <string name="title_section10">Deneme</string>
+
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -26,9 +28,7 @@
     <string name="title_activity_menu2__icerik_">Menu2_Icerik_Activity</string>
 
 
-    <string name="title_tum_duyurular">Tüm Duyurular</string>
-    <string name="title_tum_haberler">Tüm Haberler</string>
-    <string name="title_tum_etkinlikler">Tüm Etkinlikler</string>
+
 
     //Anasayfa
     <string name="loading">Yükleniyor</string>
@@ -38,6 +38,9 @@
     <string name="ekampus">E-Kampüs Sayfanız Yukleniyor...</string>
     <string name="beu3d">Bülent Ecevit Üniversitesi 3 Boyutlu olarak
 yükleniyor bu biraz zaman alabilir.</string>
+
+    //Tarih
+    <string name="tarih">Lütfen tarih seçiniz.</string>
 
 
 </resources>
