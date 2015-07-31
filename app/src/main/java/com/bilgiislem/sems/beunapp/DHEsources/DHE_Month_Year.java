@@ -21,6 +21,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.R;
 
@@ -48,6 +49,8 @@ public class DHE_Month_Year extends ListActivity {
         setContentView(R.layout.dhe_tum_layout);
 
         url = "http://w3.beun.edu.tr/mobil-arsiv/" + getIntent().getStringExtra("datelink");
+
+        Log.i("URL", url);
 
         contactList = new ArrayList<HashMap<String, String>>();
 
@@ -97,7 +100,6 @@ public class DHE_Month_Year extends ListActivity {
 
 
                     contacts = jsonObj.getJSONArray(TAG_LISTE);
-
 
                     for (int i = 0; i < contacts.length(); i++) {
                         JSONObject c = contacts.getJSONObject(i);

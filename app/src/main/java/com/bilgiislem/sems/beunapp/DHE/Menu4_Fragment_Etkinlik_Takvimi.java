@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.DHEsources.DatePickerFragment;
 import com.bilgiislem.sems.beunapp.DHEsources.Icerik_Activity;
@@ -120,6 +121,9 @@ public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
                         String baslik = c.getString(TAG_BASLIK);
                         String adres = c.getString(TAG_ADRES);
                         HashMap<String, String> contact = new HashMap<String, String>();
+                        if (baslik.isEmpty()) {
+                            Toast.makeText(getActivity(), R.string.dhe_all, Toast.LENGTH_LONG).show();
+                        }
                         baslik = html2text(baslik);
                         contact.put(TAG_BASLIK, baslik);
                         contact.put(TAG_ADRES, adres);

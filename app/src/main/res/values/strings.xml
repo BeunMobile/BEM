@@ -29,8 +29,6 @@
     <string name="title_activity_dhe_month__year">DHE_Month_Year</string>
 
 
-
-
     //Anasayfa
     <string name="loading">Yükleniyor</string>
     <string name="waitfor">Lütfen biraz bekleyiniz ...</string>
@@ -39,6 +37,9 @@
     <string name="ekampus">E-Kampüs Sayfanız Yukleniyor...</string>
     <string name="beu3d">Bülent Ecevit Üniversitesi 3 Boyutlu olarak
 yükleniyor bu biraz zaman alabilir.</string>
+    <string name="dhe_all">Yükleme sırasında hata oluştu.
+    Seçtiğiniz tarih ve ya internet
+        bağlantınızda bir problem olabilir.</string>
 
     //Tarih
     <string name="tarih">Lütfen tarih seçiniz.</string>

@@ -17,6 +17,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.DHEsources.DatePickerFragment;
 import com.bilgiislem.sems.beunapp.DHEsources.Icerik_Activity;
@@ -124,6 +125,9 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
                         HashMap<String, String> contact = new HashMap<String, String>();
                         if (baslik.contains("<b>") || baslik.contains("<strong>")) {
                             list.add(i);
+                        }
+                        if (baslik.isEmpty()) {
+                            Toast.makeText(getActivity(), R.string.dhe_all, Toast.LENGTH_LONG).show();
                         }
                         baslik = html2text(baslik);
                         contact.put(TAG_BASLIK, baslik);
