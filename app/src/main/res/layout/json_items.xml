@@ -18,7 +18,7 @@
         android:layout_alignParentLeft="true" />
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/news"
         android:paddingLeft="5sp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

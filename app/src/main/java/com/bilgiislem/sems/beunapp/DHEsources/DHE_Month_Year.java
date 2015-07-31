@@ -1,109 +1,104 @@
 package com.bilgiislem.sems.beunapp.DHEsources;
 
-
-import android.app.ListFragment;
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-
-import com.bilgiislem.sems.beunapp.R;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.app.ListActivity;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
-public class DHE_Month_Year extends ListFragment {
+import com.bilgiislem.sems.beunapp.R;
+
+public class DHE_Month_Year extends ListActivity {
 
     private ProgressDialog pDialog;
-    private static String url = "http://w3.beun.edu.tr/mobil-arsiv/?yil=2015&ay=4&cins=duyuru";
-    String dhelink;
-    ListView listView;
+
+    private static String url;
+
     List<Integer> list = new ArrayList<>();
+
+
     private static final String TAG_LISTE = "liste";
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
+
+
     JSONArray contacts = null;
+
     ArrayList<HashMap<String, String>> contactList;
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.dhe_tum_layout);
 
-        View view = inflater.inflate(R.layout.dhe_layout, container, false);
-
-/*
-        dhelink = getShownIndex();
-        Log.i("DHE", dhelink);
-        url = url + dhelink;
-
-*/
-
-        listView = new ListView(getActivity());
-
-        return view;
-    }
-
-
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-
+        url = "http://w3.beun.edu.tr/mobil-arsiv/" + getIntent().getStringExtra("datelink");
 
         contactList = new ArrayList<HashMap<String, String>>();
-        listView = getListView();
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        ListView lv = getListView();
+
+        lv.setOnItemClickListener(new OnItemClickListener() {
+
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
                 String adres2 = contactList.get(position).get("adres");
                 String baslik2 = contactList.get(position).get("baslik");
-                Intent intent = new Intent(getActivity(), Icerik_Activity.class);
+                Intent intent = new Intent(DHE_Month_Year.this, Icerik_Activity.class);
                 intent.putExtra("key", adres2);
                 intent.putExtra("key2", baslik2);
                 startActivity(intent);
             }
         });
-        // Calling async task to get json
+
         new GetContacts().execute();
-        super.onActivityCreated(savedInstanceState);
     }
 
     private class GetContacts extends AsyncTask<Void, Void, Void> {
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setTitle(getActivity().getString(R.string.loading));
-            pDialog.setMessage(getActivity().getString(R.string.waitfor));
+            pDialog = new ProgressDialog(DHE_Month_Year.this);
+            pDialog.setTitle(DHE_Month_Year.this.getString(R.string.loading));
+            pDialog.setMessage(DHE_Month_Year.this.getString(R.string.waitfor));
             pDialog.setCancelable(false);
             pDialog.show();
         }
 
         @Override
         protected Void doInBackground(Void... arg0) {
+
             ServiceHandler sh = new ServiceHandler();
+
             String jsonStr = sh.makeServiceCall(url, ServiceHandler.GET);
+
+            Log.d("Response: ", "> " + jsonStr);
+
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
+
+
                     contacts = jsonObj.getJSONArray(TAG_LISTE);
+
+
                     for (int i = 0; i < contacts.length(); i++) {
                         JSONObject c = contacts.getJSONObject(i);
                         String baslik = c.getString(TAG_BASLIK);
@@ -130,29 +125,22 @@ public class DHE_Month_Year extends ListFragment {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            if (pDialog.isShowing()) {
+
+            if (pDialog.isShowing())
                 pDialog.dismiss();
-            }
 
             ListAdapter adapter = new SimpleAdapter(
-                    getActivity(), contactList,
-                    R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.name});
+                    DHE_Month_Year.this, contactList,
+                    R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.news});
 
             setListAdapter(adapter);
-
-
         }
+
     }
 
-    /*
-        public String getShownIndex() {
-            Bundle bundle = this.getArguments();
-            dhelink = bundle.getString("dhelink");
-            Log.i("DHE", "DHE");
-            return dhelink;
-        }
-    */
+
     public static String html2text(String html) {
         return Jsoup.parse(html).text();
     }
+
 }

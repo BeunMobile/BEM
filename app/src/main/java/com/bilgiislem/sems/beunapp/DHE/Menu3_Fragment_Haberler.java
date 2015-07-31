@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.DHEsources.DatePickerFragment;
 import com.bilgiislem.sems.beunapp.DHEsources.Icerik_Activity;
@@ -144,7 +143,7 @@ public class Menu3_Fragment_Haberler extends ListFragment {
                 pDialog.dismiss();
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), contactList,
-                    R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.name});
+                    R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.news});
             setListAdapter(adapter);
         }
     }

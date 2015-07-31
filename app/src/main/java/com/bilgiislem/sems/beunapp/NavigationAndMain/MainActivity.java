@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +18,7 @@ import android.support.v4.widget.DrawerLayout;
 import com.bilgiislem.sems.beunapp.AnaSayfa.Menu1_Fragment_AnaSayfa;
 import com.bilgiislem.sems.beunapp.DHE.Menu2_Fragment_Duyurular;
 import com.bilgiislem.sems.beunapp.DHEsources.DHE_Month_Year;
+import com.bilgiislem.sems.beunapp.DHEsources.DatePickerFragment;
 import com.bilgiislem.sems.beunapp.EEU.Menu6_Fragment_E_Kapmus;
 import com.bilgiislem.sems.beunapp.EEU.Menu7_Fragment_E_Posta;
 import com.bilgiislem.sems.beunapp.DHE.Menu4_Fragment_Etkinlik_Takvimi;
@@ -34,6 +36,8 @@ Sems -keystore "C:\Users\pc\keystore.jks" -storepass 2470417m -keypass 2470417m
 */
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+
+    private static String urlall = "http://w3.beun.edu.tr/mobil-arsiv/";
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -222,5 +226,4 @@ public class MainActivity extends ActionBarActivity
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
-
 }

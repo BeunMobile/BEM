@@ -52,6 +52,9 @@
         <activity
             android:name=".DHEsources.Icerik_Activity"
             android:label="@string/title_activity_menu2__icerik_" />
+        <activity
+            android:name=".DHEsources.DHE_Month_Year"
+            android:label="@string/title_activity_dhe_month__year" />
     </application>
 
 </manifest>

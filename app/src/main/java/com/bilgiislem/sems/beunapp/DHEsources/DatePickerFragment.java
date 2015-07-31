@@ -1,26 +1,19 @@
 package com.bilgiislem.sems.beunapp.DHEsources;
 
+
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DialogFragment;
-import android.app.FragmentTransaction;
-import android.app.ListFragment;
+import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.util.Log;
 import android.view.View;
-
 import android.widget.DatePicker;
 import android.app.Dialog;
-import android.widget.Toast;
 
-import com.bilgiislem.sems.beunapp.R;
 
 import java.util.Calendar;
+import java.util.Date;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
     String dhe;
@@ -32,17 +25,6 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
-
-        /*
-            Get Android DatePickerDialog without day
-            - This code does not work
-            THEME_DEVICE_DEFAULT_DARK
-            THEME_DEVICE_DEFAULT_LIGHT
-            - This code work fine
-            THEME_HOLO_DARK
-            THEME_HOLO_LIGHT
-            THEME_TRADITIONAL
-         */
 
         DatePickerDialog dpd = new DatePickerDialog(getActivity(), AlertDialog.THEME_HOLO_DARK, this, year, month, day) {
             //DatePickerDialog dpd = new DatePickerDialog(getActivity(),AlertDialog.THEME_HOLO_LIGHT,this,year, month, day){
@@ -64,6 +46,9 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
                 }
             }
         };
+
+        dpd.getDatePicker().setMaxDate(new Date().getTime());
+
         return dpd;
     }
 
@@ -77,28 +62,10 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         //Do something with the date chosen by the user
         String stringOfLink = "?yil=" + year + "&ay=" + (month + 1) + "&cins=" + dhe;
 
-        if (dhe == "duyuru") {
-            Fragment dhemyf = new Fragment();
-            Bundle dbundle = new Bundle();
-            dbundle.putString("dhelink", stringOfLink);
-            dhemyf.setArguments(dbundle);
-            Log.i("duyuru", stringOfLink);
-        } else if (dhe == "haber") {
-            ListFragment dhemyf = new ListFragment();
-            Bundle dbundle = new Bundle();
-            dbundle.putString("dhelink", stringOfLink);
-            dhemyf.setArguments(dbundle);
-        } else if (dhe == "etkinlik") {
-            ListFragment dhemyf = new ListFragment();
-            Bundle dbundle = new Bundle();
-            dbundle.putString("dhelink", stringOfLink);
-            dhemyf.setArguments(dbundle);
-        }
-
-        DHE_Month_Year dhe_month_year = new DHE_Month_Year();
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.dhe_layout, dhe_month_year);
-        ft.addToBackStack(null);
-        ft.commit();
+        Intent intent = new Intent(getActivity(), DHE_Month_Year.class);
+        intent.putExtra("datelink", stringOfLink);
+        startActivity(intent);
     }
+
+
 }

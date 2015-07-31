@@ -1,8 +1,6 @@
 package com.bilgiislem.sems.beunapp.DHE;
 
-
 import android.app.DialogFragment;
-import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -20,7 +18,6 @@ import android.widget.ListView;
 
 import android.widget.SimpleAdapter;
 
-import com.bilgiislem.sems.beunapp.DHEsources.DHE_Month_Year;
 import com.bilgiislem.sems.beunapp.DHEsources.DatePickerFragment;
 import com.bilgiislem.sems.beunapp.DHEsources.Icerik_Activity;
 import com.bilgiislem.sems.beunapp.DHEsources.ServiceHandler;
@@ -39,9 +36,12 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
 
     private ProgressDialog pDialog;
     private static String url = "http://w3.beun.edu.tr/mobil-duyurular/";
+
     ListView listView;
     Button tdbutton;
+
     List<Integer> list = new ArrayList<>();
+
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
@@ -53,10 +53,12 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
                              ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.dhe_layout, container, false);
 
+
         tdbutton = (Button) view.findViewById(R.id.tumbutton);
         tdbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 DialogFragment newFragment = new DatePickerFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("dhe", "duyuru");
@@ -64,7 +66,6 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
                 newFragment.show(getFragmentManager(), "Date Picker");
             }
         });
-
         listView = new ListView(getActivity());
 
         return view;
@@ -93,7 +94,6 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
                 startActivity(intent);
             }
         });
-        // Calling async task to get json
         new GetContacts().execute();
         super.onActivityCreated(savedInstanceState);
     }
@@ -149,7 +149,7 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
 
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), contactList,
-                    R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.name});
+                    R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.news});
 
             setListAdapter(adapter);
 
@@ -157,8 +157,9 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
         }
     }
 
-
     public static String html2text(String html) {
         return Jsoup.parse(html).text();
     }
+
+
 }
