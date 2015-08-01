@@ -52,14 +52,12 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.dhe_layout, container, false);
-
+        View view = inflater.inflate(R.layout.dhe_layout, container, false);
 
         tdbutton = (Button) view.findViewById(R.id.tumbutton);
         tdbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 DialogFragment newFragment = new DatePickerFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("dhe", "duyuru");
@@ -68,10 +66,8 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
             }
         });
         listView = new ListView(getActivity());
-
         return view;
     }
-
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
@@ -80,8 +76,6 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-
-
         contactList = new ArrayList<HashMap<String, String>>();
         listView = getListView();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
