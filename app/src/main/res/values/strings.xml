@@ -31,18 +31,19 @@
 
     //Anasayfa
     <string name="loading">Yükleniyor</string>
-    <string name="waitfor">Lütfen biraz bekleyiniz ...</string>
+    <string name="waitfor">Lütfen biraz bekleyiniz …</string>
 
     //Toasts
-    <string name="ekampus">E-Kampüs Sayfanız Yukleniyor...</string>
+    <string name="ekampus">E-Kampüs Sayfanız Yukleniyor …</string>
     <string name="beu3d">Bülent Ecevit Üniversitesi 3 Boyutlu olarak
 yükleniyor bu biraz zaman alabilir.</string>
-    <string name="dhe_all">Yükleme sırasında hata oluştu.
-    Seçtiğiniz tarih ve ya internet
-        bağlantınızda bir problem olabilir.</string>
+    <string name="dhe_all_no_data">Seçtiğiniz ay içerisinde duyuru bulunmamaktadır.</string>
+    <string name="connection_decision">İnternete bağlı değilsiniz.
+    İnternetinizi açmak istermisiniz ?</string>
+    <string name="connection">Lütfen internet bağlantınızı kontrol ediniz.
+    Bağlı olmadığınız taktirde bazı servisleri kullanamayabilirsiniz.</string>
 
     //Tarih
-    <string name="tarih">Lütfen tarih seçiniz.</string>
-
-
+    <string name="pick_a_date">Lütfen tarih seçiniz.</string>
+    <string name="title_activity_dhe__month__year">DHE_Month_YearA</string>
 </resources>

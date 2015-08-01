@@ -122,7 +122,7 @@ public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
                         String adres = c.getString(TAG_ADRES);
                         HashMap<String, String> contact = new HashMap<String, String>();
                         if (baslik.isEmpty()) {
-                            Toast.makeText(getActivity(), R.string.dhe_all, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), R.string.dhe_all_no_data, Toast.LENGTH_LONG).show();
                         }
                         baslik = html2text(baslik);
                         contact.put(TAG_BASLIK, baslik);

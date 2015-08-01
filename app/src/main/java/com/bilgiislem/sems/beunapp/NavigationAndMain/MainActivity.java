@@ -2,23 +2,27 @@ package com.bilgiislem.sems.beunapp.NavigationAndMain;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.AnaSayfa.Menu1_Fragment_AnaSayfa;
 import com.bilgiislem.sems.beunapp.DHE.Menu2_Fragment_Duyurular;
-import com.bilgiislem.sems.beunapp.DHEsources.DHE_Month_Year;
-import com.bilgiislem.sems.beunapp.DHEsources.DatePickerFragment;
 import com.bilgiislem.sems.beunapp.EEU.Menu6_Fragment_E_Kapmus;
 import com.bilgiislem.sems.beunapp.EEU.Menu7_Fragment_E_Posta;
 import com.bilgiislem.sems.beunapp.DHE.Menu4_Fragment_Etkinlik_Takvimi;
@@ -28,17 +32,8 @@ import com.bilgiislem.sems.beunapp.R;
 import com.bilgiislem.sems.beunapp.EEU.Menu8_Fragment_UZEM;
 import com.bilgiislem.sems.beunapp.YemekListesi.Menu5_Fragment_YemekListesi;
 
-/*
-C:\Users\pc>"C:\Program Files\Java\jdk1.8.0_31\bin\keytool.exe" -list -v -alias
-Sems -keystore "C:\Users\pc\keystore.jks" -storepass 2470417m -keypass 2470417m
-
- for keystore
-*/
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
-
-    private static String urlall = "http://w3.beun.edu.tr/mobil-arsiv/";
-
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -53,6 +48,27 @@ public class MainActivity extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (isOnline() != true) {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setMessage(R.string.connection_decision);
+
+            alertDialogBuilder.setPositiveButton("Hayýr,Teþekkürler.", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface arg0, int arg1) {
+                    Toast.makeText(MainActivity.this, R.string.connection, Toast.LENGTH_LONG).show();
+                }
+            });
+
+            alertDialogBuilder.setNegativeButton("Evet.", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    startActivityForResult(new Intent(Settings.ACTION_WIFI_SETTINGS), 0);
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -102,10 +118,6 @@ public class MainActivity extends ActionBarActivity
             case 8:
                 objFragment = new Menu9_Fragment_Kampus_Gorunumu();
                 break;
-            /*case 9:
-                objFragment = new DHE_Month_Year();
-                break;*/
-
         }
 
         fragmentManager.beginTransaction().replace(R.id.container, objFragment).commit();
@@ -225,5 +237,11 @@ public class MainActivity extends ActionBarActivity
             ((MainActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 }

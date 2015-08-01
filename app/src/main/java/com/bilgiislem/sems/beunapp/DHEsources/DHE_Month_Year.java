@@ -46,11 +46,10 @@ public class DHE_Month_Year extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dhe_tum_layout);
+       /* requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);*/
+        setContentView(R.layout.dhe_layout_all);
 
         url = "http://w3.beun.edu.tr/mobil-arsiv/" + getIntent().getStringExtra("datelink");
-
-        Log.i("URL", url);
 
         contactList = new ArrayList<HashMap<String, String>>();
 
@@ -92,8 +91,6 @@ public class DHE_Month_Year extends ListActivity {
 
             String jsonStr = sh.makeServiceCall(url, ServiceHandler.GET);
 
-            Log.d("Response: ", "> " + jsonStr);
-
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
@@ -128,9 +125,13 @@ public class DHE_Month_Year extends ListActivity {
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
 
-            if (pDialog.isShowing())
+            if (pDialog.isShowing()) {
                 pDialog.dismiss();
-
+            }
+            if (contacts.toString().contains("[]")) {
+                Toast.makeText(getApplicationContext(), R.string.dhe_all_no_data, Toast.LENGTH_LONG).show();
+                finish();
+            }
             ListAdapter adapter = new SimpleAdapter(
                     DHE_Month_Year.this, contactList,
                     R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.news});

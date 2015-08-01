@@ -122,7 +122,7 @@ public class Menu3_Fragment_Haberler extends ListFragment {
                         String adres = c.getString(TAG_ADRES);
                         HashMap<String, String> contact = new HashMap<String, String>();
                         if (baslik.isEmpty()) {
-                            Toast.makeText(getActivity(), R.string.dhe_all, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), R.string.dhe_all_no_data, Toast.LENGTH_LONG).show();
                         }
                         baslik = html2text(baslik);
                         contact.put(TAG_BASLIK, baslik);
@@ -156,43 +156,3 @@ public class Menu3_Fragment_Haberler extends ListFragment {
         return Jsoup.parse(html).text();
     }
 }
-    /*
-    Document doc;
-    String url_duyurular = "http://w3.beun.edu.tr/";
-    String data = "";
-    Element div;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootview = inflater.inflate(R.layout.menu3_layout_etkinlikler, container, false);
-        final WebView webView = (WebView) rootview.findViewById(R.id.etkinlikler_page);
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setDefaultTextEncodingName("utf-8");
-        webView.getSettings().setJavaScriptEnabled(true);
-        ThreadparsingUrl.start();
-        webView.setWebViewClient(new WebViewClient() {
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                webView.loadData(data, "text/html; charset=utf-8", "utf-8");
-            }
-        });
-
-        webView.loadUrl(url_duyurular);
-
-        return rootview;
-    }
-
-    Thread ThreadparsingUrl = new Thread() {
-        public void run() {
-            try {
-                doc = Jsoup.connect(url_duyurular).get();
-                div = doc.select("#yazilar").get(1);
-                data += div;
-                Log.i("Words", data);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    };
-*/
