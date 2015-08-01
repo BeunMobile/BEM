@@ -1,13 +1,17 @@
 package com.bilgiislem.sems.beunapp.KampusGorunumu;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Criteria;
+import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.R;
@@ -23,7 +27,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class FarabiActivity extends FragmentActivity implements GoogleMap.OnInfoWindowClickListener {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
-
+    String marker_title;
     LocationManager lm;
     LocationListener listener;
 
@@ -90,16 +94,9 @@ public class FarabiActivity extends FragmentActivity implements GoogleMap.OnInfo
         }
     }
 
-    /**
-     * This is where we can add markers or lines, add listeners or move the camera. In this case, we
-     * just add a marker near Africa.
-     * <p/>
-     * This should only be called once and when we are sure that {@link #mMap} is not null.
-     */
     private void setUpMap() {
-        Marker marker1;
 
-        marker1=mMap.addMarker(new MarkerOptions().position(new LatLng(41.450812, 31.761550)).title("Bilgi Islem Daire Baskanligi"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(41.450812, 31.761550)).title("Bilgi Islem Daire Baskanligi"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(41.451392, 31.763058)).title("Rektorluk"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(41.450396, 31.762356)).title("Elektrik Elektronik Muhendisligi"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(41.450911, 31.761371)).title("BEU Sem"));
@@ -115,14 +112,36 @@ public class FarabiActivity extends FragmentActivity implements GoogleMap.OnInfo
         CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(41.450777, 31.762411)).zoom(17).tilt(25).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
         mMap.animateCamera(cameraUpdate);
+
+        mMap.setMyLocationEnabled(true);
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        String provider = locationManager.getBestProvider(criteria, true);
+        Location myLocation = locationManager.getLastKnownLocation(provider);
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        double latitude = myLocation.getLatitude();
+        double longitude = myLocation.getLongitude();
+        LatLng latLng = new LatLng(latitude, longitude);
+
         Toast.makeText(this, "Farabi Kampusu", Toast.LENGTH_SHORT).show();
-
-
     }
 
     @Override
     public void onInfoWindowClick(Marker marker) {
+        marker_title = marker.getTitle();
         Intent intent = new Intent(FarabiActivity.this, Beu_3DPage.class);
-        startActivity(intent);
+        switch (marker_title) {
+            case "Bilgi Islem Daire Baskanligi":
+                intent.putExtra("beu3d", "bidb");
+                startActivity(intent);
+                break;
+            case "Elektrik Elektronik Muhendisligi":
+                intent.putExtra("beu3d", "eem");
+                startActivity(intent);
+                break;
+            default:
+                Toast.makeText(getApplicationContext(), R.string.beu3d_none, Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }

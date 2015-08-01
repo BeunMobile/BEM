@@ -1,6 +1,7 @@
 package com.bilgiislem.sems.beunapp.EEU;
 
 import android.app.Fragment;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ public class Menu8_Fragment_UZEM extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.web_page_layout, container, false);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER);
 
         webView = (WebView) view.findViewById(R.id.web_page);
         webView.getSettings().setJavaScriptEnabled(true);

@@ -4,6 +4,7 @@ import android.app.DialogFragment;
 import android.app.ListFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,7 +48,7 @@ public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dhe_layout, container, false);
-
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         tebutton = (Button) view.findViewById(R.id.tumbutton);
         tebutton.setOnClickListener(new View.OnClickListener() {

@@ -94,8 +94,6 @@ public class DHE_Month_Year extends ListActivity {
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
-
-
                     contacts = jsonObj.getJSONArray(TAG_LISTE);
 
                     for (int i = 0; i < contacts.length(); i++) {
@@ -135,7 +133,6 @@ public class DHE_Month_Year extends ListActivity {
             ListAdapter adapter = new SimpleAdapter(
                     DHE_Month_Year.this, contactList,
                     R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.news});
-
             setListAdapter(adapter);
         }
 

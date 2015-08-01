@@ -1,6 +1,7 @@
 package com.bilgiislem.sems.beunapp.EEU;
 
 import android.app.Fragment;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -19,6 +20,8 @@ public class Menu7_Fragment_E_Posta extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.web_page_layout, container, false);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER);
+
         WebView webView = (WebView) rootview.findViewById(R.id.web_page);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(url_eposta);

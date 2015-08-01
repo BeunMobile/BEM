@@ -26,8 +26,7 @@
     <string name="title_activity_ekampus__web_page">Ekampus_WebPage</string>
     <string name="title_activity_eposta__web_page">Eposta_WebPage</string>
     <string name="title_activity_menu2__icerik_">Menu2_Icerik_Activity</string>
-    <string name="title_activity_dhe_month__year">DHE_Month_Year</string>
-
+    <string name="title_activity_dhe__month__year">DHE_Month_Year</string>
 
     //Anasayfa
     <string name="loading">Yükleniyor</string>
@@ -35,8 +34,6 @@
 
     //Toasts
     <string name="ekampus">E-Kampüs Sayfanız Yukleniyor …</string>
-    <string name="beu3d">Bülent Ecevit Üniversitesi 3 Boyutlu olarak
-yükleniyor bu biraz zaman alabilir.</string>
     <string name="dhe_all_no_data">Seçtiğiniz ay içerisinde duyuru bulunmamaktadır.</string>
     <string name="connection_decision">İnternete bağlı değilsiniz.
     İnternetinizi açmak istermisiniz ?</string>
@@ -45,5 +42,16 @@ yükleniyor bu biraz zaman alabilir.</string>
 
     //Tarih
     <string name="pick_a_date">Lütfen tarih seçiniz.</string>
-    <string name="title_activity_dhe__month__year">DHE_Month_YearA</string>
+
+
+    //Beu3d
+    <string name="beu3d">Bülent Ecevit Üniversitesi 3 Boyutlu olarak
+yükleniyor bu biraz zaman alabilir.</string>
+    <string name="beu3d_none">Seçtiğiniz bölüm henüz yapım aşamasındadır.</string>
+    <string name="beu3d_bidb">Bilgi İşlem Daire Başkanlığı 3 Boyutlu olarak
+        yükleniyor bu biraz zaman alabilir…</string>
+    <string name="beu3d_eem">Elektrik Elektronik Mühendisliği 3 Boyutlu olarak
+        yükleniyor bu biraz zaman alabilir… :)</string>
+
+
 </resources>
