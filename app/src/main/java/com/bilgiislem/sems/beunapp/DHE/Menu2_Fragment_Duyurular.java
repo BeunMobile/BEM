@@ -5,6 +5,7 @@ import android.app.ListFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -25,6 +27,7 @@ import com.bilgiislem.sems.beunapp.DHEsources.Icerik_Activity;
 import com.bilgiislem.sems.beunapp.DHEsources.ServiceHandler;
 import com.bilgiislem.sems.beunapp.R;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -140,6 +143,7 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
             return null;
         }
 
+
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
@@ -150,12 +154,14 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), contactList,
                     R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.news});
-
             setListAdapter(adapter);
+
 
 
         }
     }
+
+
 
     public static String html2text(String html) {
         return Jsoup.parse(html).text();
