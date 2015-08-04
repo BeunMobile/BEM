@@ -36,9 +36,13 @@
     <string name="ekampus">E-Kampüs Sayfanız Yukleniyor …</string>
     <string name="dhe_all_no_data">Seçtiğiniz ay içerisinde duyuru bulunmamaktadır.</string>
     <string name="connection_decision">İnternete bağlı değilsiniz.
-    İnternetinizi açmak istermisiniz ?</string>
+    İnternetinizi açmak ister misiniz ?</string>
+    <string name="location_decision">Konum servisleriniz kapalı durumdadır.
+    Konum servislerinizi açmak ister misiniz ?</string>
     <string name="connection">Lütfen internet bağlantınızı kontrol ediniz.
-    Bağlı olmadığınız taktirde bazı servisleri kullanamayabilirsiniz.</string>
+    Bağlı olmadığınız takdirde bazı servisleri kullanamayabilirsiniz.</string>
+    <string name="location">Konum servisleriniz kapalı olduğu
+        takdirde bazı servisleri kullanamayabilirsiniz.</string>
 
     //Tarih
     <string name="pick_a_date">Lütfen tarih seçiniz.</string>
@@ -51,7 +55,7 @@ yükleniyor bu biraz zaman alabilir.</string>
     <string name="beu3d_bidb">Bilgi İşlem Daire Başkanlığı 3 Boyutlu olarak
         yükleniyor bu biraz zaman alabilir…</string>
     <string name="beu3d_eem">Elektrik Elektronik Mühendisliği 3 Boyutlu olarak
-        yükleniyor bu biraz zaman alabilir… :)</string>
+        yükleniyor bu biraz zaman alabilir…</string>
 
 
 </resources>

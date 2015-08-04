@@ -45,21 +45,27 @@ public class FarabiActivity extends FragmentActivity implements GoogleMap.OnInfo
         boolean isNetwork = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
         if (!isNetwork && !isGPS) {
-            new AlertDialog.Builder(this)
-                    .setTitle("Lokasyon")
-                    .setMessage("Konum ayarlariniz kapali acilsin mi?")
-                    .setPositiveButton("Evet", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-                        }
-                    }).setNegativeButton("Hayir", new DialogInterface.OnClickListener() {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setMessage(R.string.location_decision);
+
+            alertDialogBuilder.setPositiveButton("Hayýr,Teþekkürler.", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface arg0, int arg1) {
+                    Toast.makeText(FarabiActivity.this, R.string.location, Toast.LENGTH_LONG).show();
+                }
+            });
+
+            alertDialogBuilder.setNegativeButton("Evet.", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
+                    startActivityForResult(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS), 0);
                 }
-            }).show();
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
         }
+
     }
 
     @Override
