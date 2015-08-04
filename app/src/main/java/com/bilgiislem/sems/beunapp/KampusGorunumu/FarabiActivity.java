@@ -34,9 +34,11 @@ public class FarabiActivity extends FragmentActivity implements GoogleMap.OnInfo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("FarabiActivity", "Farabi");
         setContentView(R.layout.activity_farabi);
         setUpMapIfNeeded();
         mMap.setOnInfoWindowClickListener(this);
+
 
         lm = (LocationManager) getSystemService(LOCATION_SERVICE);
         boolean isGPS = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
@@ -119,9 +121,6 @@ public class FarabiActivity extends FragmentActivity implements GoogleMap.OnInfo
         String provider = locationManager.getBestProvider(criteria, true);
         Location myLocation = locationManager.getLastKnownLocation(provider);
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        double latitude = myLocation.getLatitude();
-        double longitude = myLocation.getLongitude();
-        LatLng latLng = new LatLng(latitude, longitude);
 
         Toast.makeText(this, "Farabi Kampusu", Toast.LENGTH_SHORT).show();
     }
