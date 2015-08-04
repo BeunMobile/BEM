@@ -55,7 +55,7 @@ public class MainActivity extends ActionBarActivity
             alertDialogBuilder.setPositiveButton("Hayýr,Teþekkürler.", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface arg0, int arg1) {
-                    Toast.makeText(MainActivity.this, R.string.connection, Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, R.string.connection, Toast.LENGTH_LONG).show();//
                 }
             });
 
