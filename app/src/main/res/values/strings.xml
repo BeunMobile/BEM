@@ -56,6 +56,12 @@ yükleniyor bu biraz zaman alabilir.</string>
         yükleniyor bu biraz zaman alabilir…</string>
     <string name="beu3d_eem">Elektrik Elektronik Mühendisliği 3 Boyutlu olarak
         yükleniyor bu biraz zaman alabilir…</string>
+        <string name="beu3d_rektorluk">Rektörlük binası 3 Boyutlu olarak
+        yükleniyor bu biraz zaman alabilir…</string>
+
+
+    //Farabi Kampüsü
+    <string name="farabi_rektorluk">Rektörlük Binası</string>
 
 
 </resources>
