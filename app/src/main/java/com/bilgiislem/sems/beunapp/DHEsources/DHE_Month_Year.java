@@ -46,7 +46,6 @@ public class DHE_Month_Year extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       /* requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);*/
         setContentView(R.layout.dhe_layout_all);
 
         url = "http://w3.beun.edu.tr/mobil-arsiv/" + getIntent().getStringExtra("datelink");
