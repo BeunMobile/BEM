@@ -31,6 +31,10 @@ public class Beu_3DPage extends Activity {
                 Url_3D = "https://photosynth.net/preview/embed/84a60386-44c0-421e-b25d-d69a4500cc95?delayload=false&autoplay=true&fromsite=true";
                 Toast.makeText(Beu_3DPage.this, Beu_3DPage.this.getResources().getString(R.string.beu3d_eem), Toast.LENGTH_LONG).show();
                 break;
+            case "rektor":
+                Url_3D = "https://photosynth.net/preview/embed/c1a4d3f4-86fe-42db-b334-dc1b63489e4f?delayload=false&autoplay=true&fromsite=true";
+                Toast.makeText(Beu_3DPage.this, Beu_3DPage.this.getResources().getString(R.string.beu3d_rektorluk), Toast.LENGTH_LONG).show();
+                break;
             default:
                 Log.e("Check Marker", "Error on check_marker,check out the check_marker value.It could be empty.");
                 break;

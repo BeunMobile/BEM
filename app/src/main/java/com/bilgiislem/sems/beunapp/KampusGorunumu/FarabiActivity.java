@@ -105,7 +105,7 @@ public class FarabiActivity extends FragmentActivity implements GoogleMap.OnInfo
     private void setUpMap() {
 
         mMap.addMarker(new MarkerOptions().position(new LatLng(41.450812, 31.761550)).title("Bilgi Islem Daire Baskanligi"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(41.451392, 31.763058)).title("Rektorluk"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(41.451392, 31.763058)).title(getResources().getString(R.string.farabi_rektorluk)));
         mMap.addMarker(new MarkerOptions().position(new LatLng(41.450396, 31.762356)).title("Elektrik Elektronik Muhendisligi"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(41.450911, 31.761371)).title("BEU Sem"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(41.450058, 31.761069)).title("Maden Muhendisligi"));
@@ -142,6 +142,10 @@ public class FarabiActivity extends FragmentActivity implements GoogleMap.OnInfo
                 break;
             case "Elektrik Elektronik Muhendisligi":
                 intent.putExtra("beu3d", "eem");
+                startActivity(intent);
+                break;
+            case "Rektörlük Binasý":
+                intent.putExtra("beu3d", "rektor");
                 startActivity(intent);
                 break;
             default:
