@@ -64,4 +64,11 @@ yükleniyor bu biraz zaman alabilir.</string>
     <string name="farabi_rektorluk">Rektörlük Binası</string>
 
 
+    //Yemek Listesi Tab
+    <string name="tab_pazartesi">Pzt</string>
+    <string name="tab_sali">Salı</string>
+    <string name="tab_carsamba">Çarş</string>
+    <string name="tab_persembe">Perş</string>
+    <string name="tab_cuma">Cuma</string>
+
 </resources>
