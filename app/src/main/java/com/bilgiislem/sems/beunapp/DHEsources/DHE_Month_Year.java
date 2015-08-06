@@ -47,7 +47,7 @@ public class DHE_Month_Year extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dhe_layout_all);
-
+        getActionBar().setTitle(getIntent().getStringExtra("title"));
         url = "http://w3.beun.edu.tr/mobil-arsiv/" + getIntent().getStringExtra("datelink");
 
         contactList = new ArrayList<HashMap<String, String>>();

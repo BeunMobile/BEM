@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -18,7 +19,6 @@ import org.jsoup.Jsoup;
 
 public class Icerik_Activity extends ActionBarActivity {
     private static final String TAG_ICERIK = "icerik";
-
     String baslik_plus, http_plus;
     WebView webView;
     String url;
@@ -59,6 +59,23 @@ public class Icerik_Activity extends ActionBarActivity {
             ServiceHandler sh = new ServiceHandler();
             // Making a request to url and getting response
             String jsonStr = sh.makeServiceCall(url, ServiceHandler.GET);
+           /* if (jsonStr != null) {
+                try {
+                    JSONObject jsonObj = new JSONObject(jsonStr);
+                    photos = jsonObj.getJSONArray(TAG_FOTO);
+                    for (int i = 0; i < photos.length(); i++) {
+                        JSONObject c = photos.getJSONObject(i);
+                        String fotograf = c.getString(TAG_GORSEL);
+                        HashMap<String, String> photo = new HashMap<String, String>();
+                        photo.put(TAG_GORSEL, fotograf);
+                        photoList.add(photo);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                Log.e("ServiceHandler", "Couldn't get any data from the url");
+            }*/
             return jsonStr;
         }
 
@@ -112,16 +129,3 @@ public class Icerik_Activity extends ActionBarActivity {
         return Jsoup.parse(html).text();
     }
 }
-
-                    /*String urlpdf = "http://docs.google.com/gview?embedded=true&url=" + "http://w3.beun.edu.tr/dosyalar";
-                    Matcher m = Pattern.compile(
-                            Pattern.quote("/dosyalar")
-                                    + "(.*?)"
-                                    + Pattern.quote(".pdf")
-                    ).matcher(icerik);
-                    while (m.find()) {
-                        String match = m.group(1);
-                        urlpdf = urlpdf + match + ".pdf";
-                        Log.i("Match", match);
-                    }
-                    Log.i("URLpdf", urlpdf);*/

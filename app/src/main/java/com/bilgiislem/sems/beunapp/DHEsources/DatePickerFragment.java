@@ -64,6 +64,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 
         Intent intent = new Intent(getActivity(), DHE_Month_Year.class);
         intent.putExtra("datelink", stringOfLink);
+        intent.putExtra("title", (month + 1) + "/" + year);
         startActivity(intent);
     }
 

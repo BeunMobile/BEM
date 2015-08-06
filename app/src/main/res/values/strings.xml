@@ -34,7 +34,7 @@
 
     //Toasts
     <string name="ekampus">E-Kampüs Sayfanız Yukleniyor …</string>
-    <string name="dhe_all_no_data">Seçtiğiniz ay içerisinde duyuru bulunmamaktadır.</string>
+    <string name="dhe_all_no_data">Seçtiğiniz tarih içerisinde duyuru bulunmamaktadır.</string>
     <string name="connection_decision">İnternete bağlı değilsiniz.
     İnternetinizi açmak ister misiniz ?</string>
     <string name="location_decision">Konum servisleriniz kapalı durumdadır.
