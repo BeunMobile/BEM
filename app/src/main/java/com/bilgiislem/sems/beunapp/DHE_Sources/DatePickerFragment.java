@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp.DHEsources;
+package com.bilgiislem.sems.beunapp.DHE_Sources;
 
 
 import android.app.AlertDialog;

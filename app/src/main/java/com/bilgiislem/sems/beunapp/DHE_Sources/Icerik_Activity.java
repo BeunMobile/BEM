@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp.DHEsources;
+package com.bilgiislem.sems.beunapp.DHE_Sources;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -7,9 +7,12 @@ import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 
+import com.bilgiislem.sems.beunapp.DHE_Sources.GridViewSources.GridViewActivity;
 import com.bilgiislem.sems.beunapp.R;
 
 import org.json.JSONException;
@@ -21,6 +24,7 @@ public class Icerik_Activity extends ActionBarActivity {
     private static final String TAG_ICERIK = "icerik";
     String baslik_plus, http_plus;
     WebView webView;
+    Button galleryButton;
     String url;
 
     @Override
@@ -30,14 +34,17 @@ public class Icerik_Activity extends ActionBarActivity {
         http_plus = getIntent().getStringExtra("key");
 
         url = "http://w3.beun.edu.tr/veri" + http_plus;
-
         getSupportActionBar().setTitle(baslik_plus);
         setContentView(R.layout.icerik_layout);
 
+        galleryButton = (Button) findViewById(R.id.gallery_button);
         webView = (WebView) findViewById(R.id.icerik_http_text);
+
+        galleryButton.setVisibility(View.GONE);
 
         new JSONParse().execute();
     }
+
 
     private class JSONParse extends AsyncTask<String, String, String> {
         private ProgressDialog pDialog;
@@ -59,23 +66,6 @@ public class Icerik_Activity extends ActionBarActivity {
             ServiceHandler sh = new ServiceHandler();
             // Making a request to url and getting response
             String jsonStr = sh.makeServiceCall(url, ServiceHandler.GET);
-           /* if (jsonStr != null) {
-                try {
-                    JSONObject jsonObj = new JSONObject(jsonStr);
-                    photos = jsonObj.getJSONArray(TAG_FOTO);
-                    for (int i = 0; i < photos.length(); i++) {
-                        JSONObject c = photos.getJSONObject(i);
-                        String fotograf = c.getString(TAG_GORSEL);
-                        HashMap<String, String> photo = new HashMap<String, String>();
-                        photo.put(TAG_GORSEL, fotograf);
-                        photoList.add(photo);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                Log.e("ServiceHandler", "Couldn't get any data from the url");
-            }*/
             return jsonStr;
         }
 
@@ -84,6 +74,18 @@ public class Icerik_Activity extends ActionBarActivity {
             try {
                 JSONObject jsonObj = new JSONObject(json);
                 String icerik = jsonObj.getString(TAG_ICERIK);
+                if (!jsonObj.getJSONArray("fotograf").toString().equals("[]")) {
+                    galleryButton.setVisibility(View.VISIBLE);
+                    galleryButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent galleryintent = new Intent(Icerik_Activity.this, GridViewActivity.class);
+                            galleryintent.putExtra("url", url);
+                            galleryintent.putExtra("baslik", baslik_plus);
+                            startActivity(galleryintent);
+                        }
+                    });
+                }
                 String texticerik = html2text(icerik);
                 if (texticerik.startsWith("http://") || texticerik.startsWith("w3")) {
                     webView.loadUrl(texticerik);

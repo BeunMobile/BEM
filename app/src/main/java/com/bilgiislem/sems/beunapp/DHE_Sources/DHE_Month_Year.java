@@ -1,4 +1,13 @@
-package com.bilgiislem.sems.beunapp.DHEsources;
+package com.bilgiislem.sems.beunapp.DHE_Sources;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.jsoup.Jsoup;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -8,7 +17,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -16,19 +25,7 @@ import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.R;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.jsoup.Jsoup;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-/**
- * Created by detro on 6.08.2015.
- */
-public class ImageViewer extends ListActivity {
+public class DHE_Month_Year extends ListActivity {
 
     private ProgressDialog pDialog;
 
@@ -57,17 +54,17 @@ public class ImageViewer extends ListActivity {
 
         ListView lv = getListView();
 
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lv.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {/*
+                                    int position, long id) {
                 String adres2 = contactList.get(position).get("adres");
                 String baslik2 = contactList.get(position).get("baslik");
                 Intent intent = new Intent(DHE_Month_Year.this, Icerik_Activity.class);
-                intent.putExtra("key", adres2);
-                intent.putExtra("key2", baslik2);
-                startActivity(intent);*/
+                intent.putExtra("adres", adres2);
+                intent.putExtra("baslik", baslik2);
+                startActivity(intent);
             }
         });
 
@@ -79,9 +76,9 @@ public class ImageViewer extends ListActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(ImageViewer.this);
-            pDialog.setTitle(ImageViewer.this.getString(R.string.loading));
-            pDialog.setMessage(ImageViewer.this.getString(R.string.waitfor));
+            pDialog = new ProgressDialog(DHE_Month_Year.this);
+            pDialog.setTitle(DHE_Month_Year.this.getString(R.string.loading));
+            pDialog.setMessage(DHE_Month_Year.this.getString(R.string.waitfor));
             pDialog.setCancelable(false);
             pDialog.show();
         }
@@ -133,7 +130,7 @@ public class ImageViewer extends ListActivity {
                 finish();
             }
             ListAdapter adapter = new SimpleAdapter(
-                    ImageViewer.this, contactList,
+                    DHE_Month_Year.this, contactList,
                     R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.news});
             setListAdapter(adapter);
         }
@@ -144,4 +141,5 @@ public class ImageViewer extends ListActivity {
     public static String html2text(String html) {
         return Jsoup.parse(html).text();
     }
+
 }

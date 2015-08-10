@@ -43,6 +43,7 @@
     Bağlı olmadığınız takdirde bazı servisleri kullanamayabilirsiniz.</string>
     <string name="location">Konum servisleriniz kapalı olduğu
         takdirde bazı servisleri kullanamayabilirsiniz.</string>
+    <string name="exit_app">Çıkmak isterseniz bir kere daha geri tuşuna basınız.</string>
 
     //Tarih
     <string name="pick_a_date">Lütfen tarih seçiniz.</string>
@@ -70,5 +71,10 @@ yükleniyor bu biraz zaman alabilir.</string>
     <string name="tab_carsamba">Çarş</string>
     <string name="tab_persembe">Perş</string>
     <string name="tab_cuma">Cuma</string>
+
+
+
+    //Resimler
+    <string name="gallery">GALERİ İÇİN TIKLAYINIZ</string>
 
 </resources>

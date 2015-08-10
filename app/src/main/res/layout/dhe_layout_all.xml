@@ -3,7 +3,7 @@
     android:id="@+id/dhe_tum_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bilgiislem.sems.beunapp.DHEsources.DHE_Month_Year">
+    tools:context="com.bilgiislem.sems.beunapp.DHE_Sources.DHE_Month_Year">
 
     <ListView
         android:id="@android:id/list"

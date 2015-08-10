@@ -44,6 +44,8 @@ public class MainActivity extends ActionBarActivity
      */
     private CharSequence mTitle;
 
+    private int count = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -170,6 +172,15 @@ public class MainActivity extends ActionBarActivity
         actionBar.setTitle(mTitle);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (count == 1)
+            super.onBackPressed();
+        else {
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.exit_app), Toast.LENGTH_SHORT).show();
+            count++;
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,24 +1,25 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_floating_material_light"
     android:baselineAligned="false"
-    tools:context="com.bilgiislem.sems.beunapp.DHEsources.Icerik_Activity">
+    tools:context="com.bilgiislem.sems.beunapp.DHE_Sources.Icerik_Activity">
 
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:layout_weight="1">
+    <WebView
+        android:id="@+id/icerik_http_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/gallery_button"
+        android:layout_alignParentTop="true"
+        android:textSize="16sp" />
 
-            <WebView
-                android:id="@+id/icerik_http_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16sp" />
+    <Button
+        android:id="@+id/gallery_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/gallery" />
 
-    </ScrollView>
-
-</LinearLayout>
+</RelativeLayout>
 
