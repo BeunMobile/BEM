@@ -84,8 +84,8 @@ public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
                 String adres2 = contactList.get(position).get("adres");
                 String baslik2 = contactList.get(position).get("baslik");
                 Intent intent = new Intent(getActivity(), Icerik_Activity.class);
-                intent.putExtra("key", adres2);
-                intent.putExtra("key2", baslik2);
+                intent.putExtra("adres", adres2);
+                intent.putExtra("baslik", baslik2);
                 startActivity(intent);
             }
         });
