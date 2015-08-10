@@ -105,7 +105,7 @@ public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
             pDialog = new ProgressDialog(getActivity());
             pDialog.setTitle(getActivity().getString(R.string.loading));
             pDialog.setMessage(getActivity().getString(R.string.waitfor));
-            pDialog.setCancelable(false);
+            pDialog.setCancelable(true);
             pDialog.show();
         }
 
