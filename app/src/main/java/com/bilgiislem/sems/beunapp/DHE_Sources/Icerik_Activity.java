@@ -30,8 +30,8 @@ public class Icerik_Activity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        baslik_plus = getIntent().getStringExtra("key2");
-        http_plus = getIntent().getStringExtra("key");
+        baslik_plus = getIntent().getStringExtra("baslik");
+        http_plus = getIntent().getStringExtra("adres");
 
         url = "http://w3.beun.edu.tr/veri" + http_plus;
         getSupportActionBar().setTitle(baslik_plus);
