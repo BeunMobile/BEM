@@ -3,9 +3,8 @@
     package="com.bilgiislem.sems.beunapp">
 
     <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="17" />
-
+        android:minSdkVersion="15"
+        android:targetSdkVersion="22" />
 
     <!-- Maps<uses-library android:name="com.google.android.maps" /> -->
 
@@ -22,8 +21,6 @@
  The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but are recommended.
     -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -58,7 +55,8 @@
             android:label="@string/title_activity_beu_3_dpage" />
         <activity
             android:name=".DHE_Sources.Icerik_Activity"
-            android:label="@string/title_activity_menu2__icerik_" />
+            android:label="@string/title_activity_menu2__icerik_"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".DHE_Sources.DHE_Month_Year"
             android:label="@string/title_activity_dhe__month__year"

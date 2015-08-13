@@ -26,7 +26,6 @@ public class Icerik_Activity extends ActionBarActivity {
     WebView webView;
     Button galleryButton;
     String url;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +33,7 @@ public class Icerik_Activity extends ActionBarActivity {
         http_plus = getIntent().getStringExtra("adres");
 
         url = "http://w3.beun.edu.tr/veri" + http_plus;
-        getSupportActionBar().setTitle(baslik_plus);
+        //getSupportActionBar().setTitle(baslik_plus);
         setContentView(R.layout.icerik_layout);
 
         galleryButton = (Button) findViewById(R.id.gallery_button);

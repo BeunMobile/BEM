@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/item_anasayfa"
+            android:checked="false"
+            android:title="@string/title_section1" />
+
+        <item
+            android:id="@+id/item_duyurular"
+            android:checked="false"
+            android:title="@string/title_section2" />
+
+        <item
+            android:id="@+id/item_haberler"
+            android:checked="false"
+            android:title="@string/title_section3" />
+
+        <item
+            android:id="@+id/item_etkinliktakvimi"
+            android:checked="false"
+            android:title="@string/title_section4" />
+
+        <item
+            android:id="@+id/item_yemeklistesi"
+            android:checked="false"
+            android:title="@string/title_section5" />
+        <item
+            android:id="@+id/item_ekampus"
+            android:checked="false"
+            android:title="@string/title_section6" />
+        <item
+            android:id="@+id/item_eposta"
+            android:checked="false"
+            android:title="@string/title_section7" />
+        <item
+            android:id="@+id/item_uzem"
+            android:checked="false"
+            android:title="@string/title_section8" />
+        <item
+            android:id="@+id/item_kampusgorunumu"
+            android:checked="false"
+            android:title="@string/title_section9" />
+
+    </group>
+</menu>

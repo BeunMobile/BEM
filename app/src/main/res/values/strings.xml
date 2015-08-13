@@ -18,7 +18,7 @@
 
     <string name="action_example">Deneme</string>
 
-    <string name="action_settings">Şems Turgut</string>
+    <string name="action_about">Hakkında</string>
 
     <string name="title_activity_farabi">Map</string>
     <string name="title_activity_ana_sayfa__web_page">AnaSayfa_WebPage</string>
@@ -28,9 +28,15 @@
     <string name="title_activity_menu2__icerik_">Menu2_Icerik_Activity</string>
     <string name="title_activity_dhe__month__year">DHE_Month_Year</string>
 
+    //NavigationView
+    <string name="closeDrawer">Navigation View</string>
+    <string name="openDrawer">Navigation View Closed</string>
+
+
     //Anasayfa
     <string name="loading">Yükleniyor</string>
     <string name="waitfor">Lütfen biraz bekleyiniz …</string>
+    <string name="alphatext">Bülent Ecevit Üniversity Application Version Pre-Alpha 0.9</string>
 
     //Toasts
     <string name="ekampus">E-Kampüs Sayfanız Yukleniyor …</string>
@@ -73,8 +79,10 @@ yükleniyor bu biraz zaman alabilir.</string>
     <string name="tab_cuma">Cuma</string>
 
 
-
     //Resimler
     <string name="gallery">GALERİ İÇİN TIKLAYINIZ</string>
+    <string name="title_activity_main_activity_material">MainActivityMaterial</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>

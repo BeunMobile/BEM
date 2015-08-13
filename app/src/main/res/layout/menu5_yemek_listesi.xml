@@ -20,31 +20,31 @@
             android:layout_height="match_parent">
 
             <FrameLayout
-                android:id="@+id/tab1"
+                android:id="@+id/pazartesi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone" />
 
             <FrameLayout
-                android:id="@+id/tab2"
+                android:id="@+id/sali"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone" />
 
             <FrameLayout
-                android:id="@+id/tab3"
+                android:id="@+id/carsamba"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone" />
 
             <FrameLayout
-                android:id="@+id/tab4"
+                android:id="@+id/persembe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone" />
 
             <FrameLayout
-                android:id="@+id/tab5"
+                android:id="@+id/cuma"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone" />

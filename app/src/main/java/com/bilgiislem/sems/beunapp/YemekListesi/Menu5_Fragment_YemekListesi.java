@@ -29,27 +29,27 @@ public class Menu5_Fragment_YemekListesi extends Fragment implements TabHost.OnT
 
         host.setup();
         TabHost.TabSpec spec = host.newTabSpec("tab1");
-        spec.setContent(R.id.tab1);
+        spec.setContent(R.id.pazartesi);
         spec.setIndicator(getResources().getString(R.string.tab_pazartesi));
         host.addTab(spec);
 
         spec = host.newTabSpec("tab2");
-        spec.setContent(R.id.tab2);
+        spec.setContent(R.id.sali);
         spec.setIndicator(getResources().getString(R.string.tab_sali));
         host.addTab(spec);
 
         spec = host.newTabSpec("tab3");
-        spec.setContent(R.id.tab3);
+        spec.setContent(R.id.carsamba);
         spec.setIndicator(getResources().getString(R.string.tab_carsamba));
         host.addTab(spec);
 
         spec = host.newTabSpec("tab4");
-        spec.setContent(R.id.tab4);
+        spec.setContent(R.id.persembe);
         spec.setIndicator(getResources().getString(R.string.tab_persembe));
         host.addTab(spec);
 
         spec = host.newTabSpec("tab5");
-        spec.setContent(R.id.tab5);
+        spec.setContent(R.id.cuma);
         spec.setIndicator(getResources().getString(R.string.tab_cuma));
         host.addTab(spec);
 

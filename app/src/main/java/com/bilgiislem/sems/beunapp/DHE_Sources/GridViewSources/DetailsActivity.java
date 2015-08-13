@@ -43,8 +43,8 @@ public class DetailsActivity extends ActionBarActivity {
         //Setting details screen layout
         setContentView(R.layout.activity_details_view);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        //ActionBar actionBar = getSupportActionBar();
+        //actionBar.hide();
 
         //retrieves the thumbnail data
         Bundle bundle = getIntent().getExtras();

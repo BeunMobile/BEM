@@ -44,7 +44,7 @@ public class GridViewActivity extends ActionBarActivity {
 
         FEED_URL = getIntent().getStringExtra("url");
 
-        getSupportActionBar().setTitle(getIntent().getStringExtra("baslik"));
+        //getSupportActionBar().setTitle(getIntent().getStringExtra("baslik"));
 
         mGridView = (GridView) findViewById(R.id.gridView);
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
