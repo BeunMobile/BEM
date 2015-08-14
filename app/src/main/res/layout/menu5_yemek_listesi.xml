@@ -23,13 +23,31 @@
                 android:id="@+id/pazartesi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone" />
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/pazartesi_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|top"
+                    android:text="Pazartesi FındıkKıran"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+            </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/sali"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone" />
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/sali_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|top"
+                    android:text="Sali FındıkKıran"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+            </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/carsamba"
@@ -54,5 +72,6 @@
             android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
     </LinearLayout>
 </TabHost>

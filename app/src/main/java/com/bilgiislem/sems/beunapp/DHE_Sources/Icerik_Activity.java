@@ -4,13 +4,14 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.support.v7.widget.Toolbar;
 
 import com.bilgiislem.sems.beunapp.DHE_Sources.GridViewSources.GridViewActivity;
 import com.bilgiislem.sems.beunapp.R;
@@ -20,12 +21,16 @@ import org.json.JSONObject;
 import org.jsoup.Jsoup;
 
 
-public class Icerik_Activity extends ActionBarActivity {
+public class Icerik_Activity extends AppCompatActivity {
+
     private static final String TAG_ICERIK = "icerik";
     String baslik_plus, http_plus;
     WebView webView;
     Button galleryButton;
     String url;
+
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,13 +38,19 @@ public class Icerik_Activity extends ActionBarActivity {
         http_plus = getIntent().getStringExtra("adres");
 
         url = "http://w3.beun.edu.tr/veri" + http_plus;
-        //getSupportActionBar().setTitle(baslik_plus);
+
         setContentView(R.layout.icerik_layout);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(baslik_plus);
+
 
         galleryButton = (Button) findViewById(R.id.gallery_button);
         webView = (WebView) findViewById(R.id.icerik_http_text);
 
         galleryButton.setVisibility(View.GONE);
+
 
         new JSONParse().execute();
     }
@@ -125,6 +136,7 @@ public class Icerik_Activity extends ActionBarActivity {
 
 
     }
+
 
     public static String html2text(String html) {
         return Jsoup.parse(html).text();

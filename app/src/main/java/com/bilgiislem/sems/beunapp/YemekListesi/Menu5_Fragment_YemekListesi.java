@@ -9,9 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TabHost;
+import android.widget.Toast;
 
 
 import com.bilgiislem.sems.beunapp.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Menu5_Fragment_YemekListesi extends Fragment implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
 
@@ -23,9 +27,15 @@ public class Menu5_Fragment_YemekListesi extends Fragment implements TabHost.OnT
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootview = inflater.inflate(R.layout.menu5_yemek_listesi, container, false);
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         host = (TabHost) rootview.findViewById(R.id.tabhost);
         pager = (ViewPager) rootview.findViewById(R.id.pager);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+        Date d = new Date();
+        String dayOfTheWeek = sdf.format(d);
+
+        Toast.makeText(getActivity(), dayOfTheWeek, Toast.LENGTH_SHORT).show();
 
         host.setup();
         TabHost.TabSpec spec = host.newTabSpec("tab1");
@@ -64,6 +74,7 @@ public class Menu5_Fragment_YemekListesi extends Fragment implements TabHost.OnT
         int pageNumber = 0;
         if (tabId.equals("tab1")) {
             pageNumber = 0;
+            Toast.makeText(getActivity(), "Tab is changed.", Toast.LENGTH_SHORT).show();
         } else if (tabId.equals("tab2")) {
             pageNumber = 1;
         } else if (tabId.equals("tab3")) {

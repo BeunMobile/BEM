@@ -25,7 +25,7 @@
     <string name="title_activity_beu_3_dpage">Beu_3DPage</string>
     <string name="title_activity_ekampus__web_page">Ekampus_WebPage</string>
     <string name="title_activity_eposta__web_page">Eposta_WebPage</string>
-    <string name="title_activity_menu2__icerik_">Menu2_Icerik_Activity</string>
+    <string name="title_activity_icerik">Icerik_Activity</string>
     <string name="title_activity_dhe__month__year">DHE_Month_Year</string>
 
     //NavigationView
@@ -81,8 +81,4 @@ yükleniyor bu biraz zaman alabilir.</string>
 
     //Resimler
     <string name="gallery">GALERİ İÇİN TIKLAYINIZ</string>
-    <string name="title_activity_main_activity_material">MainActivityMaterial</string>
-
-    <string name="hello_world">Hello world!</string>
-
 </resources>

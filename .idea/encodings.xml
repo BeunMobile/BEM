@@ -5,7 +5,6 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/bilgiislem/sems/beunapp/DHE_Sources/GridViewSources/GridItem.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/bilgiislem/sems/beunapp/DHE_Sources/GridViewSources/GridViewActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/bilgiislem/sems/beunapp/DHE_Sources/GridViewSources/GridViewAdapter.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/background_material.jpg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/profile.jpg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_details_view.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_gridview.xml" charset="UTF-8" />
@@ -13,7 +12,5 @@
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/header.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/tool_bar.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/menu/drawer.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/values-w820dp/colors.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/values-w820dp/colors.xml" charset="UTF-8" />
   </component>
 </project>

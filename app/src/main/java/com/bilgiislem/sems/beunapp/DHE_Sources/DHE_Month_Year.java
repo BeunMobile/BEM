@@ -14,6 +14,12 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatCallback;
+import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.view.ActionMode;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,19 +31,19 @@ import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.R;
 
-public class DHE_Month_Year extends ListActivity {
+public class DHE_Month_Year extends ListActivity implements AppCompatCallback {
 
     private ProgressDialog pDialog;
 
     private static String url;
 
-    List<Integer> list = new ArrayList<>();
+    private AppCompatDelegate delegate;
 
+    List<Integer> list = new ArrayList<>();
 
     private static final String TAG_LISTE = "liste";
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
-
 
     JSONArray contacts = null;
 
@@ -46,10 +52,18 @@ public class DHE_Month_Year extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dhe_layout_all);
         url = "http://w3.beun.edu.tr/mobil-arsiv/" + getIntent().getStringExtra("datelink");
 
         contactList = new ArrayList<HashMap<String, String>>();
+
+        delegate = AppCompatDelegate.create(this, this);
+        delegate.onCreate(savedInstanceState);
+        delegate.setContentView(R.layout.dhe_layout_all);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        delegate.setSupportActionBar(toolbar);
+        delegate.setTitle(getIntent().getStringExtra("title"));
+        toolbar.setTitleTextColor(0xFFFFFFFF);
+
 
         ListView lv = getListView();
 
@@ -68,6 +82,22 @@ public class DHE_Month_Year extends ListActivity {
         });
 
         new GetContacts().execute();
+    }
+
+    @Override
+    public void onSupportActionModeStarted(ActionMode mode) {
+
+    }
+
+    @Override
+    public void onSupportActionModeFinished(ActionMode mode) {
+
+    }
+
+    @Nullable
+    @Override
+    public ActionMode onWindowStartingSupportActionMode(ActionMode.Callback callback) {
+        return null;
     }
 
     private class GetContacts extends AsyncTask<Void, Void, Void> {
@@ -135,7 +165,6 @@ public class DHE_Month_Year extends ListActivity {
         }
 
     }
-
 
     public static String html2text(String html) {
         return Jsoup.parse(html).text();
