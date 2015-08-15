@@ -2,6 +2,7 @@ package com.bilgiislem.sems.beunapp.NavigationAndMain;
 
 
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -29,7 +30,9 @@ import com.bilgiislem.sems.beunapp.EEU.Menu7_Fragment_E_Posta;
 import com.bilgiislem.sems.beunapp.EEU.Menu8_Fragment_UZEM;
 import com.bilgiislem.sems.beunapp.KampusGorunumu.Menu9_Fragment_Kampus_Gorunumu;
 import com.bilgiislem.sems.beunapp.R;
-import com.bilgiislem.sems.beunapp.YemekListesi.Menu5_Fragment_YemekListesi;
+import com.bilgiislem.sems.beunapp.BlankFragments.BlankFragment;
+import com.bilgiislem.sems.beunapp.BlankFragments.BlankFragmentV4;
+import com.bilgiislem.sems.beunapp.YemekListesi.TabFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -82,48 +85,77 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 drawerLayout.closeDrawers();
-                android.app.Fragment objFragment = null;
+                Fragment objFragment = null;
+                android.support.v4.app.Fragment objFragment2 = null;
                 android.app.FragmentManager fragmentManager = getFragmentManager();
-
-
                 switch (menuItem.getItemId()) {
                     case R.id.item_anasayfa:
+                        objFragment2 = new BlankFragmentV4();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
+
                         objFragment = new Menu1_Fragment_AnaSayfa();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
                     case R.id.item_duyurular:
+                        objFragment2 = new BlankFragmentV4();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
+
                         objFragment = new Menu2_Fragment_Duyurular();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
                     case R.id.item_haberler:
+                        objFragment2 = new BlankFragmentV4();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
+
                         objFragment = new Menu3_Fragment_Haberler();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
                     case R.id.item_etkinliktakvimi:
+                        objFragment2 = new BlankFragmentV4();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
+
                         objFragment = new Menu4_Fragment_Etkinlik_Takvimi();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
                     case R.id.item_yemeklistesi:
-                        objFragment = new Menu5_Fragment_YemekListesi();
+                        objFragment = new BlankFragment();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
+
+                        objFragment2 = new TabFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
                         return true;
                     case R.id.item_ekampus:
+                        objFragment2 = new BlankFragmentV4();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
+
                         objFragment = new Menu6_Fragment_E_Kapmus();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
                     case R.id.item_eposta:
+                        objFragment2 = new BlankFragmentV4();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
+
                         objFragment = new Menu7_Fragment_E_Posta();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
                     case R.id.item_uzem:
+                        objFragment2 = new BlankFragmentV4();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
+
                         objFragment = new Menu8_Fragment_UZEM();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
                     case R.id.item_kampusgorunumu:
+                        objFragment2 = new BlankFragmentV4();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
+
                         objFragment = new Menu9_Fragment_Kampus_Gorunumu();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
                     default:
+                        objFragment2 = new BlankFragmentV4();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
+
                         objFragment = new Menu1_Fragment_AnaSayfa();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
