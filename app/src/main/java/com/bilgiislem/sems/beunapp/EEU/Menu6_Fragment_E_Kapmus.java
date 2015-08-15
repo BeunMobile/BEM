@@ -4,6 +4,9 @@ import android.app.Fragment;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +20,18 @@ public class Menu6_Fragment_E_Kapmus extends Fragment {
     String url_ekampus = "https://ekampus.beun.edu.tr/Yonetim/Kullanici/Giris?ReturnUrl=%2f";
     private Bundle webViewBundle;
 
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message message) {
+            switch (message.what) {
+                case 1: {
+                    webViewGoBack();
+                }
+                break;
+            }
+        }
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -56,6 +71,18 @@ public class Menu6_Fragment_E_Kapmus extends Fragment {
             }
         });
         webView.loadUrl(url_ekampus);
+        webView.setOnKeyListener(new View.OnKeyListener() {
+
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
+                    handler.sendEmptyMessage(1);
+                    return true;
+                }
+                return false;
+            }
+
+        });
+
 
         // Just load whatever URL this fragment is
         // created with.
@@ -70,9 +97,6 @@ public class Menu6_Fragment_E_Kapmus extends Fragment {
         return f;
     }
 
-    /**
-     * Sla webview op
-     */
     @Override
     public void onPause() {
         super.onPause();
@@ -81,9 +105,6 @@ public class Menu6_Fragment_E_Kapmus extends Fragment {
         webView.saveState(webViewBundle);
     }
 
-    /**
-     * Herstel staat van webview
-     */
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -91,6 +112,14 @@ public class Menu6_Fragment_E_Kapmus extends Fragment {
         if (webViewBundle != null) {
             webView.restoreState(webViewBundle);
         }
+    }
+
+    private boolean webViewGoBack() {
+        if (webView.canGoBack()) {
+            webView.goBack();
+            return true;
+        }
+        return false;
     }
 
 }

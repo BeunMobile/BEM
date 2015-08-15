@@ -61,8 +61,9 @@
             android:name=".DHE_Sources.GridViewSources.DetailsActivity"
             android:theme="@style/Transparent" />
         <activity
-            android:name=".DHE_Sources.GridViewSources.GridViewActivity"
-            android:label="@string/app_name" />
+            android:name=".DHE_Sources.GridViewSources.GridViewActivity" />
+        <activity
+            android:name=".YemekListesi.YemekPDF" />
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.bilgiislem.sems.beunapp.YemekListesi;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -8,10 +9,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.bilgiislem.sems.beunapp.AnaSayfa.AnaSayfa_WebPage;
 import com.bilgiislem.sems.beunapp.R;
 import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.CarsambaTabFragment;
 import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.CumaTabFragment;
@@ -19,10 +23,14 @@ import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.PazartesiTabFra
 import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.PersembeTabFragment;
 import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.SaliTabFragment;
 
+import java.util.Calendar;
+import java.util.TimeZone;
+
 public class TabFragment extends Fragment {
 
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
+    public static Button buttonPdf;
     public static int int_items = 5;
 
     @Nullable
@@ -31,13 +39,35 @@ public class TabFragment extends Fragment {
         /**
          *Inflate tab_layout and setup Views.
          */
-        View x = inflater.inflate(R.layout.tab_layout, null);
-        tabLayout = (TabLayout) x.findViewById(R.id.tabs);
-        viewPager = (ViewPager) x.findViewById(R.id.viewpager);
+        View view = inflater.inflate(R.layout.tab_layout, null);
+        tabLayout = (TabLayout) view.findViewById(R.id.tabs);
+        viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+
+        Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
+        final int currentDay = localCalendar.get(Calendar.DATE);
+        final int currentDayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
+        final int currentMonth = localCalendar.get(Calendar.MONTH) + 1;
+        final int currentYear = localCalendar.get(Calendar.YEAR);
+
+        final String cM = "" + currentMonth;
+        final String cY = "" + currentYear;
+
+
+        buttonPdf = (Button) view.findViewById(R.id.button_pdf);
+        buttonPdf.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), YemekPDF.class);
+                intent.putExtra("month", cM);
+                intent.putExtra("year", cY);
+                startActivity(intent);
+            }
+        });
+
+
+        Log.i("Day And Month", "Day/Month :" + currentDay + "/" + currentMonth + "/" + currentDayOfWeek + "/" + currentYear);
 
         /**
-         *Set an Apater for the View P
-         * ager
+         *Set an Apater for the View Pager
          */
 
         viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
@@ -55,7 +85,7 @@ public class TabFragment extends Fragment {
             }
         });
 
-        return x;
+        return view;
 
     }
 
