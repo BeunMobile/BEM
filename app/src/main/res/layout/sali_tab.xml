@@ -86,7 +86,7 @@
         android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/tatli_text"
+        android:id="@+id/diger_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/yemek2_text"
@@ -98,12 +98,12 @@
         android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/tatli_cal"
+        android:id="@+id/diger_cal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/yemek2_cal"
         android:layout_alignStart="@+id/yemek2_cal"
-        android:layout_alignTop="@+id/tatli_text"
+        android:layout_alignTop="@+id/diger_text"
         android:text="Small Text"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textSize="20dp" />

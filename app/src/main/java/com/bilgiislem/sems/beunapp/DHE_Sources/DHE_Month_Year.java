@@ -15,7 +15,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatCallback;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.view.ActionMode;
@@ -155,7 +154,7 @@ public class DHE_Month_Year extends ListActivity implements AppCompatCallback {
                 pDialog.dismiss();
             }
             if (contacts.toString().contains("[]")) {
-                Toast.makeText(getApplicationContext(), R.string.dhe_all_no_data, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.duyuru_no_data, Toast.LENGTH_LONG).show();
                 finish();
             }
             ListAdapter adapter = new SimpleAdapter(
@@ -164,6 +163,11 @@ public class DHE_Month_Year extends ListActivity implements AppCompatCallback {
             setListAdapter(adapter);
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.finish();
     }
 
     public static String html2text(String html) {

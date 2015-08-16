@@ -123,7 +123,7 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
                             list.add(i);
                         }
                         if (baslik.isEmpty()) {
-                            Toast.makeText(getActivity(), R.string.dhe_all_no_data, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), R.string.duyuru_no_data, Toast.LENGTH_SHORT).show();
                         }
                         baslik = html2text(baslik);
                         contact.put(TAG_BASLIK, baslik);
