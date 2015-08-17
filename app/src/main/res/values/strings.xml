@@ -44,16 +44,22 @@
     <string name="haber_no_data">Seçtiğiniz tarih içerisinde haber bulunmamaktadır.</string>
     <string name="etkinlik_no_data">Seçtiğiniz tarih içerisinde etkinlik bulunmamaktadır.</string>
     <string name="yemek_no_data">Henüz yemek girişi yapılmamıştır.</string>
-    <string name="connection_decision">İnternete bağlı değilsiniz.
-    İnternetinizi açmak ister misiniz ?</string>
-    <string name="location_decision">Konum servisleriniz kapalı durumdadır.
-    Konum servislerinizi açmak ister misiniz ?</string>
-        <string name="appexit_decision">Uygulamadan çıkmak istermisiniz ?</string>
     <string name="connection">Lütfen internet bağlantınızı kontrol ediniz.
     Bağlı olmadığınız takdirde bazı servisleri kullanamayabilirsiniz.</string>
     <string name="location">Konum servisleriniz kapalı olduğu
         takdirde bazı servisleri kullanamayabilirsiniz.</string>
     <string name="exit_app">Çıkmak isterseniz bir kere daha geri tuşuna basınız.</string>
+    <string name="unexpected_error">Bir hatayla karşılaşıldı
+        lütfen hakkında bölümünden geri bilidirim yapınız.</string>
+    <string name="closed_restaurant">Yemekhane hafta sonu kapalıdır.\n  ¯\_(ツ)_/¯   </string>
+
+
+    //DialogMessages
+    <string name="connection_decision">İnternete bağlı değilsiniz.
+    İnternetinizi açmak ister misiniz ?</string>
+    <string name="location_decision">Konum servisleriniz kapalı durumdadır.
+    Konum servislerinizi açmak ister misiniz ?</string>
+    <string name="appexit_decision">Uygulamadan çıkmak istermisiniz ?</string>
 
     //Tarih
     <string name="pick_a_date">Lütfen tarih seçiniz.</string>

@@ -4,11 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <TextView
         android:id="@+id/date_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="43dp"
         android:gravity="center"
         android:text="Tarih"
         android:textColor="@android:color/holo_blue_dark"
@@ -18,13 +19,13 @@
 
     <TextView
         android:id="@+id/corba_text"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/date_text"
         android:layout_marginTop="40dp"
         android:layout_toLeftOf="@+id/date_text"
         android:layout_toStartOf="@+id/date_text"
-        android:text="Small Text"
+        android:text="Uzun bir çorba bu kardes"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textSize="20dp" />
 
@@ -32,24 +33,26 @@
         android:id="@+id/corba_cal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/corba_text"
-        android:layout_toEndOf="@+id/date_text"
-        android:layout_toRightOf="@+id/date_text"
         android:text="Small Text"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="20dp" />
+        android:textSize="20sp"
+        android:layout_alignTop="@+id/corba_text"
+        android:layout_toRightOf="@+id/date_text"
+        android:layout_toEndOf="@+id/date_text"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="21dp" />
 
     <TextView
         android:id="@+id/yemek1_text"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/corba_text"
         android:layout_alignStart="@+id/corba_text"
         android:layout_below="@+id/corba_text"
         android:layout_marginTop="40dp"
-        android:text="Small Text"
+        android:text="yirmi kisilik yemek yaptık"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/yemek1_cal"
@@ -60,19 +63,19 @@
         android:layout_alignStart="@+id/corba_cal"
         android:text="Small Text"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/yemek2_text"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/yemek1_text"
         android:layout_alignStart="@+id/yemek1_text"
         android:layout_below="@+id/yemek1_text"
         android:layout_marginTop="40dp"
-        android:text="Small Text"
+        android:text="istersem onbinmilyonkisilik yaparım"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/yemek2_cal"
@@ -83,19 +86,19 @@
         android:layout_alignTop="@+id/yemek2_text"
         android:text="Small Text"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/diger_text"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/yemek2_text"
         android:layout_alignStart="@+id/yemek2_text"
         android:layout_below="@+id/yemek2_text"
         android:layout_marginTop="40dp"
-        android:text="Small Text"
+        android:text="kısacası sanane kardes?"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/diger_cal"
@@ -106,6 +109,7 @@
         android:layout_alignTop="@+id/diger_text"
         android:text="Small Text"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
+
 
 </RelativeLayout>

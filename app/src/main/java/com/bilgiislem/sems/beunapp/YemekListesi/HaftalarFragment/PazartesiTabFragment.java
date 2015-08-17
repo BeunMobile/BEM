@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -56,7 +58,8 @@ public class PazartesiTabFragment extends Fragment {
 
 
     String url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear;
-
+    int whichWeek;
+    int firstdayOfMonth;
 
     List<String> corbaList = new ArrayList<>();
     List<String> corbaCalList = new ArrayList<>();
@@ -97,24 +100,13 @@ public class PazartesiTabFragment extends Fragment {
         digerText.setVisibility(View.GONE);
         digerCalText.setVisibility(View.GONE);
 
-/*
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.YEAR, currentYear);
-        cal.set(Calendar.MONTH, currentMonth+1);
-        cal.set(Calendar.DAY_OF_MONTH, 1);
-        int start = cal.get(Calendar.WEEK_OF_YEAR);
-        cal.set(Calendar.YEAR, currentYear);
-        cal.set(Calendar.MONTH, currentMonth+1);
-        cal.set(Calendar.DAY_OF_MONTH, 27);
-        int end = cal.get(Calendar.WEEK_OF_YEAR);
-        int weekly = end - start + 1;
-        Log.d("weekly", "" + weekly);
-        Log.d("DOW", "" + dayOfWeek + "/" + currentDay);*/
-
         if (dayOfWeek != 0 && dayOfWeek != 7) {
-
             new JSONParse().execute();
-
+        } else {
+            Toast toast = Toast.makeText(getActivity(), R.string.closed_restaurant, Toast.LENGTH_SHORT);
+            TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
+            if (v != null) v.setGravity(Gravity.CENTER);
+            toast.show();
         }
         return view;
     }
@@ -176,22 +168,124 @@ public class PazartesiTabFragment extends Fragment {
             //Log.d("WOM", "" + weekOfMonth);
 
             try {
-                Log.d("GNOFS", " " + getNumberofSundays(currentYear + "-" + currentMonth + "-" + 1, currentYear + "-" + currentMonth + "-" + currentDay));
+                //Log.d("GNOFS", " " + getNumberofSunday(currentYear + "-" + currentMonth + 1 + "-" + 1, currentYear + "-" + currentMonth + 1 + "-" + 1));
+                whichWeek = getNumberofSunday(currentYear + "-" + currentMonth + "-" + 1, currentYear + "-" + currentMonth + "-" + currentDay);
+                firstdayOfMonth = getFirstDateOfCurrentMonth();
+                if (firstdayOfMonth != 1 && firstdayOfMonth != 7) {
+                    switch (whichWeek) {
+                        case 1:
+                            corbaText.setText(corbaList.get(0));
+                            corbaCalText.setText(corbaCalList.get(0) + " cal");
+                            yemek1Text.setText(yemek1List.get(0));
+                            yemek1CalText.setText(yemek1CalList.get(0) + " cal");
+                            yemek2Text.setText(yemek2List.get(0));
+                            yemek2CalText.setText(yemek2CalList.get(0) + " cal");
+                            digerText.setText(digerList.get(0));
+                            digerCalText.setText(digerCalList.get(0) + " cal");
+                            break;
+                        case 2:
+                            corbaText.setText(corbaList.get(5));
+                            corbaCalText.setText(corbaCalList.get(5) + " cal");
+                            yemek1Text.setText(yemek1List.get(5));
+                            yemek1CalText.setText(yemek1CalList.get(5) + " cal");
+                            yemek2Text.setText(yemek2List.get(5));
+                            yemek2CalText.setText(yemek2CalList.get(5) + " cal");
+                            digerText.setText(digerList.get(5));
+                            digerCalText.setText(digerCalList.get(5) + " cal");
+                            break;
+                        case 3:
+                            corbaText.setText(corbaList.get(10));
+                            corbaCalText.setText(corbaCalList.get(10) + " cal");
+                            yemek1Text.setText(yemek1List.get(10));
+                            yemek1CalText.setText(yemek1CalList.get(10) + " cal");
+                            yemek2Text.setText(yemek2List.get(10));
+                            yemek2CalText.setText(yemek2CalList.get(10) + " cal");
+                            digerText.setText(digerList.get(10));
+                            digerCalText.setText(digerCalList.get(10) + " cal");
+                            break;
+                        case 4:
+                            corbaText.setText(corbaList.get(15));
+                            corbaCalText.setText(corbaCalList.get(15) + " cal");
+                            yemek1Text.setText(yemek1List.get(15));
+                            yemek1CalText.setText(yemek1CalList.get(15) + " cal");
+                            yemek2Text.setText(yemek2List.get(15));
+                            yemek2CalText.setText(yemek2CalList.get(15) + " cal");
+                            digerText.setText(digerList.get(15));
+                            digerCalText.setText(digerCalList.get(15) + " cal");
+                            break;
+                        case 5:
+                            corbaText.setText(corbaList.get(20));
+                            corbaCalText.setText(corbaCalList.get(20) + " cal");
+                            yemek1Text.setText(yemek1List.get(20));
+                            yemek1CalText.setText(yemek1CalList.get(20) + " cal");
+                            yemek2Text.setText(yemek2List.get(20));
+                            yemek2CalText.setText(yemek2CalList.get(20) + " cal");
+                            digerText.setText(digerList.get(20));
+                            digerCalText.setText(digerCalList.get(20) + " cal");
+                            break;
+                        default:
+                            Toast.makeText(getActivity(), R.string.unexpected_error, Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    switch (whichWeek - 1) {
+                        case 0:
+                            corbaText.setText(corbaList.get(0));
+                            corbaCalText.setText(corbaCalList.get(0) + " cal");
+                            yemek1Text.setText(yemek1List.get(0));
+                            yemek1CalText.setText(yemek1CalList.get(0) + " cal");
+                            yemek2Text.setText(yemek2List.get(0));
+                            yemek2CalText.setText(yemek2CalList.get(0) + " cal");
+                            digerText.setText(digerList.get(0));
+                            digerCalText.setText(digerCalList.get(0) + " cal");
+                            break;
+                        case 1:
+                            corbaText.setText(corbaList.get(5));
+                            corbaCalText.setText(corbaCalList.get(5) + " cal");
+                            yemek1Text.setText(yemek1List.get(5));
+                            yemek1CalText.setText(yemek1CalList.get(5) + " cal");
+                            yemek2Text.setText(yemek2List.get(5));
+                            yemek2CalText.setText(yemek2CalList.get(5) + " cal");
+                            digerText.setText(digerList.get(5));
+                            digerCalText.setText(digerCalList.get(5) + " cal");
+                            break;
+                        case 2:
+                            corbaText.setText(corbaList.get(10));
+                            corbaCalText.setText(corbaCalList.get(10) + " cal");
+                            yemek1Text.setText(yemek1List.get(10));
+                            yemek1CalText.setText(yemek1CalList.get(10) + " cal");
+                            yemek2Text.setText(yemek2List.get(10));
+                            yemek2CalText.setText(yemek2CalList.get(10) + " cal");
+                            digerText.setText(digerList.get(10));
+                            digerCalText.setText(digerCalList.get(10) + " cal");
+                            break;
+                        case 3:
+                            corbaText.setText(corbaList.get(15));
+                            corbaCalText.setText(corbaCalList.get(15) + " cal");
+                            yemek1Text.setText(yemek1List.get(15));
+                            yemek1CalText.setText(yemek1CalList.get(15) + " cal");
+                            yemek2Text.setText(yemek2List.get(15));
+                            yemek2CalText.setText(yemek2CalList.get(15) + " cal");
+                            digerText.setText(digerList.get(15));
+                            digerCalText.setText(digerCalList.get(15) + " cal");
+                            break;
+                        case 4:
+                            corbaText.setText(corbaList.get(20));
+                            corbaCalText.setText(corbaCalList.get(20) + " cal");
+                            yemek1Text.setText(yemek1List.get(20));
+                            yemek1CalText.setText(yemek1CalList.get(20) + " cal");
+                            yemek2Text.setText(yemek2List.get(20));
+                            yemek2CalText.setText(yemek2CalList.get(20) + " cal");
+                            digerText.setText(digerList.get(20));
+                            digerCalText.setText(digerCalList.get(20) + " cal");
+                            break;
+                        default:
+                            Toast.makeText(getActivity(), R.string.unexpected_error, Toast.LENGTH_SHORT).show();
+                    }
+                }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
-            corbaText.setText(corbaList.get(10));
-            corbaCalText.setText(corbaCalList.get(10));
-            yemek1Text.setText(yemek1List.get(10));
-            yemek1CalText.setText(yemek1CalList.get(10));
-            yemek2Text.setText(yemek2List.get(10));
-            yemek2CalText.setText(yemek2CalList.get(10));
-            digerText.setText(digerList.get(10));
-            digerCalText.setText(digerCalList.get(10));
-
-
             corbaText.setVisibility(View.VISIBLE);
             corbaCalText.setVisibility(View.VISIBLE);
             yemek1Text.setVisibility(View.VISIBLE);
@@ -203,32 +297,20 @@ public class PazartesiTabFragment extends Fragment {
         }
     }
 
-
-    public int getNumberofSundays(String d1, String d2) throws Exception { // object
-        // in
-        // Date
-        // form
-
+    public int getNumberofSunday(String d1, String d2) throws Exception { // object
         Date date1 = getDate(d1);
         Date date2 = getDate(d2);
-
         Calendar c1 = Calendar.getInstance();
         c1.setTime(date1);
         Calendar c2 = Calendar.getInstance();
         c2.setTime(date2);
         int mondays = 0;
         while (c2.after(c1)) {
-            // System.out.println(" came here ");
-            //checks to see if the day1 ....so on next days are sundays if sunday goes inside to increment the counter
-            if (c1.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
-                System.out.println(c1.getTime().toString() + " is a monday ");
+            if (c1.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
                 mondays++;
-
             }
             c1.add(Calendar.DATE, 1);
         }
-
-        Log.d("GNOFB2S", "number of sundays between 2 dates is " + mondays);
 
         return mondays;
     }
@@ -245,35 +327,10 @@ public class PazartesiTabFragment extends Fragment {
         }
         return date;
     }
-}
 
-   /* public void UpdateInfo(List corba) {
-        corbalitext = corba.get(2).toString();
-        Log.i("Corba", "1" + corbalitext);
-        corbaText.setText("" + corbalitext);
-
+    private int getFirstDateOfCurrentMonth() {
+        Calendar c = new GregorianCalendar();
+        c.set(Calendar.DAY_OF_MONTH, 1);
+        return c.get(Calendar.DAY_OF_WEEK);
     }
 }
-
-        if (corba != null) {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if (corbalitext != null) {
-                        corbaText.setText(corbalitext);
-                        //Toast.makeText(getActivity(), corbalitext, Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        }*/
-
-
-
-      /*corbaText.setVisibility(View.GONE);
-        corbaCalText.setVisibility(View.GONE);
-        yemek1Text.setVisibility(View.GONE);
-        yemek1CalText.setVisibility(View.GONE);
-        yemek2Text.setVisibility(View.GONE);
-        yemek2CalText.setVisibility(View.GONE);
-        digerText.setVisibility(View.GONE);
-        digerCalText.setVisibility(View.GONE);*/

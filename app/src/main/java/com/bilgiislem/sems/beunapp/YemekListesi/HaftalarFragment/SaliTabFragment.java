@@ -178,7 +178,7 @@ public class SaliTabFragment extends Fragment {
             //Log.d("WOM", "" + weekOfMonth);
 
             try {
-                Log.d("GNOFS", " " + getNumberofSundays(currentYear + "-" + currentMonth + "-" + 1, currentYear + "-" + currentMonth + "-" + currentDay));
+                //Log.d("GNOFS", " " + getNumberofSundays(currentYear + "-" + currentMonth + "-" + 1, currentYear + "-" + currentMonth + "-" + 28));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -222,15 +222,15 @@ public class SaliTabFragment extends Fragment {
         while (c2.after(c1)) {
             // System.out.println(" came here ");
             //checks to see if the day1 ....so on next days are sundays if sunday goes inside to increment the counter
-            if (c1.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
-                System.out.println(c1.getTime().toString() + " is a monday ");
+            if (c1.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                //System.out.println(c1.getTime().toString() + " is a monday ");
                 mondays++;
 
             }
             c1.add(Calendar.DATE, 1);
         }
 
-        Log.d("GNOFB2S", "number of sundays between 2 dates is " + mondays);
+        //Log.d("GNOFB2S", "number of sundays between 2 dates is " + mondays);
 
         return mondays;
     }
