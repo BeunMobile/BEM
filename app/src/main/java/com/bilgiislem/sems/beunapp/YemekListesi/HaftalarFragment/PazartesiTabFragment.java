@@ -24,6 +24,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -32,6 +33,7 @@ import java.util.TimeZone;
 
 public class PazartesiTabFragment extends Fragment {
 
+    TextView dateText;
     TextView corbaText;
     TextView corbaCalText;
     TextView yemek1Text;
@@ -56,7 +58,6 @@ public class PazartesiTabFragment extends Fragment {
     final int currentMonth = localCalendar.get(Calendar.MONTH) + 1;
     final int currentYear = localCalendar.get(Calendar.YEAR);
 
-
     String url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear;
     int whichWeek;
     int firstdayOfMonth;
@@ -74,6 +75,8 @@ public class PazartesiTabFragment extends Fragment {
     List<String> digerCalList = new ArrayList<>();
 
     List<String> tarihList = new ArrayList<>();
+    List<String> aylarTRList = Arrays.asList("Ocak", "Þubat", "Mart", "Nisan", "Mayýs",
+            "Haziran", "Temmuz", "Aðustos", "Eylül", "Ekim", "Kasým", "Aralýk");
 
 
     @Nullable
@@ -82,6 +85,7 @@ public class PazartesiTabFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.pazartesi_tab, container, false);
 
+        dateText = (TextView) view.findViewById(R.id.date_text);
         corbaText = (TextView) view.findViewById(R.id.corba_text);
         corbaCalText = (TextView) view.findViewById(R.id.corba_cal);
         yemek1Text = (TextView) view.findViewById(R.id.yemek1_text);
@@ -91,14 +95,15 @@ public class PazartesiTabFragment extends Fragment {
         digerText = (TextView) view.findViewById(R.id.diger_text);
         digerCalText = (TextView) view.findViewById(R.id.diger_cal);
 
-        corbaText.setVisibility(View.GONE);
-        corbaCalText.setVisibility(View.GONE);
-        yemek1Text.setVisibility(View.GONE);
-        yemek1CalText.setVisibility(View.GONE);
-        yemek2Text.setVisibility(View.GONE);
-        yemek2CalText.setVisibility(View.GONE);
-        digerText.setVisibility(View.GONE);
-        digerCalText.setVisibility(View.GONE);
+
+        corbaText.setVisibility(View.INVISIBLE);
+        corbaCalText.setVisibility(View.INVISIBLE);
+        yemek1Text.setVisibility(View.INVISIBLE);
+        yemek1CalText.setVisibility(View.INVISIBLE);
+        yemek2Text.setVisibility(View.INVISIBLE);
+        yemek2CalText.setVisibility(View.INVISIBLE);
+        digerText.setVisibility(View.INVISIBLE);
+        digerCalText.setVisibility(View.INVISIBLE);
 
         if (dayOfWeek != 0 && dayOfWeek != 7) {
             new JSONParse().execute();
@@ -165,63 +170,78 @@ public class PazartesiTabFragment extends Fragment {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            //Log.d("WOM", "" + weekOfMonth);
-
             try {
-                //Log.d("GNOFS", " " + getNumberofSunday(currentYear + "-" + currentMonth + 1 + "-" + 1, currentYear + "-" + currentMonth + 1 + "-" + 1));
                 whichWeek = getNumberofSunday(currentYear + "-" + currentMonth + "-" + 1, currentYear + "-" + currentMonth + "-" + currentDay);
                 firstdayOfMonth = getFirstDateOfCurrentMonth();
+                int dayPlus = 0;
+                if (firstdayOfMonth == 2) {
+                    dayPlus = 0;
+                } else if (firstdayOfMonth == 3) {
+                    dayPlus = +4;
+                } else if (firstdayOfMonth == 4) {
+                    dayPlus = +3;
+                } else if (firstdayOfMonth == 5) {
+                    dayPlus = +2;
+                } else if (firstdayOfMonth == 6) {
+                    dayPlus = +1;
+                }
+
                 if (firstdayOfMonth != 1 && firstdayOfMonth != 7) {
                     switch (whichWeek) {
                         case 1:
-                            corbaText.setText(corbaList.get(0));
-                            corbaCalText.setText(corbaCalList.get(0) + " cal");
-                            yemek1Text.setText(yemek1List.get(0));
-                            yemek1CalText.setText(yemek1CalList.get(0) + " cal");
-                            yemek2Text.setText(yemek2List.get(0));
-                            yemek2CalText.setText(yemek2CalList.get(0) + " cal");
-                            digerText.setText(digerList.get(0));
-                            digerCalText.setText(digerCalList.get(0) + " cal");
+                            dateText.setText(tarihList.get(0+dayPlus) + " " + aylarTRList.get(currentMonth - 1) + " " + currentYear);
+                            corbaText.setText(corbaList.get(0+dayPlus));
+                            corbaCalText.setText(corbaCalList.get(0+dayPlus) + " cal");
+                            yemek1Text.setText(yemek1List.get(0+dayPlus));
+                            yemek1CalText.setText(yemek1CalList.get(0+dayPlus) + " cal");
+                            yemek2Text.setText(yemek2List.get(0+dayPlus));
+                            yemek2CalText.setText(yemek2CalList.get(0+dayPlus) + " cal");
+                            digerText.setText(digerList.get(0+dayPlus));
+                            digerCalText.setText(digerCalList.get(0+dayPlus) + " cal");
                             break;
                         case 2:
-                            corbaText.setText(corbaList.get(5));
-                            corbaCalText.setText(corbaCalList.get(5) + " cal");
-                            yemek1Text.setText(yemek1List.get(5));
-                            yemek1CalText.setText(yemek1CalList.get(5) + " cal");
-                            yemek2Text.setText(yemek2List.get(5));
-                            yemek2CalText.setText(yemek2CalList.get(5) + " cal");
-                            digerText.setText(digerList.get(5));
-                            digerCalText.setText(digerCalList.get(5) + " cal");
+                            dateText.setText(tarihList.get(5+dayPlus) + " " + aylarTRList.get(currentMonth - 1) + " " + currentYear);
+                            corbaText.setText(corbaList.get(5+dayPlus));
+                            corbaCalText.setText(corbaCalList.get(5+dayPlus) + " cal");
+                            yemek1Text.setText(yemek1List.get(5+dayPlus));
+                            yemek1CalText.setText(yemek1CalList.get(5+dayPlus) + " cal");
+                            yemek2Text.setText(yemek2List.get(5+dayPlus));
+                            yemek2CalText.setText(yemek2CalList.get(5+dayPlus) + " cal");
+                            digerText.setText(digerList.get(5+dayPlus));
+                            digerCalText.setText(digerCalList.get(5+dayPlus) + " cal");
                             break;
                         case 3:
-                            corbaText.setText(corbaList.get(10));
-                            corbaCalText.setText(corbaCalList.get(10) + " cal");
-                            yemek1Text.setText(yemek1List.get(10));
-                            yemek1CalText.setText(yemek1CalList.get(10) + " cal");
-                            yemek2Text.setText(yemek2List.get(10));
-                            yemek2CalText.setText(yemek2CalList.get(10) + " cal");
-                            digerText.setText(digerList.get(10));
-                            digerCalText.setText(digerCalList.get(10) + " cal");
+                            dateText.setText(tarihList.get(10+dayPlus) + " " + aylarTRList.get(currentMonth - 1) + " " + currentYear);
+                            corbaText.setText(corbaList.get(10+dayPlus));
+                            corbaCalText.setText(corbaCalList.get(10+dayPlus) + " cal");
+                            yemek1Text.setText(yemek1List.get(10+dayPlus));
+                            yemek1CalText.setText(yemek1CalList.get(10+dayPlus) + " cal");
+                            yemek2Text.setText(yemek2List.get(10+dayPlus));
+                            yemek2CalText.setText(yemek2CalList.get(10+dayPlus) + " cal");
+                            digerText.setText(digerList.get(10+dayPlus));
+                            digerCalText.setText(digerCalList.get(10+dayPlus) + " cal");
                             break;
                         case 4:
-                            corbaText.setText(corbaList.get(15));
-                            corbaCalText.setText(corbaCalList.get(15) + " cal");
-                            yemek1Text.setText(yemek1List.get(15));
-                            yemek1CalText.setText(yemek1CalList.get(15) + " cal");
-                            yemek2Text.setText(yemek2List.get(15));
-                            yemek2CalText.setText(yemek2CalList.get(15) + " cal");
-                            digerText.setText(digerList.get(15));
-                            digerCalText.setText(digerCalList.get(15) + " cal");
+                            dateText.setText(tarihList.get(15+dayPlus) + " " + aylarTRList.get(currentMonth - 1) + " " + currentYear);
+                            corbaText.setText(corbaList.get(15+dayPlus));
+                            corbaCalText.setText(corbaCalList.get(15+dayPlus) + " cal");
+                            yemek1Text.setText(yemek1List.get(15+dayPlus));
+                            yemek1CalText.setText(yemek1CalList.get(15+dayPlus) + " cal");
+                            yemek2Text.setText(yemek2List.get(15+dayPlus));
+                            yemek2CalText.setText(yemek2CalList.get(15+dayPlus) + " cal");
+                            digerText.setText(digerList.get(15+dayPlus));
+                            digerCalText.setText(digerCalList.get(15+dayPlus) + " cal");
                             break;
                         case 5:
-                            corbaText.setText(corbaList.get(20));
-                            corbaCalText.setText(corbaCalList.get(20) + " cal");
-                            yemek1Text.setText(yemek1List.get(20));
-                            yemek1CalText.setText(yemek1CalList.get(20) + " cal");
-                            yemek2Text.setText(yemek2List.get(20));
-                            yemek2CalText.setText(yemek2CalList.get(20) + " cal");
-                            digerText.setText(digerList.get(20));
-                            digerCalText.setText(digerCalList.get(20) + " cal");
+                            dateText.setText(tarihList.get(20+dayPlus) + " " + aylarTRList.get(currentMonth - 1) + " " + currentYear);
+                            corbaText.setText(corbaList.get(20+dayPlus));
+                            corbaCalText.setText(corbaCalList.get(20+dayPlus) + " cal");
+                            yemek1Text.setText(yemek1List.get(20+dayPlus));
+                            yemek1CalText.setText(yemek1CalList.get(20+dayPlus) + " cal");
+                            yemek2Text.setText(yemek2List.get(20+dayPlus));
+                            yemek2CalText.setText(yemek2CalList.get(20+dayPlus) + " cal");
+                            digerText.setText(digerList.get(20+dayPlus));
+                            digerCalText.setText(digerCalList.get(20+dayPlus) + " cal");
                             break;
                         default:
                             Toast.makeText(getActivity(), R.string.unexpected_error, Toast.LENGTH_SHORT).show();
@@ -229,54 +249,59 @@ public class PazartesiTabFragment extends Fragment {
                 } else {
                     switch (whichWeek - 1) {
                         case 0:
-                            corbaText.setText(corbaList.get(0));
-                            corbaCalText.setText(corbaCalList.get(0) + " cal");
-                            yemek1Text.setText(yemek1List.get(0));
-                            yemek1CalText.setText(yemek1CalList.get(0) + " cal");
-                            yemek2Text.setText(yemek2List.get(0));
-                            yemek2CalText.setText(yemek2CalList.get(0) + " cal");
-                            digerText.setText(digerList.get(0));
-                            digerCalText.setText(digerCalList.get(0) + " cal");
+                            dateText.setText(tarihList.get(0+dayPlus) + " " + aylarTRList.get(currentMonth - 1) + " " + currentYear);
+                            corbaText.setText(corbaList.get(0+dayPlus));
+                            corbaCalText.setText(corbaCalList.get(0+dayPlus) + " cal");
+                            yemek1Text.setText(yemek1List.get(0+dayPlus));
+                            yemek1CalText.setText(yemek1CalList.get(0+dayPlus) + " cal");
+                            yemek2Text.setText(yemek2List.get(0+dayPlus));
+                            yemek2CalText.setText(yemek2CalList.get(0+dayPlus) + " cal");
+                            digerText.setText(digerList.get(0+dayPlus));
+                            digerCalText.setText(digerCalList.get(0+dayPlus) + " cal");
                             break;
                         case 1:
-                            corbaText.setText(corbaList.get(5));
-                            corbaCalText.setText(corbaCalList.get(5) + " cal");
-                            yemek1Text.setText(yemek1List.get(5));
-                            yemek1CalText.setText(yemek1CalList.get(5) + " cal");
-                            yemek2Text.setText(yemek2List.get(5));
-                            yemek2CalText.setText(yemek2CalList.get(5) + " cal");
-                            digerText.setText(digerList.get(5));
-                            digerCalText.setText(digerCalList.get(5) + " cal");
+                            dateText.setText(tarihList.get(5+dayPlus) + " " + aylarTRList.get(currentMonth - 1) + " " + currentYear);
+                            corbaText.setText(corbaList.get(5+dayPlus));
+                            corbaCalText.setText(corbaCalList.get(5+dayPlus) + " cal");
+                            yemek1Text.setText(yemek1List.get(5+dayPlus));
+                            yemek1CalText.setText(yemek1CalList.get(5+dayPlus) + " cal");
+                            yemek2Text.setText(yemek2List.get(5+dayPlus));
+                            yemek2CalText.setText(yemek2CalList.get(5+dayPlus) + " cal");
+                            digerText.setText(digerList.get(5+dayPlus));
+                            digerCalText.setText(digerCalList.get(5+dayPlus) + " cal");
                             break;
                         case 2:
-                            corbaText.setText(corbaList.get(10));
-                            corbaCalText.setText(corbaCalList.get(10) + " cal");
-                            yemek1Text.setText(yemek1List.get(10));
-                            yemek1CalText.setText(yemek1CalList.get(10) + " cal");
-                            yemek2Text.setText(yemek2List.get(10));
-                            yemek2CalText.setText(yemek2CalList.get(10) + " cal");
-                            digerText.setText(digerList.get(10));
-                            digerCalText.setText(digerCalList.get(10) + " cal");
+                            dateText.setText(tarihList.get(10+dayPlus) + " " + aylarTRList.get(currentMonth - 1) + " " + currentYear);
+                            corbaText.setText(corbaList.get(10+dayPlus));
+                            corbaCalText.setText(corbaCalList.get(10+dayPlus) + " cal");
+                            yemek1Text.setText(yemek1List.get(10+dayPlus));
+                            yemek1CalText.setText(yemek1CalList.get(10+dayPlus) + " cal");
+                            yemek2Text.setText(yemek2List.get(10+dayPlus));
+                            yemek2CalText.setText(yemek2CalList.get(10+dayPlus) + " cal");
+                            digerText.setText(digerList.get(10+dayPlus));
+                            digerCalText.setText(digerCalList.get(10+dayPlus) + " cal");
                             break;
                         case 3:
-                            corbaText.setText(corbaList.get(15));
-                            corbaCalText.setText(corbaCalList.get(15) + " cal");
-                            yemek1Text.setText(yemek1List.get(15));
-                            yemek1CalText.setText(yemek1CalList.get(15) + " cal");
-                            yemek2Text.setText(yemek2List.get(15));
-                            yemek2CalText.setText(yemek2CalList.get(15) + " cal");
-                            digerText.setText(digerList.get(15));
-                            digerCalText.setText(digerCalList.get(15) + " cal");
+                            dateText.setText(tarihList.get(15+dayPlus) + " " + aylarTRList.get(currentMonth - 1) + " " + currentYear);
+                            corbaText.setText(corbaList.get(15+dayPlus));
+                            corbaCalText.setText(corbaCalList.get(15+dayPlus) + " cal");
+                            yemek1Text.setText(yemek1List.get(15+dayPlus));
+                            yemek1CalText.setText(yemek1CalList.get(15+dayPlus) + " cal");
+                            yemek2Text.setText(yemek2List.get(15+dayPlus));
+                            yemek2CalText.setText(yemek2CalList.get(15+dayPlus) + " cal");
+                            digerText.setText(digerList.get(15+dayPlus));
+                            digerCalText.setText(digerCalList.get(15+dayPlus) + " cal");
                             break;
                         case 4:
-                            corbaText.setText(corbaList.get(20));
-                            corbaCalText.setText(corbaCalList.get(20) + " cal");
-                            yemek1Text.setText(yemek1List.get(20));
-                            yemek1CalText.setText(yemek1CalList.get(20) + " cal");
-                            yemek2Text.setText(yemek2List.get(20));
-                            yemek2CalText.setText(yemek2CalList.get(20) + " cal");
-                            digerText.setText(digerList.get(20));
-                            digerCalText.setText(digerCalList.get(20) + " cal");
+                            dateText.setText(tarihList.get(20+dayPlus) + " " + aylarTRList.get(currentMonth - 1) + " " + currentYear);
+                            corbaText.setText(corbaList.get(20+dayPlus));
+                            corbaCalText.setText(corbaCalList.get(20+dayPlus) + " cal");
+                            yemek1Text.setText(yemek1List.get(20+dayPlus));
+                            yemek1CalText.setText(yemek1CalList.get(20+dayPlus) + " cal");
+                            yemek2Text.setText(yemek2List.get(20+dayPlus));
+                            yemek2CalText.setText(yemek2CalList.get(20+dayPlus) + " cal");
+                            digerText.setText(digerList.get(20+dayPlus));
+                            digerCalText.setText(digerCalList.get(20+dayPlus) + " cal");
                             break;
                         default:
                             Toast.makeText(getActivity(), R.string.unexpected_error, Toast.LENGTH_SHORT).show();
@@ -286,6 +311,7 @@ public class PazartesiTabFragment extends Fragment {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
             corbaText.setVisibility(View.VISIBLE);
             corbaCalText.setVisibility(View.VISIBLE);
             yemek1Text.setVisibility(View.VISIBLE);
