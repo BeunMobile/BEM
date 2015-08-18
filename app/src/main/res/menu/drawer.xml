@@ -3,10 +3,14 @@
 
     <group android:checkableBehavior="single">
 
-        <item
-            android:id="@+id/item_anasayfa"
-            android:checked="false"
-            android:title="@string/title_section1" />
+        <group android:id="@+id/group1">
+            <!-- Divider will appear above this item -->
+            <item
+                android:id="@+id/item_anasayfa"
+                android:checked="false"
+                android:title="@string/title_section1" />
+        </group>
+
 
         <item
             android:id="@+id/item_duyurular"
