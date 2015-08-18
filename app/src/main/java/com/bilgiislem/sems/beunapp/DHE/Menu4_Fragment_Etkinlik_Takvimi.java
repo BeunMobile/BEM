@@ -146,6 +146,10 @@ public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
             super.onPostExecute(result);
             if (pDialog.isShowing())
                 pDialog.dismiss();
+           /* Log.d("CL", "" + contactList);
+            if (contactList.get(0).isEmpty()) {
+                Toast.makeText(getActivity(), "Empty", Toast.LENGTH_SHORT).show();
+            }*/
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), contactList,
                     R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.news});

@@ -1,12 +1,12 @@
 package com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment;
 
 
-import android.app.ProgressDialog;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,14 +24,17 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.TimeZone;
 
 
 public class SaliTabFragment extends Fragment {
 
+    TextView dateText;
     TextView corbaText;
     TextView corbaCalText;
     TextView yemek1Text;
@@ -50,15 +53,14 @@ public class SaliTabFragment extends Fragment {
     private static final String TAG_TARIH = "tarih";
 
     Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
-    final int currentDay = localCalendar.get(Calendar.DATE);
     final int dayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
     final int weekOfMonth = localCalendar.get(Calendar.WEEK_OF_MONTH);
+    final int currentDay = localCalendar.get(Calendar.DATE);
     final int currentMonth = localCalendar.get(Calendar.MONTH) + 1;
     final int currentYear = localCalendar.get(Calendar.YEAR);
 
-
-    String url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear;
-
+    int whichWeek;
+    int firstdayOfMonth;
 
     List<String> corbaList = new ArrayList<>();
     List<String> corbaCalList = new ArrayList<>();
@@ -73,14 +75,19 @@ public class SaliTabFragment extends Fragment {
     List<String> digerCalList = new ArrayList<>();
 
     List<String> tarihList = new ArrayList<>();
+    List<String> aylarTRList = Arrays.asList("Ocak", "Þubat", "Mart", "Nisan", "Mayýs",
+            "Haziran", "Temmuz", "Aðustos", "Eylül", "Ekim", "Kasým", "Aralýk");
+
+    public String url;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.sali_tab, container, false);
+        View view = inflater.inflate(R.layout.pazartesi_tab, container, false);
 
+        dateText = (TextView) view.findViewById(R.id.date_text);
         corbaText = (TextView) view.findViewById(R.id.corba_text);
         corbaCalText = (TextView) view.findViewById(R.id.corba_cal);
         yemek1Text = (TextView) view.findViewById(R.id.yemek1_text);
@@ -90,33 +97,38 @@ public class SaliTabFragment extends Fragment {
         digerText = (TextView) view.findViewById(R.id.diger_text);
         digerCalText = (TextView) view.findViewById(R.id.diger_cal);
 
-        corbaText.setVisibility(View.GONE);
-        corbaCalText.setVisibility(View.GONE);
-        yemek1Text.setVisibility(View.GONE);
-        yemek1CalText.setVisibility(View.GONE);
-        yemek2Text.setVisibility(View.GONE);
-        yemek2CalText.setVisibility(View.GONE);
-        digerText.setVisibility(View.GONE);
-        digerCalText.setVisibility(View.GONE);
 
-/*
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.YEAR, currentYear);
-        cal.set(Calendar.MONTH, currentMonth+1);
-        cal.set(Calendar.DAY_OF_MONTH, 1);
-        int start = cal.get(Calendar.WEEK_OF_YEAR);
-        cal.set(Calendar.YEAR, currentYear);
-        cal.set(Calendar.MONTH, currentMonth+1);
-        cal.set(Calendar.DAY_OF_MONTH, 27);
-        int end = cal.get(Calendar.WEEK_OF_YEAR);
-        int weekly = end - start + 1;
-        Log.d("weekly", "" + weekly);
-        Log.d("DOW", "" + dayOfWeek + "/" + currentDay);*/
+        corbaText.setVisibility(View.INVISIBLE);
+        corbaCalText.setVisibility(View.INVISIBLE);
+        yemek1Text.setVisibility(View.INVISIBLE);
+        yemek1CalText.setVisibility(View.INVISIBLE);
+        yemek2Text.setVisibility(View.INVISIBLE);
+        yemek2CalText.setVisibility(View.INVISIBLE);
+        digerText.setVisibility(View.INVISIBLE);
+        digerCalText.setVisibility(View.INVISIBLE);
+
+
+        //sali==3
+        if (dayOfWeek == 3) {
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + currentDay;
+        } else if (dayOfWeek == 2) {
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay + 1);
+        } else if (dayOfWeek == 4) {
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 1);
+        } else if (dayOfWeek == 5) {
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 2);
+        } else if (dayOfWeek == 6) {
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 3);
+        }
+
 
         if (dayOfWeek != 0 && dayOfWeek != 7) {
-
             new JSONParse().execute();
-
+        } else {
+            Toast toast = Toast.makeText(getActivity(), R.string.closed_restaurant, Toast.LENGTH_SHORT);
+            TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
+            if (v != null) v.setGravity(Gravity.CENTER);
+            toast.show();
         }
         return view;
     }
@@ -175,24 +187,23 @@ public class SaliTabFragment extends Fragment {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            //Log.d("WOM", "" + weekOfMonth);
-
             try {
-                //Log.d("GNOFS", " " + getNumberofSundays(currentYear + "-" + currentMonth + "-" + 1, currentYear + "-" + currentMonth + "-" + 28));
+                whichWeek = getNumberofSunday(currentYear + "-" + currentMonth + "-" + 1, currentYear + "-" + currentMonth + "-" + currentDay);
+                firstdayOfMonth = getFirstDateOfCurrentMonth();
+
+                dateText.setText(tarihList.get(0) + " " + aylarTRList.get(currentMonth - 1) + " " + currentYear);
+                corbaText.setText(corbaList.get(0));
+                corbaCalText.setText(corbaCalList.get(0) + " kal");
+                yemek1Text.setText(yemek1List.get(0));
+                yemek1CalText.setText(yemek1CalList.get(0) + " kal");
+                yemek2Text.setText(yemek2List.get(0));
+                yemek2CalText.setText(yemek2CalList.get(0) + " kal");
+                digerText.setText(digerList.get(0));
+                digerCalText.setText(digerCalList.get(0) + " kal");
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
-            corbaText.setText(corbaList.get(11));
-            corbaCalText.setText(corbaCalList.get(11));
-            yemek1Text.setText(yemek1List.get(11));
-            yemek1CalText.setText(yemek1CalList.get(11));
-            yemek2Text.setText(yemek2List.get(11));
-            yemek2CalText.setText(yemek2CalList.get(11));
-            digerText.setText(digerList.get(11));
-            digerCalText.setText(digerCalList.get(11));
-
 
             corbaText.setVisibility(View.VISIBLE);
             corbaCalText.setVisibility(View.VISIBLE);
@@ -202,40 +213,28 @@ public class SaliTabFragment extends Fragment {
             yemek2CalText.setVisibility(View.VISIBLE);
             digerText.setVisibility(View.VISIBLE);
             digerCalText.setVisibility(View.VISIBLE);
+
         }
     }
 
-
-    public int getNumberofSundays(String d1, String d2) throws Exception { // object
-        // in
-        // Date
-        // form
-
+    public int getNumberofSunday(String d1, String d2) throws Exception { // object
         Date date1 = getDate(d1);
         Date date2 = getDate(d2);
-
         Calendar c1 = Calendar.getInstance();
         c1.setTime(date1);
         Calendar c2 = Calendar.getInstance();
         c2.setTime(date2);
         int mondays = 0;
         while (c2.after(c1)) {
-            // System.out.println(" came here ");
-            //checks to see if the day1 ....so on next days are sundays if sunday goes inside to increment the counter
             if (c1.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-                //System.out.println(c1.getTime().toString() + " is a monday ");
                 mondays++;
-
             }
             c1.add(Calendar.DATE, 1);
         }
 
-        //Log.d("GNOFB2S", "number of sundays between 2 dates is " + mondays);
-
         return mondays;
     }
 
-    // converts string to date
     public Date getDate(String s) {
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;
@@ -246,5 +245,11 @@ public class SaliTabFragment extends Fragment {
             e.printStackTrace();
         }
         return date;
+    }
+
+    private int getFirstDateOfCurrentMonth() {
+        Calendar c = new GregorianCalendar();
+        c.set(Calendar.DAY_OF_MONTH, 1);
+        return c.get(Calendar.DAY_OF_WEEK);
     }
 }
