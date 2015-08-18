@@ -21,4 +21,14 @@
         android:textColor="@color/PurpleButtonTextColor"
         android:text="@string/pick_a_date" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/BrushedGold"
+        android:gravity="center_horizontal"
+        android:id="@+id/empty_data"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

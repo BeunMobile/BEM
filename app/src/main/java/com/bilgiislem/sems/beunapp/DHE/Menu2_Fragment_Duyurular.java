@@ -18,6 +18,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.DHE_Sources.DatePickerFragment;
@@ -41,6 +42,7 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
 
     ListView listView;
     Button tdbutton;
+    TextView emptyData;
 
     List<Integer> list = new ArrayList<>();
 
@@ -55,6 +57,9 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dhe_layout, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        emptyData = (TextView) view.findViewById(R.id.empty_data);
+        emptyData.setVisibility(View.GONE);
 
         tdbutton = (Button) view.findViewById(R.id.tumbutton);
         tdbutton.setOnClickListener(new View.OnClickListener() {
@@ -147,7 +152,9 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
             if (pDialog.isShowing()) {
                 pDialog.dismiss();
             }
-
+            if (contactList.isEmpty()) {
+                emptyData.setVisibility(View.VISIBLE);
+            }
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), contactList,
                     R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.news});

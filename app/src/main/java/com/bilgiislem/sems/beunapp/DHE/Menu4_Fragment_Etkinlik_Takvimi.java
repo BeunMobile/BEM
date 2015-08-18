@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.DHE_Sources.DatePickerFragment;
@@ -36,8 +37,11 @@ public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
 
     private ProgressDialog pDialog;
     private static String url = "http://w3.beun.edu.tr/mobil-etkinlikler/";
+
     ListView listView;
     Button tebutton;
+    TextView emptyData;
+
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
@@ -49,6 +53,12 @@ public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dhe_layout, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+
+        emptyData = (TextView) view.findViewById(R.id.empty_data);
+        emptyData.setText(R.string.empty_etkinlik);
+        emptyData.setVisibility(View.GONE);
+
 
         tebutton = (Button) view.findViewById(R.id.tumbutton);
         tebutton.setOnClickListener(new View.OnClickListener() {
@@ -146,10 +156,11 @@ public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
             super.onPostExecute(result);
             if (pDialog.isShowing())
                 pDialog.dismiss();
-           /* Log.d("CL", "" + contactList);
-            if (contactList.get(0).isEmpty()) {
-                Toast.makeText(getActivity(), "Empty", Toast.LENGTH_SHORT).show();
-            }*/
+
+            if (contactList.isEmpty()) {
+                emptyData.setVisibility(View.VISIBLE);
+            }
+
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), contactList,
                     R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.news});

@@ -31,12 +31,27 @@
     //NavigationView
     <string name="closeDrawer">Navigation View</string>
     <string name="openDrawer">Navigation View Closed</string>
+    <string name="ana_sayfa_title">Bülent Ecevit Üniversitesi</string>
+    <string name="duyuru_title">Duyurular</string>
+    <string name="haber_title">Haberler</string>
+    <string name="etkinlik_title">Etkinlik Takvimi</string>
+    <string name="yemek_title">Yemek Listesi</string>
+    <string name="e_kampus_title">E-Kampüs</string>
+    <string name="e_posta_title">E-Posta</string>
+    <string name="uzem_title">Uzaktan Eğitim Merkezi</string>
+    <string name="kampus_title">Kampüs Görünümü</string>
 
 
     //Anasayfa
     <string name="loading">Yükleniyor</string>
     <string name="waitfor">Lütfen biraz bekleyiniz …</string>
     <string name="alphatext">Bülent Ecevit Üniversity Application Version Pre-Alpha 0.9</string>
+
+
+    //DHE
+    <string name="empty_duyuru">Gösterilecek yeni duyuru\n bulunmamaktadır.</string>
+    <string name="empty_haber">Gösterilecek yeni haber\n bulunmamaktadır.</string>
+    <string name="empty_etkinlik">Yaklaşan yeni etkinlik\n bulunmamaktadır.</string>
 
     //Toasts
     <string name="ekampus">E-Kampüs Sayfanız Yukleniyor …</string>
@@ -59,7 +74,7 @@
     İnternetinizi açmak ister misiniz ?</string>
     <string name="location_decision">Konum servisleriniz kapalı durumdadır.
     Konum servislerinizi açmak ister misiniz ?</string>
-    <string name="appexit_decision">Uygulamadan çıkmak istermisiniz ?</string>
+    <string name="appexit_decision">Uygulamadan çıkmak istediğinize emin misiniz ?</string>
 
     //Tarih
     <string name="pick_a_date">Lütfen tarih seçiniz.</string>

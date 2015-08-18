@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <group android:checkableBehavior="single">
 
-        <group android:id="@+id/group1">
-            <!-- Divider will appear above this item -->
-            <item
-                android:id="@+id/item_anasayfa"
-                android:checked="false"
-                android:title="@string/title_section1" />
-        </group>
-
+        <item
+            android:id="@+id/item_anasayfa"
+            android:checked="false"
+            android:title="@string/title_section1" />
 
         <item
             android:id="@+id/item_duyurular"

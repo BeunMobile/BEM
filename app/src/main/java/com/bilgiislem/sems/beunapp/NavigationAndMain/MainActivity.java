@@ -93,70 +93,70 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.item_anasayfa:
                         objFragment2 = new BlankFragmentV4();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
-
+                        toolbar.setTitle(R.string.ana_sayfa_title);
                         objFragment = new Menu1_Fragment_AnaSayfa();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
                     case R.id.item_duyurular:
                         objFragment2 = new BlankFragmentV4();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
-
+                        toolbar.setTitle(R.string.duyuru_title);
                         objFragment = new Menu2_Fragment_Duyurular();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
                     case R.id.item_haberler:
                         objFragment2 = new BlankFragmentV4();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
-
+                        toolbar.setTitle(R.string.haber_title);
                         objFragment = new Menu3_Fragment_Haberler();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
                     case R.id.item_etkinliktakvimi:
                         objFragment2 = new BlankFragmentV4();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
-
+                        toolbar.setTitle(R.string.etkinlik_title);
                         objFragment = new Menu4_Fragment_Etkinlik_Takvimi();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
                     case R.id.item_yemeklistesi:
                         objFragment = new BlankFragment();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
-
+                        toolbar.setTitle(R.string.yemek_title);
                         objFragment2 = new TabFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
                         return true;
                     case R.id.item_ekampus:
                         objFragment2 = new BlankFragmentV4();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
-
+                        toolbar.setTitle(R.string.e_kampus_title);
                         objFragment = new Menu6_Fragment_E_Kapmus();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
                     case R.id.item_eposta:
                         objFragment2 = new BlankFragmentV4();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
-
+                        toolbar.setTitle(R.string.e_posta_title);
                         objFragment = new Menu7_Fragment_E_Posta();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
                     case R.id.item_uzem:
                         objFragment2 = new BlankFragmentV4();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
-
+                        toolbar.setTitle(R.string.uzem_title);
                         objFragment = new Menu8_Fragment_UZEM();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
                     case R.id.item_kampusgorunumu:
                         objFragment2 = new BlankFragmentV4();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
-
+                        toolbar.setTitle(R.string.kampus_title);
                         objFragment = new Menu9_Fragment_Kampus_Gorunumu();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
                     default:
                         objFragment2 = new BlankFragmentV4();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment2).commit();
-
+                        toolbar.setTitle(R.string.ana_sayfa_title);
                         objFragment = new Menu1_Fragment_AnaSayfa();
                         fragmentManager.beginTransaction().replace(R.id.frame, objFragment).commit();
                         return true;
