@@ -11,7 +11,6 @@ import android.net.NetworkInfo;
 import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -33,11 +32,7 @@ import com.bilgiislem.sems.beunapp.KampusGorunumu.Menu9_Fragment_Kampus_Gorunumu
 import com.bilgiislem.sems.beunapp.R;
 import com.bilgiislem.sems.beunapp.BlankFragments.BlankFragment;
 import com.bilgiislem.sems.beunapp.BlankFragments.BlankFragmentV4;
-import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.PazartesiTabFragment;
 import com.bilgiislem.sems.beunapp.YemekListesi.TabFragment;
-
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
@@ -243,11 +238,4 @@ public class MainActivity extends AppCompatActivity {
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
-   /* @Override
-    public void setCorba(List corba) {
-        PazartesiTabFragment ptf = new PazartesiTabFragment();
-        getSupportFragmentManager().beginTransaction().add(ptf, "ptf");
-        getSupportFragmentManager().findFragmentByTag("ptf");
-        ptf.UpdateInfo(corba);
-    }*/
 }

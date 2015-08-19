@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 public class GridViewAdapter extends ArrayAdapter<GridItem> {
 
-    //private final ColorMatrixColorFilter grayscaleFilter;
     private Context mContext;
     private int layoutResourceId;
     private ArrayList<GridItem> mGridData = new ArrayList<GridItem>();
