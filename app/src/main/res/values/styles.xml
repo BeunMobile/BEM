@@ -21,6 +21,22 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="AppTheme3" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/PurpleThemeColor</item>
+        <item name="android:colorPrimaryDark">@color/PurpleThemeDarkColor</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/PurpleThemeColor</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="AppTheme4" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">@android:color/black</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+
     <style name="Transparent" parent="AppTheme">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item>

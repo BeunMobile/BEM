@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -31,6 +32,7 @@ import java.util.ArrayList;
 public class GridViewActivity extends AppCompatActivity {
     private static final String TAG = GridViewActivity.class.getSimpleName();
 
+    private Toolbar toolbar;
     private GridView mGridView;
     private ProgressBar mProgressBar;
     private GridViewAdapter mGridAdapter;
@@ -44,7 +46,9 @@ public class GridViewActivity extends AppCompatActivity {
 
         FEED_URL = getIntent().getStringExtra("url");
 
-        //getSupportActionBar().setTitle(getIntent().getStringExtra("baslik"));
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getIntent().getStringExtra("baslik"));
 
         mGridView = (GridView) findViewById(R.id.gridView);
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
@@ -164,12 +168,6 @@ public class GridViewActivity extends AppCompatActivity {
                 item = new GridItem();
                 item.setImage("http://w3.beun.edu.tr/dosyalar/" + gorsel);
                 item.setTitle(gorsel);
-               /* JSONArray attachments = image.getJSONArray("attachments");
-                if (null != attachments && attachments.length() > 0) {
-                    JSONObject attachment = attachments.getJSONObject(0);
-                    if (attachment != null)
-                        item.setImage(attachment.getString("url"));
-                }*/
                 mGridData.add(item);
             }
         } catch (JSONException e) {

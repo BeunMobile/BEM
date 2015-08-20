@@ -39,13 +39,8 @@ public class DetailsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Setting details screen layout
         setContentView(R.layout.activity_details_view);
 
-        //ActionBar actionBar = getSupportActionBar();
-        //actionBar.hide();
-
-        //retrieves the thumbnail data
         Bundle bundle = getIntent().getExtras();
         thumbnailTop = bundle.getInt("top");
         thumbnailLeft = bundle.getInt("left");
@@ -55,21 +50,16 @@ public class DetailsActivity extends ActionBarActivity {
         String title = bundle.getString("title");
         String image = bundle.getString("image");
 
-        //initialize and set the image description
         titleTextView = (TextView) findViewById(R.id.title);
         titleTextView.setText(Html.fromHtml(title));
 
-        //Set image url
         imageView = (ImageView) findViewById(R.id.grid_item_image);
         Picasso.with(this).load(image).into(imageView);
 
-        //Set the background color to black
         frameLayout = (FrameLayout) findViewById(R.id.main_background);
         colorDrawable = new ColorDrawable(Color.BLACK);
         frameLayout.setBackground(colorDrawable);
 
-        // Only run the animation if we're coming from the parent activity, not if
-        // we're recreated automatically by the window manager (e.g., device rotation)
         if (savedInstanceState == null) {
             ViewTreeObserver observer = imageView.getViewTreeObserver();
             observer.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
@@ -78,14 +68,11 @@ public class DetailsActivity extends ActionBarActivity {
                 public boolean onPreDraw() {
                     imageView.getViewTreeObserver().removeOnPreDrawListener(this);
 
-                    // Figure out where the thumbnail and full size versions are, relative
-                    // to the screen and each other
                     int[] screenLocation = new int[2];
                     imageView.getLocationOnScreen(screenLocation);
                     mLeftDelta = thumbnailLeft - screenLocation[0];
                     mTopDelta = thumbnailTop - screenLocation[1];
 
-                    // Scale factors to make the large version the same size as the thumbnail
                     mWidthScale = (float) thumbnailWidth / imageView.getWidth();
                     mHeightScale = (float) thumbnailHeight / imageView.getHeight();
 
@@ -103,9 +90,7 @@ public class DetailsActivity extends ActionBarActivity {
      */
     public void enterAnimation() {
 
-        // Set starting values for properties we're going to animate. These
-        // values scale and position the full size version down to the thumbnail
-        // size/location, from which we'll animate it back up
+
         imageView.setPivotX(0);
         imageView.setPivotY(0);
         imageView.setScaleX(mWidthScale);
@@ -113,15 +98,12 @@ public class DetailsActivity extends ActionBarActivity {
         imageView.setTranslationX(mLeftDelta);
         imageView.setTranslationY(mTopDelta);
 
-        // interpolator where the rate of change starts out quickly and then decelerates.
         TimeInterpolator sDecelerator = new DecelerateInterpolator();
 
-        // Animate scale and translation to go from thumbnail to full size
         imageView.animate().setDuration(ANIM_DURATION).scaleX(1).scaleY(1).
                 translationX(0).translationY(0).setInterpolator(sDecelerator);
 
-        // Fade in the black background
-        ObjectAnimator bgAnim = ObjectAnimator.ofInt(colorDrawable, "alpha", 0, 255);
+        ObjectAnimator bgAnim = ObjectAnimator.ofInt(colorDrawable, "alpha", 255, 255);
         bgAnim.setDuration(ANIM_DURATION);
         bgAnim.start();
 
