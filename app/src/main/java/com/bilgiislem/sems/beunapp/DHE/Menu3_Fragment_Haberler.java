@@ -105,7 +105,7 @@ public class Menu3_Fragment_Haberler extends ListFragment {
             pDialog = new ProgressDialog(getActivity());
             pDialog.setTitle(getActivity().getString(R.string.loading));
             pDialog.setMessage(getActivity().getString(R.string.waitfor));
-            pDialog.setCancelable(true);
+            pDialog.setCancelable(false);
             pDialog.show();
         }
 
