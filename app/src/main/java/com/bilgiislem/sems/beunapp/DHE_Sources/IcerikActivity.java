@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.support.v7.widget.Toolbar;
 
 import com.bilgiislem.sems.beunapp.DHE_Sources.GridViewSources.GridViewActivity;
-import com.bilgiislem.sems.beunapp.NavigationAndMain.MainActivity;
 import com.bilgiislem.sems.beunapp.R;
 
 import org.json.JSONException;
@@ -22,7 +21,7 @@ import org.json.JSONObject;
 import org.jsoup.Jsoup;
 
 
-public class Icerik_Activity extends AppCompatActivity {
+public class IcerikActivity extends AppCompatActivity {
 
     private static final String TAG_ICERIK = "icerik";
     String baslik_plus, http_plus;
@@ -58,7 +57,7 @@ public class Icerik_Activity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Icerik_Activity.this);
+            pDialog = new ProgressDialog(IcerikActivity.this);
             pDialog.setTitle(getString(R.string.loading));
             pDialog.setMessage(getString(R.string.waitfor));
             pDialog.setIndeterminate(false);
@@ -85,7 +84,7 @@ public class Icerik_Activity extends AppCompatActivity {
                     galleryButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent galleryintent = new Intent(Icerik_Activity.this, GridViewActivity.class);
+                            Intent galleryintent = new Intent(IcerikActivity.this, GridViewActivity.class);
                             galleryintent.putExtra("url", url);
                             galleryintent.putExtra("baslik", baslik_plus);
                             startActivity(galleryintent);

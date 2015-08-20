@@ -30,7 +30,7 @@ import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.R;
 
-public class DHE_Month_Year extends ListActivity implements AppCompatCallback {
+public class MYActivity extends ListActivity implements AppCompatCallback {
 
     private ProgressDialog pDialog;
 
@@ -58,7 +58,7 @@ public class DHE_Month_Year extends ListActivity implements AppCompatCallback {
 
         delegate = AppCompatDelegate.create(this, this);
         delegate.onCreate(savedInstanceState);
-        delegate.setContentView(R.layout.dhe_layout_all);
+        delegate.setContentView(R.layout.activity_dheall);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         delegate.setSupportActionBar(toolbar);
         delegate.setTitle(getIntent().getStringExtra("title"));
@@ -74,7 +74,7 @@ public class DHE_Month_Year extends ListActivity implements AppCompatCallback {
                                     int position, long id) {
                 String adres2 = contactList.get(position).get("adres");
                 String baslik2 = contactList.get(position).get("baslik");
-                Intent intent = new Intent(DHE_Month_Year.this, Icerik_Activity.class);
+                Intent intent = new Intent(MYActivity.this, IcerikActivity.class);
                 intent.putExtra("adres", adres2);
                 intent.putExtra("baslik", baslik2);
                 startActivity(intent);
@@ -105,9 +105,9 @@ public class DHE_Month_Year extends ListActivity implements AppCompatCallback {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(DHE_Month_Year.this);
-            pDialog.setTitle(DHE_Month_Year.this.getString(R.string.loading));
-            pDialog.setMessage(DHE_Month_Year.this.getString(R.string.waitfor));
+            pDialog = new ProgressDialog(MYActivity.this);
+            pDialog.setTitle(MYActivity.this.getString(R.string.loading));
+            pDialog.setMessage(MYActivity.this.getString(R.string.waitfor));
             pDialog.setCancelable(false);
             pDialog.show();
         }
@@ -159,8 +159,8 @@ public class DHE_Month_Year extends ListActivity implements AppCompatCallback {
                 finish();
             }
             ListAdapter adapter = new SimpleAdapter(
-                    DHE_Month_Year.this, contactList,
-                    R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.news});
+                    MYActivity.this, contactList,
+                    R.layout.item_json, new String[]{TAG_BASLIK}, new int[]{R.id.news});
             setListAdapter(adapter);
         }
 

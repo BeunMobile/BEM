@@ -1,7 +1,6 @@
 package com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment;
 
 
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -31,8 +30,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.TimeZone;
 
-
-public class SaliTabFragment extends Fragment {
+public class Pazartesi_Fragment extends Fragment {
 
     TextView dateText;
     TextView corbaText;
@@ -85,7 +83,7 @@ public class SaliTabFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.pazartesi_tab, container, false);
+        View view = inflater.inflate(R.layout.fragment_pazartesi, container, false);
 
         dateText = (TextView) view.findViewById(R.id.date_text);
         corbaText = (TextView) view.findViewById(R.id.corba_text);
@@ -108,17 +106,17 @@ public class SaliTabFragment extends Fragment {
         digerCalText.setVisibility(View.INVISIBLE);
 
 
-        //sali==3
-        if (dayOfWeek == 3) {
+        //pazartesi==2
+        if (dayOfWeek == 2) {
             url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + currentDay;
-        } else if (dayOfWeek == 2) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay + 1);
-        } else if (dayOfWeek == 4) {
+        } else if (dayOfWeek == 3) {
             url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 1);
-        } else if (dayOfWeek == 5) {
+        } else if (dayOfWeek == 4) {
             url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 2);
-        } else if (dayOfWeek == 6) {
+        } else if (dayOfWeek == 5) {
             url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 3);
+        } else if (dayOfWeek == 6) {
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 4);
         }
 
 

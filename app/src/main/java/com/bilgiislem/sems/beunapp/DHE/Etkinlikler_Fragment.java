@@ -16,10 +16,10 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.bilgiislem.sems.beunapp.DHE_Sources.DatePickerFragment;
-import com.bilgiislem.sems.beunapp.DHE_Sources.Icerik_Activity;
+import com.bilgiislem.sems.beunapp.DHE_Sources.DatePicker_Fragment;
+import com.bilgiislem.sems.beunapp.DHE_Sources.IcerikActivity;
 import com.bilgiislem.sems.beunapp.DHE_Sources.ServiceHandler;
 import com.bilgiislem.sems.beunapp.R;
 
@@ -32,12 +32,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class Menu3_Fragment_Haberler extends ListFragment {
+public class Etkinlikler_Fragment extends ListFragment {
 
     private ProgressDialog pDialog;
-    private static String url = "http://w3.beun.edu.tr/mobil-haberler/";
+    private static String url = "http://w3.beun.edu.tr/mobil-etkinlikler/";
+
     ListView listView;
-    Button thbutton;
+    Button tebutton;
+    TextView emptyData;
+
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
@@ -47,16 +50,22 @@ public class Menu3_Fragment_Haberler extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.dhe_layout, container, false);
+        View view = inflater.inflate(R.layout.fragment_dhe, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        thbutton = (Button) view.findViewById(R.id.tumbutton);
-        thbutton.setOnClickListener(new View.OnClickListener() {
+
+        emptyData = (TextView) view.findViewById(R.id.empty_data);
+        emptyData.setText(R.string.empty_etkinlik);
+        emptyData.setVisibility(View.GONE);
+
+
+        tebutton = (Button) view.findViewById(R.id.tumbutton);
+        tebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment newFragment = new DatePickerFragment();
+                DialogFragment newFragment = new DatePicker_Fragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("dhe", "haber");
+                bundle.putString("dhe", "etkinlik");
                 newFragment.setArguments(bundle);
                 newFragment.show(getFragmentManager(), "Date Picker");
             }
@@ -83,7 +92,7 @@ public class Menu3_Fragment_Haberler extends ListFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String adres2 = contactList.get(position).get("adres");
                 String baslik2 = contactList.get(position).get("baslik");
-                Intent intent = new Intent(getActivity(), Icerik_Activity.class);
+                Intent intent = new Intent(getActivity(), IcerikActivity.class);
                 intent.putExtra("adres", adres2);
                 intent.putExtra("baslik", baslik2);
                 startActivity(intent);
@@ -143,9 +152,14 @@ public class Menu3_Fragment_Haberler extends ListFragment {
             super.onPostExecute(result);
             if (pDialog.isShowing())
                 pDialog.dismiss();
+
+            if (contactList.isEmpty()) {
+                emptyData.setVisibility(View.VISIBLE);
+            }
+
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), contactList,
-                    R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.news});
+                    R.layout.item_json, new String[]{TAG_BASLIK}, new int[]{R.id.news});
             setListAdapter(adapter);
         }
     }

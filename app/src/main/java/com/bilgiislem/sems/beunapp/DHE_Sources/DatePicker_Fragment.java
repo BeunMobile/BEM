@@ -14,7 +14,7 @@ import android.app.Dialog;
 import java.util.Calendar;
 import java.util.Date;
 
-public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+public class DatePicker_Fragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
     String dhe;
 
@@ -61,7 +61,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
     public void onDateSet(DatePicker view, int year, int month, int day) {
         String stringOfLink = "?yil=" + year + "&ay=" + (month + 1) + "&cins=" + dhe;
 
-        Intent intent = new Intent(getActivity(), DHE_Month_Year.class);
+        Intent intent = new Intent(getActivity(), MYActivity.class);
         intent.putExtra("datelink", stringOfLink);
         intent.putExtra("title", (month + 1) + "/" + year);
         startActivity(intent);

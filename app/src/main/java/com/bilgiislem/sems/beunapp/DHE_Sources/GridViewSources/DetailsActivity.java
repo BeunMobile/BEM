@@ -39,7 +39,7 @@ public class DetailsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_details_view);
+        setContentView(R.layout.activity_detailsview);
 
         Bundle bundle = getIntent().getExtras();
         thumbnailTop = bundle.getInt("top");

@@ -14,7 +14,7 @@ import com.bilgiislem.sems.beunapp.R;
 /**
  * Created by detro on 15.08.2015.
  */
-public class YemekPDF extends Activity {
+public class PDFActivity extends Activity {
     WebView mWeb;
     ProgressDialog mProgress;
 

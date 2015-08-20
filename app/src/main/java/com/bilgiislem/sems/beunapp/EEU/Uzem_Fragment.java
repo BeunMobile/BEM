@@ -12,9 +12,9 @@ import android.webkit.WebViewClient;
 
 import com.bilgiislem.sems.beunapp.R;
 
-public class Menu7_Fragment_E_Posta extends Fragment {
+public class Uzem_Fragment extends Fragment {
     WebView webView;
-    String url_ekampus = "http://stu.karaelmas.edu.tr/sm/src/login.php";
+    String url_ekampus = "http://ue.beun.edu.tr/Account/Login?ReturnUrl=%2f";
     private Bundle webViewBundle;
 
 
@@ -22,7 +22,7 @@ public class Menu7_Fragment_E_Posta extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.web_page_layout, container, false);
+        View view = inflater.inflate(R.layout.fragment_webpage, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER);
 
         webView = (WebView) view.findViewById(R.id.web_page);
@@ -30,7 +30,7 @@ public class Menu7_Fragment_E_Posta extends Fragment {
         webView.getSettings().setDisplayZoomControls(true);
         webView.setWebViewClient(new WebViewClient() {
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                webView.loadUrl("http://stu.karaelmas.edu.tr/sm/src/login.php");
+                webView.loadUrl("http://ue.beun.edu.tr/Account/Login?ReturnUrl=%2f");
 
             }
 
@@ -65,7 +65,7 @@ public class Menu7_Fragment_E_Posta extends Fragment {
     // This is the method the pager adapter will use
     // to create a new fragment
     public static Fragment newInstance(String url) {
-        Menu6_Fragment_E_Kapmus f = new Menu6_Fragment_E_Kapmus();
+        EKampus_Fragment f = new EKampus_Fragment();
         f.url_ekampus = url;
         return f;
     }
@@ -93,17 +93,17 @@ public class Menu7_Fragment_E_Posta extends Fragment {
         }
     }
 
-}/*
+}
+/*
     WebView webView;
-    String url_ekampus = "http://stu.karaelmas.edu.tr/sm/src/login.php";
+    String url_uzem = "http://ue.beun.edu.tr/Account/Login?ReturnUrl=%2f";
     private Bundle webViewBundle;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.web_page_layout, container, false);
+        View view = inflater.inflate(R.layout.fragment_webpage, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER);
 
         webView = (WebView) view.findViewById(R.id.web_page);
@@ -111,7 +111,7 @@ public class Menu7_Fragment_E_Posta extends Fragment {
         webView.getSettings().setDisplayZoomControls(true);
         webView.setWebViewClient(new WebViewClient() {
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                webView.loadUrl("http://stu.karaelmas.edu.tr/sm/src/login.php");
+                webView.loadUrl(url_uzem);
 
             }
 
@@ -136,7 +136,7 @@ public class Menu7_Fragment_E_Posta extends Fragment {
                 super.onPageFinished(view, url);
             }
         });
-        webView.loadUrl(url_ekampus);
+        webView.loadUrl(url_uzem);
 
         // Just load whatever URL this fragment is
         // created with.
@@ -146,8 +146,8 @@ public class Menu7_Fragment_E_Posta extends Fragment {
     // This is the method the pager adapter will use
     // to create a new fragment
     public static Fragment newInstance(String url) {
-        Menu6_Fragment_E_Kapmus f = new Menu6_Fragment_E_Kapmus();
-        f.url_ekampus = url;
+        Uzem_Fragment f = new Uzem_Fragment();
+        f.url_uzem = url;
         return f;
     }
 
@@ -168,23 +168,4 @@ public class Menu7_Fragment_E_Posta extends Fragment {
         }
     }
 
-}
-    /*
-    private String url_eposta = "http://stu.karaelmas.edu.tr/sm/src/login.php";
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootview = inflater.inflate(R.layout.web_page_layout, container, false);
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER);
-
-        WebView webView = (WebView) rootview.findViewById(R.id.web_page);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl(url_eposta);
-        webView.getSettings().setBuiltInZoomControls(true);
-        webView.setInitialScale(50);
-        Toast.makeText(getActivity(), "E-Posta Sayfaniz gecici olarak servis disidir...", Toast.LENGTH_LONG).show();
-        return rootview;
-    }
-}
-*/
+}*/

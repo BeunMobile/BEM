@@ -15,7 +15,7 @@ import android.webkit.WebViewClient;
 
 import com.bilgiislem.sems.beunapp.R;
 
-public class Menu6_Fragment_E_Kapmus extends Fragment {
+public class EKampus_Fragment extends Fragment {
     WebView webView;
     String url_ekampus = "https://ekampus.beun.edu.tr/Yonetim/Kullanici/Giris?ReturnUrl=%2f";
     private Bundle webViewBundle;
@@ -37,7 +37,7 @@ public class Menu6_Fragment_E_Kapmus extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.web_page_layout, container, false);
+        View view = inflater.inflate(R.layout.fragment_webpage, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER);
 
         webView = (WebView) view.findViewById(R.id.web_page);
@@ -92,7 +92,7 @@ public class Menu6_Fragment_E_Kapmus extends Fragment {
     // This is the method the pager adapter will use
     // to create a new fragment
     public static Fragment newInstance(String url) {
-        Menu6_Fragment_E_Kapmus f = new Menu6_Fragment_E_Kapmus();
+        EKampus_Fragment f = new EKampus_Fragment();
         f.url_ekampus = url;
         return f;
     }

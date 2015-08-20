@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.R;
 
-public class Beu_3DPage extends Activity {
+public class SynthActivity extends Activity {
     WebView webview;
     String Url_3D;
     String check_marker;
@@ -19,21 +19,21 @@ public class Beu_3DPage extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.web_page_layout);
+        setContentView(R.layout.fragment_webpage);
         check_marker = getIntent().getStringExtra("beu3d");
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         switch (check_marker) {
             case "bidb":
                 Url_3D = "https://photosynth.net/preview/embed/3646a8b7-4660-42f5-b2a7-9f88476d42ee?delayload=false&autoplay=true&fromsite=true";
-                Toast.makeText(Beu_3DPage.this, Beu_3DPage.this.getResources().getString(R.string.beu3d_bidb), Toast.LENGTH_LONG).show();
+                Toast.makeText(SynthActivity.this, SynthActivity.this.getResources().getString(R.string.beu3d_bidb), Toast.LENGTH_LONG).show();
                 break;
             case "eem":
                 Url_3D = "https://photosynth.net/preview/embed/84a60386-44c0-421e-b25d-d69a4500cc95?delayload=false&autoplay=true&fromsite=true";
-                Toast.makeText(Beu_3DPage.this, Beu_3DPage.this.getResources().getString(R.string.beu3d_eem), Toast.LENGTH_LONG).show();
+                Toast.makeText(SynthActivity.this, SynthActivity.this.getResources().getString(R.string.beu3d_eem), Toast.LENGTH_LONG).show();
                 break;
             case "rektor":
                 Url_3D = "https://photosynth.net/preview/embed/c1a4d3f4-86fe-42db-b334-dc1b63489e4f?delayload=false&autoplay=true&fromsite=true";
-                Toast.makeText(Beu_3DPage.this, Beu_3DPage.this.getResources().getString(R.string.beu3d_rektorluk), Toast.LENGTH_LONG).show();
+                Toast.makeText(SynthActivity.this, SynthActivity.this.getResources().getString(R.string.beu3d_rektorluk), Toast.LENGTH_LONG).show();
                 break;
             default:
                 Log.e("Check Marker", "Error on check_marker,check out the check_marker value.It could be empty.");

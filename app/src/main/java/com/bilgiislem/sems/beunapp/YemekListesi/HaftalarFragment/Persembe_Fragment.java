@@ -33,7 +33,7 @@ import java.util.TimeZone;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PersembeTabFragment extends Fragment {
+public class Persembe_Fragment extends Fragment {
 
     TextView dateText;
     TextView corbaText;
@@ -86,7 +86,7 @@ public class PersembeTabFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.pazartesi_tab, container, false);
+        View view = inflater.inflate(R.layout.fragment_pazartesi, container, false);
 
         dateText = (TextView) view.findViewById(R.id.date_text);
         corbaText = (TextView) view.findViewById(R.id.corba_text);

@@ -134,7 +134,7 @@ public class FarabiActivity extends FragmentActivity implements GoogleMap.OnInfo
     @Override
     public void onInfoWindowClick(Marker marker) {
         marker_title = marker.getTitle();
-        Intent intent = new Intent(FarabiActivity.this, Beu_3DPage.class);
+        Intent intent = new Intent(FarabiActivity.this, SynthActivity.class);
         switch (marker_title) {
             case "Bilgi Islem Daire Baskanligi":
                 intent.putExtra("beu3d", "bidb");

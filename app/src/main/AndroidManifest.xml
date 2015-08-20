@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AnaSayfa.AnaSayfa_WebPage"
+            android:name=".AnaSayfa.AnaSayfaActivity"
             android:theme="@style/AppTheme3" />
 
         <meta-data
@@ -51,14 +51,14 @@
             android:label="@string/title_activity_farabi"
             android:theme="@style/AppTheme3" />
         <activity
-            android:name=".KampusGorunumu.Beu_3DPage"
+            android:name=".KampusGorunumu.SynthActivity"
             android:label="@string/title_activity_beu_3_dpage"
             android:theme="@style/AppTheme4" />
         <activity
-            android:name=".DHE_Sources.Icerik_Activity"
+            android:name=".DHE_Sources.IcerikActivity"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name=".DHE_Sources.DHE_Month_Year"
+            android:name=".DHE_Sources.MYActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme2" />
 
@@ -71,7 +71,7 @@
             android:theme="@style/AppTheme3" />
 
         <activity
-            android:name=".YemekListesi.YemekPDF"
+            android:name=".YemekListesi.PDFActivity"
             android:theme="@style/AppTheme3" />
 
     </application>

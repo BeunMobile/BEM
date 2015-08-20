@@ -13,33 +13,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bilgiislem.sems.beunapp.DHE_Sources.DatePickerFragment;
-import com.bilgiislem.sems.beunapp.DHE_Sources.Icerik_Activity;
+import com.bilgiislem.sems.beunapp.DHE_Sources.DatePicker_Fragment;
+import com.bilgiislem.sems.beunapp.DHE_Sources.IcerikActivity;
 import com.bilgiislem.sems.beunapp.DHE_Sources.ServiceHandler;
 import com.bilgiislem.sems.beunapp.R;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-
-public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
+public class Duyurular_Fragment extends ListFragment {
 
     private ProgressDialog pDialog;
-    private static String url = "http://w3.beun.edu.tr/mobil-etkinlikler/";
+    private static String url = "http://w3.beun.edu.tr/mobil-duyurular/";
 
     ListView listView;
-    Button tebutton;
+    Button tdbutton;
     TextView emptyData;
 
     private static final String TAG_S1 = "s1";
@@ -51,28 +51,23 @@ public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.dhe_layout, container, false);
+        View view = inflater.inflate(R.layout.fragment_dhe, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-
         emptyData = (TextView) view.findViewById(R.id.empty_data);
-        emptyData.setText(R.string.empty_etkinlik);
         emptyData.setVisibility(View.GONE);
 
-
-        tebutton = (Button) view.findViewById(R.id.tumbutton);
-        tebutton.setOnClickListener(new View.OnClickListener() {
+        tdbutton = (Button) view.findViewById(R.id.tumbutton);
+        tdbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment newFragment = new DatePickerFragment();
+                DialogFragment newFragment = new DatePicker_Fragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("dhe", "etkinlik");
+                bundle.putString("dhe", "duyuru");
                 newFragment.setArguments(bundle);
                 newFragment.show(getFragmentManager(), "Date Picker");
             }
         });
-
-
         listView = new ListView(getActivity());
         return view;
     }
@@ -84,8 +79,6 @@ public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-
-
         contactList = new ArrayList<HashMap<String, String>>();
         listView = getListView();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -93,21 +86,16 @@ public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String adres2 = contactList.get(position).get("adres");
                 String baslik2 = contactList.get(position).get("baslik");
-                Intent intent = new Intent(getActivity(), Icerik_Activity.class);
+                Intent intent = new Intent(getActivity(), IcerikActivity.class);
                 intent.putExtra("adres", adres2);
                 intent.putExtra("baslik", baslik2);
                 startActivity(intent);
             }
         });
-        // Calling async task to get json
         new GetContacts().execute();
         super.onActivityCreated(savedInstanceState);
     }
 
-
-    /**
-     * Async task class to get json by making HTTP call
-     */
     private class GetContacts extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
@@ -151,21 +139,25 @@ public class Menu4_Fragment_Etkinlik_Takvimi extends ListFragment {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            if (pDialog.isShowing())
+            if (pDialog.isShowing()) {
                 pDialog.dismiss();
-
+            }
             if (contactList.isEmpty()) {
                 emptyData.setVisibility(View.VISIBLE);
             }
-
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), contactList,
-                    R.layout.json_items, new String[]{TAG_BASLIK}, new int[]{R.id.news});
+                    R.layout.item_json, new String[]{TAG_BASLIK}, new int[]{R.id.news});
             setListAdapter(adapter);
+
+
         }
     }
+
 
     public static String html2text(String html) {
         return Jsoup.parse(html).text();
     }
+
+
 }

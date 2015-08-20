@@ -12,7 +12,7 @@ import android.webkit.WebViewClient;
 import com.bilgiislem.sems.beunapp.R;
 
 
-public class AnaSayfa_WebPage extends Activity {
+public class AnaSayfaActivity extends Activity {
     WebView mWeb;
     ProgressDialog mProgress;
 

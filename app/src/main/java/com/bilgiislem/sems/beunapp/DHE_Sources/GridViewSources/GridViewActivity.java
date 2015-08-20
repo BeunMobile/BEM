@@ -55,7 +55,7 @@ public class GridViewActivity extends AppCompatActivity {
 
         //Initialize with empty data
         mGridData = new ArrayList<>();
-        mGridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, mGridData);
+        mGridAdapter = new GridViewAdapter(this, R.layout.activity_griditem, mGridData);
         mGridView.setAdapter(mGridAdapter);
 
         //Grid view click event

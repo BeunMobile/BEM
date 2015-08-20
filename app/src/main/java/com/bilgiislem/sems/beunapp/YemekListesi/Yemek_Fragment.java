@@ -16,16 +16,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.bilgiislem.sems.beunapp.R;
-import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.CarsambaTabFragment;
-import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.CumaTabFragment;
-import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.PazartesiTabFragment;
-import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.PersembeTabFragment;
-import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.SaliTabFragment;
+import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.Carsamba_Fragment;
+import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.Cuma_Fragment;
+import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.Pazartesi_Fragment;
+import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.Persembe_Fragment;
+import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.Sali_Fragment;
 
 import java.util.Calendar;
 import java.util.TimeZone;
 
-public class TabFragment extends Fragment {
+public class Yemek_Fragment extends Fragment {
 
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
@@ -44,7 +44,7 @@ public class TabFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
-        View view = inflater.inflate(R.layout.menu5_tab_layout, container, false);
+        View view = inflater.inflate(R.layout.fragment_yemek, container, false);
         tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
 
@@ -56,7 +56,7 @@ public class TabFragment extends Fragment {
         buttonPdf = (Button) view.findViewById(R.id.button_pdf);
         buttonPdf.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), YemekPDF.class);
+                Intent intent = new Intent(getActivity(), PDFActivity.class);
                 intent.putExtra("month", cM);
                 intent.putExtra("year", cY);
                 startActivity(intent);
@@ -105,15 +105,15 @@ public class TabFragment extends Fragment {
         public android.support.v4.app.Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new PazartesiTabFragment();
+                    return new Pazartesi_Fragment();
                 case 1:
-                    return new SaliTabFragment();
+                    return new Sali_Fragment();
                 case 2:
-                    return new CarsambaTabFragment();
+                    return new Carsamba_Fragment();
                 case 3:
-                    return new PersembeTabFragment();
+                    return new Persembe_Fragment();
                 case 4:
-                    return new CumaTabFragment();
+                    return new Cuma_Fragment();
             }
             return null;
         }
