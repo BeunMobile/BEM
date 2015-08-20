@@ -35,8 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".AnaSayfa.AnaSayfa_WebPage" />
+        <activity android:name=".AnaSayfa.AnaSayfa_WebPage" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -56,14 +55,13 @@
             android:theme="@style/AppTheme2" />
         <activity
             android:name=".DHE_Sources.DHE_Month_Year"
+            android:launchMode="singleTask"
             android:theme="@style/AppTheme2" />
         <activity
             android:name=".DHE_Sources.GridViewSources.DetailsActivity"
             android:theme="@style/Transparent" />
-        <activity
-            android:name=".DHE_Sources.GridViewSources.GridViewActivity" />
-        <activity
-            android:name=".YemekListesi.YemekPDF" />
+        <activity android:name=".DHE_Sources.GridViewSources.GridViewActivity" />
+        <activity android:name=".YemekListesi.YemekPDF" />
     </application>
 
 </manifest>

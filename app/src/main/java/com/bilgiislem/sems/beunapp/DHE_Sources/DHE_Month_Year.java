@@ -53,6 +53,7 @@ public class DHE_Month_Year extends ListActivity implements AppCompatCallback {
         super.onCreate(savedInstanceState);
         url = "http://w3.beun.edu.tr/mobil-arsiv/" + getIntent().getStringExtra("datelink");
 
+        Log.d("Test", "" + getIntent().getStringExtra("datelink"));
         contactList = new ArrayList<HashMap<String, String>>();
 
         delegate = AppCompatDelegate.create(this, this);
@@ -154,7 +155,7 @@ public class DHE_Month_Year extends ListActivity implements AppCompatCallback {
                 pDialog.dismiss();
             }
             if (contacts.toString().contains("[]")) {
-                Toast.makeText(getApplicationContext(), R.string.duyuru_no_data, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.duyuru_no_data, Toast.LENGTH_SHORT).show();
                 finish();
             }
             ListAdapter adapter = new SimpleAdapter(
@@ -163,11 +164,6 @@ public class DHE_Month_Year extends ListActivity implements AppCompatCallback {
             setListAdapter(adapter);
         }
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        this.finish();
     }
 
     public static String html2text(String html) {

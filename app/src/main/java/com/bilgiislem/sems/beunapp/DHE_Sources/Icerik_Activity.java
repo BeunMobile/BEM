@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.support.v7.widget.Toolbar;
 
 import com.bilgiislem.sems.beunapp.DHE_Sources.GridViewSources.GridViewActivity;
+import com.bilgiislem.sems.beunapp.NavigationAndMain.MainActivity;
 import com.bilgiislem.sems.beunapp.R;
 
 import org.json.JSONException;
@@ -36,21 +37,16 @@ public class Icerik_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         baslik_plus = getIntent().getStringExtra("baslik");
         http_plus = getIntent().getStringExtra("adres");
-
         url = "http://w3.beun.edu.tr/veri" + http_plus;
 
         setContentView(R.layout.icerik_layout);
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(baslik_plus);
 
-
         galleryButton = (Button) findViewById(R.id.gallery_button);
         webView = (WebView) findViewById(R.id.icerik_http_text);
-
         galleryButton.setVisibility(View.GONE);
-
 
         new JSONParse().execute();
     }
@@ -136,7 +132,6 @@ public class Icerik_Activity extends AppCompatActivity {
 
 
     }
-
 
     public static String html2text(String html) {
         return Jsoup.parse(html).text();

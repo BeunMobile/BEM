@@ -124,12 +124,9 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
                         String baslik = c.getString(TAG_BASLIK);
                         String adres = c.getString(TAG_ADRES);
                         HashMap<String, String> contact = new HashMap<String, String>();
-                        if (baslik.contains("<b>") || baslik.contains("<strong>")) {
+                        /*if (baslik.contains("<b>") || baslik.contains("<strong>")) {
                             list.add(i);
-                        }
-                        if (baslik.isEmpty()) {
-                            Toast.makeText(getActivity(), R.string.duyuru_no_data, Toast.LENGTH_SHORT).show();
-                        }
+                        }*/
                         baslik = html2text(baslik);
                         contact.put(TAG_BASLIK, baslik);
                         contact.put(TAG_ADRES, adres);
