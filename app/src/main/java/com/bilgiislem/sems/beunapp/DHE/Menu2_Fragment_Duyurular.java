@@ -44,8 +44,6 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
     Button tdbutton;
     TextView emptyData;
 
-    List<Integer> list = new ArrayList<>();
-
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
@@ -124,9 +122,6 @@ public class Menu2_Fragment_Duyurular extends ListFragment {
                         String baslik = c.getString(TAG_BASLIK);
                         String adres = c.getString(TAG_ADRES);
                         HashMap<String, String> contact = new HashMap<String, String>();
-                        /*if (baslik.contains("<b>") || baslik.contains("<strong>")) {
-                            list.add(i);
-                        }*/
                         baslik = html2text(baslik);
                         contact.put(TAG_BASLIK, baslik);
                         contact.put(TAG_ADRES, adres);
