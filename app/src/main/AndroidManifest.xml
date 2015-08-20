@@ -70,6 +70,10 @@
             android:name=".DHE_Sources.GridViewSources.GridViewActivity"
             android:theme="@style/AppTheme3" />
 
+        <activity
+            android:name=".YemekListesi.YemekPDF"
+            android:theme="@style/AppTheme3" />
+
     </application>
 
 </manifest>
