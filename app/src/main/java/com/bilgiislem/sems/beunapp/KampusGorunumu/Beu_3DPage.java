@@ -24,7 +24,7 @@ public class Beu_3DPage extends Activity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         switch (check_marker) {
             case "bidb":
-                Url_3D = "https://photosynth.net/preview/embed/f34961c7-4840-451f-9905-0340a00269c2?delayload=false&autoplay=true&fromsite=true";
+                Url_3D = "https://photosynth.net/preview/embed/3646a8b7-4660-42f5-b2a7-9f88476d42ee?delayload=false&autoplay=true&fromsite=true";
                 Toast.makeText(Beu_3DPage.this, Beu_3DPage.this.getResources().getString(R.string.beu3d_bidb), Toast.LENGTH_LONG).show();
                 break;
             case "eem":
