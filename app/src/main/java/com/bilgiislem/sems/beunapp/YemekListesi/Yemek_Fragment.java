@@ -126,7 +126,7 @@ public class Yemek_Fragment extends Fragment {
             }
             return null;
         }
-//Adare
+//Adares
         @Override
         public int getItemPosition(Object object) {
             return POSITION_NONE;
