@@ -10,10 +10,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.R;
 import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.Carsamba_Fragment;
@@ -84,6 +87,12 @@ public class Yemek_Fragment extends Fragment {
                 tabLayout.setupWithViewPager(viewPager);
                 if (currentDayOfWeek != 1 && currentDayOfWeek != 7)
                     viewPager.setCurrentItem(currentDayOfWeek - 2, false);
+                else {
+                    Toast toast = Toast.makeText(getActivity(), R.string.closed_restaurant, Toast.LENGTH_SHORT);
+                    TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
+                    if (v != null) v.setGravity(Gravity.CENTER);
+                    toast.show();
+                }
             }
         });
 

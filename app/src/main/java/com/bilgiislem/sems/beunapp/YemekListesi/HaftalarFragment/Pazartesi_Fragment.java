@@ -120,13 +120,8 @@ public class Pazartesi_Fragment extends Fragment {
         }
 
 
-        if (dayOfWeek != 0 && dayOfWeek != 7) {
+        if (dayOfWeek != 1 && dayOfWeek != 7) {
             new JSONParse().execute();
-        } else {
-            Toast toast = Toast.makeText(getActivity(), R.string.closed_restaurant, Toast.LENGTH_SHORT);
-            TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-            if (v != null) v.setGravity(Gravity.CENTER);
-            toast.show();
         }
         return view;
     }
