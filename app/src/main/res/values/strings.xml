@@ -6,11 +6,11 @@
     <string name="title_section3">Haberler</string>
     <string name="title_section4">Etkinlik Takvimi</string>
     <string name="title_section5">Yemek Listesi</string>
-    <string name="title_section6">E-Kampüs</string>
-    <string name="title_section7">E-Posta</string>
-    <string name="title_section8">UZEM</string>
-    <string name="title_section9">Kampüs Görünümü</string>
-    <string name="title_section10">Deneme</string>
+    <string name="title_section6">Akademik Takvim</string>
+    <string name="title_section7">E-Kampüs</string>
+    <string name="title_section8">E-Posta</string>
+    <string name="title_section9">UZEM</string>
+    <string name="title_section10">Kampüs Görünümü</string>
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -36,6 +36,7 @@
     <string name="haber_title">Haberler</string>
     <string name="etkinlik_title">Etkinlik Takvimi</string>
     <string name="yemek_title">Yemek Listesi</string>
+    <string name="akademik_title">Akademik Takvim</string>
     <string name="e_kampus_title">E-Kampüs</string>
     <string name="e_posta_title">E-Posta</string>
     <string name="uzem_title">Uzaktan Eğitim Merkezi</string>
@@ -107,5 +108,17 @@ yükleniyor bu biraz zaman alabilir.</string>
 
     //Resimler
     <string name="gallery">GALERİ İÇİN TIKLAYINIZ</string>
+
+
+    //Akademik Takvim
+    <string name="genel_takvim">Genel Akademik Takvim</string>
+    <string name="dis_takvim">Diş Hekimliği Fakültesi</string>
+    <string name="enstitu_takvim">Enstitüler</string>
+    <string name="hazirlik_takvim">Hazırlık Sınıfları</string>
+    <string name="tip_takvim">Tıp Fakültesi</string>
+    <string name="uluslarasi_takvim">Uluslararası Öğrenciler</string>
+    <string name="ygi_takvim">Yatay Geçiş İşlemleri</string>
+    <string name="yaz_takvim">Yaz Okulu</string>
+    <string name="yetenek_takvim">Yetenek Sınavları</string>
 
 </resources>

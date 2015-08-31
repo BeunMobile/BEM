@@ -1,0 +1,115 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BrushedGold"
+    android:orientation="vertical"
+    tools:context="com.bilgiislem.sems.beunapp.AkademikTakvim.Akademik_Fragment">
+
+    <Button
+        android:id="@+id/button_gat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:background="@color/button_material_light"
+        android:text="@string/genel_takvim"
+        android:textColor="@color/BrushedPurple"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/button_dhf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_weight="1"
+        android:background="@color/button_material_light"
+        android:text="@string/dis_takvim"
+        android:textColor="@color/BrushedPurple"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/button_enst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="1dp"
+        android:layout_weight="1"
+        android:background="@color/button_material_light"
+        android:text="@string/enstitu_takvim"
+        android:textColor="@color/BrushedPurple"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/button_hazsin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="1dp"
+        android:layout_weight="1"
+        android:background="@color/button_material_light"
+        android:text="@string/hazirlik_takvim"
+        android:textColor="@color/BrushedPurple"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/button_tipfak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="1dp"
+        android:layout_weight="1"
+        android:background="@color/button_material_light"
+        android:text="@string/tip_takvim"
+        android:textColor="@color/BrushedPurple"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/button_ulusogren"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="1dp"
+        android:layout_weight="1"
+        android:background="@color/button_material_light"
+        android:text="@string/uluslarasi_takvim"
+        android:textColor="@color/BrushedPurple"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/button_ygi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="1dp"
+        android:layout_weight="1"
+        android:background="@color/button_material_light"
+        android:text="@string/ygi_takvim"
+        android:textColor="@color/BrushedPurple"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/button_yazok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="1dp"
+        android:layout_weight="1"
+        android:background="@color/button_material_light"
+        android:text="@string/yaz_takvim"
+        android:textColor="@color/BrushedPurple"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/button_yeteneksi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:background="@color/button_material_light"
+        android:text="@string/yetenek_takvim"
+        android:textColor="@color/BrushedPurple"
+        android:textSize="25sp" />
+</LinearLayout>

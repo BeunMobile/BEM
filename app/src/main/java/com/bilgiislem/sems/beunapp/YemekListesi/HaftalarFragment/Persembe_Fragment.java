@@ -5,12 +5,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.DHE_Sources.ServiceHandler;
 import com.bilgiislem.sems.beunapp.R;
@@ -86,7 +85,7 @@ public class Persembe_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_pazartesi, container, false);
+        View view = inflater.inflate(R.layout.fragment_days, container, false);
 
         dateText = (TextView) view.findViewById(R.id.date_text);
         corbaText = (TextView) view.findViewById(R.id.corba_text);
@@ -175,7 +174,7 @@ public class Persembe_Fragment extends Fragment {
                     e.printStackTrace();
                 }
             } else {
-                Toast.makeText(getActivity(), R.string.yemek_no_data, Toast.LENGTH_SHORT).show();
+                Log.d("jsonStrNull", "jsonStr variable is null.");//DEGÝSTÝ
             }
             return null;
         }

@@ -1,12 +1,11 @@
 package com.bilgiislem.sems.beunapp.DHE;
 
-import android.app.DialogFragment;
-import android.app.ListFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +22,7 @@ import android.widget.TextView;
 import com.bilgiislem.sems.beunapp.DHE_Sources.DatePicker_Fragment;
 import com.bilgiislem.sems.beunapp.DHE_Sources.IcerikActivity;
 import com.bilgiislem.sems.beunapp.DHE_Sources.ServiceHandler;
+import com.bilgiislem.sems.beunapp.MainAndWeb.MainActivity;
 import com.bilgiislem.sems.beunapp.R;
 
 import java.util.ArrayList;
@@ -53,6 +53,7 @@ public class Duyurular_Fragment extends ListFragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dhe, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.duyuru_title));
 
         emptyData = (TextView) view.findViewById(R.id.empty_data);
         emptyData.setVisibility(View.GONE);
@@ -61,7 +62,7 @@ public class Duyurular_Fragment extends ListFragment {
         tdbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment newFragment = new DatePicker_Fragment();
+                android.support.v4.app.DialogFragment newFragment = new DatePicker_Fragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("dhe", "duyuru");
                 newFragment.setArguments(bundle);
@@ -147,7 +148,7 @@ public class Duyurular_Fragment extends ListFragment {
             }
             ListAdapter adapter = new SimpleAdapter(
                     getActivity(), contactList,
-                    R.layout.item_json, new String[]{TAG_BASLIK}, new int[]{R.id.news});
+                    R.layout.item_listview, new String[]{TAG_BASLIK}, new int[]{R.id.news});
             setListAdapter(adapter);
 
 

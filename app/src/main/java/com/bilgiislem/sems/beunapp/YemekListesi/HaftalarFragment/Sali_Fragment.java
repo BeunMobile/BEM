@@ -1,17 +1,15 @@
 package com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment;
 
 
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.DHE_Sources.ServiceHandler;
 import com.bilgiislem.sems.beunapp.R;
@@ -29,6 +27,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
 
@@ -54,10 +53,13 @@ public class Sali_Fragment extends Fragment {
 
     Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
     final int dayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
+    final int dayOfMonth = localCalendar.get(Calendar.DAY_OF_MONTH);//EKLENDI
     final int weekOfMonth = localCalendar.get(Calendar.WEEK_OF_MONTH);
+    final int lastDayOfMonth = localCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);//EKLENDI
     final int currentDay = localCalendar.get(Calendar.DATE);
     final int currentMonth = localCalendar.get(Calendar.MONTH) + 1;
     final int currentYear = localCalendar.get(Calendar.YEAR);
+
 
     int whichWeek;
     int firstdayOfMonth;
@@ -85,7 +87,17 @@ public class Sali_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_pazartesi, container, false);
+        View view = inflater.inflate(R.layout.fragment_days, container, false);
+
+        String dateString = String.format("%d-%d-%d", currentYear, currentMonth, lastDayOfMonth);
+        Date lastDayDate = null;
+        try {
+            lastDayDate = new SimpleDateFormat("yyyy-M-d").parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        String lastDayOfMonthName = new SimpleDateFormat("EEEE", Locale.ENGLISH).format(lastDayDate);
 
         dateText = (TextView) view.findViewById(R.id.date_text);
         corbaText = (TextView) view.findViewById(R.id.corba_text);
@@ -106,7 +118,6 @@ public class Sali_Fragment extends Fragment {
         yemek2CalText.setVisibility(View.INVISIBLE);
         digerText.setVisibility(View.INVISIBLE);
         digerCalText.setVisibility(View.INVISIBLE);
-
 
         //sali==3
         if (dayOfWeek == 3) {
@@ -174,7 +185,7 @@ public class Sali_Fragment extends Fragment {
                     e.printStackTrace();
                 }
             } else {
-                Toast.makeText(getActivity(), R.string.yemek_no_data, Toast.LENGTH_SHORT).show();
+                Log.d("jsonStrNull", "jsonStr variable is null.");//DEGÝSTÝ
             }
             return null;
         }

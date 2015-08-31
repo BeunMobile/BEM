@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp.AnaSayfa;
+package com.bilgiislem.sems.beunapp.MainAndWeb;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -11,29 +11,29 @@ import android.webkit.WebViewClient;
 
 import com.bilgiislem.sems.beunapp.R;
 
-
-public class AnaSayfaActivity extends Activity {
-    WebView mWeb;
+public class WebActivity extends Activity {
+    WebView webView;
     ProgressDialog mProgress;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        mWeb = new WebView(this);
-        setContentView(mWeb);
-        WebSettings settings = mWeb.getSettings();
+        String url = getIntent().getStringExtra("web");
+        webView = new WebView(this);
+        setContentView(webView);
+        WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
-        mWeb.setInitialScale(100);
+        webView.setInitialScale(80);
         settings.setBuiltInZoomControls(true);
+        settings.setDisplayZoomControls(false);
         mProgress = ProgressDialog.show(this, this.getString(R.string.loading), this.getString(R.string.waitfor));
         mProgress.setCancelable(true);
-        mWeb.setWebViewClient(new WebViewClient() {
+        webView.setWebViewClient(new WebViewClient() {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
                 return true;
             }
-
 
             public void onPageFinished(WebView view, String url) {
                 if (mProgress.isShowing()) {
@@ -41,13 +41,13 @@ public class AnaSayfaActivity extends Activity {
                 }
             }
         });
-        mWeb.loadUrl("http://w3.beun.edu.tr");
+        webView.loadUrl(url);
     }
 
     @Override
     public void onBackPressed() {
-        if (mWeb.canGoBack())
-            mWeb.goBack();
+        if (webView.canGoBack())
+            webView.goBack();
         else
             super.onBackPressed();
     }

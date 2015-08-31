@@ -8,7 +8,7 @@ import android.support.design.widget.TabLayout;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bilgiislem.sems.beunapp.MainAndWeb.MainActivity;
 import com.bilgiislem.sems.beunapp.R;
 import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.Carsamba_Fragment;
 import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.Cuma_Fragment;
@@ -46,8 +47,8 @@ public class Yemek_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-
         View view = inflater.inflate(R.layout.fragment_yemek, container, false);
+        ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.yemek_title));
         tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
 
@@ -85,9 +86,9 @@ public class Yemek_Fragment extends Fragment {
             @Override
             public void run() {
                 tabLayout.setupWithViewPager(viewPager);
-                if (currentDayOfWeek != 1 && currentDayOfWeek != 7)
+                if (currentDayOfWeek != 1 && currentDayOfWeek != 7) {
                     viewPager.setCurrentItem(currentDayOfWeek - 2, false);
-                else {
+                } else {
                     Toast toast = Toast.makeText(getActivity(), R.string.closed_restaurant, Toast.LENGTH_SHORT);
                     TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
                     if (v != null) v.setGravity(Gravity.CENTER);
@@ -100,7 +101,8 @@ public class Yemek_Fragment extends Fragment {
 
     }
 
-    class MyAdapter extends FragmentPagerAdapter {
+    //FragmentPagerAdapter
+    class MyAdapter extends FragmentStatePagerAdapter {
 
         public MyAdapter(FragmentManager fm) {
             super(fm);
@@ -134,9 +136,7 @@ public class Yemek_Fragment extends Fragment {
 
         @Override
         public int getCount() {
-
             return int_items;
-
         }
 
         /**

@@ -34,25 +34,30 @@
             android:icon="@drawable/ios7_food"
             android:title="@string/title_section5" />
         <item
-            android:id="@+id/item_ekampus"
+            android:id="@+id/item_akademik"
             android:checked="false"
-            android:icon="@drawable/ios7_contact"
+            android:icon="@drawable/ios7_bookmarks"
             android:title="@string/title_section6" />
         <item
-            android:id="@+id/item_eposta"
+            android:id="@+id/item_ekampus"
             android:checked="false"
             android:icon="@drawable/ios7_contact"
             android:title="@string/title_section7" />
         <item
-            android:id="@+id/item_uzem"
+            android:id="@+id/item_eposta"
             android:checked="false"
             android:icon="@drawable/ios7_contact"
             android:title="@string/title_section8" />
         <item
+            android:id="@+id/item_uzem"
+            android:checked="false"
+            android:icon="@drawable/ios7_contact"
+            android:title="@string/title_section9" />
+        <item
             android:id="@+id/item_kampusgorunumu"
             android:checked="false"
             android:icon="@drawable/ios7_navigate"
-            android:title="@string/title_section9" />
+            android:title="@string/title_section10" />
 
     </group>
 </menu>

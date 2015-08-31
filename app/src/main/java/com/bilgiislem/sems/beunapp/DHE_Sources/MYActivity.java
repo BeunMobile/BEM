@@ -160,7 +160,7 @@ public class MYActivity extends ListActivity implements AppCompatCallback {
             }
             ListAdapter adapter = new SimpleAdapter(
                     MYActivity.this, contactList,
-                    R.layout.item_json, new String[]{TAG_BASLIK}, new int[]{R.id.news});
+                    R.layout.item_listview, new String[]{TAG_BASLIK}, new int[]{R.id.news});
             setListAdapter(adapter);
         }
 

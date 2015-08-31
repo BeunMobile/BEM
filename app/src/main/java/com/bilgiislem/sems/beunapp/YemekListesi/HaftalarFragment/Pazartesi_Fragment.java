@@ -5,12 +5,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.DHE_Sources.ServiceHandler;
 import com.bilgiislem.sems.beunapp.R;
@@ -52,7 +51,9 @@ public class Pazartesi_Fragment extends Fragment {
 
     Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
     final int dayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
+    final int dayOfMonth = localCalendar.get(Calendar.DAY_OF_MONTH);//EKLENDI
     final int weekOfMonth = localCalendar.get(Calendar.WEEK_OF_MONTH);
+    final int lastDayOfMonth = localCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);//EKLENDI
     final int currentDay = localCalendar.get(Calendar.DATE);
     final int currentMonth = localCalendar.get(Calendar.MONTH) + 1;
     final int currentYear = localCalendar.get(Calendar.YEAR);
@@ -83,7 +84,8 @@ public class Pazartesi_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_pazartesi, container, false);
+        View view = inflater.inflate(R.layout.fragment_days, container, false);
+
 
         dateText = (TextView) view.findViewById(R.id.date_text);
         corbaText = (TextView) view.findViewById(R.id.corba_text);
@@ -94,7 +96,6 @@ public class Pazartesi_Fragment extends Fragment {
         yemek2CalText = (TextView) view.findViewById(R.id.yemek2_cal);
         digerText = (TextView) view.findViewById(R.id.diger_text);
         digerCalText = (TextView) view.findViewById(R.id.diger_cal);
-
 
         corbaText.setVisibility(View.INVISIBLE);
         corbaCalText.setVisibility(View.INVISIBLE);
@@ -118,7 +119,6 @@ public class Pazartesi_Fragment extends Fragment {
         } else if (dayOfWeek == 6) {
             url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 4);
         }
-
 
         if (dayOfWeek != 1 && dayOfWeek != 7) {
             new JSONParse().execute();
@@ -172,7 +172,7 @@ public class Pazartesi_Fragment extends Fragment {
                     e.printStackTrace();
                 }
             } else {
-                Toast.makeText(getActivity(), R.string.yemek_no_data, Toast.LENGTH_SHORT).show();
+                Log.d("jsonStrNull", "jsonStr variable is null.");//DEGÝSTÝ
             }
             return null;
         }
@@ -210,7 +210,7 @@ public class Pazartesi_Fragment extends Fragment {
         }
     }
 
-    public int getNumberofSunday(String d1, String d2) throws Exception { // object
+    public int getNumberofSunday(String d1, String d2) throws Exception {
         Date date1 = getDate(d1);
         Date date2 = getDate(d2);
         Calendar c1 = Calendar.getInstance();
@@ -245,4 +245,5 @@ public class Pazartesi_Fragment extends Fragment {
         c.set(Calendar.DAY_OF_MONTH, 1);
         return c.get(Calendar.DAY_OF_WEEK);
     }
+
 }
