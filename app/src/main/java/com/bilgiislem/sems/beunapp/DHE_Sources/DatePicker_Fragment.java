@@ -26,7 +26,7 @@ public class DatePicker_Fragment extends DialogFragment implements DatePickerDia
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
 
-        DatePickerDialog dpd = new DatePickerDialog(getActivity(), AlertDialog.THEME_HOLO_DARK, this, year, month, day) {
+        DatePickerDialog dpd = new DatePickerDialog(getActivity(), AlertDialog.THEME_HOLO_LIGHT, this, year, month, day) {
             //DatePickerDialog dpd = new DatePickerDialog(getActivity(),AlertDialog.THEME_HOLO_LIGHT,this,year, month, day){
             //DatePickerDialog dpd = new DatePickerDialog(getActivity(),AlertDialog.THEME_TRADITIONAL,this,year, month, day){
             @Override
@@ -40,7 +40,6 @@ public class DatePicker_Fragment extends DialogFragment implements DatePickerDia
                 if (day != 0) {
                     View dayPicker = findViewById(day);
                     if (dayPicker != null) {
-                        //Set Day view visibility Off/Gone
                         dayPicker.setVisibility(View.GONE);
                     }
                 }

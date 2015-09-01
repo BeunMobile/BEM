@@ -39,9 +39,12 @@ public class IcerikActivity extends AppCompatActivity {
         url = "http://w3.beun.edu.tr/veri" + http_plus;
 
         setContentView(R.layout.icerik_layout);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(baslik_plus);
+
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         galleryButton = (Button) findViewById(R.id.gallery_button);
         webView = (WebView) findViewById(R.id.icerik_http_text);
@@ -58,6 +61,7 @@ public class IcerikActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(IcerikActivity.this);
+            pDialog.setProgressStyle(ProgressDialog.THEME_HOLO_DARK);
             pDialog.setTitle(getString(R.string.loading));
             pDialog.setMessage(getString(R.string.waitfor));
             pDialog.setIndeterminate(false);

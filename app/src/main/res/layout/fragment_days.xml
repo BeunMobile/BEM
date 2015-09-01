@@ -23,7 +23,7 @@
             android:paddingTop="10dp"
             android:text="@string/loading_yemek"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#7BB0A6"
+            android:textColor="@color/BrushedGreenTextColor"
             android:textSize="30sp"
             android:textStyle="bold" />
 

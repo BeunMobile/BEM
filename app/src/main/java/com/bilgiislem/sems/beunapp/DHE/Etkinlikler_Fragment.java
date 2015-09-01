@@ -1,6 +1,5 @@
 package com.bilgiislem.sems.beunapp.DHE;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
@@ -34,12 +33,11 @@ import java.util.HashMap;
 
 public class Etkinlikler_Fragment extends ListFragment {
 
-    private ProgressDialog pDialog;
     private static String url = "http://w3.beun.edu.tr/mobil-etkinlikler/";
 
     ListView listView;
     Button tebutton;
-    TextView emptyData;
+    TextView emptyData, loadingData;
 
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
@@ -54,25 +52,22 @@ public class Etkinlikler_Fragment extends ListFragment {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.etkinlik_title));
 
-
+        loadingData = (TextView) view.findViewById(R.id.loading_data);
         emptyData = (TextView) view.findViewById(R.id.empty_data);
         emptyData.setText(R.string.empty_etkinlik);
         emptyData.setVisibility(View.GONE);
-
 
         tebutton = (Button) view.findViewById(R.id.tumbutton);
         tebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                android.support.v4.app.DialogFragment newFragment = new DatePicker_Fragment();
+                android.support.v4.app.DialogFragment datePicker = new DatePicker_Fragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("dhe", "etkinlik");
-                newFragment.setArguments(bundle);
-                newFragment.show(getFragmentManager(), "Date Picker");
+                datePicker.setArguments(bundle);
+                datePicker.show(getFragmentManager(), "Date Picker");
             }
         });
-
-
         listView = new ListView(getActivity());
         return view;
     }
@@ -84,10 +79,9 @@ public class Etkinlikler_Fragment extends ListFragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-
-
         contactList = new ArrayList<HashMap<String, String>>();
         listView = getListView();
+        listView.setVisibility(View.GONE);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -99,7 +93,6 @@ public class Etkinlikler_Fragment extends ListFragment {
                 startActivity(intent);
             }
         });
-        // Calling async task to get json
         new GetContacts().execute();
         super.onActivityCreated(savedInstanceState);
     }
@@ -112,11 +105,6 @@ public class Etkinlikler_Fragment extends ListFragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setTitle(getActivity().getString(R.string.loading));
-            pDialog.setMessage(getActivity().getString(R.string.waitfor));
-            pDialog.setCancelable(false);
-            pDialog.show();
         }
 
         @Override
@@ -151,17 +139,19 @@ public class Etkinlikler_Fragment extends ListFragment {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            if (pDialog.isShowing())
-                pDialog.dismiss();
-
+            loadingData.setVisibility(View.GONE);
             if (contactList.isEmpty()) {
                 emptyData.setVisibility(View.VISIBLE);
             }
-
-            ListAdapter adapter = new SimpleAdapter(
-                    getActivity(), contactList,
-                    R.layout.item_listview, new String[]{TAG_BASLIK}, new int[]{R.id.news});
-            setListAdapter(adapter);
+            try {
+                ListAdapter adapter = new SimpleAdapter(
+                        getActivity(), contactList,
+                        R.layout.item_listview, new String[]{TAG_BASLIK}, new int[]{R.id.news});
+                setListAdapter(adapter);
+                listView.setVisibility(View.VISIBLE);
+            } catch (NullPointerException e) {
+                Log.d("NullPointer", "List adapter.");
+            }
         }
     }
 

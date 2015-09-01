@@ -59,10 +59,12 @@ public class MYActivity extends ListActivity implements AppCompatCallback {
         delegate = AppCompatDelegate.create(this, this);
         delegate.onCreate(savedInstanceState);
         delegate.setContentView(R.layout.activity_dheall);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         delegate.setSupportActionBar(toolbar);
         delegate.setTitle(getIntent().getStringExtra("title"));
-        toolbar.setTitleTextColor(0xFFFFFFFF);
+
+        delegate.getSupportActionBar().setHomeButtonEnabled(true);
+        delegate.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         ListView lv = getListView();
@@ -106,6 +108,7 @@ public class MYActivity extends ListActivity implements AppCompatCallback {
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(MYActivity.this);
+            pDialog.setProgressStyle(ProgressDialog.THEME_DEVICE_DEFAULT_DARK);
             pDialog.setTitle(MYActivity.this.getString(R.string.loading));
             pDialog.setMessage(MYActivity.this.getString(R.string.waitfor));
             pDialog.setCancelable(false);

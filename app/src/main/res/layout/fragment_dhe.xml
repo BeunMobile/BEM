@@ -31,4 +31,15 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/BrushedGreenTextColor"
+        android:gravity="center_horizontal"
+        android:text="Yükleniyor..."
+        android:id="@+id/loading_data"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

@@ -21,9 +21,10 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="AppTheme3" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme3" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:colorPrimary">@color/PurpleThemeColor</item>
         <item name="android:colorPrimaryDark">@color/PurpleThemeDarkColor</item>
+        <item name="android:homeAsUpIndicator">@drawable/abc_ic_ab_back_mtrl_am_alpha</item>
         <item name="windowActionBar">false</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
@@ -37,10 +38,18 @@
     </style>
 
 
-    <style name="Transparent" parent="AppTheme">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
+    <style name="MainTheme" parent="MainTheme.Base">
+
+
     </style>
+
+    <style name="MainTheme.Base" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:textColorPrimary">@color/abc_primary_text_material_dark</item>
+        <item name="colorPrimary">@color/PurpleThemeColor</item>
+        <item name="colorPrimaryDark">@color/PurpleThemeDarkColor</item>
+        <item name="android:windowBackground">@color/primary_material_light</item>
+        <item name="colorAccent">@color/BrushedGold</item>
+    </style>
+
 
 </resources>

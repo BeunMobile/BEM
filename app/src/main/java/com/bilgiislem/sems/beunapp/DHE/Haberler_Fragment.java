@@ -1,6 +1,5 @@
 package com.bilgiislem.sems.beunapp.DHE;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
@@ -15,6 +14,7 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.bilgiislem.sems.beunapp.DHE_Sources.DatePicker_Fragment;
 import com.bilgiislem.sems.beunapp.DHE_Sources.IcerikActivity;
@@ -33,7 +33,6 @@ import java.util.HashMap;
 
 public class Haberler_Fragment extends ListFragment {
 
-    private ProgressDialog pDialog;
     private static String url = "http://w3.beun.edu.tr/mobil-haberler/";
     ListView listView;
     Button thbutton;
@@ -43,6 +42,9 @@ public class Haberler_Fragment extends ListFragment {
     JSONArray contacts = null;
     ArrayList<HashMap<String, String>> contactList;
 
+    TextView emptyData, loadingData;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -50,19 +52,22 @@ public class Haberler_Fragment extends ListFragment {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.haber_title));
 
+        loadingData = (TextView) view.findViewById(R.id.loading_data);
+        emptyData = (TextView) view.findViewById(R.id.empty_data);
+        emptyData.setText(R.string.empty_haber);
+        emptyData.setVisibility(View.GONE);
+
         thbutton = (Button) view.findViewById(R.id.tumbutton);
         thbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                android.support.v4.app.DialogFragment newFragment = new DatePicker_Fragment();
+                android.support.v4.app.DialogFragment datePicker = new DatePicker_Fragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("dhe", "haber");
-                newFragment.setArguments(bundle);
-                newFragment.show(getFragmentManager(), "Date Picker");
+                datePicker.setArguments(bundle);
+                datePicker.show(getFragmentManager(), "Date Picker");
             }
         });
-
-
         listView = new ListView(getActivity());
         return view;
     }
@@ -74,10 +79,9 @@ public class Haberler_Fragment extends ListFragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-
-
         contactList = new ArrayList<HashMap<String, String>>();
         listView = getListView();
+        listView.setVisibility(View.GONE);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -89,7 +93,6 @@ public class Haberler_Fragment extends ListFragment {
                 startActivity(intent);
             }
         });
-        // Calling async task to get json
         new GetContacts().execute();
         super.onActivityCreated(savedInstanceState);
     }
@@ -102,11 +105,6 @@ public class Haberler_Fragment extends ListFragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setTitle(getActivity().getString(R.string.loading));
-            pDialog.setMessage(getActivity().getString(R.string.waitfor));
-            pDialog.setCancelable(false);
-            pDialog.show();
         }
 
         @Override
@@ -141,12 +139,19 @@ public class Haberler_Fragment extends ListFragment {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            if (pDialog.isShowing())
-                pDialog.dismiss();
-            ListAdapter adapter = new SimpleAdapter(
-                    getActivity(), contactList,
-                    R.layout.item_listview, new String[]{TAG_BASLIK}, new int[]{R.id.news});
-            setListAdapter(adapter);
+            loadingData.setVisibility(View.GONE);
+            if (contactList.isEmpty()) {
+                emptyData.setVisibility(View.VISIBLE);
+            }
+            try {
+                ListAdapter adapter = new SimpleAdapter(
+                        getActivity(), contactList,
+                        R.layout.item_listview, new String[]{TAG_BASLIK}, new int[]{R.id.news});
+                setListAdapter(adapter);
+                listView.setVisibility(View.VISIBLE);
+            } catch (NullPointerException e) {
+                Log.d("NullPointer", "List adapter.");
+            }
         }
     }
 

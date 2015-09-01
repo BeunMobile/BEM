@@ -1,6 +1,5 @@
 package com.bilgiislem.sems.beunapp.DHE;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
@@ -35,12 +34,11 @@ import org.jsoup.Jsoup;
 
 public class Duyurular_Fragment extends ListFragment {
 
-    private ProgressDialog pDialog;
     private static String url = "http://w3.beun.edu.tr/mobil-duyurular/";
 
     ListView listView;
     Button tdbutton;
-    TextView emptyData;
+    TextView emptyData, loadingData;
 
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
@@ -55,18 +53,20 @@ public class Duyurular_Fragment extends ListFragment {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.duyuru_title));
 
+        loadingData = (TextView) view.findViewById(R.id.loading_data);
         emptyData = (TextView) view.findViewById(R.id.empty_data);
+        emptyData.setText(R.string.empty_duyuru);
         emptyData.setVisibility(View.GONE);
 
         tdbutton = (Button) view.findViewById(R.id.tumbutton);
         tdbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                android.support.v4.app.DialogFragment newFragment = new DatePicker_Fragment();
+                android.support.v4.app.DialogFragment datePicker = new DatePicker_Fragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("dhe", "duyuru");
-                newFragment.setArguments(bundle);
-                newFragment.show(getFragmentManager(), "Date Picker");
+                datePicker.setArguments(bundle);
+                datePicker.show(getFragmentManager(), "Date Picker");
             }
         });
         listView = new ListView(getActivity());
@@ -82,6 +82,7 @@ public class Duyurular_Fragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         contactList = new ArrayList<HashMap<String, String>>();
         listView = getListView();
+        listView.setVisibility(View.GONE);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -101,11 +102,6 @@ public class Duyurular_Fragment extends ListFragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setTitle(getActivity().getString(R.string.loading));
-            pDialog.setMessage(getActivity().getString(R.string.waitfor));
-            pDialog.setCancelable(false);
-            pDialog.show();
         }
 
         @Override
@@ -140,18 +136,19 @@ public class Duyurular_Fragment extends ListFragment {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            if (pDialog.isShowing()) {
-                pDialog.dismiss();
-            }
+            loadingData.setVisibility(View.GONE);
             if (contactList.isEmpty()) {
                 emptyData.setVisibility(View.VISIBLE);
             }
-            ListAdapter adapter = new SimpleAdapter(
-                    getActivity(), contactList,
-                    R.layout.item_listview, new String[]{TAG_BASLIK}, new int[]{R.id.news});
-            setListAdapter(adapter);
-
-
+            try {
+                ListAdapter adapter = new SimpleAdapter(
+                        getActivity(), contactList,
+                        R.layout.item_listview, new String[]{TAG_BASLIK}, new int[]{R.id.news});
+                setListAdapter(adapter);
+                listView.setVisibility(View.VISIBLE);
+            } catch (NullPointerException e) {
+                Log.d("NullPointer", "List adapter.");
+            }
         }
     }
 

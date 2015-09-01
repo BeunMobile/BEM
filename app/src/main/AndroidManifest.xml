@@ -54,14 +54,14 @@
         <activity
             android:name=".KampusGorunumu.SynthActivity"
             android:label="@string/title_activity_beu_3_dpage"
-            android:theme="@style/AppTheme4" />
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
         <activity
             android:name=".DHE_Sources.IcerikActivity"
-            android:theme="@style/AppTheme2" />
+            android:theme="@style/MainTheme" />
         <activity
             android:name=".DHE_Sources.MYActivity"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme2" />
+            android:theme="@style/MainTheme" />
 
         <activity
             android:name=".DHE_Sources.GridViewSources.DetailsActivity"
