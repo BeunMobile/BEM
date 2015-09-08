@@ -36,7 +36,6 @@ public class Akademik_Fragment extends Fragment {
 
 
 
-
         return view;
     }
 
