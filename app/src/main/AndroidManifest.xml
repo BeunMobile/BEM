@@ -69,7 +69,7 @@
 
         <activity
             android:name=".DHE_Sources.GridViewSources.GridViewActivity"
-            android:theme="@style/AppTheme3" />
+            android:theme="@style/MainTheme" />
 
         <activity
             android:name=".YemekListesi.PDFActivity"
