@@ -3,9 +3,11 @@ package com.bilgiislem.sems.beunapp.DHE_Sources.GridViewSources;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -13,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.bilgiislem.sems.beunapp.MainAndWeb.MainActivity;
 import com.bilgiislem.sems.beunapp.R;
 
 import org.apache.http.HttpResponse;
@@ -177,4 +180,15 @@ public class GridViewActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

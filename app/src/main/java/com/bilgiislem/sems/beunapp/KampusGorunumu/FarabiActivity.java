@@ -117,7 +117,7 @@ public class FarabiActivity extends FragmentActivity implements GoogleMap.OnInfo
         mMap.addMarker(new MarkerOptions().position(new LatLng(41.449085, 31.763491)).title("Alt Kapi"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(41.454093, 31.764503)).title("BEU Giris"));
 
-        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(41.450777, 31.762411)).zoom(17).tilt(25).build();
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(41.450777, 31.762411)).zoom(17).tilt(40).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
         mMap.animateCamera(cameraUpdate);
 
