@@ -28,7 +28,7 @@ import com.bilgiislem.sems.beunapp.DHE.Haberler_Fragment;
 import com.bilgiislem.sems.beunapp.DHE.Etkinlikler_Fragment;
 import com.bilgiislem.sems.beunapp.KampusGorunumu.Kampus_Fragment;
 import com.bilgiislem.sems.beunapp.R;
-import com.bilgiislem.sems.beunapp.YemekListesi.Yemek_Fragment;
+import com.bilgiislem.sems.beunapp.YemekListesi.YemekTab_Fragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame, objFragment).addToBackStack(null).commit();
                         return true;
                     case R.id.item_yemeklistesi:
-                        objFragment = new Yemek_Fragment();
+                        objFragment = new YemekTab_Fragment();
                         getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame, objFragment).addToBackStack(null).commit();
                         return true;
                     case R.id.item_akademik:

@@ -36,14 +36,13 @@ public class Haberler_Fragment extends ListFragment {
     private static String url = "http://w3.beun.edu.tr/mobil-haberler/";
     ListView listView;
     Button thbutton;
+    TextView emptyData, loadingData;
+
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
     JSONArray contacts = null;
-    ArrayList<HashMap<String, String>> contactList;
-
-    TextView emptyData, loadingData;
-
+    ArrayList<HashMap<String, String>> haberList;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -79,21 +78,21 @@ public class Haberler_Fragment extends ListFragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        contactList = new ArrayList<HashMap<String, String>>();
+        haberList = new ArrayList<HashMap<String, String>>();
         listView = getListView();
         listView.setVisibility(View.GONE);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String adres2 = contactList.get(position).get("adres");
-                String baslik2 = contactList.get(position).get("baslik");
+                String adres2 = haberList.get(position).get("adres");
+                String baslik2 = haberList.get(position).get("baslik");
                 Intent intent = new Intent(getActivity(), IcerikActivity.class);
                 intent.putExtra("adres", adres2);
                 intent.putExtra("baslik", baslik2);
                 startActivity(intent);
             }
         });
-        new GetContacts().execute();
+        new GetJSON().execute();
         super.onActivityCreated(savedInstanceState);
     }
 
@@ -101,7 +100,7 @@ public class Haberler_Fragment extends ListFragment {
     /**
      * Async task class to get json by making HTTP call
      */
-    private class GetContacts extends AsyncTask<Void, Void, Void> {
+    private class GetJSON extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -123,7 +122,7 @@ public class Haberler_Fragment extends ListFragment {
                         baslik = html2text(baslik);
                         contact.put(TAG_BASLIK, baslik);
                         contact.put(TAG_ADRES, adres);
-                        contactList.add(contact);
+                        haberList.add(contact);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -140,12 +139,12 @@ public class Haberler_Fragment extends ListFragment {
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
             loadingData.setVisibility(View.GONE);
-            if (contactList.isEmpty()) {
+            if (haberList.isEmpty()) {
                 emptyData.setVisibility(View.VISIBLE);
             }
             try {
                 ListAdapter adapter = new SimpleAdapter(
-                        getActivity(), contactList,
+                        getActivity(), haberList,
                         R.layout.item_listview, new String[]{TAG_BASLIK}, new int[]{R.id.news});
                 setListAdapter(adapter);
                 listView.setVisibility(View.VISIBLE);

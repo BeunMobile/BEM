@@ -3,7 +3,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/dhe_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/wallet_bright_foreground_holo_dark">
 
     <ListView
         android:id="@android:id/list"
@@ -37,7 +38,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/BrushedGreenTextColor"
         android:gravity="center_horizontal"
-        android:text="Yükleniyor..."
+        android:text="@string/loading_yemek"
         android:id="@+id/loading_data"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />

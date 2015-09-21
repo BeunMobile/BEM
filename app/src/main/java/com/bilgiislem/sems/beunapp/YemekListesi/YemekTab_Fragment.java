@@ -1,6 +1,5 @@
 package com.bilgiislem.sems.beunapp.YemekListesi;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,24 +17,22 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bilgiislem.sems.beunapp.MainAndWeb.MainActivity;
 import com.bilgiislem.sems.beunapp.R;
-import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.Carsamba_Fragment;
-import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.Cuma_Fragment;
-import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.Pazartesi_Fragment;
-import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.Persembe_Fragment;
-import com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment.Sali_Fragment;
+import com.bilgiislem.sems.beunapp.YemekListesi.YemekListesiHaftalar.Carsamba_Fragment;
+import com.bilgiislem.sems.beunapp.YemekListesi.YemekListesiHaftalar.Cuma_Fragment;
+import com.bilgiislem.sems.beunapp.YemekListesi.YemekListesiHaftalar.Pazartesi_Fragment;
+import com.bilgiislem.sems.beunapp.YemekListesi.YemekListesiHaftalar.Persembe_Fragment;
+import com.bilgiislem.sems.beunapp.YemekListesi.YemekListesiHaftalar.Sali_Fragment;
 
 import java.util.Calendar;
 import java.util.TimeZone;
 
-public class Yemek_Fragment extends Fragment {
+public class YemekTab_Fragment extends Fragment {
 
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
     public static Button buttonPdf;
     public static int int_items = 5;
-
 
     Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
     final int currentDayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
@@ -48,7 +45,7 @@ public class Yemek_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_yemek, container, false);
-        ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.yemek_title));
+//        ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.yemek_title));
         tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
 
@@ -72,7 +69,7 @@ public class Yemek_Fragment extends Fragment {
          *Set an Apater for the View Pager
          */
 
-        viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
+        viewPager.setAdapter(new YemekListesiAdapter(getChildFragmentManager()));
         viewPager.getAdapter().notifyDataSetChanged();
 
         /**
@@ -101,10 +98,9 @@ public class Yemek_Fragment extends Fragment {
 
     }
 
-    //FragmentPagerAdapter
-    class MyAdapter extends FragmentStatePagerAdapter {
+    class YemekListesiAdapter extends FragmentStatePagerAdapter {
 
-        public MyAdapter(FragmentManager fm) {
+        public YemekListesiAdapter(FragmentManager fm) {
             super(fm);
         }
 

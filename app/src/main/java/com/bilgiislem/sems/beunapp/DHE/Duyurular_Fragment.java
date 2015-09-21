@@ -35,7 +35,6 @@ import org.jsoup.Jsoup;
 public class Duyurular_Fragment extends ListFragment {
 
     private static String url = "http://w3.beun.edu.tr/mobil-duyurular/";
-
     ListView listView;
     Button tdbutton;
     TextView emptyData, loadingData;
@@ -44,7 +43,7 @@ public class Duyurular_Fragment extends ListFragment {
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
     JSONArray contacts = null;
-    ArrayList<HashMap<String, String>> contactList;
+    ArrayList<HashMap<String, String>> duyuruList;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -80,25 +79,25 @@ public class Duyurular_Fragment extends ListFragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        contactList = new ArrayList<HashMap<String, String>>();
+        duyuruList = new ArrayList<HashMap<String, String>>();
         listView = getListView();
         listView.setVisibility(View.GONE);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String adres2 = contactList.get(position).get("adres");
-                String baslik2 = contactList.get(position).get("baslik");
+                String adres2 = duyuruList.get(position).get("adres");
+                String baslik2 = duyuruList.get(position).get("baslik");
                 Intent intent = new Intent(getActivity(), IcerikActivity.class);
                 intent.putExtra("adres", adres2);
                 intent.putExtra("baslik", baslik2);
                 startActivity(intent);
             }
         });
-        new GetContacts().execute();
+        new GetJSON().execute();
         super.onActivityCreated(savedInstanceState);
     }
 
-    private class GetContacts extends AsyncTask<Void, Void, Void> {
+    private class GetJSON extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -120,7 +119,7 @@ public class Duyurular_Fragment extends ListFragment {
                         baslik = html2text(baslik);
                         contact.put(TAG_BASLIK, baslik);
                         contact.put(TAG_ADRES, adres);
-                        contactList.add(contact);
+                        duyuruList.add(contact);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -136,18 +135,18 @@ public class Duyurular_Fragment extends ListFragment {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            loadingData.setVisibility(View.GONE);
-            if (contactList.isEmpty()) {
+            if (duyuruList.isEmpty()) {
                 emptyData.setVisibility(View.VISIBLE);
             }
             try {
                 ListAdapter adapter = new SimpleAdapter(
-                        getActivity(), contactList,
+                        getActivity(), duyuruList,
                         R.layout.item_listview, new String[]{TAG_BASLIK}, new int[]{R.id.news});
                 setListAdapter(adapter);
                 listView.setVisibility(View.VISIBLE);
+                loadingData.setVisibility(View.GONE);
             } catch (NullPointerException e) {
-                Log.d("NullPointer", "List adapter.");
+                Log.d("NullPointer", "In this try.");
             }
         }
     }

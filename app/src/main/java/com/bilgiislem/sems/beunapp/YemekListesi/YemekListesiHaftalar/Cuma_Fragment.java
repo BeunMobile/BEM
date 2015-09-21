@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment;
+package com.bilgiislem.sems.beunapp.YemekListesi.YemekListesiHaftalar;
 
 
 import android.os.AsyncTask;
@@ -29,8 +29,10 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.TimeZone;
 
-
-public class Carsamba_Fragment extends Fragment {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class Cuma_Fragment extends Fragment {
 
     TextView dateText;
     TextView corbaText;
@@ -106,17 +108,17 @@ public class Carsamba_Fragment extends Fragment {
         digerCalText.setVisibility(View.INVISIBLE);
 
 
-        //carsamba==3
-        if (dayOfWeek == 4) {
+        //persembe==3
+        if (dayOfWeek == 6) {
             url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + currentDay;
         } else if (dayOfWeek == 2) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay + 2);
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay + 4);
         } else if (dayOfWeek == 3) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay + 1);
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay + 3);
+        } else if (dayOfWeek == 4) {
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay + 2);
         } else if (dayOfWeek == 5) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 1);
-        } else if (dayOfWeek == 6) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 2);
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay + 1);
         }
 
 

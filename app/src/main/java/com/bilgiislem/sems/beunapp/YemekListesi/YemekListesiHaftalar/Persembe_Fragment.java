@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment;
+package com.bilgiislem.sems.beunapp.YemekListesi.YemekListesiHaftalar;
 
 
 import android.os.AsyncTask;

@@ -10,12 +10,10 @@ import org.json.JSONObject;
 import org.jsoup.Jsoup;
 
 import android.app.ListActivity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatCallback;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.view.ActionMode;
@@ -28,14 +26,13 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bilgiislem.sems.beunapp.MainAndWeb.MainActivity;
 import com.bilgiislem.sems.beunapp.R;
 
 public class MYActivity extends ListActivity implements AppCompatCallback {
 
-    private ProgressDialog pDialog;
 
     private static String url;
 
@@ -47,38 +44,36 @@ public class MYActivity extends ListActivity implements AppCompatCallback {
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
 
-    JSONArray contacts = null;
+    JSONArray JSONData = null;
 
-    ArrayList<HashMap<String, String>> contactList;
+    TextView loadingData;
+    ListView listView;
+
+    ArrayList<HashMap<String, String>> JSONDataList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         url = "http://w3.beun.edu.tr/mobil-arsiv/" + getIntent().getStringExtra("datelink");
-
-        Log.d("Test", "" + getIntent().getStringExtra("datelink"));
-        contactList = new ArrayList<HashMap<String, String>>();
-
+        JSONDataList = new ArrayList<HashMap<String, String>>();
         delegate = AppCompatDelegate.create(this, this);
         delegate.onCreate(savedInstanceState);
         delegate.setContentView(R.layout.activity_dheall);
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         delegate.setSupportActionBar(toolbar);
         delegate.setTitle(getIntent().getStringExtra("title"));
-
         delegate.getSupportActionBar().setHomeButtonEnabled(true);
         delegate.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-        ListView lv = getListView();
-
-        lv.setOnItemClickListener(new OnItemClickListener() {
+        loadingData = (TextView) findViewById(R.id.loading_data);
+        listView = getListView();
+        listView.setVisibility(View.GONE);
+        listView.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                String adres2 = contactList.get(position).get("adres");
-                String baslik2 = contactList.get(position).get("baslik");
+                String adres2 = JSONDataList.get(position).get("adres");
+                String baslik2 = JSONDataList.get(position).get("baslik");
                 Intent intent = new Intent(MYActivity.this, IcerikActivity.class);
                 intent.putExtra("adres", adres2);
                 intent.putExtra("baslik", baslik2);
@@ -86,7 +81,7 @@ public class MYActivity extends ListActivity implements AppCompatCallback {
             }
         });
 
-        new GetContacts().execute();
+        new GetJSON().execute();
     }
 
     @Override
@@ -105,17 +100,12 @@ public class MYActivity extends ListActivity implements AppCompatCallback {
         return null;
     }
 
-    private class GetContacts extends AsyncTask<Void, Void, Void> {
+    private class GetJSON extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(MYActivity.this);
-            pDialog.setProgressStyle(ProgressDialog.THEME_DEVICE_DEFAULT_DARK);
-            pDialog.setTitle(MYActivity.this.getString(R.string.loading));
-            pDialog.setMessage(MYActivity.this.getString(R.string.waitfor));
-            pDialog.setCancelable(false);
-            pDialog.show();
+
         }
 
         @Override
@@ -128,10 +118,9 @@ public class MYActivity extends ListActivity implements AppCompatCallback {
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
-                    contacts = jsonObj.getJSONArray(TAG_LISTE);
-
-                    for (int i = 0; i < contacts.length(); i++) {
-                        JSONObject c = contacts.getJSONObject(i);
+                    JSONData = jsonObj.getJSONArray(TAG_LISTE);
+                    for (int i = 0; i < JSONData.length(); i++) {
+                        JSONObject c = JSONData.getJSONObject(i);
                         String baslik = c.getString(TAG_BASLIK);
                         String adres = c.getString(TAG_ADRES);
                         HashMap<String, String> contact = new HashMap<String, String>();
@@ -141,7 +130,7 @@ public class MYActivity extends ListActivity implements AppCompatCallback {
                         baslik = html2text(baslik);
                         contact.put(TAG_BASLIK, baslik);
                         contact.put(TAG_ADRES, adres);
-                        contactList.add(contact);
+                        JSONDataList.add(contact);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -156,18 +145,21 @@ public class MYActivity extends ListActivity implements AppCompatCallback {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-
-            if (pDialog.isShowing()) {
-                pDialog.dismiss();
-            }
-            if (contacts.toString().contains("[]")) {
+            if (JSONData.toString().contains("[]")) {
                 Toast.makeText(getApplicationContext(), R.string.duyuru_no_data, Toast.LENGTH_SHORT).show();
                 finish();
             }
-            ListAdapter adapter = new SimpleAdapter(
-                    MYActivity.this, contactList,
-                    R.layout.item_listview, new String[]{TAG_BASLIK}, new int[]{R.id.news});
-            setListAdapter(adapter);
+            try {
+                ListAdapter adapter = new SimpleAdapter(
+                        MYActivity.this, JSONDataList,
+                        R.layout.item_listview, new String[]{TAG_BASLIK}, new int[]{R.id.news});
+                setListAdapter(adapter);
+                listView.setVisibility(View.VISIBLE);
+                loadingData.setVisibility(View.GONE);
+            } catch (NullPointerException e) {
+                Log.d("NullPointer", "In this try.");
+            }
+
         }
 
     }

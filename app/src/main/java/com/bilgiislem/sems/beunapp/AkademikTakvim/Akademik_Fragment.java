@@ -1,6 +1,7 @@
 package com.bilgiislem.sems.beunapp.AkademikTakvim;
 
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,10 +20,8 @@ public class Akademik_Fragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_akademik, container, false);
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         Button gat = (Button) view.findViewById(R.id.button_gat);
         Button dhf = (Button) view.findViewById(R.id.button_dhf);
@@ -34,7 +33,13 @@ public class Akademik_Fragment extends Fragment {
         Button yazok = (Button) view.findViewById(R.id.button_yazok);
         Button yeteneksi = (Button) view.findViewById(R.id.button_yeteneksi);
 
-
+        gat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GBYActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

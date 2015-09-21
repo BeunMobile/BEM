@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment;
+package com.bilgiislem.sems.beunapp.YemekListesi.YemekListesiHaftalar;
 
 
 import android.os.AsyncTask;
@@ -29,10 +29,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.TimeZone;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class Cuma_Fragment extends Fragment {
+public class Pazartesi_Fragment extends Fragment {
 
     TextView dateText;
     TextView corbaText;
@@ -54,7 +51,9 @@ public class Cuma_Fragment extends Fragment {
 
     Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
     final int dayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
+    final int dayOfMonth = localCalendar.get(Calendar.DAY_OF_MONTH);//EKLENDI
     final int weekOfMonth = localCalendar.get(Calendar.WEEK_OF_MONTH);
+    final int lastDayOfMonth = localCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);//EKLENDI
     final int currentDay = localCalendar.get(Calendar.DATE);
     final int currentMonth = localCalendar.get(Calendar.MONTH) + 1;
     final int currentYear = localCalendar.get(Calendar.YEAR);
@@ -87,6 +86,7 @@ public class Cuma_Fragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_days, container, false);
 
+
         dateText = (TextView) view.findViewById(R.id.date_text);
         corbaText = (TextView) view.findViewById(R.id.corba_text);
         corbaCalText = (TextView) view.findViewById(R.id.corba_cal);
@@ -96,7 +96,6 @@ public class Cuma_Fragment extends Fragment {
         yemek2CalText = (TextView) view.findViewById(R.id.yemek2_cal);
         digerText = (TextView) view.findViewById(R.id.diger_text);
         digerCalText = (TextView) view.findViewById(R.id.diger_cal);
-
 
         corbaText.setVisibility(View.INVISIBLE);
         corbaCalText.setVisibility(View.INVISIBLE);
@@ -108,19 +107,18 @@ public class Cuma_Fragment extends Fragment {
         digerCalText.setVisibility(View.INVISIBLE);
 
 
-        //persembe==3
-        if (dayOfWeek == 6) {
+        //pazartesi==2
+        if (dayOfWeek == 2) {
             url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + currentDay;
-        } else if (dayOfWeek == 2) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay + 4);
         } else if (dayOfWeek == 3) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay + 3);
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 1);
         } else if (dayOfWeek == 4) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay + 2);
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 2);
         } else if (dayOfWeek == 5) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay + 1);
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 3);
+        } else if (dayOfWeek == 6) {
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 4);
         }
-
 
         if (dayOfWeek != 1 && dayOfWeek != 7) {
             new JSONParse().execute();
@@ -212,7 +210,7 @@ public class Cuma_Fragment extends Fragment {
         }
     }
 
-    public int getNumberofSunday(String d1, String d2) throws Exception { // object
+    public int getNumberofSunday(String d1, String d2) throws Exception {
         Date date1 = getDate(d1);
         Date date2 = getDate(d2);
         Calendar c1 = Calendar.getInstance();
@@ -247,4 +245,5 @@ public class Cuma_Fragment extends Fragment {
         c.set(Calendar.DAY_OF_MONTH, 1);
         return c.get(Calendar.DAY_OF_WEEK);
     }
+
 }

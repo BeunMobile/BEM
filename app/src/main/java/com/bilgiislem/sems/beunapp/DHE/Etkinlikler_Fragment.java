@@ -34,7 +34,6 @@ import java.util.HashMap;
 public class Etkinlikler_Fragment extends ListFragment {
 
     private static String url = "http://w3.beun.edu.tr/mobil-etkinlikler/";
-
     ListView listView;
     Button tebutton;
     TextView emptyData, loadingData;
@@ -43,7 +42,7 @@ public class Etkinlikler_Fragment extends ListFragment {
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
     JSONArray contacts = null;
-    ArrayList<HashMap<String, String>> contactList;
+    ArrayList<HashMap<String, String>> etkinlikList;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -79,21 +78,21 @@ public class Etkinlikler_Fragment extends ListFragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        contactList = new ArrayList<HashMap<String, String>>();
+        etkinlikList = new ArrayList<HashMap<String, String>>();
         listView = getListView();
         listView.setVisibility(View.GONE);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String adres2 = contactList.get(position).get("adres");
-                String baslik2 = contactList.get(position).get("baslik");
+                String adres2 = etkinlikList.get(position).get("adres");
+                String baslik2 = etkinlikList.get(position).get("baslik");
                 Intent intent = new Intent(getActivity(), IcerikActivity.class);
                 intent.putExtra("adres", adres2);
                 intent.putExtra("baslik", baslik2);
                 startActivity(intent);
             }
         });
-        new GetContacts().execute();
+        new GetJSON().execute();
         super.onActivityCreated(savedInstanceState);
     }
 
@@ -101,7 +100,7 @@ public class Etkinlikler_Fragment extends ListFragment {
     /**
      * Async task class to get json by making HTTP call
      */
-    private class GetContacts extends AsyncTask<Void, Void, Void> {
+    private class GetJSON extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -123,7 +122,7 @@ public class Etkinlikler_Fragment extends ListFragment {
                         baslik = html2text(baslik);
                         contact.put(TAG_BASLIK, baslik);
                         contact.put(TAG_ADRES, adres);
-                        contactList.add(contact);
+                        etkinlikList.add(contact);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -140,12 +139,12 @@ public class Etkinlikler_Fragment extends ListFragment {
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
             loadingData.setVisibility(View.GONE);
-            if (contactList.isEmpty()) {
+            if (etkinlikList.isEmpty()) {
                 emptyData.setVisibility(View.VISIBLE);
             }
             try {
                 ListAdapter adapter = new SimpleAdapter(
-                        getActivity(), contactList,
+                        getActivity(), etkinlikList,
                         R.layout.item_listview, new String[]{TAG_BASLIK}, new int[]{R.id.news});
                 setListAdapter(adapter);
                 listView.setVisibility(View.VISIBLE);

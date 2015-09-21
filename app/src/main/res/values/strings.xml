@@ -121,4 +121,10 @@ yükleniyor bu biraz zaman alabilir.</string>
     <string name="yaz_takvim">Yaz Okulu</string>
     <string name="yetenek_takvim">Yetenek Sınavları</string>
 
+    //GBYTab Akademik Takvim
+    <string name="tab_guz">Güz Yarıyılı</string>
+    <string name="tab_bahar">Bahar Yarıyılı</string>
+    <string name="tab_yaz">Yaz Dönemi</string>
+
+
 </resources>

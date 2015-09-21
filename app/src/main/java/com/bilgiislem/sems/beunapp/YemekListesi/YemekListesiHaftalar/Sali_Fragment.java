@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp.YemekListesi.HaftalarFragment;
+package com.bilgiislem.sems.beunapp.YemekListesi.YemekListesiHaftalar;
 
 
 import android.os.AsyncTask;
@@ -27,9 +27,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
-public class Pazartesi_Fragment extends Fragment {
+
+public class Sali_Fragment extends Fragment {
 
     TextView dateText;
     TextView corbaText;
@@ -57,6 +59,7 @@ public class Pazartesi_Fragment extends Fragment {
     final int currentDay = localCalendar.get(Calendar.DATE);
     final int currentMonth = localCalendar.get(Calendar.MONTH) + 1;
     final int currentYear = localCalendar.get(Calendar.YEAR);
+
 
     int whichWeek;
     int firstdayOfMonth;
@@ -86,6 +89,15 @@ public class Pazartesi_Fragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_days, container, false);
 
+        String dateString = String.format("%d-%d-%d", currentYear, currentMonth, lastDayOfMonth);
+        Date lastDayDate = null;
+        try {
+            lastDayDate = new SimpleDateFormat("yyyy-M-d").parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        String lastDayOfMonthName = new SimpleDateFormat("EEEE", Locale.ENGLISH).format(lastDayDate);
 
         dateText = (TextView) view.findViewById(R.id.date_text);
         corbaText = (TextView) view.findViewById(R.id.corba_text);
@@ -97,6 +109,7 @@ public class Pazartesi_Fragment extends Fragment {
         digerText = (TextView) view.findViewById(R.id.diger_text);
         digerCalText = (TextView) view.findViewById(R.id.diger_cal);
 
+
         corbaText.setVisibility(View.INVISIBLE);
         corbaCalText.setVisibility(View.INVISIBLE);
         yemek1Text.setVisibility(View.INVISIBLE);
@@ -106,19 +119,19 @@ public class Pazartesi_Fragment extends Fragment {
         digerText.setVisibility(View.INVISIBLE);
         digerCalText.setVisibility(View.INVISIBLE);
 
-
-        //pazartesi==2
-        if (dayOfWeek == 2) {
+        //sali==3
+        if (dayOfWeek == 3) {
             url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + currentDay;
-        } else if (dayOfWeek == 3) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 1);
+        } else if (dayOfWeek == 2) {
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay + 1);
         } else if (dayOfWeek == 4) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 2);
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 1);
         } else if (dayOfWeek == 5) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 3);
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 2);
         } else if (dayOfWeek == 6) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 4);
+            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 3);
         }
+
 
         if (dayOfWeek != 1 && dayOfWeek != 7) {
             new JSONParse().execute();
@@ -210,7 +223,7 @@ public class Pazartesi_Fragment extends Fragment {
         }
     }
 
-    public int getNumberofSunday(String d1, String d2) throws Exception {
+    public int getNumberofSunday(String d1, String d2) throws Exception { // object
         Date date1 = getDate(d1);
         Date date2 = getDate(d2);
         Calendar c1 = Calendar.getInstance();
@@ -245,5 +258,4 @@ public class Pazartesi_Fragment extends Fragment {
         c.set(Calendar.DAY_OF_MONTH, 1);
         return c.get(Calendar.DAY_OF_WEEK);
     }
-
 }
