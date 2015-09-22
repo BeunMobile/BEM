@@ -6,16 +6,12 @@ package com.bilgiislem.sems.beunapp.AkademikTakvim.AkademikTakvimAdapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -31,7 +27,6 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_recyclerview, null);
-
         CustomViewHolder viewHolder = new CustomViewHolder(view);
         return viewHolder;
     }
@@ -41,6 +36,9 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         FeedItem feedItem = feedItemList.get(position);
 
         holder.title.setText(feedItem.getTitle());
+        holder.firstDay.setText(feedItem.getFirstDay());
+        holder.firstMonth.setText(feedItem.getFirstMonth());
+        holder.firstYear.setText(feedItem.getFirstYear());
     }
 
     @Override
@@ -49,15 +47,17 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
     }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
-        protected TextView firstDate;
-        protected TextView secDate;
         protected TextView title;
+        protected TextView firstDay;
+        protected TextView firstMonth;
+        protected TextView firstYear;
 
         public CustomViewHolder(View view) {
             super(view);
-            //this.firstDate = (TextView) view.findViewById(R.id.date1_text);
-            //this.secDate = (TextView) view.findViewById(R.id.date2_text);
-            this.title = (TextView) view.findViewById(R.id.title_text);
+            this.title = (TextView) view.findViewById(R.id.titletext);
+            this.firstDay = (TextView) view.findViewById(R.id.firstday);
+            this.firstMonth = (TextView) view.findViewById(R.id.firstmonth);
+            this.firstYear = (TextView) view.findViewById(R.id.firstyear);
         }
     }
 }

@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     tools:context="com.bilgiislem.sems.beunapp.AkademikTakvim.AkademikTakvimSecenekler.GuzYariyili_Fragment">
 
-
     <view
         android:id="@+id/recycler"
         class="android.support.v7.widget.RecyclerView"

@@ -35,15 +35,21 @@ public class GuzYariyili_Fragment extends android.support.v4.app.Fragment {
     private static final String TAG_KATEGORIID = "kategori_id";
     private static final String TAG_TAKVIM = "takvim";
     private static final String TAG_BASLIK = "baslik";
+    private static final String TAG_BASLANGIC = "baslangic";
+    private static final String TAG_BITIS = "bitis";
+    private static final String TAG_GUN = "gun";
+    private static final String TAG_AY = "ay";
+    private static final String TAG_YIL = "yil";
+    private static final String TAG_RENK = "renk";
 
-    JSONArray AllJSONTakvimData = null, JSONTakvimSelectedData = null;
+
+    JSONArray AllJSONTakvimData = null, JSONTakvimSelectedData = null, JSONBitisData = null;
+    JSONObject JSONBaslangicData = null;
     RecyclerView recyclerView;
     private List<FeedItem> feedsList;
     private MyRecyclerAdapter adapter;
     TextView loadingData;
     String urlJSONData = "http://w3.beun.edu.tr/akademik_takvim/veri/?yil=2015";
-
-    ArrayList<HashMap<String, String>> GuzYariliList;
 
     public GuzYariyili_Fragment() {
 
@@ -84,10 +90,28 @@ public class GuzYariyili_Fragment extends android.support.v4.app.Fragment {
                             JSONTakvimSelectedData = AllJSONTakvimObj.getJSONArray(TAG_TAKVIM);
                             for (int j = 0; j < JSONTakvimSelectedData.length(); j++) {
                                 JSONObject JSONTakvimObj = JSONTakvimSelectedData.getJSONObject(j);
+                                JSONBaslangicData = JSONTakvimObj.getJSONObject(TAG_BASLANGIC);
                                 String donemStr = JSONTakvimObj.getString(TAG_DONEM);
                                 if (donemStr.equals("1")) {
                                     String baslikStr = JSONTakvimObj.getString(TAG_BASLIK);
                                     FeedItem item = new FeedItem();
+                                    if (!JSONBaslangicData.toString().equals("")) {
+                                        String firstDay = JSONBaslangicData.getString(TAG_GUN);
+                                        String firstMonth = JSONBaslangicData.getString(TAG_AY);
+                                        String firstYear = JSONBaslangicData.getString(TAG_YIL);
+                                        item.setFirstDay(firstDay);
+                                        item.setFirstMonth(firstMonth);
+                                        item.setFirstYear(firstYear);
+                                        Log.d("firstday", firstDay);
+                                    } else {
+                                        String firstDay = "";
+                                        String firstMonth = "";
+                                        String firstYear = "";
+                                        item.setFirstDay(firstDay);
+                                        item.setFirstMonth(firstMonth);
+                                        item.setFirstYear(firstYear);
+                                    }
+
                                     item.setTitle(baslikStr);
                                     feedsList.add(item);
                                 }
@@ -113,76 +137,3 @@ public class GuzYariyili_Fragment extends android.support.v4.app.Fragment {
         }
     }
 }
-/*
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:cardview="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:layout_margin="8dp">
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:paddingBottom="2dp"
-        android:paddingTop="2dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_gravity="center_vertical"
-            android:baselineAligned="false"
-            android:orientation="horizontal">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.75"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/date1_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:text="Date"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.75"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/date2_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:text="Date"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/title_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/loading_yemek"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-            </LinearLayout>
-
-        </LinearLayout>
-    </LinearLayout>
-</android.support.v7.widget.CardView>
-*/
