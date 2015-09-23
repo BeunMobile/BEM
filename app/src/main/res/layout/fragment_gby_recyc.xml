@@ -19,7 +19,8 @@
         android:layout_centerVertical="true"
         android:gravity="center_horizontal"
         android:text="@string/loading_yemek"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30sp"
+        android:textStyle="bold"
         android:textColor="@color/BrushedGreenTextColor" />
 
 </RelativeLayout>

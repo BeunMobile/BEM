@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bilgiislem.sems.beunapp.AkademikTakvim.AkademikTakvimSecenekler.BaharYariyili_Fragment;
 import com.bilgiislem.sems.beunapp.AkademikTakvim.AkademikTakvimSecenekler.GuzYariyili_Fragment;
 import com.bilgiislem.sems.beunapp.R;
 import com.bilgiislem.sems.beunapp.YemekListesi.YemekListesiHaftalar.Carsamba_Fragment;
@@ -68,7 +69,7 @@ public class GBYTab_Fragment extends android.support.v4.app.Fragment {
                 case 0:
                     return new GuzYariyili_Fragment();
                 case 1:
-                    return new Sali_Fragment();
+                    return new BaharYariyili_Fragment();
                 case 2:
                     return new Carsamba_Fragment();
             }

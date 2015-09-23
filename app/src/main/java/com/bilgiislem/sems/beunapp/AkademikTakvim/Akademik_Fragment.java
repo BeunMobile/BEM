@@ -37,6 +37,7 @@ public class Akademik_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), GBYActivity.class);
+                intent.putExtra("kategori","10");
                 startActivity(intent);
             }
         });

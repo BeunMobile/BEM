@@ -1,5 +1,8 @@
 package com.bilgiislem.sems.beunapp.AkademikTakvim.AkademikTakvimSecenekler;
 
+/**
+ * Created by detro on 24.09.2015.
+ */
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -24,8 +27,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class GuzYariyili_Fragment extends Fragment {
+public class BaharYariyili_Fragment extends Fragment {
 
     private static final String TAG_DONEM = "donem";
     private static final String TAG_KATEGORIID = "kategori_id";
@@ -46,9 +48,9 @@ public class GuzYariyili_Fragment extends Fragment {
     private MyRecyclerAdapter adapter;
     TextView loadingData;
     String urlJSONData = "http://w3.beun.edu.tr/akademik_takvim/veri/?yil=2015";
-    String donem ="1";
+    String donem ="3";
 
-    public GuzYariyili_Fragment() {
+    public BaharYariyili_Fragment() {
 
     }
 
