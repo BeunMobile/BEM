@@ -160,8 +160,12 @@ public class BaharYariyili_Fragment extends Fragment {
             adapter = new MyRecyclerAdapter(getActivity(), feedsList);
             recyclerView.setAdapter(adapter);
             loadingData.setVisibility(View.GONE);
-            if (feedsList.isEmpty()) {
-                emptyData.setVisibility(View.VISIBLE);
+            try {
+                if (feedsList.isEmpty()) {
+                    emptyData.setVisibility(View.VISIBLE);
+                }
+            } catch (NullPointerException e) {
+                Log.d("NullPointer", "Null object reference.");
             }
         }
     }

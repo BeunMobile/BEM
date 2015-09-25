@@ -27,7 +27,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class YazDonemi_Fragment extends Fragment {
 
     private static final String TAG_DONEM = "donem";
@@ -40,7 +39,6 @@ public class YazDonemi_Fragment extends Fragment {
     private static final String TAG_AY = "ay";
     private static final String TAG_YIL = "yil";
     private static final String TAG_RENK = "renk";
-
 
     JSONArray AllJSONTakvimData = null, JSONTakvimSelectedData = null;
     JSONObject JSONBaslangicData = null, JSONBitisData = null;
@@ -161,8 +159,12 @@ public class YazDonemi_Fragment extends Fragment {
             adapter = new MyRecyclerAdapter(getActivity(), feedsList);
             recyclerView.setAdapter(adapter);
             loadingData.setVisibility(View.GONE);
-            if (feedsList.isEmpty()) {
-                emptyData.setVisibility(View.VISIBLE);
+            try {
+                if (feedsList.isEmpty()) {
+                    emptyData.setVisibility(View.VISIBLE);
+                }
+            } catch (NullPointerException e) {
+                Log.d("NullPointer", "Null object reference.");
             }
         }
     }
