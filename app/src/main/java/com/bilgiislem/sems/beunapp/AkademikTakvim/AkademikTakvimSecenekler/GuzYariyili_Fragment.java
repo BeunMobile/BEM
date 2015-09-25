@@ -44,9 +44,9 @@ public class GuzYariyili_Fragment extends Fragment {
     RecyclerView recyclerView;
     private List<FeedItem> feedsList;
     private MyRecyclerAdapter adapter;
-    TextView loadingData;
+    TextView loadingData, emptyData;
     String urlJSONData = "http://w3.beun.edu.tr/akademik_takvim/veri/?yil=2015";
-    String donem ="1";
+    String donem = "1";
 
     public GuzYariyili_Fragment() {
 
@@ -55,8 +55,10 @@ public class GuzYariyili_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_gby_recyc, container, false);
-
         loadingData = (TextView) view.findViewById(R.id.loading_data);
+        emptyData = (TextView) view.findViewById(R.id.empty_data);
+        emptyData.setText(R.string.empty_guz);
+        emptyData.setVisibility(View.GONE);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         new GetJSON().execute();
@@ -74,76 +76,79 @@ public class GuzYariyili_Fragment extends Fragment {
         protected Void doInBackground(Void... params) {
             ServiceHandler sh = new ServiceHandler();
             String AllJSONStr = sh.makeServiceCall(urlJSONData, ServiceHandler.GET);
-            String kategori_id=getActivity().getIntent().getStringExtra("kategori");
-            if (AllJSONStr != null) {
-                try {
-                    JSONObject AllJSONObj = new JSONObject(AllJSONStr);
-                    AllJSONTakvimData = AllJSONObj.getJSONArray(TAG_TAKVIM);
-                    feedsList = new ArrayList<>();
-                    for (int i = 0; i < AllJSONTakvimData.length(); i++) {
-                        JSONObject AllJSONTakvimObj = AllJSONTakvimData.getJSONObject(i);
-                        String AllKategoriIDStr = AllJSONTakvimObj.getString(TAG_KATEGORIID);
-                        if (AllKategoriIDStr.equals(kategori_id)) {
-                            JSONTakvimSelectedData = AllJSONTakvimObj.getJSONArray(TAG_TAKVIM);
-                            for (int j = 0; j < JSONTakvimSelectedData.length(); j++) {
-                                JSONObject JSONTakvimObj = JSONTakvimSelectedData.getJSONObject(j);
-                                String donemStr = JSONTakvimObj.getString(TAG_DONEM);
-                                if (donemStr.equals(donem)) {
-                                    String baslikStr = JSONTakvimObj.getString(TAG_BASLIK);
-                                    FeedItem item = new FeedItem();
-                                    if (!JSONTakvimObj.getString(TAG_BASLANGIC).equals("")) {
-                                        JSONBaslangicData = JSONTakvimObj.getJSONObject(TAG_BASLANGIC);
-                                        String firstDay = JSONBaslangicData.getString(TAG_GUN);
-                                        String firstMonth = JSONBaslangicData.getString(TAG_AY);
-                                        String firstYear = JSONBaslangicData.getString(TAG_YIL);
-                                        String firstColor = JSONBaslangicData.getString(TAG_RENK);
-                                        item.setFirstDay(firstDay);
-                                        item.setFirstMonth(firstMonth);
-                                        item.setFirstYear(firstYear);
-                                        item.setFirstDateColor(firstColor);
-                                    } else {
-                                        String firstDay = "";
-                                        String firstMonth = "";
-                                        String firstYear = "";
-                                        String firstColor = "FFFFFF";
-                                        item.setFirstDay(firstDay);
-                                        item.setFirstMonth(firstMonth);
-                                        item.setFirstYear(firstYear);
-                                        item.setFirstDateColor(firstColor);
+            try {
+                String kategori_id = getActivity().getIntent().getStringExtra(TAG_KATEGORIID);
+                if (AllJSONStr != null) {
+                    try {
+                        JSONObject AllJSONObj = new JSONObject(AllJSONStr);
+                        AllJSONTakvimData = AllJSONObj.getJSONArray(TAG_TAKVIM);
+                        feedsList = new ArrayList<>();
+                        for (int i = 0; i < AllJSONTakvimData.length(); i++) {
+                            JSONObject AllJSONTakvimObj = AllJSONTakvimData.getJSONObject(i);
+                            String AllKategoriIDStr = AllJSONTakvimObj.getString(TAG_KATEGORIID);
+                            if (AllKategoriIDStr.equals(kategori_id)) {
+                                JSONTakvimSelectedData = AllJSONTakvimObj.getJSONArray(TAG_TAKVIM);
+                                for (int j = 0; j < JSONTakvimSelectedData.length(); j++) {
+                                    JSONObject JSONTakvimObj = JSONTakvimSelectedData.getJSONObject(j);
+                                    String donemStr = JSONTakvimObj.getString(TAG_DONEM);
+                                    if (donemStr.equals(donem)) {
+                                        String baslikStr = JSONTakvimObj.getString(TAG_BASLIK);
+                                        FeedItem item = new FeedItem();
+                                        if (!JSONTakvimObj.getString(TAG_BASLANGIC).equals("")) {
+                                            JSONBaslangicData = JSONTakvimObj.getJSONObject(TAG_BASLANGIC);
+                                            String firstDay = JSONBaslangicData.getString(TAG_GUN);
+                                            String firstMonth = JSONBaslangicData.getString(TAG_AY);
+                                            String firstYear = JSONBaslangicData.getString(TAG_YIL);
+                                            String firstColor = JSONBaslangicData.getString(TAG_RENK);
+                                            item.setFirstDay(firstDay);
+                                            item.setFirstMonth(firstMonth);
+                                            item.setFirstYear(firstYear);
+                                            item.setFirstDateColor(firstColor);
+                                        } else {
+                                            String firstDay = "";
+                                            String firstMonth = "";
+                                            String firstYear = "";
+                                            String firstColor = "FFFFFF";
+                                            item.setFirstDay(firstDay);
+                                            item.setFirstMonth(firstMonth);
+                                            item.setFirstYear(firstYear);
+                                            item.setFirstDateColor(firstColor);
+                                        }
+                                        if (!JSONTakvimObj.getString(TAG_BITIS).equals("")) {
+                                            JSONBitisData = JSONTakvimObj.getJSONObject(TAG_BITIS);
+                                            String secDay = JSONBitisData.getString(TAG_GUN);
+                                            String secMonth = JSONBitisData.getString(TAG_AY);
+                                            String secYear = JSONBitisData.getString(TAG_YIL);
+                                            String secColor = JSONBitisData.getString(TAG_RENK);
+                                            item.setSecDay(secDay);
+                                            item.setSecMonth(secMonth);
+                                            item.setSecYear(secYear);
+                                            item.setSecDateColor(secColor);
+                                        } else {
+                                            String secDay = "";
+                                            String secMonth = "";
+                                            String secYear = "";
+                                            String secColor = "FFFFFF";
+                                            item.setSecDay(secDay);
+                                            item.setSecMonth(secMonth);
+                                            item.setSecYear(secYear);
+                                            item.setSecDateColor(secColor);
+                                        }
+                                        item.setTitle(baslikStr);
+                                        feedsList.add(item);
                                     }
-                                    if (!JSONTakvimObj.getString(TAG_BITIS).equals("")) {
-                                        JSONBitisData = JSONTakvimObj.getJSONObject(TAG_BITIS);
-                                        String secDay = JSONBitisData.getString(TAG_GUN);
-                                        String secMonth = JSONBitisData.getString(TAG_AY);
-                                        String secYear = JSONBitisData.getString(TAG_YIL);
-                                        String secColor = JSONBitisData.getString(TAG_RENK);
-                                        item.setSecDay(secDay);
-                                        item.setSecMonth(secMonth);
-                                        item.setSecYear(secYear);
-                                        item.setSecDateColor(secColor);
-                                    } else {
-                                        String secDay = "";
-                                        String secMonth = "";
-                                        String secYear = "";
-                                        String secColor = "FFFFFF";
-                                        item.setSecDay(secDay);
-                                        item.setSecMonth(secMonth);
-                                        item.setSecYear(secYear);
-                                        item.setSecDateColor(secColor);
-                                    }
-                                    item.setTitle(baslikStr);
-                                    feedsList.add(item);
                                 }
                             }
                         }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                } else {
+                    Log.e("ServiceHandler", "Couldn't get any data from the url");
                 }
-            } else {
-                Log.e("ServiceHandler", "Couldn't get any data from the url");
+            } catch (NullPointerException e) {
+                Log.d("kategori_id", e.toString());
             }
-
             return null;
         }
 
@@ -153,6 +158,9 @@ public class GuzYariyili_Fragment extends Fragment {
             adapter = new MyRecyclerAdapter(getActivity(), feedsList);
             recyclerView.setAdapter(adapter);
             loadingData.setVisibility(View.GONE);
+            if (feedsList.isEmpty()) {
+                emptyData.setVisibility(View.VISIBLE);
+            }
         }
     }
 }

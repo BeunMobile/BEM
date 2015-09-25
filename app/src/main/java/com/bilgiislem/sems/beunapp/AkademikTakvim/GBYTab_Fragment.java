@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.bilgiislem.sems.beunapp.AkademikTakvim.AkademikTakvimSecenekler.BaharYariyili_Fragment;
 import com.bilgiislem.sems.beunapp.AkademikTakvim.AkademikTakvimSecenekler.GuzYariyili_Fragment;
+import com.bilgiislem.sems.beunapp.AkademikTakvim.AkademikTakvimSecenekler.YazDonemi_Fragment;
 import com.bilgiislem.sems.beunapp.R;
 import com.bilgiislem.sems.beunapp.YemekListesi.YemekListesiHaftalar.Carsamba_Fragment;
 import com.bilgiislem.sems.beunapp.YemekListesi.YemekListesiHaftalar.Pazartesi_Fragment;
@@ -71,7 +72,7 @@ public class GBYTab_Fragment extends android.support.v4.app.Fragment {
                 case 1:
                     return new BaharYariyili_Fragment();
                 case 2:
-                    return new Carsamba_Fragment();
+                    return new YazDonemi_Fragment();
             }
             return null;
         }

@@ -37,10 +37,91 @@ public class Akademik_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), GBYActivity.class);
-                intent.putExtra("kategori","10");
+                intent.putExtra("kategori_id","10");
+                intent.putExtra("kategori_isim",getResources().getString(R.string.genel_takvim));
                 startActivity(intent);
             }
         });
+
+        dhf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GBYActivity.class);
+                intent.putExtra("kategori_id","6");
+                intent.putExtra("kategori_isim",getResources().getString(R.string.dis_takvim));
+                startActivity(intent);
+            }
+        });
+
+        enst.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GBYActivity.class);
+                intent.putExtra("kategori_id","9");
+                intent.putExtra("kategori_isim",getResources().getString(R.string.enstitu_takvim));
+                startActivity(intent);
+            }
+        });
+
+        hazsin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GBYActivity.class);
+                intent.putExtra("kategori_id","8");
+                intent.putExtra("kategori_isim",getResources().getString(R.string.hazirlik_takvim));
+                startActivity(intent);
+            }
+        });
+
+        tipfak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GBYActivity.class);
+                intent.putExtra("kategori_id","4");
+                intent.putExtra("kategori_isim",getResources().getString(R.string.tip_takvim));
+                startActivity(intent);
+            }
+        });
+
+        ulusogren.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GBYActivity.class);
+                intent.putExtra("kategori_id","22");
+                intent.putExtra("kategori_isim",getResources().getString(R.string.uluslarasi_takvim));
+                startActivity(intent);
+            }
+        });
+
+        /*ygi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GBYActivity.class);
+                intent.putExtra("kategori_id","11");
+                intent.putExtra("kategori_isim",R.string.yaz_takvim);
+                startActivity(intent);
+            }
+        });*/
+
+        yazok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GBYActivity.class);
+                intent.putExtra("kategori_id","11");
+                intent.putExtra("kategori_isim",getResources().getString(R.string.yaz_takvim));
+                startActivity(intent);
+            }
+        });
+
+        /*yeteneksi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GBYActivity.class);
+                intent.putExtra("kategori_id","11");
+                intent.putExtra("kategori_isim",R.string.yaz_takvim);
+                startActivity(intent);
+            }
+        });*/
 
         return view;
     }

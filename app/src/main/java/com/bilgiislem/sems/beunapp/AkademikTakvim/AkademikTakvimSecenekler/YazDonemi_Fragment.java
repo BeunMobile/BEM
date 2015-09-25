@@ -27,7 +27,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaharYariyili_Fragment extends Fragment {
+
+public class YazDonemi_Fragment extends Fragment {
 
     private static final String TAG_DONEM = "donem";
     private static final String TAG_KATEGORIID = "kategori_id";
@@ -48,9 +49,9 @@ public class BaharYariyili_Fragment extends Fragment {
     private MyRecyclerAdapter adapter;
     TextView loadingData, emptyData;
     String urlJSONData = "http://w3.beun.edu.tr/akademik_takvim/veri/?yil=2015";
-    String donem = "3";
+    String donem = "2";
 
-    public BaharYariyili_Fragment() {
+    public YazDonemi_Fragment() {
 
     }
 
@@ -59,7 +60,7 @@ public class BaharYariyili_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_gby_recyc, container, false);
         loadingData = (TextView) view.findViewById(R.id.loading_data);
         emptyData = (TextView) view.findViewById(R.id.empty_data);
-        emptyData.setText(R.string.empty_bahar);
+        emptyData.setText(R.string.empty_yaz);
         emptyData.setVisibility(View.GONE);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -149,7 +150,7 @@ public class BaharYariyili_Fragment extends Fragment {
                     Log.e("ServiceHandler", "Couldn't get any data from the url");
                 }
             } catch (NullPointerException e) {
-                Log.d("kategori_id", e.toString());
+                Log.d("kategori_id", "hata");
             }
             return null;
         }

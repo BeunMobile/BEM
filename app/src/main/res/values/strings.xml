@@ -125,6 +125,9 @@ yükleniyor bu biraz zaman alabilir.</string>
     <string name="tab_guz">Güz Yarıyılı</string>
     <string name="tab_bahar">Bahar Yarıyılı</string>
     <string name="tab_yaz">Yaz Dönemi</string>
+    <string name="empty_guz">Güz dönemine ait takvim\n bulunmamaktadır.</string>
+    <string name="empty_bahar">Bahar dönemine ait takvim\n bulunmamaktadır.</string>
+    <string name="empty_yaz">Yaz dönemine ait takvim\n bulunmamaktadır.</string>
 
 
 </resources>

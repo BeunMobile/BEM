@@ -12,6 +12,16 @@
         android:layout_centerInParent="true" />
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/BrushedGold"
+        android:gravity="center_horizontal"
+        android:id="@+id/empty_data"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
         android:id="@+id/loading_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
