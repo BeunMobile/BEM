@@ -80,22 +80,35 @@
     //Tarih
     <string name="pick_a_date">Lütfen tarih seçiniz.</string>
 
+    //Farabi Kampüsü
+    <string name="farabi_title">Farabi Kampüsü</string>
+    <string name="farabi_bidb">Bilgi İşlem Daire Başkanlığı</string>
+    <string name="farabi_rektorluk">Rektörlük Binası</string>
+    <string name="farabi_eem">Elektrik Elektronik Mühendisliği</string>
+    <string name="farabi_sem">BEÜN Sem</string>
+    <string name="farabi_maden">Maden Mühendisliği</string>
+    <string name="farabi_makina">Makina Mühendisliği</string>
+    <string name="farabi_insaat">İnşaat Mühendisliği</string>
+    <string name="farabi_restoran">BEÜN Misafirhane-Restoran</string>
+    <string name="farabi_spor">Spor Salonu</string>
+    <string name="farabi_ust">Üst Kapı</string>
+    <string name="farabi_alt">Alt Kapı</string>
+    <string name="farabi_giris">Bülent Ecevit Üniversitesi</string>
+    <string name="farabi_3d">3 Boyutlu gezinmek için tıklayın.</string>
 
-    //Beu3d
+    //Farabi3D
     <string name="beu3d">Bülent Ecevit Üniversitesi 3 Boyutlu olarak
-yükleniyor bu biraz zaman alabilir.</string>
+        yükleniyor bu biraz zaman alabilir.</string>
     <string name="beu3d_none">Seçtiğiniz bölüm henüz yapım aşamasındadır.</string>
     <string name="beu3d_bidb">Bilgi İşlem Daire Başkanlığı 3 Boyutlu olarak
         yükleniyor bu biraz zaman alabilir…</string>
     <string name="beu3d_eem">Elektrik Elektronik Mühendisliği 3 Boyutlu olarak
         yükleniyor bu biraz zaman alabilir…</string>
-        <string name="beu3d_rektorluk">Rektörlük binası 3 Boyutlu olarak
+    <string name="beu3d_rektorluk">Rektörlük binası 3 Boyutlu olarak
         yükleniyor bu biraz zaman alabilir…</string>
 
-
-    //Farabi Kampüsü
-    <string name="farabi_rektorluk">Rektörlük Binası</string>
-
+    //Ibn-i Sina Kampüsü
+    <string name="ibni_title">İbn-i Sina Kampüsü</string>
 
     //Yemek Listesi Tab
     <string name="tab_pazartesi">Pzt</string>
@@ -105,10 +118,8 @@ yükleniyor bu biraz zaman alabilir.</string>
     <string name="tab_cuma">Cuma</string>
     <string name="loading_yemek">Yükleniyor...</string>
 
-
     //Resimler
     <string name="gallery">GALERİ İÇİN TIKLAYINIZ</string>
-
 
     //Akademik Takvim
     <string name="genel_takvim">Genel Akademik Takvim</string>
@@ -128,6 +139,5 @@ yükleniyor bu biraz zaman alabilir.</string>
     <string name="empty_guz">Güz dönemine ait takvim\n bulunmamaktadır.</string>
     <string name="empty_bahar">Bahar dönemine ait takvim\n bulunmamaktadır.</string>
     <string name="empty_yaz">Yaz dönemine ait takvim\n bulunmamaktadır.</string>
-
 
 </resources>

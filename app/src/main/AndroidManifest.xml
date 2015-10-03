@@ -51,7 +51,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".KampusGorunumu.FarabiActivity"
+            android:name=".KampusGorunumu.MapsActivity"
             android:theme="@style/AppTheme3" />
         <activity
             android:name=".KampusGorunumu.SynthActivity"

@@ -25,7 +25,17 @@ public class Kampus_Fragment extends Fragment {
         ImageButton buttonfarabi = (ImageButton) view.findViewById(R.id.button_farabi);
         buttonfarabi.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), FarabiActivity.class);
+                Intent intent = new Intent(getActivity(), MapsActivity.class);
+                intent.putExtra("maps", "farabi");
+                Kampus_Fragment.this.startActivity(intent);
+            }
+        });
+
+        ImageButton buttonibnisina = (ImageButton) view.findViewById(R.id.button_ibnisina);
+        buttonibnisina.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MapsActivity.class);
+                intent.putExtra("maps", "ibni");
                 Kampus_Fragment.this.startActivity(intent);
             }
         });

@@ -1,7 +1,7 @@
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/farabi_map"
+    android:id="@+id/activity_maps"
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bilgiislem.sems.beunapp.KampusGorunumu.FarabiActivity" />
+    tools:context="com.bilgiislem.sems.beunapp.KampusGorunumu.MapsActivity" />

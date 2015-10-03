@@ -1,14 +1,5 @@
 package com.bilgiislem.sems.beunapp.DHE_Sources;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.jsoup.Jsoup;
-
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -30,6 +21,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.jsoup.Jsoup;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class MYActivity extends ListActivity implements AppCompatCallback {
 
@@ -54,7 +54,9 @@ public class MYActivity extends ListActivity implements AppCompatCallback {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        url = "http://w3.beun.edu.tr/mobil-arsiv/" + getIntent().getStringExtra("datelink");
+        String tur = getIntent().getStringExtra("datelink");
+        Log.d("tur", tur);
+        url = "http://w3.beun.edu.tr/mobil-arsiv/" + tur;
         JSONDataList = new ArrayList<HashMap<String, String>>();
         delegate = AppCompatDelegate.create(this, this);
         delegate.onCreate(savedInstanceState);
