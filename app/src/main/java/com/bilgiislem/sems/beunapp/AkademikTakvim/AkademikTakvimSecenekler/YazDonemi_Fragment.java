@@ -1,7 +1,7 @@
 package com.bilgiislem.sems.beunapp.AkademikTakvim.AkademikTakvimSecenekler;
 
 /**
- * Created by detro on 24.09.2015.
+ * Created by sems on 24.09.2015.
  */
 
 import android.os.AsyncTask;
@@ -148,7 +148,7 @@ public class YazDonemi_Fragment extends Fragment {
                     Log.e("ServiceHandler", "Couldn't get any data from the url");
                 }
             } catch (NullPointerException e) {
-                Log.d("kategori_id", "hata");
+                Log.d("kategori_id", e.toString());
             }
             return null;
         }

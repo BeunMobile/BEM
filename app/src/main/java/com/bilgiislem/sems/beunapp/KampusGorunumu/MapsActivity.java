@@ -115,10 +115,11 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
         googleMaps.addMarker(new MarkerOptions().position(new LatLng(41.450058, 31.761069)).title(getResources().getString(R.string.farabi_maden)));
         googleMaps.addMarker(new MarkerOptions().position(new LatLng(41.449758, 31.762388)).title(getResources().getString(R.string.farabi_makina)));
         googleMaps.addMarker(new MarkerOptions().position(new LatLng(41.450581, 31.760402)).title(getResources().getString(R.string.farabi_insaat)));
-        googleMaps.addMarker(new MarkerOptions().position(new LatLng(41.451744, 31.762187)).title(getResources().getString(R.string.farabi_restoran)));
+        googleMaps.addMarker(new MarkerOptions().position(new LatLng(41.451744, 31.762187)).title(getResources().getString(R.string.farabi_restoran)).snippet(getResources().getString(R.string.farabi_3d)));
         googleMaps.addMarker(new MarkerOptions().position(new LatLng(41.451014, 31.760503)).title(getResources().getString(R.string.farabi_spor)));
         googleMaps.addMarker(new MarkerOptions().position(new LatLng(41.451033, 31.763069)).title(getResources().getString(R.string.farabi_ust)));
         googleMaps.addMarker(new MarkerOptions().position(new LatLng(41.449085, 31.763491)).title(getResources().getString(R.string.farabi_alt)));
+        googleMaps.addMarker(new MarkerOptions().position(new LatLng(41.451188, 31.761904)).title(getResources().getString(R.string.farabi_muhdekan)).snippet(getResources().getString(R.string.farabi_3d)));
         googleMaps.addMarker(new MarkerOptions().position(new LatLng(41.454093, 31.764503)).title(getResources().getString(R.string.farabi_giris)));
         CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(41.450777, 31.762411)).zoom(17).tilt(50).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
@@ -152,6 +153,14 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
                 break;
             case "Elektrik Elektronik Mühendisliði":
                 intent.putExtra("beu3d", "eem");
+                startActivity(intent);
+                break;
+            case "BEÜN Misafirhane-Restoran":
+                intent.putExtra("beu3d", "misafir");
+                startActivity(intent);
+                break;
+            case "Mühendislik Fakültesi Dekanlýðý":
+                intent.putExtra("beu3d", "muhdekan");
                 startActivity(intent);
                 break;
             default:
