@@ -12,65 +12,289 @@
         android:background="@color/PurpleButtonBackGroundColor"
         android:text="@string/mainweb_page"
         android:textAllCaps="false"
-        android:textColor="@color/PurpleButtonTextColor"/>
+        android:textColor="@color/PurpleButtonTextColor" />
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/ana_sayfa_button">
+        android:layout_above="@+id/ana_sayfa_button"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="bottom"
-            android:layout_weight="1">
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/card_duyuru"
-                android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_main"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:padding="16dp"
                 card_view:cardCornerRadius="4dp"
-                card_view:cardUseCompatPadding="true"/>
+                card_view:cardUseCompatPadding="true">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/anasayfatest" />
+            </android.support.v7.widget.CardView>
 
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/card_haber"
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="16dp"
-                card_view:cardCornerRadius="4dp"
-                card_view:cardUseCompatPadding="true"/>
-        </LinearLayout>
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/card_yemek"
-                android:layout_gravity="center"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="16dp"
-                card_view:cardCornerRadius="4dp"
-                card_view:cardUseCompatPadding="true"/>
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/card_duyuru"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="16dp"
+                    card_view:cardCornerRadius="4dp"
+                    card_view:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="2dp">
+
+                        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_duyuru_baslik"
+                            android:layout_width="90dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="top"
+                            android:padding="8dp"
+                            card_view:cardCornerRadius="4dp"
+                            card_view:cardUseCompatPadding="true">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="fill_parent"
+                                android:gravity="center"
+                                android:text="@string/last_duyuru"
+                                android:textColor="@color/AccentColor"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                        </android.support.v7.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentTop="true"
+                            android:layout_toEndOf="@+id/card_duyuru_baslik"
+                            android:layout_toRightOf="@+id/card_duyuru_baslik"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/card_no_duyuru"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="@string/empty_duyuru"
+                                android:textColor="@color/BrushedGold"
+                                android:textSize="15sp"
+                                android:visibility="gone"/>
+
+                            <ScrollView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/card_duyuru_icerik"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:padding="8dp"
+                                    android:text="@string/loading"
+                                    android:textColor="@color/BrushedPurple"
+                                    android:textSize="15sp" />
+                            </ScrollView>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/card_haber"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="16dp"
+                    card_view:cardCornerRadius="4dp"
+                    card_view:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="2dp">
+
+                        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_haber_baslik"
+                            android:layout_width="90dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="top"
+                            android:padding="8dp"
+                            card_view:cardCornerRadius="4dp"
+                            card_view:cardUseCompatPadding="true">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="fill_parent"
+                                android:gravity="center"
+                                android:text="@string/last_haber"
+                                android:textColor="@color/AccentColor"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                        </android.support.v7.widget.CardView>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentTop="true"
+                            android:layout_toEndOf="@+id/card_haber_baslik"
+                            android:layout_toRightOf="@+id/card_haber_baslik"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/card_no_haber"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="@string/empty_haber"
+                                android:textColor="@color/BrushedGold"
+                                android:textSize="15sp"
+                                android:visibility="gone"/>
+
+                            <ScrollView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:id="@+id/card_haber_icerik"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:padding="8dp"
+                                    android:text="@string/loading"
+                                    android:textColor="@color/BrushedPurple"
+                                    android:textSize="15sp" />
+
+                            </ScrollView>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/card_yemek"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="16dp"
+                    card_view:cardCornerRadius="4dp"
+                    card_view:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="2dp">
+
+                        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_yemek_baslik"
+                            android:layout_width="110dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="top"
+                            android:padding="8dp"
+                            card_view:cardCornerRadius="4dp"
+                            card_view:cardUseCompatPadding="true">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="fill_parent"
+                                android:gravity="center"
+                                android:text="@string/last_yemek"
+                                android:textColor="@color/AccentColor"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                        </android.support.v7.widget.CardView>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentTop="true"
+                            android:layout_toEndOf="@+id/card_haber_baslik"
+                            android:layout_toRightOf="@+id/card_haber_baslik"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/card_no_yemek"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="@string/yemek_no_data"
+                                android:textColor="@color/BrushedGold"
+                                android:textSize="15sp"
+                                android:visibility="gone"/>
+
+                            <ScrollView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:id="@+id/card_yemek_icerik"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:padding="8dp"
+                                    android:text="@string/loading"
+                                    android:textColor="@color/BrushedPurple"
+                                    android:textSize="15sp" />
+
+                            </ScrollView>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

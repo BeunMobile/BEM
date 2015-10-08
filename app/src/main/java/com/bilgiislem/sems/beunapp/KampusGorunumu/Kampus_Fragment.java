@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.bilgiislem.sems.beunapp.MainAndWeb.MainActivity;
+import com.bilgiislem.sems.beunapp.MainActivity.MainActivity;
 import com.bilgiislem.sems.beunapp.R;
 
 /**

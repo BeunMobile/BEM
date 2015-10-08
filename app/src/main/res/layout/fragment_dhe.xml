@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/PurpleButtonBackGroundColor"
-        android:text="@string/pick_a_date"
+        android:text="@string/date_picker"
         android:textAllCaps="false"
         android:textColor="@color/PurpleButtonTextColor" />
 

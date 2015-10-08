@@ -1,14 +1,12 @@
-package com.bilgiislem.sems.beunapp.MainAndWeb;
+package com.bilgiislem.sems.beunapp.MainActivity;
 
 
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -21,21 +19,19 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.AkademikTakvim.Akademik_Fragment;
 import com.bilgiislem.sems.beunapp.AnaSayfa.AnaSayfa_Fragment;
+import com.bilgiislem.sems.beunapp.AnaSayfa.WebActivity;
 import com.bilgiislem.sems.beunapp.DHE.Duyurular_Fragment;
 import com.bilgiislem.sems.beunapp.DHE.Haberler_Fragment;
 import com.bilgiislem.sems.beunapp.DHE.Etkinlikler_Fragment;
 import com.bilgiislem.sems.beunapp.KampusGorunumu.Kampus_Fragment;
 import com.bilgiislem.sems.beunapp.R;
 import com.bilgiislem.sems.beunapp.YemekListesi.YemekTab_Fragment;
-
-import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 

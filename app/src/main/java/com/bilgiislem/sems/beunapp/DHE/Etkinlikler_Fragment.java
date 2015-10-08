@@ -19,7 +19,7 @@ import android.widget.TextView;
 import com.bilgiislem.sems.beunapp.DHE_Sources.DatePicker_Fragment;
 import com.bilgiislem.sems.beunapp.DHE_Sources.IcerikActivity;
 import com.bilgiislem.sems.beunapp.DHE_Sources.ServiceHandler;
-import com.bilgiislem.sems.beunapp.MainAndWeb.MainActivity;
+import com.bilgiislem.sems.beunapp.MainActivity.MainActivity;
 import com.bilgiislem.sems.beunapp.R;
 
 import org.json.JSONArray;

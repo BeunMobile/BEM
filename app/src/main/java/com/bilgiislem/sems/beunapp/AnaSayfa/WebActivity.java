@@ -1,4 +1,4 @@
-package com.bilgiislem.sems.beunapp.MainAndWeb;
+package com.bilgiislem.sems.beunapp.AnaSayfa;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

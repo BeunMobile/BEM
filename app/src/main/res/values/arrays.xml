@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="ygi_names">
+        <item>Kurumlar Arası Yatay Geçiş</item>
+        <item>Kurumiçi Yatay Geçiş</item>
+        <item>Merkezi Yerleştirme Puanı</item>
+        <item>Yandal ve Çift Anadal</item>
+    </string-array>
+
+    <string-array name="ys_names">
+        <item>Beden Eğitimi ve Spor Yüksekokulu</item>
+        <item>Devlet Konservatuvarı</item>
+        <item>Güzel Sanatlar Fakültesi</item>
+    </string-array>
+
+</resources>

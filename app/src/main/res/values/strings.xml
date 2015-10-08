@@ -30,10 +30,10 @@
     <string name="e_posta_title">E-Posta</string>
     <string name="uzem_title">Uzaktan Eğitim Merkezi</string>
     <string name="kampus_title">Kampüs Görünümü</string>
-    <string name="toast_facebook">Facebook yönlendirmesi yapılıyor.</string>
-    <string name="toast_twitter">Twitter yönlendirmesi yapılıyor.</string>
-    <string name="toast_instagram">Instagram yönlendirmesi yapılıyor.</string>
-    <string name="toast_youtube">Youtube yönlendirmesi yapılıyor.</string>
+    <string name="toast_facebook">Facebook yönlendirmesi yapılıyor</string>
+    <string name="toast_twitter">Twitter yönlendirmesi yapılıyor</string>
+    <string name="toast_instagram">Instagram yönlendirmesi yapılıyor</string>
+    <string name="toast_youtube">Youtube yönlendirmesi yapılıyor</string>
 
 
     //Anasayfa
@@ -41,6 +41,9 @@
     <string name="mainweb_page">Ana Sayfa</string>
     <string name="waitfor">Lütfen biraz bekleyiniz …</string>
     <string name="alphatext">Bülent Ecevit Üniversity Application Version Pre-Alpha 0.9</string>
+    <string name="last_duyuru">Son Duyuru</string>
+    <string name="last_haber">Son haber</string>
+    <string name="last_yemek">Günün Menüsü</string>
 
 
     //DHE
@@ -77,7 +80,7 @@
     <string name="appexit_decision">Uygulamadan çıkmak istediğinize emin misiniz ?</string>
 
     //Tarih
-    <string name="pick_a_date">Lütfen tarih seçiniz.</string>
+    <string name="date_picker">Lütfen tarih seçiniz</string>
 
     //Farabi Kampüsü
     <string name="farabi_title">Farabi Kampüsü</string>
@@ -122,6 +125,7 @@
     //Resimler
     <string name="gallery">Galeri için tıklayınız</string>
 
+
     //Akademik Takvim
     <string name="genel_takvim">Genel Akademik Takvim</string>
     <string name="dis_takvim">Diş Hekimliği Fakültesi</string>
@@ -132,6 +136,14 @@
     <string name="ygi_takvim">Yatay Geçiş İşlemleri</string>
     <string name="yaz_takvim">Yaz Okulu</string>
     <string name="yetenek_takvim">Yetenek Sınavları</string>
+    <string name="kayg_takvim">Kurumlar Arası Yatay Geçiş</string>
+    <string name="kyg_takvim">Kurumiçi Yatay Geçiş</string>
+    <string name="myp_takvim">Merkezi Yerleştirme Puanı</string>
+    <string name="yca_takvim">Yandal ve Çift Anadal</string>
+    <string name="besy_takvim">Beden Eğitimi ve Spor Yüksekokulu</string>
+    <string name="dk_takvim">Devlet Konservatuvarı</string>
+    <string name="gsf_takvim">Güzel Sanatlar Fakültesi</string>
+
 
     //GBYTab Akademik Takvim
     <string name="tab_guz">Güz Yarıyılı</string>
@@ -140,5 +152,7 @@
     <string name="empty_guz">Güz dönemine ait takvim\n bulunmamaktadır.</string>
     <string name="empty_bahar">Bahar dönemine ait takvim\n bulunmamaktadır.</string>
     <string name="empty_yaz">Yaz dönemine ait takvim\n bulunmamaktadır.</string>
+    <string name="ygi_picker">Yatay geçiş işlemleri</string>
+    <string name="ys_picker">Yetenek Sınavları</string>
 
 </resources>

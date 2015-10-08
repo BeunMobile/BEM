@@ -10,8 +10,7 @@ import android.view.ViewGroup;
 
 import android.widget.Button;
 
-import com.bilgiislem.sems.beunapp.MainAndWeb.MainActivity;
-import com.bilgiislem.sems.beunapp.MainAndWeb.WebActivity;
+import com.bilgiislem.sems.beunapp.MainActivity.MainActivity;
 import com.bilgiislem.sems.beunapp.R;
 
 public class AnaSayfa_Fragment extends Fragment {

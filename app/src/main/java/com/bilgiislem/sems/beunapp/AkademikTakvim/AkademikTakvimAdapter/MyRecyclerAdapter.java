@@ -28,7 +28,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
 
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_cardview, null);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_cardview_at, null);
         CustomViewHolder viewHolder = new CustomViewHolder(view);
         return viewHolder;
     }

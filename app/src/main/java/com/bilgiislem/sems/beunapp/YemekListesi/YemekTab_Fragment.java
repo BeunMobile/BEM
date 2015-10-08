@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bilgiislem.sems.beunapp.MainActivity.MainActivity;
 import com.bilgiislem.sems.beunapp.R;
 import com.bilgiislem.sems.beunapp.YemekListesi.YemekListesiHaftalar.Carsamba_Fragment;
 import com.bilgiislem.sems.beunapp.YemekListesi.YemekListesiHaftalar.Cuma_Fragment;
@@ -45,7 +46,7 @@ public class YemekTab_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_yemek, container, false);
-//        ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.yemek_title));
+        ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.yemek_title));
         tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
 

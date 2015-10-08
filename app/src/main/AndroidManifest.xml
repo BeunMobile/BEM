@@ -31,7 +31,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainAndWeb.MainActivity"
+            android:name=".MainActivity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainAndWeb.WebActivity"
+            android:name=".AnaSayfa.WebActivity"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
 
         <meta-data
