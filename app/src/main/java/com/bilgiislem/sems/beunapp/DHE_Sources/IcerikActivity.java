@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
@@ -21,11 +22,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 
-
 public class IcerikActivity extends AppCompatActivity {
 
     private static final String TAG_ICERIK = "icerik";
-    String baslik_plus, http_plus, url;
+    String baslik_plus, http_plus, url, url_share;
     WebView webView;
     Button galleryButton;
     TextView loadingData;
@@ -38,6 +38,7 @@ public class IcerikActivity extends AppCompatActivity {
         baslik_plus = getIntent().getStringExtra("baslik");
         http_plus = getIntent().getStringExtra("adres");
         url = "http://w3.beun.edu.tr/veri" + http_plus;
+        url_share = "http://w3.beun.edu.tr" + http_plus;
         setContentView(R.layout.icerik_layout);
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
@@ -123,10 +124,24 @@ public class IcerikActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.share_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
+                return true;
+            case R.id.action_share:
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, url_share);
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, baslik_plus);
+                startActivity(Intent.createChooser(shareIntent, getResources().getString(R.string.action_share)));
                 return true;
         }
         return super.onOptionsItemSelected(item);

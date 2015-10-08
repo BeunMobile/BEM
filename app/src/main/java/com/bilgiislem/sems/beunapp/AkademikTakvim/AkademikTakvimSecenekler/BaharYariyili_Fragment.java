@@ -40,7 +40,6 @@ public class BaharYariyili_Fragment extends Fragment {
     private static final String TAG_YIL = "yil";
     private static final String TAG_RENK = "renk";
 
-
     JSONArray AllJSONTakvimData = null, JSONTakvimSelectedData = null;
     JSONObject JSONBaslangicData = null, JSONBitisData = null;
     RecyclerView recyclerView;
@@ -66,6 +65,7 @@ public class BaharYariyili_Fragment extends Fragment {
         new GetJSON().execute();
         return view;
     }
+
 
     private class GetJSON extends AsyncTask<Void, Void, Void> {
 
@@ -110,7 +110,7 @@ public class BaharYariyili_Fragment extends Fragment {
                                             String firstDay = "";
                                             String firstMonth = "";
                                             String firstYear = "";
-                                            String firstColor = "FFFFFF";
+                                            String firstColor = "00ffffff";
                                             item.setFirstDay(firstDay);
                                             item.setFirstMonth(firstMonth);
                                             item.setFirstYear(firstYear);
@@ -130,7 +130,7 @@ public class BaharYariyili_Fragment extends Fragment {
                                             String secDay = "";
                                             String secMonth = "";
                                             String secYear = "";
-                                            String secColor = "FFFFFF";
+                                            String secColor = "00ffffff";
                                             item.setSecDay(secDay);
                                             item.setSecMonth(secMonth);
                                             item.setSecYear(secYear);

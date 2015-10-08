@@ -109,7 +109,7 @@ public class YazDonemi_Fragment extends Fragment {
                                             String firstDay = "";
                                             String firstMonth = "";
                                             String firstYear = "";
-                                            String firstColor = "FFFFFF";
+                                            String firstColor = "00ffffff";
                                             item.setFirstDay(firstDay);
                                             item.setFirstMonth(firstMonth);
                                             item.setFirstYear(firstYear);
@@ -129,7 +129,7 @@ public class YazDonemi_Fragment extends Fragment {
                                             String secDay = "";
                                             String secMonth = "";
                                             String secYear = "";
-                                            String secColor = "FFFFFF";
+                                            String secColor = "00ffffff";
                                             item.setSecDay(secDay);
                                             item.setSecMonth(secMonth);
                                             item.setSecYear(secYear);

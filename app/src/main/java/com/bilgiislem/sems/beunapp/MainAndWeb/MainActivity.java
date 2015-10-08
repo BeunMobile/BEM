@@ -2,11 +2,16 @@ package com.bilgiislem.sems.beunapp.MainAndWeb;
 
 
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 
@@ -16,7 +21,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -30,16 +35,58 @@ import com.bilgiislem.sems.beunapp.KampusGorunumu.Kampus_Fragment;
 import com.bilgiislem.sems.beunapp.R;
 import com.bilgiislem.sems.beunapp.YemekListesi.YemekTab_Fragment;
 
+import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
+    CircleImageView facebook, twitter, instagram, youtube;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        facebook = (CircleImageView) findViewById(R.id.facebook_image);
+        twitter = (CircleImageView) findViewById(R.id.twitter_image);
+        instagram = (CircleImageView) findViewById(R.id.instagram_image);
+        youtube = (CircleImageView) findViewById(R.id.youtube_image);
+
+        facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), R.string.toast_facebook, Toast.LENGTH_SHORT).show();
+                openFacebookApp();
+            }
+        });
+
+        twitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), R.string.toast_twitter, Toast.LENGTH_SHORT).show();
+                openTwitterApp();
+            }
+        });
+
+        instagram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), R.string.toast_instagram, Toast.LENGTH_SHORT).show();
+                openInstagramApp();
+            }
+        });
+
+        youtube.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), R.string.toast_youtube, Toast.LENGTH_SHORT).show();
+                openYoutubeApp();
+            }
+        });
 
         if (!isOnline()) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -65,13 +112,10 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
-
         android.support.v4.app.Fragment objFragment = null;
         objFragment = new AnaSayfa_Fragment();
         getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame, objFragment).commit();
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
             @Override
@@ -157,28 +201,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public void onBackPressed() {
         android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -187,6 +209,75 @@ public class MainActivity extends AppCompatActivity {
             fm.popBackStack();
         } else {
             super.onBackPressed();
+        }
+    }
+
+    private void openFacebookApp() {
+        String facebookUrl = "https://www.facebook.com/beunedutr";
+        String facebookID = "339918329402303";
+        try {
+            int versionCode = this.getApplicationContext().getPackageManager().getPackageInfo("com.facebook.katana", 0).versionCode;
+
+            if (!facebookID.isEmpty()) {
+                // open the Facebook app using facebookID (fb://profile/facebookID or fb://page/facebookID)
+                Uri uri = Uri.parse("fb://page/" + facebookID);
+                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+            } else if (versionCode >= 3002850 && !facebookUrl.isEmpty()) {
+                // open Facebook app using facebook url
+                Uri uri = Uri.parse("fb://facewebmodal/f?href=" + facebookUrl);
+                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+            } else {
+                // Facebook is not installed. Open the browser
+                Uri uri = Uri.parse(facebookUrl);
+                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            // Facebook is not installed. Open the browser
+            Uri uri = Uri.parse(facebookUrl);
+            startActivity(new Intent(Intent.ACTION_VIEW, uri));
+        }
+    }
+
+    private void openTwitterApp() {
+        Intent twitter = null;
+        try {
+            // get the Twitter app if possible
+            this.getPackageManager().getPackageInfo("com.twitter.android", 0);
+            twitter = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?user_id=564639889"));
+            twitter.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        } catch (Exception e) {
+            // no Twitter app, revert to browser
+            twitter = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/beunedutr"));
+        }
+        this.startActivity(twitter);
+    }
+
+    private void openInstagramApp() {
+        Uri uri = Uri.parse("http://instagram.com/_u/beunedutr");
+        Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+
+        likeIng.setPackage("com.instagram.android");
+
+        try {
+            startActivity(likeIng);
+        } catch (ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://instagram.com/beunedutr")));
+        }
+    }
+
+    private void openYoutubeApp() {
+        String url = "https://www.youtube.com/user/beunedu/";
+        Intent intent = null;
+        try {
+            intent = new Intent(Intent.ACTION_VIEW);
+            intent.setPackage("com.google.android.youtube");
+            intent.setData(Uri.parse(url));
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(intent);
         }
     }
 

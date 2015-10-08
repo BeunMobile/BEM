@@ -7,7 +7,6 @@ package com.bilgiislem.sems.beunapp.AkademikTakvim.AkademikTakvimAdapter;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,10 +28,11 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
 
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_recyclerview, null);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_cardview, null);
         CustomViewHolder viewHolder = new CustomViewHolder(view);
         return viewHolder;
     }
+
 
     @Override
     public void onBindViewHolder(MyRecyclerAdapter.CustomViewHolder holder, int position) {

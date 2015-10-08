@@ -14,6 +14,7 @@
         android:layout_weight="1"
         android:background="@color/button_material_light"
         android:text="@string/genel_takvim"
+        android:textAllCaps="false"
         android:textColor="@color/BrushedPurple"
         android:textSize="25sp" />
 
@@ -27,6 +28,7 @@
         android:layout_weight="1"
         android:background="@color/button_material_light"
         android:text="@string/dis_takvim"
+        android:textAllCaps="false"
         android:textColor="@color/BrushedPurple"
         android:textSize="25sp" />
 
@@ -39,6 +41,7 @@
         android:layout_weight="1"
         android:background="@color/button_material_light"
         android:text="@string/enstitu_takvim"
+        android:textAllCaps="false"
         android:textColor="@color/BrushedPurple"
         android:textSize="25sp" />
 
@@ -51,6 +54,7 @@
         android:layout_weight="1"
         android:background="@color/button_material_light"
         android:text="@string/hazirlik_takvim"
+        android:textAllCaps="false"
         android:textColor="@color/BrushedPurple"
         android:textSize="25sp" />
 
@@ -63,6 +67,7 @@
         android:layout_weight="1"
         android:background="@color/button_material_light"
         android:text="@string/tip_takvim"
+        android:textAllCaps="false"
         android:textColor="@color/BrushedPurple"
         android:textSize="25sp" />
 
@@ -75,6 +80,7 @@
         android:layout_weight="1"
         android:background="@color/button_material_light"
         android:text="@string/uluslarasi_takvim"
+        android:textAllCaps="false"
         android:textColor="@color/BrushedPurple"
         android:textSize="25sp" />
 
@@ -87,6 +93,7 @@
         android:layout_weight="1"
         android:background="@color/button_material_light"
         android:text="@string/ygi_takvim"
+        android:textAllCaps="false"
         android:textColor="@color/BrushedPurple"
         android:textSize="25sp" />
 
@@ -99,6 +106,7 @@
         android:layout_weight="1"
         android:background="@color/button_material_light"
         android:text="@string/yaz_takvim"
+        android:textAllCaps="false"
         android:textColor="@color/BrushedPurple"
         android:textSize="25sp" />
 
@@ -110,6 +118,7 @@
         android:layout_weight="1"
         android:background="@color/button_material_light"
         android:text="@string/yetenek_takvim"
+        android:textAllCaps="false"
         android:textColor="@color/BrushedPurple"
         android:textSize="25sp" />
 </LinearLayout>

@@ -24,6 +24,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/PurpleButtonBackGroundColor"
         android:text="@string/gallery"
+        android:textAllCaps="false"
         android:textColor="@color/PurpleButtonTextColor" />
 
     <TextView
@@ -34,9 +35,9 @@
         android:layout_centerVertical="true"
         android:gravity="center_horizontal"
         android:text="@string/loading_yemek"
+        android:textColor="@color/BrushedGreenTextColor"
         android:textSize="30sp"
-        android:textStyle="bold"
-        android:textColor="@color/BrushedGreenTextColor" />
+        android:textStyle="bold" />
 
 </RelativeLayout>
 

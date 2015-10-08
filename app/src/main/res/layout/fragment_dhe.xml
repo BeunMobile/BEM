@@ -11,7 +11,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/tumbutton"
-        android:layout_alignParentTop="true"/>
+        android:layout_alignParentTop="true" />
 
     <Button
         android:id="@+id/tumbutton"
@@ -19,29 +19,30 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/PurpleButtonBackGroundColor"
-        android:textColor="@color/PurpleButtonTextColor"
-        android:text="@string/pick_a_date" />
+        android:text="@string/pick_a_date"
+        android:textAllCaps="false"
+        android:textColor="@color/PurpleButtonTextColor" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/BrushedGold"
-        android:gravity="center_horizontal"
         android:id="@+id/empty_data"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:textColor="@color/BrushedGreenTextColor"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/BrushedGold" />
+
+    <TextView
+        android:id="@+id/loading_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:gravity="center_horizontal"
         android:text="@string/loading_yemek"
-        android:id="@+id/loading_data"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:textColor="@color/BrushedGreenTextColor"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

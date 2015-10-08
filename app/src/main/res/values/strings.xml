@@ -13,24 +13,13 @@
     <string name="title_section10">Kampüs Görünümü</string>
 
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Menüyü aç</string>
+    <string name="navigation_drawer_close">Menüyü kapat</string>
 
-    <string name="action_example">Deneme</string>
-
-    <string name="action_about">Hakkında</string>
-
-    <string name="title_activity_farabi">Map</string>
-    <string name="title_activity_ana_sayfa__web_page">AnaSayfa_WebPage</string>
-    <string name="title_activity_beu_3_dpage">Beu_3DPage</string>
-    <string name="title_activity_ekampus__web_page">Ekampus_WebPage</string>
-    <string name="title_activity_eposta__web_page">Eposta_WebPage</string>
-    <string name="title_activity_icerik">Icerik_Activity</string>
-    <string name="title_activity_dhe__month__year">DHE_Month_Year</string>
 
     //NavigationView
-    <string name="closeDrawer">Navigation View</string>
-    <string name="openDrawer">Navigation View Closed</string>
+    <string name="closeDrawer">Menü</string>
+    <string name="openDrawer">Menü kapalı</string>
     <string name="ana_sayfa_title">Bülent Ecevit Üniversitesi</string>
     <string name="duyuru_title">Duyurular</string>
     <string name="haber_title">Haberler</string>
@@ -41,10 +30,15 @@
     <string name="e_posta_title">E-Posta</string>
     <string name="uzem_title">Uzaktan Eğitim Merkezi</string>
     <string name="kampus_title">Kampüs Görünümü</string>
+    <string name="toast_facebook">Facebook yönlendirmesi yapılıyor.</string>
+    <string name="toast_twitter">Twitter yönlendirmesi yapılıyor.</string>
+    <string name="toast_instagram">Instagram yönlendirmesi yapılıyor.</string>
+    <string name="toast_youtube">Youtube yönlendirmesi yapılıyor.</string>
 
 
     //Anasayfa
     <string name="loading">Yükleniyor</string>
+    <string name="mainweb_page">Ana Sayfa</string>
     <string name="waitfor">Lütfen biraz bekleyiniz …</string>
     <string name="alphatext">Bülent Ecevit Üniversity Application Version Pre-Alpha 0.9</string>
 
@@ -68,6 +62,11 @@
     <string name="unexpected_error">Bir hatayla karşılaşıldı
         lütfen hakkında bölümünden geri bilidirim yapınız.</string>
     <string name="closed_restaurant">Yemekhane hafta sonu kapalıdır.\n  ¯\_(ツ)_/¯   </string>
+
+
+    //Toolbar
+    <string name="action_about">Hakkında</string>
+    <string name="action_share">Paylaş</string>
 
 
     //DialogMessages
@@ -117,10 +116,11 @@
     <string name="tab_carsamba">Çarş</string>
     <string name="tab_persembe">Perş</string>
     <string name="tab_cuma">Cuma</string>
-    <string name="loading_yemek">Yükleniyor...</string>
+    <string name="loading_yemek">Yükleniyor…</string>
+    <string name="monthly_list">Aylık Liste</string>
 
     //Resimler
-    <string name="gallery">GALERİ İÇİN TIKLAYINIZ</string>
+    <string name="gallery">Galeri için tıklayınız</string>
 
     //Akademik Takvim
     <string name="genel_takvim">Genel Akademik Takvim</string>

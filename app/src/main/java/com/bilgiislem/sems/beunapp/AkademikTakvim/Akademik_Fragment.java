@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.bilgiislem.sems.beunapp.MainAndWeb.MainActivity;
 import com.bilgiislem.sems.beunapp.R;
 
 public class Akademik_Fragment extends Fragment {
@@ -22,6 +23,7 @@ public class Akademik_Fragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_akademik, container, false);
+        ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.akademik_title));
 
         Button gat = (Button) view.findViewById(R.id.button_gat);
         Button dhf = (Button) view.findViewById(R.id.button_dhf);
@@ -37,8 +39,8 @@ public class Akademik_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), GBYActivity.class);
-                intent.putExtra("kategori_id","10");
-                intent.putExtra("kategori_isim",getResources().getString(R.string.genel_takvim));
+                intent.putExtra("kategori_id", "10");
+                intent.putExtra("kategori_isim", getResources().getString(R.string.genel_takvim));
                 startActivity(intent);
             }
         });
@@ -47,8 +49,8 @@ public class Akademik_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), GBYActivity.class);
-                intent.putExtra("kategori_id","6");
-                intent.putExtra("kategori_isim",getResources().getString(R.string.dis_takvim));
+                intent.putExtra("kategori_id", "6");
+                intent.putExtra("kategori_isim", getResources().getString(R.string.dis_takvim));
                 startActivity(intent);
             }
         });
@@ -57,8 +59,8 @@ public class Akademik_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), GBYActivity.class);
-                intent.putExtra("kategori_id","9");
-                intent.putExtra("kategori_isim",getResources().getString(R.string.enstitu_takvim));
+                intent.putExtra("kategori_id", "9");
+                intent.putExtra("kategori_isim", getResources().getString(R.string.enstitu_takvim));
                 startActivity(intent);
             }
         });
@@ -67,8 +69,8 @@ public class Akademik_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), GBYActivity.class);
-                intent.putExtra("kategori_id","8");
-                intent.putExtra("kategori_isim",getResources().getString(R.string.hazirlik_takvim));
+                intent.putExtra("kategori_id", "8");
+                intent.putExtra("kategori_isim", getResources().getString(R.string.hazirlik_takvim));
                 startActivity(intent);
             }
         });
@@ -77,8 +79,8 @@ public class Akademik_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), GBYActivity.class);
-                intent.putExtra("kategori_id","4");
-                intent.putExtra("kategori_isim",getResources().getString(R.string.tip_takvim));
+                intent.putExtra("kategori_id", "4");
+                intent.putExtra("kategori_isim", getResources().getString(R.string.tip_takvim));
                 startActivity(intent);
             }
         });
@@ -87,8 +89,8 @@ public class Akademik_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), GBYActivity.class);
-                intent.putExtra("kategori_id","22");
-                intent.putExtra("kategori_isim",getResources().getString(R.string.uluslarasi_takvim));
+                intent.putExtra("kategori_id", "22");
+                intent.putExtra("kategori_isim", getResources().getString(R.string.uluslarasi_takvim));
                 startActivity(intent);
             }
         });
@@ -107,8 +109,8 @@ public class Akademik_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), GBYActivity.class);
-                intent.putExtra("kategori_id","11");
-                intent.putExtra("kategori_isim",getResources().getString(R.string.yaz_takvim));
+                intent.putExtra("kategori_id", "11");
+                intent.putExtra("kategori_isim", getResources().getString(R.string.yaz_takvim));
                 startActivity(intent);
             }
         });
