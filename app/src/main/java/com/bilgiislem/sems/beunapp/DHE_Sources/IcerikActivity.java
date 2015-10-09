@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +22,10 @@ import com.bilgiislem.sems.beunapp.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Entities;
+import org.jsoup.safety.Cleaner;
+import org.jsoup.safety.Whitelist;
 
 public class IcerikActivity extends AppCompatActivity {
 
@@ -86,9 +91,31 @@ public class IcerikActivity extends AppCompatActivity {
                     });
                 }
                 String texticerik = html2text(icerik);
-                if (texticerik.startsWith("http://") || texticerik.startsWith("w3")) {
+                if (texticerik.startsWith("http://") || texticerik.startsWith("w3") || texticerik.startsWith("<p><a href=\"http://")) {
                     webView.loadUrl(texticerik);
+                    webView.setVisibility(View.VISIBLE);
+                    loadingData.setVisibility(View.GONE);
 
+                } else if (icerik.contains("type=\"application/pdf\"")) {
+                    while (icerik.contains("type=\"application/pdf\"")) {
+                        int startIndex = icerik.indexOf("<p><object style=");
+                        int endIndex = icerik.indexOf("</object></p>");
+                        Log.d("startEnd", "" + startIndex + "+" + endIndex);
+                        String replaceStr = "";
+                        String toBeReplaced = icerik.substring(startIndex, endIndex + 9);
+                        icerik = icerik.replace(toBeReplaced, replaceStr);
+                        Log.d("icerik", icerik);
+                    }
+                    if (icerik.contains("/dosyalar/")) {
+                        String replacedicerik = icerik.replaceAll("../../../..", "http://w3.beun.edu.tr/");
+                        webView.loadDataWithBaseURL(null, replacedicerik, "text/html", "utf-8", null);
+                        webView.setVisibility(View.VISIBLE);
+                        loadingData.setVisibility(View.GONE);
+                    } else {
+                        webView.loadDataWithBaseURL(null, icerik, "text/html", "utf-8", null);
+                        webView.setVisibility(View.VISIBLE);
+                        loadingData.setVisibility(View.GONE);
+                    }
                 } else if (icerik.contains("/dosyalar/")) {
                     String replacedicerik = icerik.replaceAll("../../../..", "http://w3.beun.edu.tr/");
                     webView.loadDataWithBaseURL(null, replacedicerik, "text/html", "utf-8", null);
@@ -99,7 +126,11 @@ public class IcerikActivity extends AppCompatActivity {
                     webView.getSettings().setJavaScriptEnabled(true);
                     webView.setWebViewClient(new MyWebViewClient());
                 }
-            } catch (JSONException e) {
+            } catch (
+                    JSONException e
+                    )
+
+            {
                 e.printStackTrace();
             }
 
