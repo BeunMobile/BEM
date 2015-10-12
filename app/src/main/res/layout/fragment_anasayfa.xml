@@ -110,7 +110,19 @@
                                 android:text="@string/empty_duyuru"
                                 android:textColor="@color/BrushedGold"
                                 android:textSize="15sp"
-                                android:visibility="gone"/>
+                                android:textStyle="bold"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/card_duyuru_loading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="@string/loading"
+                                android:textColor="@color/BrushedGreenTextColor"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
 
                             <ScrollView
                                 android:layout_width="wrap_content"
@@ -122,9 +134,9 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
-                                    android:text="@string/loading"
                                     android:textColor="@color/BrushedPurple"
-                                    android:textSize="15sp" />
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
                             </ScrollView>
 
                         </LinearLayout>
@@ -183,6 +195,7 @@
                             android:layout_toEndOf="@+id/card_haber_baslik"
                             android:layout_toRightOf="@+id/card_haber_baslik"
                             android:orientation="horizontal">
+
                             <TextView
                                 android:id="@+id/card_no_haber"
                                 android:layout_width="match_parent"
@@ -192,20 +205,33 @@
                                 android:text="@string/empty_haber"
                                 android:textColor="@color/BrushedGold"
                                 android:textSize="15sp"
-                                android:visibility="gone"/>
+                                android:textStyle="bold"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/card_haber_loading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="@string/loading"
+                                android:textColor="@color/BrushedGreenTextColor"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
 
                             <ScrollView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
+
                                 <TextView
                                     android:id="@+id/card_haber_icerik"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
-                                    android:text="@string/loading"
                                     android:textColor="@color/BrushedPurple"
-                                    android:textSize="15sp" />
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
 
                             </ScrollView>
 
@@ -223,7 +249,7 @@
 
                 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/card_yemek"
+                    android:id="@+id/card_etkinlik"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -238,7 +264,7 @@
 
                         <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                             xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                            android:id="@+id/card_yemek_baslik"
+                            android:id="@+id/card_etkinlik_baslik"
                             android:layout_width="110dp"
                             android:layout_height="35dp"
                             android:layout_gravity="top"
@@ -250,7 +276,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="fill_parent"
                                 android:gravity="center"
-                                android:text="@string/last_yemek"
+                                android:text="@string/last_etkinlik"
                                 android:textColor="@color/AccentColor"
                                 android:textSize="12sp"
                                 android:textStyle="bold" />
@@ -261,37 +287,49 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_alignParentTop="true"
-                            android:layout_toEndOf="@+id/card_haber_baslik"
-                            android:layout_toRightOf="@+id/card_haber_baslik"
+                            android:layout_toEndOf="@+id/card_etkinlik_baslik"
+                            android:layout_toRightOf="@+id/card_etkinlik_baslik"
                             android:orientation="horizontal">
+
                             <TextView
-                                android:id="@+id/card_no_yemek"
+                                android:id="@+id/card_no_etkinlik"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="center_vertical"
                                 android:padding="8dp"
-                                android:text="@string/yemek_no_data"
+                                android:text="@string/empty_etkinlik"
                                 android:textColor="@color/BrushedGold"
                                 android:textSize="15sp"
-                                android:visibility="gone"/>
+                                android:textStyle="bold"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/card_etkinlik_loading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="@string/loading"
+                                android:textColor="@color/BrushedGreenTextColor"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
 
                             <ScrollView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
+
                                 <TextView
-                                    android:id="@+id/card_yemek_icerik"
+                                    android:id="@+id/card_etkinlik_icerik"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
-                                    android:text="@string/loading"
                                     android:textColor="@color/BrushedPurple"
-                                    android:textSize="15sp" />
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
 
                             </ScrollView>
-
                         </LinearLayout>
-
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
             </LinearLayout>

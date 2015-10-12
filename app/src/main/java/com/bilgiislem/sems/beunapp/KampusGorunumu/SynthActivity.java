@@ -3,15 +3,18 @@ package com.bilgiislem.sems.beunapp.KampusGorunumu;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.R;
 
 public class SynthActivity extends Activity {
-    WebView webview;
+    WebView webView;
     String Url_3D;
     String check_marker;
 
@@ -47,9 +50,15 @@ public class SynthActivity extends Activity {
                 break;
         }
 
-        webview = (WebView) findViewById(R.id.web_page);
-        webview.getSettings().setJavaScriptEnabled(true);
-        webview.loadUrl(Url_3D);
+        webView = (WebView) findViewById(R.id.web_page);
+        if (Build.VERSION.SDK_INT >= 19) {
+            webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        } else {
+            webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        }
+        webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl(Url_3D);
     }
 
     @Override

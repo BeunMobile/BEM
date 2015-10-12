@@ -43,7 +43,8 @@
     <string name="alphatext">Bülent Ecevit Üniversity Application Version Pre-Alpha 0.9</string>
     <string name="last_duyuru">Son Duyuru</string>
     <string name="last_haber">Son haber</string>
-    <string name="last_yemek">Günün Menüsü</string>
+    <string name="last_etkinlik">Yaklaşan etkinlik</string>
+    <string name="no_connection">Lütfen internet bağlantınızı kontrol ediniz.</string>
 
 
     //DHE
@@ -121,6 +122,7 @@
     <string name="tab_cuma">Cuma</string>
     <string name="loading_yemek">Yükleniyor…</string>
     <string name="monthly_list">Aylık Liste</string>
+    <string name="weekend_food">Hafta sonu yemek bulunmamaktadır.</string>
 
     //Resimler
     <string name="gallery">Galeri için tıklayınız</string>

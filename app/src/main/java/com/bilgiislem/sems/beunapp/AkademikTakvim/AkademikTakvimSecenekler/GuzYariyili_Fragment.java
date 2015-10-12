@@ -61,11 +61,11 @@ public class GuzYariyili_Fragment extends Fragment {
         emptyData.setVisibility(View.GONE);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        new GetJSON().execute();
+        new getGuzJSON().execute();
         return view;
     }
 
-    private class GetJSON extends AsyncTask<Void, Void, Void> {
+    private class getGuzJSON extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {

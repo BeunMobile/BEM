@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bilgiislem.sems.beunapp.AnaSayfa.WebActivity;
 import com.bilgiislem.sems.beunapp.MainActivity.MainActivity;
 import com.bilgiislem.sems.beunapp.R;
 import com.bilgiislem.sems.beunapp.YemekListesi.YemekListesiHaftalar.Carsamba_Fragment;
@@ -58,9 +59,8 @@ public class YemekTab_Fragment extends Fragment {
         buttonPdf = (Button) view.findViewById(R.id.button_pdf);
         buttonPdf.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PDFActivity.class);
-                intent.putExtra("month", cM);
-                intent.putExtra("year", cY);
+                Intent intent = new Intent(getActivity(), WebActivity.class);
+                intent.putExtra("web","https://docs.google.com/gview?embedded=true&url=http://w3.beun.edu.tr/dosyalar/ana_sayfa/ekim2015.pdf");
                 startActivity(intent);
             }
         });

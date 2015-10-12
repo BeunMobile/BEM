@@ -1,6 +1,9 @@
 package com.bilgiislem.sems.beunapp.YemekListesi.YemekListesiHaftalar;
 
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -32,6 +35,8 @@ import java.util.TimeZone;
 public class Pazartesi_Fragment extends Fragment {
 
     TextView dateText;
+    TextView noconText;
+    TextView weekendText;
     TextView corbaText;
     TextView corbaCalText;
     TextView yemek1Text;
@@ -88,6 +93,8 @@ public class Pazartesi_Fragment extends Fragment {
 
 
         dateText = (TextView) view.findViewById(R.id.date_text);
+        noconText = (TextView) view.findViewById(R.id.no_data);
+        weekendText = (TextView) view.findViewById(R.id.weekend_text);
         corbaText = (TextView) view.findViewById(R.id.corba_text);
         corbaCalText = (TextView) view.findViewById(R.id.corba_cal);
         yemek1Text = (TextView) view.findViewById(R.id.yemek1_text);
@@ -120,9 +127,18 @@ public class Pazartesi_Fragment extends Fragment {
             url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 4);
         }
 
-        if (dayOfWeek != 1 && dayOfWeek != 7) {
-            new JSONParse().execute();
+        if (!isOnline()) {
+            dateText.setVisibility(View.GONE);
+            noconText.setVisibility(View.VISIBLE);
+        } else {
+            if (dayOfWeek != 1 && dayOfWeek != 7) {
+                new JSONParse().execute();
+            } else {
+                dateText.setVisibility(View.GONE);
+                weekendText.setVisibility(View.VISIBLE);
+            }
         }
+
         return view;
     }
 
@@ -183,7 +199,6 @@ public class Pazartesi_Fragment extends Fragment {
             try {
                 whichWeek = getNumberofSunday(currentYear + "-" + currentMonth + "-" + 1, currentYear + "-" + currentMonth + "-" + currentDay);
                 firstdayOfMonth = getFirstDateOfCurrentMonth();
-
                 dateText.setText(tarihList.get(0) + " " + aylarTRList.get(currentMonth - 1) + " " + currentYear);
                 corbaText.setText(corbaList.get(0));
                 corbaCalText.setText(corbaCalList.get(0) + " kal");
@@ -197,7 +212,6 @@ public class Pazartesi_Fragment extends Fragment {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
             corbaText.setVisibility(View.VISIBLE);
             corbaCalText.setVisibility(View.VISIBLE);
             yemek1Text.setVisibility(View.VISIBLE);
@@ -206,7 +220,6 @@ public class Pazartesi_Fragment extends Fragment {
             yemek2CalText.setVisibility(View.VISIBLE);
             digerText.setVisibility(View.VISIBLE);
             digerCalText.setVisibility(View.VISIBLE);
-
         }
     }
 
@@ -244,6 +257,12 @@ public class Pazartesi_Fragment extends Fragment {
         Calendar c = new GregorianCalendar();
         c.set(Calendar.DAY_OF_MONTH, 1);
         return c.get(Calendar.DAY_OF_WEEK);
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
 }

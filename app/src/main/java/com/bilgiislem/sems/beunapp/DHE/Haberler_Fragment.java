@@ -92,7 +92,7 @@ public class Haberler_Fragment extends ListFragment {
                 startActivity(intent);
             }
         });
-        new GetJSON().execute();
+        new getHaberJSON().execute();
         super.onActivityCreated(savedInstanceState);
     }
 
@@ -100,7 +100,7 @@ public class Haberler_Fragment extends ListFragment {
     /**
      * Async task class to get json by making HTTP call
      */
-    private class GetJSON extends AsyncTask<Void, Void, Void> {
+    private class getHaberJSON extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();

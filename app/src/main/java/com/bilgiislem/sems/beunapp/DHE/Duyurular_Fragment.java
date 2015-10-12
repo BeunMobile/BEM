@@ -42,7 +42,7 @@ public class Duyurular_Fragment extends ListFragment {
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
-    JSONArray contacts = null;
+    JSONArray s1 = null;
     ArrayList<HashMap<String, String>> duyuruList;
 
     @Override
@@ -93,11 +93,11 @@ public class Duyurular_Fragment extends ListFragment {
                 startActivity(intent);
             }
         });
-        new GetJSON().execute();
+        new getDuyuruJSON().execute();
         super.onActivityCreated(savedInstanceState);
     }
 
-    private class GetJSON extends AsyncTask<Void, Void, Void> {
+    private class getDuyuruJSON extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -110,9 +110,9 @@ public class Duyurular_Fragment extends ListFragment {
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
-                    contacts = jsonObj.getJSONArray(TAG_S1);
-                    for (int i = 0; i < contacts.length(); i++) {
-                        JSONObject c = contacts.getJSONObject(i);
+                    s1 = jsonObj.getJSONArray(TAG_S1);
+                    for (int i = 0; i < s1.length(); i++) {
+                        JSONObject c = s1.getJSONObject(i);
                         String baslik = c.getString(TAG_BASLIK);
                         String adres = c.getString(TAG_ADRES);
                         HashMap<String, String> contact = new HashMap<String, String>();

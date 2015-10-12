@@ -1,6 +1,9 @@
 package com.bilgiislem.sems.beunapp.YemekListesi.YemekListesiHaftalar;
 
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -34,6 +37,8 @@ import java.util.TimeZone;
 public class Sali_Fragment extends Fragment {
 
     TextView dateText;
+    TextView noconText;
+    TextView weekendText;
     TextView corbaText;
     TextView corbaCalText;
     TextView yemek1Text;
@@ -100,6 +105,8 @@ public class Sali_Fragment extends Fragment {
         String lastDayOfMonthName = new SimpleDateFormat("EEEE", Locale.ENGLISH).format(lastDayDate);
 
         dateText = (TextView) view.findViewById(R.id.date_text);
+        noconText = (TextView) view.findViewById(R.id.no_data);
+        weekendText = (TextView) view.findViewById(R.id.weekend_text);
         corbaText = (TextView) view.findViewById(R.id.corba_text);
         corbaCalText = (TextView) view.findViewById(R.id.corba_cal);
         yemek1Text = (TextView) view.findViewById(R.id.yemek1_text);
@@ -133,9 +140,18 @@ public class Sali_Fragment extends Fragment {
         }
 
 
-        if (dayOfWeek != 1 && dayOfWeek != 7) {
-            new JSONParse().execute();
+        if (!isOnline()) {
+            dateText.setVisibility(View.GONE);
+            noconText.setVisibility(View.VISIBLE);
+        } else {
+            if (dayOfWeek != 1 && dayOfWeek != 7) {
+                new JSONParse().execute();
+            } else {
+                dateText.setVisibility(View.GONE);
+                weekendText.setVisibility(View.VISIBLE);
+            }
         }
+
         return view;
     }
 
@@ -257,5 +273,11 @@ public class Sali_Fragment extends Fragment {
         Calendar c = new GregorianCalendar();
         c.set(Calendar.DAY_OF_MONTH, 1);
         return c.get(Calendar.DAY_OF_WEEK);
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 }

@@ -41,7 +41,7 @@
         </activity>
         <activity
             android:name=".AnaSayfa.WebActivity"
-            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+            android:theme="@style/MainTheme" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -69,9 +69,6 @@
         <activity
             android:name=".DHE_Sources.GridViewSources.GridViewActivity"
             android:theme="@style/MainTheme" />
-        <activity
-            android:name=".YemekListesi.PDFActivity"
-            android:theme="@style/AppTheme3" />
         <activity
             android:name=".AkademikTakvim.GBYActivity"
             android:theme="@style/MainTheme" />
