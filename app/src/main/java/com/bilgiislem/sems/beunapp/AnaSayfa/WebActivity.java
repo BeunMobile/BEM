@@ -32,6 +32,7 @@ public class WebActivity extends AppCompatActivity {
         setContentView(R.layout.activity_web);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        toolbar.setNavigationIcon(android.R.drawable.ic_menu_close_clear_cancel);
         setSupportActionBar(toolbar);
         switch (url) {
             case "http://w3.beun.edu.tr/":
@@ -53,8 +54,6 @@ public class WebActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle(getResources().getString(R.string.title_section1));
                 break;
         }
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         loadingData = (TextView) findViewById(R.id.loading_data);
         noConnection = (TextView) findViewById(R.id.empty_data);
         webView = (WebView) findViewById(R.id.icerik_http_text);

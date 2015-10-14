@@ -272,6 +272,12 @@ public class AnaSayfa_Fragment extends Fragment {
         }
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("bD", baslikDuyuru);
+        outState.putString("aD", adresDuyuru);
+    }
 
     public static String html2text(String html) {
         return Jsoup.parse(html).text();
