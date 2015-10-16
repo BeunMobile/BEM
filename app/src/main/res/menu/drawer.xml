@@ -59,7 +59,7 @@
 
     <item
         android:id="@+id/section_about"
-        android:title="@string/action_about">
+        android:title="@string/title_version">
         <menu>
             <item
                 android:id="@+id/item_contact"
@@ -67,10 +67,10 @@
                 android:icon="@drawable/ic_contacts"
                 android:title="@string/title_section_about1" />
             <item
-                android:id="@+id/item_feedback"
+                android:id="@+id/item_about"
                 android:checked="false"
-                android:icon="@drawable/ic_feedback"
-                android:title="@string/title_section_about2" />
+                android:icon="@drawable/ic_coding"
+                android:title="@string/action_about" />
         </menu>
     </item>
 </menu>

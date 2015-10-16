@@ -12,8 +12,7 @@
     <string name="title_section9">UZEM</string>
     <string name="title_section10">Kampüs Görünümü</string>
     <string name="title_section_about1">İletişim</string>
-    <string name="title_section_about2">Geri bildirim</string>
-
+    <string name="title_version">Versiyon : Beta</string>
 
 
     <string name="navigation_drawer_open">Menüyü aç</string>
@@ -47,6 +46,7 @@
     <string name="last_duyuru">Son Duyuru</string>
     <string name="last_haber">Son haber</string>
     <string name="last_etkinlik">Yaklaşan etkinlik</string>
+    <string name="last_food">Günün Menüsü</string>
     <string name="no_connection">Lütfen internet bağlantınızı kontrol ediniz.</string>
 
 
@@ -160,5 +160,12 @@
     <string name="empty_yaz">Yaz dönemine ait takvim\n bulunmamaktadır.</string>
     <string name="ygi_picker">Yatay geçiş işlemleri</string>
     <string name="ys_picker">Yetenek Sınavları</string>
+
+
+    //İletisim ve Hakkında
+    <string name="about_beta">Yapım aşamasında.</string>
+    <string name="about_contact">İletişim</string>
+    <string name="about_about">Hakkında</string>
+
 
 </resources>
