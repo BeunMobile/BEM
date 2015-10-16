@@ -39,6 +39,7 @@ public class IcerikActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         baslik_plus = getIntent().getStringExtra("baslik");
         http_plus = getIntent().getStringExtra("adres");
         url = "http://w3.beun.edu.tr/veri" + http_plus;
