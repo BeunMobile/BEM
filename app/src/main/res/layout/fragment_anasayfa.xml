@@ -29,12 +29,15 @@
             <ViewFlipper
                 android:id="@+id/image_flipper"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/anasayfatest"/>
+                android:layout_height="match_parent"
+                android:visibility="gone">
             </ViewFlipper>
+
+            <ImageView
+                android:id="@+id/loading_anasayfa"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/loading_anasayfa"/>
 
         </LinearLayout>
 

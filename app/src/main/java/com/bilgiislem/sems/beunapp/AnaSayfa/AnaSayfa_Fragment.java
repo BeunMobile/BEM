@@ -44,7 +44,6 @@ import java.util.TimerTask;
 
 public class AnaSayfa_Fragment extends Fragment {
 
-
     private static String url_duyuru = "http://w3.beun.edu.tr/mobil-duyurular/";
     private static String url_haber = "http://w3.beun.edu.tr/mobil-haberler/";
     private static String url_etkinlik = "http://w3.beun.edu.tr/mobil-etkinlikler/";
@@ -62,6 +61,7 @@ public class AnaSayfa_Fragment extends Fragment {
     TextView emptyDuyuru, setDuyuru, loadDuyuru, emptyHaber, setHaber, loadHaber, emptyEtkinlik, setEtkinlik, loadEtkinlik;
     CardView cardDuyuru, cardHaber, cardEtkinlik;
     Button anaSayfaButton;
+    ImageView anasayfaLoading;
 
     String baslikDuyuru, adresDuyuru, baslikHaber, adresHaber, baslikEtkinlik, adresEtkinlik;
 
@@ -70,6 +70,8 @@ public class AnaSayfa_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_anasayfa, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.ana_sayfa_title));
+
+        anasayfaLoading = (ImageView) view.findViewById(R.id.loading_anasayfa);
 
         cardDuyuru = (CardView) view.findViewById(R.id.card_duyuru);
         cardHaber = (CardView) view.findViewById(R.id.card_haber);
@@ -98,8 +100,8 @@ public class AnaSayfa_Fragment extends Fragment {
         new getHaberJSON().execute();
         new getEtkinlikJSON().execute();
 
-
         viewFlipper = (ViewFlipper) view.findViewById(R.id.image_flipper);
+        viewFlipper.setVisibility(View.INVISIBLE);
         imageList = new ArrayList<String>();
         imageLinkList = new ArrayList<String>();
         new JSONImageSlider().execute(url_slider);
@@ -110,7 +112,6 @@ public class AnaSayfa_Fragment extends Fragment {
 
     private void FlipperEvents() {
         final Handler mHandler = new Handler();
-
 
         viewFlipper.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -177,7 +178,6 @@ public class AnaSayfa_Fragment extends Fragment {
                 HttpGet httppost = new HttpGet(urls[0]);
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpResponse response = httpclient.execute(httppost);
-                // StatusLine stat = response.getStatusLine();
                 int status = response.getStatusLine().getStatusCode();
                 if (status == 200) {
                     HttpEntity entity = response.getEntity();
@@ -186,11 +186,8 @@ public class AnaSayfa_Fragment extends Fragment {
                     JSONArray jarray = jsono.getJSONArray("s1");
                     for (int i = 0; i < jarray.length(); i++) {
                         JSONObject object = jarray.getJSONObject(i);
-                        //  Actors actor = new Actors();
                         imageList.add("http://w3.beun.edu.tr/dosyalar/" + object.getString("gorsel"));
                         imageLinkList.add(object.getString("adres"));
-                        //   actor.setImage(object.getString("image"));
-                        //   imageList.add(actor);
                     }
                     return true;
                 }
@@ -205,14 +202,15 @@ public class AnaSayfa_Fragment extends Fragment {
         }
 
         protected void onPostExecute(Boolean result) {
-            if (result == false) {
-                Toast.makeText(getActivity().getApplicationContext(), "Unable to fetch data from server", Toast.LENGTH_LONG).show();
+            if (!result) {
+                Toast.makeText(getActivity().getApplicationContext(), R.string.no_connection, Toast.LENGTH_SHORT).show();
             } else {
+                anasayfaLoading.setVisibility(View.GONE);
+                viewFlipper.setVisibility(View.VISIBLE);
                 setFlipperImage(imageList);
             }
         }
     }
-
 
     private class getDuyuruJSON extends AsyncTask<Void, Void, Void> {
 
@@ -414,27 +412,23 @@ public class AnaSayfa_Fragment extends Fragment {
 
         for (int i = 0; i < actorsList.size(); i++) {
             ImageView image = new ImageView(getActivity().getApplicationContext());
-// image.setBackgroundResource(res);
             Picasso.with(getActivity())
                     .load(actorsList.get(i))
-                    .placeholder(R.drawable.ibnisina)
-                    .error(R.drawable.anasayfatest)
+                    .placeholder(R.drawable.loading_anasayfa)
+                    .error(R.drawable.loading_anasayfa)
                     .into(image);
             viewFlipper.addView(image);
         }
     }
 
-    // method to show slide show
     private void AnimateandSlideShow() {
         viewFlipper.setInAnimation(getActivity(), R.anim.slide_in_from_right);
         viewFlipper.setOutAnimation(getActivity(), R.anim.slide_out_to_left);
         viewFlipper.setDisplayedChild(viewFlipper.getDisplayedChild() + 1);
     }
 
-
     public static String html2text(String html) {
         return Jsoup.parse(html).text();
     }
-
 
 }
