@@ -23,6 +23,7 @@ public class Akademik_Fragment extends Fragment {
         ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.akademik_title));
 
 
+
         CardView gat = (CardView) view.findViewById(R.id.card_gat);
         CardView dhf = (CardView) view.findViewById(R.id.card_dhf);
         CardView enst = (CardView) view.findViewById(R.id.card_enst);
