@@ -22,6 +22,7 @@ public class Akademik_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_akademik_cardview, container, false);
         ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.akademik_title));
 
+
         CardView gat = (CardView) view.findViewById(R.id.card_gat);
         CardView dhf = (CardView) view.findViewById(R.id.card_dhf);
         CardView enst = (CardView) view.findViewById(R.id.card_enst);
