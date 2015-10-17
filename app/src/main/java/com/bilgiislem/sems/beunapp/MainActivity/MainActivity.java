@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         instagram = (CircleImageView) findViewById(R.id.instagram_image);
         youtube = (CircleImageView) findViewById(R.id.youtube_image);
 
+
         facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
