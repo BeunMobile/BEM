@@ -12,12 +12,11 @@ import com.bilgiislem.sems.beunapp.MainActivity.MainActivity;
 import com.bilgiislem.sems.beunapp.R;
 
 /**
- * Created by detro on 16.10.2015.
+ * Created by detro on 16.10.2015.1
  */
 
 public class Iletisim_Fragment extends Fragment {
     TextView about_beta;
-
 
     @Nullable
     @Override

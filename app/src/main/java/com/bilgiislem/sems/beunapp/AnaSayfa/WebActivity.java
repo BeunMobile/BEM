@@ -2,6 +2,7 @@ package com.bilgiislem.sems.beunapp.AnaSayfa;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -9,8 +10,10 @@ import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -57,7 +60,7 @@ public class WebActivity extends AppCompatActivity {
         loadingData = (TextView) findViewById(R.id.loading_data);
         noConnection = (TextView) findViewById(R.id.empty_data);
         webView = (WebView) findViewById(R.id.icerik_http_text);
-        webView.setVisibility(View.GONE);
+        webView.setVisibility(View.INVISIBLE);
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         if (Build.VERSION.SDK_INT >= 19) {
@@ -70,11 +73,20 @@ public class WebActivity extends AppCompatActivity {
         settings.setBuiltInZoomControls(true);
         settings.setDisplayZoomControls(false);
         webView.loadUrl(url);
+        webView.setWebChromeClient(new MyWebViewClient());
         webView.setWebViewClient(new WebViewClient() {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
                 return true;
             }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                while (webView.getProgress() == 100) {
+                    Log.d("Progress", "" + webView.getProgress());
+                }
+            }
+
 
             public void onPageFinished(WebView view, String url) {
                 if (!isOnline()) {
@@ -86,6 +98,17 @@ public class WebActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+
+    private class MyWebViewClient extends WebChromeClient {
+
+        @Override
+        public void onProgressChanged(WebView view, int newProgress) {
+            super.onProgressChanged(view, newProgress);
+            loadingData.setText("Yükleniyor %"+newProgress);
+        }
+
     }
 
     @Override

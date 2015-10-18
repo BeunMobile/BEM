@@ -40,6 +40,7 @@
 
     //Anasayfa
     <string name="loading">Yükleniyor</string>
+    <string name="loading_progress">Yükleniyor </string>
     <string name="mainweb_page">Ana Sayfa</string>
     <string name="waitfor">Lütfen biraz bekleyiniz …</string>
     <string name="alphatext">Bülent Ecevit Üniversity Application Version Pre-Alpha 0.9</string>

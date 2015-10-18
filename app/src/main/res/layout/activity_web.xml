@@ -22,7 +22,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/loading_yemek"
         android:textColor="@color/BrushedGreenTextColor"
         android:textSize="30sp"
         android:textStyle="bold"
