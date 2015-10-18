@@ -1,22 +1,24 @@
 package com.bilgiislem.sems.beunapp.AnaSayfa;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bilgiislem.sems.beunapp.R;
@@ -25,8 +27,9 @@ public class WebActivity extends AppCompatActivity {
 
     String url;
     WebView webView;
-    TextView loadingData, noConnection;
-    private Toolbar toolbar;
+    TextView noConnection;
+    Toolbar toolbar;
+    ProgressBar progressLine;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class WebActivity extends AppCompatActivity {
         setContentView(R.layout.activity_web);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        progressLine = (ProgressBar) findViewById(R.id.progressLine);
         toolbar.setNavigationIcon(android.R.drawable.ic_menu_close_clear_cancel);
         setSupportActionBar(toolbar);
         switch (url) {
@@ -57,10 +61,8 @@ public class WebActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle(getResources().getString(R.string.title_section1));
                 break;
         }
-        loadingData = (TextView) findViewById(R.id.loading_data);
         noConnection = (TextView) findViewById(R.id.empty_data);
         webView = (WebView) findViewById(R.id.icerik_http_text);
-        webView.setVisibility(View.INVISIBLE);
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         if (Build.VERSION.SDK_INT >= 19) {
@@ -73,6 +75,7 @@ public class WebActivity extends AppCompatActivity {
         settings.setBuiltInZoomControls(true);
         settings.setDisplayZoomControls(false);
         webView.loadUrl(url);
+        WebActivity.this.progressLine.setProgress(0);
         webView.setWebChromeClient(new MyWebViewClient());
         webView.setWebViewClient(new WebViewClient() {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -80,24 +83,20 @@ public class WebActivity extends AppCompatActivity {
                 return true;
             }
 
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                while (webView.getProgress() == 100) {
-                    Log.d("Progress", "" + webView.getProgress());
-                }
-            }
-
-
             public void onPageFinished(WebView view, String url) {
                 if (!isOnline()) {
-                    loadingData.setVisibility(View.GONE);
+                    webView.setVisibility(View.GONE);
+                    progressLine.setVisibility(View.GONE);
                     noConnection.setVisibility(View.VISIBLE);
                 } else {
-                    loadingData.setVisibility(View.GONE);
-                    webView.setVisibility(View.VISIBLE);
+                    progressLine.setVisibility(View.GONE);
                 }
             }
         });
+    }
+
+    public void setValue(int progress) {
+        this.progressLine.setProgress(progress);
     }
 
 
@@ -106,7 +105,7 @@ public class WebActivity extends AppCompatActivity {
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
             super.onProgressChanged(view, newProgress);
-            loadingData.setText("Yükleniyor %"+newProgress);
+            WebActivity.this.setValue(newProgress);
         }
 
     }
@@ -120,10 +119,20 @@ public class WebActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.chrome_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
+                return true;
+            case R.id.action_settings:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(webView.getUrl())));
                 return true;
         }
         return super.onOptionsItemSelected(item);

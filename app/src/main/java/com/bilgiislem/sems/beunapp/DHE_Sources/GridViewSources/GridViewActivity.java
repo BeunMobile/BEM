@@ -55,7 +55,7 @@ public class GridViewActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mGridView = (GridView) findViewById(R.id.gridView);
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressLine);
 
         //Initialize with empty data
         mGridData = new ArrayList<>();
