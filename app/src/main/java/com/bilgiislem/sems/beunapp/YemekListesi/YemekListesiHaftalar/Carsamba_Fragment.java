@@ -32,7 +32,6 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.TimeZone;
 
-
 public class Carsamba_Fragment extends Fragment {
 
     TextView dateText;
@@ -49,7 +48,7 @@ public class Carsamba_Fragment extends Fragment {
 
     private static final String TAG_LISTE = "liste";
     private static final String TAG_YEMEKLER = "yemekler";
-    private static final String TAG_YEMEK = "yemek";
+    private static final String TAG_YEMEK_ISIM = "isim";
     private static final String TAG_KALORI = "kalori";
     private static final String TAG_CINS = "cins";
     private static final String TAG_GUN = "gun";
@@ -166,7 +165,7 @@ public class Carsamba_Fragment extends Fragment {
                         tarihList.add(tarihSayac);
                         for (int j = 0; j < yemekler.length(); j++) {
                             JSONObject yemeklerobject = yemekler.getJSONObject(j);
-                            String yemek = yemeklerobject.getString(TAG_YEMEK);
+                            String yemek = yemeklerobject.getString(TAG_YEMEK_ISIM);
                             String kalori = yemeklerobject.getString(TAG_KALORI);
                             String cins = yemeklerobject.getString(TAG_CINS);
                             if (cins.equals("1")) {

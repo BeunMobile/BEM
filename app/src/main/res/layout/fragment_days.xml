@@ -12,57 +12,77 @@
         android:layout_alignParentTop="true"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/date_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:paddingBottom="5dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingTop="10dp"
-            android:text="@string/loading_yemek"
-            android:textColor="@color/BrushedGreenTextColor"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+        <LinearLayout
+            android:id="@+id/topPanel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/no_data"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:paddingBottom="5dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingTop="10dp"
-            android:text="@string/no_connection"
-            android:textColor="@color/BrushedGold"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:visibility="gone" />
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                card_view:cardCornerRadius="8dp"
+                card_view:cardPreventCornerOverlap="false"
+                card_view:cardUseCompatPadding="true">
 
-        <TextView
-            android:id="@+id/weekend_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:paddingBottom="5dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingTop="10dp"
-            android:text="@string/weekend_food"
-            android:textColor="@color/AccentColor"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:visibility="gone" />
+                <TextView
+                    android:id="@+id/date_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/loading_yemek"
+                    android:textColor="@color/BrushedGreenTextColor"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/no_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/no_connection"
+                    android:textColor="@color/BrushedGold"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/weekend_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/weekend_food"
+                    android:textColor="@color/AccentColor"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
+            android:layout_weight=".150"
             android:orientation="vertical">
 
             <LinearLayout
@@ -71,69 +91,70 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/BrushedGold" />
-
-                <LinearLayout
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal">
+                    android:layout_gravity="center"
+                    card_view:cardCornerRadius="8dp"
+                    card_view:cardPreventCornerOverlap="false"
+                    card_view:cardUseCompatPadding="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:baselineAligned="false"
                         android:orientation="horizontal">
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:orientation="vertical">
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/corba_text"
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="#9684A3"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </LinearLayout>
+                                android:layout_gravity="center_vertical"
+                                android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:orientation="horizontal">
+                                <TextView
+                                    android:id="@+id/corba_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#9684A3"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:orientation="vertical">
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:background="#F5F5F5"
+                            android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/corba_cal"
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="#DBCB8E"
-                                android:textStyle="bold" />
+                                android:layout_gravity="center_vertical"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/corba_cal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#DBCB8E"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/BrushedGold" />
-
+                </android.support.v7.widget.CardView>
             </LinearLayout>
 
             <LinearLayout
@@ -142,68 +163,70 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/BrushedGold" />
-
-                <LinearLayout
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_gravity="center"
+                    card_view:cardCornerRadius="8dp"
+                    card_view:cardPreventCornerOverlap="false"
+                    card_view:cardUseCompatPadding="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:baselineAligned="false"
                         android:orientation="horizontal">
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:orientation="vertical">
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/yemek1_text"
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="#9684A3"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </LinearLayout>
+                                android:layout_gravity="center_vertical"
+                                android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:orientation="horizontal">
+                                <TextView
+                                    android:id="@+id/yemek1_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#9684A3"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:orientation="vertical">
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:background="#F5F5F5"
+                            android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/yemek1_cal"
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="#DBCB8E"
-                                android:textStyle="bold" />
+                                android:layout_gravity="center_vertical"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/yemek1_cal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#DBCB8E"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/BrushedGold" />
-
+                </android.support.v7.widget.CardView>
             </LinearLayout>
 
             <LinearLayout
@@ -212,68 +235,70 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/BrushedGold" />
-
-                <LinearLayout
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_gravity="center"
+                    card_view:cardCornerRadius="8dp"
+                    card_view:cardPreventCornerOverlap="false"
+                    card_view:cardUseCompatPadding="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:baselineAligned="false"
                         android:orientation="horizontal">
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:orientation="vertical">
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/yemek2_text"
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="#9684A3"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </LinearLayout>
+                                android:layout_gravity="center_vertical"
+                                android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:orientation="horizontal">
+                                <TextView
+                                    android:id="@+id/yemek2_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#9684A3"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:orientation="vertical">
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:background="#F5F5F5"
+                            android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/yemek2_cal"
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="#DBCB8E"
-                                android:textStyle="bold" />
+                                android:layout_gravity="center_vertical"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/yemek2_cal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#DBCB8E"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/BrushedGold" />
-
+                </android.support.v7.widget.CardView>
             </LinearLayout>
 
             <LinearLayout
@@ -282,68 +307,70 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/BrushedGold" />
-
-                <LinearLayout
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_gravity="center"
+                    card_view:cardCornerRadius="8dp"
+                    card_view:cardPreventCornerOverlap="false"
+                    card_view:cardUseCompatPadding="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:baselineAligned="false"
                         android:orientation="horizontal">
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:orientation="vertical">
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/diger_text"
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="#9684A3"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </LinearLayout>
+                                android:layout_gravity="center_vertical"
+                                android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:orientation="horizontal">
+                                <TextView
+                                    android:id="@+id/diger_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#9684A3"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:orientation="vertical">
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:background="#F5F5F5"
+                            android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/diger_cal"
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="#DBCB8E"
-                                android:textStyle="bold" />
+                                android:layout_gravity="center_vertical"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/diger_cal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#DBCB8E"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/BrushedGold" />
-
+                </android.support.v7.widget.CardView>
             </LinearLayout>
 
 

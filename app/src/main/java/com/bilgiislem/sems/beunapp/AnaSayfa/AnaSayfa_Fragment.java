@@ -61,7 +61,6 @@ public class AnaSayfa_Fragment extends Fragment {
     TextView emptyDuyuru, setDuyuru, loadDuyuru, emptyHaber, setHaber, loadHaber, emptyEtkinlik, setEtkinlik, loadEtkinlik;
     CardView cardDuyuru, cardHaber, cardEtkinlik;
     Button anaSayfaButton;
-    ImageView anasayfaLoading;
 
     String baslikDuyuru, adresDuyuru, baslikHaber, adresHaber, baslikEtkinlik, adresEtkinlik;
 
@@ -70,8 +69,6 @@ public class AnaSayfa_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_anasayfa, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.ana_sayfa_title));
-
-        anasayfaLoading = (ImageView) view.findViewById(R.id.loading_anasayfa);
 
         cardDuyuru = (CardView) view.findViewById(R.id.card_duyuru);
         cardHaber = (CardView) view.findViewById(R.id.card_haber);
@@ -205,7 +202,6 @@ public class AnaSayfa_Fragment extends Fragment {
             if (!result) {
                 Toast.makeText(getActivity().getApplicationContext(), R.string.no_connection, Toast.LENGTH_SHORT).show();
             } else {
-                anasayfaLoading.setVisibility(View.GONE);
                 viewFlipper.setVisibility(View.VISIBLE);
                 setFlipperImage(imageList);
             }

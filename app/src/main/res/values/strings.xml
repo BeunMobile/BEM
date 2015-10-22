@@ -44,9 +44,9 @@
     <string name="mainweb_page">Ana Sayfa</string>
     <string name="waitfor">Lütfen biraz bekleyiniz …</string>
     <string name="alphatext">Bülent Ecevit Üniversity Application Version Pre-Alpha 0.9</string>
-    <string name="last_duyuru">Son Duyuru</string>
-    <string name="last_haber">Son haber</string>
-    <string name="last_etkinlik">Yaklaşan etkinlik</string>
+    <string name="last_duyuru">Son \nDuyuru</string>
+    <string name="last_haber">Son \nHaber</string>
+    <string name="last_etkinlik">Son \nEtkinlik</string>
     <string name="last_food">Günün Menüsü</string>
     <string name="no_connection">Lütfen internet bağlantınızı kontrol ediniz.</string>
 
@@ -169,5 +169,29 @@
     <string name="about_contact">İletişim</string>
     <string name="about_about">Hakkında</string>
 
+
+    //İletisim
+    <string name="iletisim_eposta_title">E-Posta</string>
+    <string name="iletisim_eposta">info@beun.edu.tr</string>
+    <string name="iletisim_santral_title">Santral</string>
+    <string name="iletisim_santral">0372 291 11 00</string>
+    <string name="iletisim_faks_title">Belgegeçer/faks</string>
+    <string name="iletisim_faks1">0372 257 21 40</string>
+    <string name="iletisim_faks2">0372 257 50 78</string>
+    <string name="iletisim_adres_title">Adres</string>
+    <string name="iletisim_adres">Bülent Ecevit Üniversitesi Rektörlüğü PK:67100 İncivez/ZONGULDAK</string>
+    <string name="iletisim_sekreter_title">Genel Sekreterlik</string>
+    <string name="iletisim_sekreter">Tel :0372 291 13 26</string>
+    <string name="iletisim_akademik_title">Akademik Birimlerin Telefon Numaraları</string>
+
+
+    //Hakkında
+    <string name="beun_title">Bülent Ecevit Üniversitesi</string>
+    <string name="bidb">Bilgi İşlem Daire Başkanlığı</string>
+    <string name="software_title">Yazılım Birimi</string>
+    <string name="developer">Şems Mustafa TURGUT</string>
+    <string name="mobilbeun">mobil@beun.edu.tr</string>
+    <string name="feedback">Geri Bildirim için e-mail adresine \ntıklamanız yeterli:</string>
+    <string name="beta">Beta versiyonu : UMD-01</string>
 
 </resources>

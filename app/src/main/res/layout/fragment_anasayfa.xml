@@ -14,116 +14,101 @@
         android:textAllCaps="false"
         android:textColor="@color/PurpleButtonTextColor" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/ana_sayfa_button"
-        android:orientation="vertical">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/ana_sayfa_button">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="310dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <ViewFlipper
-                android:id="@+id/image_flipper"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone">
-            </ViewFlipper>
-
-            <ImageView
-                android:id="@+id/loading_anasayfa"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/loading_anasayfa"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom"
+                android:layout_height="160dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/card_duyuru"
+                <ViewFlipper
+                    android:id="@+id/image_flipper"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:padding="16dp"
-                    card_view:cardCornerRadius="4dp"
-                    card_view:cardUseCompatPadding="true">
+                    android:layout_height="match_parent" />
 
-                    <RelativeLayout
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/card_duyuru"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="2dp">
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:minHeight="70dp"
+                        android:padding="16dp"
+                        card_view:cardCornerRadius="4dp"
+                        card_view:cardUseCompatPadding="true">
 
-                        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                            android:id="@+id/card_duyuru_baslik"
-                            android:layout_width="90dp"
-                            android:layout_height="35dp"
-                            android:layout_gravity="top"
-                            android:padding="8dp"
-                            card_view:cardCornerRadius="4dp"
-                            card_view:cardUseCompatPadding="true">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="2dp">
+
 
                             <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="fill_parent"
+                                android:id="@+id/card_duyuru_baslik"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
                                 android:gravity="center"
+                                android:padding="8dp"
                                 android:text="@string/last_duyuru"
                                 android:textColor="@color/AccentColor"
-                                android:textSize="12sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold" />
-                        </android.support.v7.widget.CardView>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentTop="true"
-                            android:layout_toEndOf="@+id/card_duyuru_baslik"
-                            android:layout_toRightOf="@+id/card_duyuru_baslik"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/card_no_duyuru"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="center_vertical"
-                                android:padding="8dp"
-                                android:text="@string/empty_duyuru"
-                                android:textColor="@color/BrushedGold"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                android:visibility="gone" />
-
-                            <TextView
-                                android:id="@+id/card_duyuru_loading"
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center_vertical"
-                                android:padding="8dp"
-                                android:text="@string/loading"
-                                android:textColor="@color/BrushedGreenTextColor"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@+id/card_duyuru_baslik"
+                                android:layout_toRightOf="@+id/card_duyuru_baslik"
+                                android:orientation="horizontal">
 
-                            <ScrollView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:id="@+id/card_no_duyuru"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:padding="8dp"
+                                    android:text="@string/empty_duyuru"
+                                    android:textColor="@color/BrushedGold"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:visibility="gone" />
+
+                                <TextView
+                                    android:id="@+id/card_duyuru_loading"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:padding="8dp"
+                                    android:text="@string/loading"
+                                    android:textColor="@color/BrushedGreenTextColor"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:id="@+id/card_duyuru_icerik"
@@ -132,93 +117,80 @@
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
                                     android:textColor="@color/BrushedPurple"
-                                    android:textSize="13sp"
+                                    android:textSize="16sp"
                                     android:textStyle="bold" />
-                            </ScrollView>
 
-                        </LinearLayout>
+                            </LinearLayout>
 
-                    </RelativeLayout>
-                </android.support.v7.widget.CardView>
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
 
-            </LinearLayout>
+                </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/card_haber"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:padding="16dp"
-                    card_view:cardCornerRadius="4dp"
-                    card_view:cardUseCompatPadding="true">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <RelativeLayout
+                    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/card_haber"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="2dp">
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:minHeight="70dp"
+                        android:padding="16dp"
+                        card_view:cardCornerRadius="4dp"
+                        card_view:cardUseCompatPadding="true">
 
-                        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                            android:id="@+id/card_haber_baslik"
-                            android:layout_width="90dp"
-                            android:layout_height="35dp"
-                            android:layout_gravity="top"
-                            android:padding="8dp"
-                            card_view:cardCornerRadius="4dp"
-                            card_view:cardUseCompatPadding="true">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="2dp">
 
                             <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="fill_parent"
+                                android:id="@+id/card_haber_baslik"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
                                 android:gravity="center"
+                                android:padding="8dp"
                                 android:text="@string/last_haber"
                                 android:textColor="@color/AccentColor"
-                                android:textSize="12sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold" />
-                        </android.support.v7.widget.CardView>
 
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentTop="true"
-                            android:layout_toEndOf="@+id/card_haber_baslik"
-                            android:layout_toRightOf="@+id/card_haber_baslik"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/card_no_haber"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="center_vertical"
-                                android:padding="8dp"
-                                android:text="@string/empty_haber"
-                                android:textColor="@color/BrushedGold"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                android:visibility="gone" />
-
-                            <TextView
-                                android:id="@+id/card_haber_loading"
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center_vertical"
-                                android:padding="8dp"
-                                android:text="@string/loading"
-                                android:textColor="@color/BrushedGreenTextColor"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@+id/card_haber_baslik"
+                                android:layout_toRightOf="@+id/card_haber_baslik"
+                                android:orientation="horizontal">
 
-                            <ScrollView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:id="@+id/card_no_haber"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:padding="8dp"
+                                    android:text="@string/empty_haber"
+                                    android:textColor="@color/BrushedGold"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:visibility="gone" />
+
+                                <TextView
+                                    android:id="@+id/card_haber_loading"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:padding="8dp"
+                                    android:text="@string/loading"
+                                    android:textColor="@color/BrushedGreenTextColor"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
 
                                 <TextView
                                     android:id="@+id/card_haber_icerik"
@@ -227,93 +199,77 @@
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
                                     android:textColor="@color/BrushedPurple"
-                                    android:textSize="13sp"
+                                    android:textSize="16sp"
                                     android:textStyle="bold" />
 
-                            </ScrollView>
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
 
-                        </LinearLayout>
-
-                    </RelativeLayout>
-                </android.support.v7.widget.CardView>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/card_etkinlik"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:padding="16dp"
-                    card_view:cardCornerRadius="4dp"
-                    card_view:cardUseCompatPadding="true">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <RelativeLayout
+                    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/card_etkinlik"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="2dp">
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:minHeight="70dp"
+                        android:padding="16dp"
+                        card_view:cardCornerRadius="4dp"
+                        card_view:cardUseCompatPadding="true">
 
-                        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                            android:id="@+id/card_etkinlik_baslik"
-                            android:layout_width="110dp"
-                            android:layout_height="35dp"
-                            android:layout_gravity="top"
-                            android:padding="8dp"
-                            card_view:cardCornerRadius="4dp"
-                            card_view:cardUseCompatPadding="true">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="2dp">
 
                             <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="fill_parent"
+                                android:id="@+id/card_etkinlik_baslik"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
                                 android:gravity="center"
+                                android:padding="8dp"
                                 android:text="@string/last_etkinlik"
                                 android:textColor="@color/AccentColor"
-                                android:textSize="12sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold" />
-                        </android.support.v7.widget.CardView>
 
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentTop="true"
-                            android:layout_toEndOf="@+id/card_etkinlik_baslik"
-                            android:layout_toRightOf="@+id/card_etkinlik_baslik"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/card_no_etkinlik"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="center_vertical"
-                                android:padding="8dp"
-                                android:text="@string/empty_etkinlik"
-                                android:textColor="@color/BrushedGold"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                android:visibility="gone" />
-
-                            <TextView
-                                android:id="@+id/card_etkinlik_loading"
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center_vertical"
-                                android:padding="8dp"
-                                android:text="@string/loading"
-                                android:textColor="@color/BrushedGreenTextColor"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@+id/card_etkinlik_baslik"
+                                android:layout_toRightOf="@+id/card_etkinlik_baslik"
+                                android:orientation="horizontal">
 
-                            <ScrollView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:id="@+id/card_no_etkinlik"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:padding="8dp"
+                                    android:text="@string/empty_etkinlik"
+                                    android:textColor="@color/BrushedGold"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:visibility="gone" />
+
+                                <TextView
+                                    android:id="@+id/card_etkinlik_loading"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:padding="8dp"
+                                    android:text="@string/loading"
+                                    android:textColor="@color/BrushedGreenTextColor"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:id="@+id/card_etkinlik_icerik"
@@ -322,91 +278,77 @@
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
                                     android:textColor="@color/BrushedPurple"
-                                    android:textSize="13sp"
+                                    android:textSize="16sp"
                                     android:textStyle="bold" />
-                            </ScrollView>
-                        </LinearLayout>
-                    </RelativeLayout>
-                </android.support.v7.widget.CardView>
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
 
-            </LinearLayout>
+                </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/card_food"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:padding="16dp"
-                    card_view:cardCornerRadius="4dp"
-                    card_view:cardUseCompatPadding="true">
+                    android:orientation="vertical">
 
-                    <RelativeLayout
+                    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/card_food"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="2dp">
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:minHeight="70dp"
+                        android:padding="16dp"
+                        card_view:cardCornerRadius="4dp"
+                        card_view:cardUseCompatPadding="true">
 
-                        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                            android:id="@+id/card_food_baslik"
-                            android:layout_width="110dp"
-                            android:layout_height="35dp"
-                            android:layout_gravity="top"
-                            android:padding="8dp"
-                            card_view:cardCornerRadius="4dp"
-                            card_view:cardUseCompatPadding="true">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="2dp">
 
                             <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="fill_parent"
+                                android:id="@+id/card_food_baslik"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
                                 android:gravity="center"
+                                android:padding="8dp"
                                 android:text="@string/last_food"
                                 android:textColor="@color/AccentColor"
-                                android:textSize="12sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold" />
-                        </android.support.v7.widget.CardView>
 
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentTop="true"
-                            android:layout_toEndOf="@+id/card_food_baslik"
-                            android:layout_toRightOf="@+id/card_food_baslik"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/card_no_food"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="center_vertical"
-                                android:padding="8dp"
-                                android:text="@string/empty_etkinlik"
-                                android:textColor="@color/BrushedGold"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                android:visibility="gone" />
-
-                            <TextView
-                                android:id="@+id/card_food_loading"
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center_vertical"
-                                android:padding="8dp"
-                                android:text="@string/loading"
-                                android:textColor="@color/BrushedGreenTextColor"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@+id/card_food_baslik"
+                                android:layout_toRightOf="@+id/card_food_baslik"
+                                android:orientation="horizontal">
 
-                            <ScrollView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:id="@+id/card_no_food"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:padding="8dp"
+                                    android:text="@string/empty_etkinlik"
+                                    android:textColor="@color/BrushedGold"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:visibility="gone" />
+
+                                <TextView
+                                    android:id="@+id/card_food_loading"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:padding="8dp"
+                                    android:text="Lütfen Yemek Listesi Sekmesini kullanınız."
+                                    android:textColor="@color/BrushedGreenTextColor"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:id="@+id/card_food_icerik"
@@ -415,15 +357,13 @@
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
                                     android:textColor="@color/BrushedPurple"
-                                    android:textSize="13sp"
+                                    android:textSize="16sp"
                                     android:textStyle="bold" />
-                            </ScrollView>
-                        </LinearLayout>
-                    </RelativeLayout>
-                </android.support.v7.widget.CardView>
-
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-
+    </ScrollView>
 </RelativeLayout>

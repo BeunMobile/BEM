@@ -49,10 +49,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        facebook = (CircleImageView) findViewById(R.id.facebook_image);
-        twitter = (CircleImageView) findViewById(R.id.twitter_image);
-        instagram = (CircleImageView) findViewById(R.id.instagram_image);
-        youtube = (CircleImageView) findViewById(R.id.youtube_image);
+        navigationView = (NavigationView) findViewById(R.id.navigation_view);
+
+        View headerLayout =
+                navigationView.inflateHeaderView(R.layout.item_header);
+
+        facebook = (CircleImageView) headerLayout.findViewById(R.id.facebook_image);
+        twitter = (CircleImageView) headerLayout.findViewById(R.id.twitter_image);
+        instagram = (CircleImageView) headerLayout.findViewById(R.id.instagram_image);
+        youtube = (CircleImageView) headerLayout.findViewById(R.id.youtube_image);
 
 
         facebook.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        navigationView = (NavigationView) findViewById(R.id.navigation_view);
         android.support.v4.app.Fragment objFragment = null;
         objFragment = new AnaSayfa_Fragment();
         getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame, objFragment).commit();

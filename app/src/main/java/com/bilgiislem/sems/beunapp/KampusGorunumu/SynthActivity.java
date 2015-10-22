@@ -21,7 +21,7 @@ public class SynthActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_webpage);
+        setContentView(R.layout.activity_synth);
         check_marker = getIntent().getStringExtra("beu3d");
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         switch (check_marker) {

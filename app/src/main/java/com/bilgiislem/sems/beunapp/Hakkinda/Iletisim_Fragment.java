@@ -16,14 +16,14 @@ import com.bilgiislem.sems.beunapp.R;
  */
 
 public class Iletisim_Fragment extends Fragment {
-    TextView about_beta;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_iletisim, container, false);
         ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.about_contact));
-        about_beta = (TextView) view.findViewById(R.id.about_beta);
+
+
         return view;
     }
 }

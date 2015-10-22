@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_gat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardPreventCornerOverlap="false"
+        card_view:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/beun_title"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/BrushedTextColor"
+                android:textSize="22sp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/sems_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/developer"
+                android:textColor="@color/BrushedPurple"
+                android:textSize="24sp"
+                android:layout_centerVertical="true"
+                android:layout_alignRight="@+id/feedback_title"
+                android:layout_alignEnd="@+id/feedback_title" />
+
+            <TextView
+                android:id="@+id/feedback_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sems_text"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="@string/feedback"
+                android:textColor="@color/BrushedPurple"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/mobil_beun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/feedback_title"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:text="@string/mobilbeun"
+                android:textColor="@color/BrushedPurple"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/beta"
+                android:textColor="@color/BrushedGold"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView3"
+                android:layout_centerHorizontal="true"
+                android:text="@string/bidb"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/BrushedTextColor"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView4"
+                android:layout_centerHorizontal="true"
+                android:text="@string/software_title"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/BrushedTextColor"
+                android:textSize="22sp" />
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
