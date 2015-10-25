@@ -14,34 +14,34 @@
         android:textAllCaps="false"
         android:textColor="@color/PurpleButtonTextColor" />
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_above="@+id/ana_sayfa_button">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ana_sayfa_button"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="160dp"
             android:orientation="vertical">
 
-            <LinearLayout
+            <ViewFlipper
+                android:id="@+id/image_flipper"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_height="match_parent" />
 
-                <ViewFlipper
-                    android:id="@+id/image_flipper"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+        </LinearLayout>
 
-            </LinearLayout>
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -71,9 +71,9 @@
                             <TextView
                                 android:id="@+id/card_duyuru_baslik"
                                 android:layout_width="80dp"
-                                android:layout_height="80dp"
+                                android:layout_height="70dp"
+                                android:layout_centerVertical="true"
                                 android:gravity="center"
-                                android:padding="8dp"
                                 android:text="@string/last_duyuru"
                                 android:textColor="@color/AccentColor"
                                 android:textSize="16sp"
@@ -96,7 +96,6 @@
                                     android:text="@string/empty_duyuru"
                                     android:textColor="@color/BrushedGold"
                                     android:textSize="16sp"
-                                    android:textStyle="bold"
                                     android:visibility="gone" />
 
                                 <TextView
@@ -107,8 +106,7 @@
                                     android:padding="8dp"
                                     android:text="@string/loading"
                                     android:textColor="@color/BrushedGreenTextColor"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="18sp" />
 
                                 <TextView
                                     android:id="@+id/card_duyuru_icerik"
@@ -117,8 +115,7 @@
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
                                     android:textColor="@color/BrushedPurple"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="16sp" />
 
                             </LinearLayout>
 
@@ -152,8 +149,8 @@
                                 android:id="@+id/card_haber_baslik"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
+                                android:layout_centerVertical="true"
                                 android:gravity="center"
-                                android:padding="8dp"
                                 android:text="@string/last_haber"
                                 android:textColor="@color/AccentColor"
                                 android:textSize="16sp"
@@ -177,7 +174,6 @@
                                     android:text="@string/empty_haber"
                                     android:textColor="@color/BrushedGold"
                                     android:textSize="16sp"
-                                    android:textStyle="bold"
                                     android:visibility="gone" />
 
                                 <TextView
@@ -188,8 +184,7 @@
                                     android:padding="8dp"
                                     android:text="@string/loading"
                                     android:textColor="@color/BrushedGreenTextColor"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="18sp" />
 
 
                                 <TextView
@@ -199,8 +194,7 @@
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
                                     android:textColor="@color/BrushedPurple"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="16sp" />
 
                             </LinearLayout>
                         </RelativeLayout>
@@ -232,8 +226,8 @@
                                 android:id="@+id/card_etkinlik_baslik"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
+                                android:layout_centerVertical="true"
                                 android:gravity="center"
-                                android:padding="8dp"
                                 android:text="@string/last_etkinlik"
                                 android:textColor="@color/AccentColor"
                                 android:textSize="16sp"
@@ -257,7 +251,6 @@
                                     android:text="@string/empty_etkinlik"
                                     android:textColor="@color/BrushedGold"
                                     android:textSize="16sp"
-                                    android:textStyle="bold"
                                     android:visibility="gone" />
 
                                 <TextView
@@ -268,8 +261,7 @@
                                     android:padding="8dp"
                                     android:text="@string/loading"
                                     android:textColor="@color/BrushedGreenTextColor"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="18sp" />
 
                                 <TextView
                                     android:id="@+id/card_etkinlik_icerik"
@@ -278,8 +270,7 @@
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
                                     android:textColor="@color/BrushedPurple"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="16sp" />
                             </LinearLayout>
                         </RelativeLayout>
                     </android.support.v7.widget.CardView>
@@ -311,8 +302,8 @@
                                 android:id="@+id/card_food_baslik"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
+                                android:layout_centerVertical="true"
                                 android:gravity="center"
-                                android:padding="8dp"
                                 android:text="@string/last_food"
                                 android:textColor="@color/AccentColor"
                                 android:textSize="16sp"
@@ -336,7 +327,6 @@
                                     android:text="@string/empty_etkinlik"
                                     android:textColor="@color/BrushedGold"
                                     android:textSize="16sp"
-                                    android:textStyle="bold"
                                     android:visibility="gone" />
 
                                 <TextView
@@ -345,10 +335,9 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
-                                    android:text="Lütfen Yemek Listesi Sekmesini kullanınız."
+                                    android:text="@string/use_foodtab"
                                     android:textColor="@color/BrushedGreenTextColor"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="16sp" />
 
                                 <TextView
                                     android:id="@+id/card_food_icerik"
@@ -357,13 +346,12 @@
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
                                     android:textColor="@color/BrushedPurple"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="16sp" />
                             </LinearLayout>
                         </RelativeLayout>
                     </android.support.v7.widget.CardView>
                 </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+        </ScrollView>
+    </LinearLayout>
 </RelativeLayout>

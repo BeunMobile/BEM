@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group
+        android:id="@+id/menu"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/item_anasayfa"
+            android:checked="false"
+            android:icon="@drawable/ic_home"
+            android:title="@string/title_section1" />
+
+        <item
+            android:id="@+id/item_duyurular"
+            android:checked="false"
+            android:icon="@drawable/ic_compose"
+            android:title="@string/title_section2" />
+
+        <item
+            android:id="@+id/item_haberler"
+            android:checked="false"
+            android:icon="@drawable/ic_bookmarks"
+            android:title="@string/title_section3" />
+
+        <item
+            android:id="@+id/item_etkinliktakvimi"
+            android:checked="false"
+            android:icon="@drawable/ic_calender"
+            android:title="@string/title_section4" />
+    </group>
+    <group
+        android:id="@+id/menu1"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/item_yemeklistesi"
+            android:checked="false"
+            android:icon="@drawable/ic_food"
+            android:title="@string/title_section5" />
+        <item
+            android:id="@+id/item_akademik"
+            android:checked="false"
+            android:icon="@drawable/ic_acedemic"
+            android:title="@string/title_section6" />
+        <item
+            android:id="@+id/item_ekampus"
+            android:checked="false"
+            android:icon="@drawable/ic_ekampus"
+            android:title="@string/title_section7" />
+        <item
+            android:id="@+id/item_eposta"
+            android:checked="false"
+            android:icon="@drawable/ic_email"
+            android:title="@string/title_section8" />
+        <item
+            android:id="@+id/item_uzem"
+            android:checked="false"
+            android:icon="@drawable/ic_uzem"
+            android:title="@string/title_section9" />
+    </group>
+    <group
+        android:id="@+id/menu2"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/item_kampusgorunumu"
+            android:checked="false"
+            android:icon="@drawable/ic_navigate"
+            android:title="@string/title_section10" />
+        <item
+            android:id="@+id/item_contact"
+            android:checked="false"
+            android:icon="@drawable/ic_contacts"
+            android:title="@string/title_section_about1" />
+        <item
+            android:id="@+id/item_about"
+            android:checked="false"
+            android:icon="@drawable/ic_coding"
+            android:title="@string/action_about" />
+    </group>
+</menu>

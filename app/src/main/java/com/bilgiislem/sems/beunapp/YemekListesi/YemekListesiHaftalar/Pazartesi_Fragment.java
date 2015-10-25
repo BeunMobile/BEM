@@ -142,7 +142,6 @@ public class Pazartesi_Fragment extends Fragment {
         return view;
     }
 
-
     private class JSONParse extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {

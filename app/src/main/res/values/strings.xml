@@ -129,6 +129,7 @@
     <string name="loading_yemek">Yükleniyor…</string>
     <string name="monthly_list">Aylık Liste</string>
     <string name="weekend_food">Hafta sonu yemek bulunmamaktadır.</string>
+    <string name="use_foodtab">Lütfen Yemek Listesi Sekmesini kullanınız.</string>
 
     //Resimler
     <string name="gallery">Galeri için tıklayınız</string>
@@ -191,7 +192,7 @@
     <string name="software_title">Yazılım Birimi</string>
     <string name="developer">Şems Mustafa TURGUT</string>
     <string name="mobilbeun">mobil@beun.edu.tr</string>
-    <string name="feedback">Geri Bildirim için e-mail adresine \ntıklamanız yeterli:</string>
-    <string name="beta">Beta versiyonu : UMD-01</string>
+    <string name="feedback">Geri Bildirim için :</string>
+    <string name="beta">Beta versiyonu : UMD-60</string>
 
 </resources>

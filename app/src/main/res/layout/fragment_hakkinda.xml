@@ -38,8 +38,7 @@
                 android:textColor="@color/BrushedPurple"
                 android:textSize="24sp"
                 android:layout_centerVertical="true"
-                android:layout_alignRight="@+id/feedback_title"
-                android:layout_alignEnd="@+id/feedback_title" />
+                android:layout_centerHorizontal="true" />
 
             <TextView
                 android:id="@+id/feedback_title"

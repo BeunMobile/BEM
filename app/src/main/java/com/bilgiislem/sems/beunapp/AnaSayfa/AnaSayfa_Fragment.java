@@ -51,6 +51,8 @@ public class AnaSayfa_Fragment extends Fragment {
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
+    private static final String TAG_GUN = "gun";
+    private static final String TAG_AY = "ay";
     JSONArray s1 = null;
 
     ArrayList<String> imageList;
@@ -58,17 +60,21 @@ public class AnaSayfa_Fragment extends Fragment {
     ViewFlipper viewFlipper;
     private float lastX;
 
-    TextView emptyDuyuru, setDuyuru, loadDuyuru, emptyHaber, setHaber, loadHaber, emptyEtkinlik, setEtkinlik, loadEtkinlik;
+    TextView emptyDuyuru, setDuyuru, loadDuyuru, emptyHaber, setHaber, loadHaber, emptyEtkinlik, setEtkinlik, loadEtkinlik, setBaslikEtkinlik;
     CardView cardDuyuru, cardHaber, cardEtkinlik;
     Button anaSayfaButton;
 
-    String baslikDuyuru, adresDuyuru, baslikHaber, adresHaber, baslikEtkinlik, adresEtkinlik;
+    String baslikDuyuru, adresDuyuru, baslikHaber, adresHaber, baslikEtkinlik, adresEtkinlik, gunEtkinlik, ayEtkinlik;
+    String[] months;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_anasayfa, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.ana_sayfa_title));
+
+        months = getResources().getStringArray(R.array.months);
+
 
         cardDuyuru = (CardView) view.findViewById(R.id.card_duyuru);
         cardHaber = (CardView) view.findViewById(R.id.card_haber);
@@ -83,6 +89,7 @@ public class AnaSayfa_Fragment extends Fragment {
         emptyEtkinlik = (TextView) view.findViewById(R.id.card_no_etkinlik);
         setEtkinlik = (TextView) view.findViewById(R.id.card_etkinlik_icerik);
         loadEtkinlik = (TextView) view.findViewById(R.id.card_etkinlik_loading);
+        setBaslikEtkinlik = (TextView) view.findViewById(R.id.card_etkinlik_baslik);
 
         anaSayfaButton = (Button) view.findViewById(R.id.ana_sayfa_button);
         anaSayfaButton.setOnClickListener(new View.OnClickListener() {
@@ -151,7 +158,7 @@ public class AnaSayfa_Fragment extends Fragment {
         };
 
         int delay = 500;
-        int period = 8000;
+        int period = 10000;
 
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -199,12 +206,17 @@ public class AnaSayfa_Fragment extends Fragment {
         }
 
         protected void onPostExecute(Boolean result) {
-            if (!result) {
-                Toast.makeText(getActivity().getApplicationContext(), R.string.no_connection, Toast.LENGTH_SHORT).show();
-            } else {
-                viewFlipper.setVisibility(View.VISIBLE);
-                setFlipperImage(imageList);
+            try {
+                if (!result) {
+                    Toast.makeText(getActivity().getApplicationContext(), R.string.no_connection, Toast.LENGTH_SHORT).show();
+                } else {
+                    viewFlipper.setVisibility(View.VISIBLE);
+                    setFlipperImage(imageList);
+                }
+            } catch (NullPointerException e) {
+                Log.d("NPE", e.toString());
             }
+
         }
     }
 
@@ -359,6 +371,8 @@ public class AnaSayfa_Fragment extends Fragment {
                         baslikEtkinlik = c.getString(TAG_BASLIK);
                         adresEtkinlik = c.getString(TAG_ADRES);
                         baslikEtkinlik = html2text(baslikEtkinlik);
+                        ayEtkinlik = c.getString(TAG_AY);
+                        gunEtkinlik = c.getString(TAG_GUN);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -375,6 +389,7 @@ public class AnaSayfa_Fragment extends Fragment {
             loadEtkinlik.setVisibility(View.GONE);
             try {
                 if (!baslikEtkinlik.isEmpty()) {
+                    setBaslikEtkinlik.setText(gunEtkinlik + "\n" + months[Integer.parseInt(ayEtkinlik)-1]);
                     setEtkinlik.setText(baslikEtkinlik);
                     cardEtkinlik.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -404,23 +419,32 @@ public class AnaSayfa_Fragment extends Fragment {
         }
     }
 
-    private void setFlipperImage(ArrayList<String> actorsList) {
 
-        for (int i = 0; i < actorsList.size(); i++) {
-            ImageView image = new ImageView(getActivity().getApplicationContext());
-            Picasso.with(getActivity())
-                    .load(actorsList.get(i))
-                    .placeholder(R.drawable.loading_anasayfa)
-                    .error(R.drawable.loading_anasayfa)
-                    .into(image);
-            viewFlipper.addView(image);
+    private void setFlipperImage(ArrayList<String> actorsList) {
+        try {
+            for (int i = 0; i < actorsList.size(); i++) {
+                ImageView image = new ImageView(getActivity().getApplicationContext());
+                Picasso.with(getActivity())
+                        .load(actorsList.get(i))
+                        .placeholder(R.drawable.loading_anasayfa)
+                        .error(R.drawable.loading_anasayfa)
+                        .into(image);
+                viewFlipper.addView(image);
+            }
+        } catch (NullPointerException e) {
+            Log.d("NPE", e.toString());
         }
+
     }
 
     private void AnimateandSlideShow() {
-        viewFlipper.setInAnimation(getActivity(), R.anim.slide_in_from_right);
-        viewFlipper.setOutAnimation(getActivity(), R.anim.slide_out_to_left);
-        viewFlipper.setDisplayedChild(viewFlipper.getDisplayedChild() + 1);
+        try {
+            viewFlipper.setInAnimation(getActivity(), R.anim.slide_in_from_right);
+            viewFlipper.setOutAnimation(getActivity(), R.anim.slide_out_to_left);
+            viewFlipper.setDisplayedChild(viewFlipper.getDisplayedChild() + 1);
+        } catch (NullPointerException e) {
+            Log.d("NPE", e.toString());
+        }
     }
 
     public static String html2text(String html) {

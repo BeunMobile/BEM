@@ -40,7 +40,6 @@
 
     <style name="MainTheme" parent="MainTheme.Base">
 
-
     </style>
 
     <style name="MainTheme.Base" parent="Theme.AppCompat.NoActionBar">
