@@ -44,13 +44,14 @@
                 android:id="@+id/feedback_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/sems_text"
-                android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:text="@string/feedback"
                 android:textColor="@color/BrushedPurple"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_below="@+id/sems_text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="22dp" />
 
             <TextView
                 android:id="@+id/mobil_beun"
@@ -94,6 +95,16 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/BrushedTextColor"
                 android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/developing"
+                android:textColor="@color/BrushedPurple"
+                android:id="@+id/textView2"
+                android:layout_below="@+id/sems_text"
+                android:layout_centerHorizontal="true" />
 
         </RelativeLayout>
 
