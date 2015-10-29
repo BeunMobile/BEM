@@ -316,37 +316,70 @@
                                 android:layout_centerVertical="true"
                                 android:layout_toEndOf="@+id/card_food_baslik"
                                 android:layout_toRightOf="@+id/card_food_baslik"
-                                android:orientation="horizontal">
+                                android:orientation="vertical">
 
-                                <TextView
-                                    android:id="@+id/card_no_food"
+                                <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:gravity="center_vertical"
-                                    android:padding="8dp"
-                                    android:text="@string/empty_etkinlik"
-                                    android:textColor="@color/BrushedGold"
-                                    android:textSize="16sp"
-                                    android:visibility="gone" />
+                                    android:layout_weight="1">
 
-                                <TextView
-                                    android:id="@+id/card_food_loading"
+                                    <TextView
+                                        android:id="@+id/card_food_corba"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:padding="4dp"
+                                        android:text="@string/loading"
+                                        android:textColor="@color/BrushedGreenTextColor"
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:id="@+id/card_food_yemek1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:padding="4dp"
+                                        android:text="@string/loading"
+                                        android:textColor="@color/BrushedGreenTextColor"
+                                        android:textSize="16sp" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:gravity="center_vertical"
-                                    android:padding="8dp"
-                                    android:text="@string/use_foodtab"
-                                    android:textColor="@color/BrushedGreenTextColor"
-                                    android:textSize="16sp" />
+                                    android:layout_weight="1">
 
-                                <TextView
-                                    android:id="@+id/card_food_icerik"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_vertical"
-                                    android:padding="8dp"
-                                    android:textColor="@color/BrushedPurple"
-                                    android:textSize="16sp" />
+                                    <TextView
+                                        android:id="@+id/card_food_yemek2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:padding="4dp"
+                                        android:text="@string/loading"
+                                        android:textColor="@color/BrushedGreenTextColor"
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:id="@+id/card_food_diger"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:padding="4dp"
+                                        android:text="@string/loading"
+                                        android:textColor="@color/BrushedGreenTextColor"
+                                        android:textSize="16sp" />
+
+                                </LinearLayout>
                             </LinearLayout>
                         </RelativeLayout>
                     </android.support.v7.widget.CardView>

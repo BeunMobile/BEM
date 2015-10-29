@@ -56,9 +56,9 @@ public class Pazartesi_Fragment extends Fragment {
 
     Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
     final int dayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
-    final int dayOfMonth = localCalendar.get(Calendar.DAY_OF_MONTH);//EKLENDI
+    final int dayOfMonth = localCalendar.get(Calendar.DAY_OF_MONTH);
     final int weekOfMonth = localCalendar.get(Calendar.WEEK_OF_MONTH);
-    final int lastDayOfMonth = localCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);//EKLENDI
+    final int lastDayOfMonth = localCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
     final int currentDay = localCalendar.get(Calendar.DATE);
     final int currentMonth = localCalendar.get(Calendar.MONTH) + 1;
     final int currentYear = localCalendar.get(Calendar.YEAR);
@@ -168,18 +168,23 @@ public class Pazartesi_Fragment extends Fragment {
                             String yemek = yemeklerobject.getString(TAG_YEMEK_ISIM);
                             String kalori = yemeklerobject.getString(TAG_KALORI);
                             String cins = yemeklerobject.getString(TAG_CINS);
-                            if (cins.equals("1")) {
-                                corbaList.add(yemek);
-                                corbaCalList.add(kalori);
-                            } else if (cins.equals("2")) {
-                                yemek1List.add(yemek);
-                                yemek1CalList.add(kalori);
-                            } else if (cins.equals("3")) {
-                                yemek2List.add(yemek);
-                                yemek2CalList.add(kalori);
-                            } else if (cins.equals("4")) {
-                                digerList.add(yemek);
-                                digerCalList.add(kalori);
+                            switch (cins) {
+                                case "1":
+                                    corbaList.add(yemek);
+                                    corbaCalList.add(kalori);
+                                    break;
+                                case "2":
+                                    yemek1List.add(yemek);
+                                    yemek1CalList.add(kalori);
+                                    break;
+                                case "3":
+                                    yemek2List.add(yemek);
+                                    yemek2CalList.add(kalori);
+                                    break;
+                                case "4":
+                                    digerList.add(yemek);
+                                    digerCalList.add(kalori);
+                                    break;
                             }
                         }
                     }
@@ -187,7 +192,7 @@ public class Pazartesi_Fragment extends Fragment {
                     e.printStackTrace();
                 }
             } else {
-                Log.d("jsonStrNull", "jsonStr variable is null.");//DEGÝSTÝ
+                Log.d("jsonStrNull", "jsonStr variable is null.");
             }
             return null;
         }

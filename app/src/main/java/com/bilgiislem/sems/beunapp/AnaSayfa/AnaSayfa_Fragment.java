@@ -39,32 +39,49 @@ import org.jsoup.Jsoup;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.TimeZone;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class AnaSayfa_Fragment extends Fragment {
 
+    Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
+    final int currentDay = localCalendar.get(Calendar.DATE);
+    final int currentMonth = localCalendar.get(Calendar.MONTH) + 1;
+    final int currentYear = localCalendar.get(Calendar.YEAR);
+    final int dayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
+
     private static String url_duyuru = "http://w3.beun.edu.tr/mobil-duyurular/";
     private static String url_haber = "http://w3.beun.edu.tr/mobil-haberler/";
     private static String url_etkinlik = "http://w3.beun.edu.tr/mobil-etkinlikler/";
     private static String url_slider = "http://w3.beun.edu.tr/mobil-slayt/";
+    String url_yemek = "http://w3.beun.edu.tr/yemek_listesi/";// veri/?ay=10&yil=2015&gun=30";
+
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
     private static final String TAG_GUN = "gun";
     private static final String TAG_AY = "ay";
+    private static final String TAG_LISTE = "liste";
+    private static final String TAG_YEMEKLER = "yemekler";
+    private static final String TAG_YEMEK_ISIM = "isim";
+    private static final String TAG_CINS = "cins";
+
     JSONArray s1 = null;
+    JSONArray liste = null;
+
 
     ArrayList<String> imageList;
     ArrayList<String> imageLinkList;
     ViewFlipper viewFlipper;
     private float lastX;
 
-    TextView emptyDuyuru, setDuyuru, loadDuyuru, emptyHaber, setHaber, loadHaber, emptyEtkinlik, setEtkinlik, loadEtkinlik, setBaslikEtkinlik;
+    TextView emptyDuyuru, setDuyuru, loadDuyuru, emptyHaber, setHaber, loadHaber, emptyEtkinlik, setEtkinlik, loadEtkinlik, setBaslikEtkinlik, corbaText, yemek1Text, yemek2Text, digerText;
     CardView cardDuyuru, cardHaber, cardEtkinlik;
     Button anaSayfaButton;
 
-    String baslikDuyuru, adresDuyuru, baslikHaber, adresHaber, baslikEtkinlik, adresEtkinlik, gunEtkinlik, ayEtkinlik;
+    String baslikDuyuru, adresDuyuru, baslikHaber, adresHaber, baslikEtkinlik, adresEtkinlik, gunEtkinlik, ayEtkinlik, genelYemek, cinsYemek, corbaYemek, yemek1Yemek, yemek2Yemek, digerYemek;
     String[] months;
 
     @Override
@@ -73,8 +90,9 @@ public class AnaSayfa_Fragment extends Fragment {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.ana_sayfa_title));
 
-        months = getResources().getStringArray(R.array.months);
+        url_yemek = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + currentDay;
 
+        months = getResources().getStringArray(R.array.months);
 
         cardDuyuru = (CardView) view.findViewById(R.id.card_duyuru);
         cardHaber = (CardView) view.findViewById(R.id.card_haber);
@@ -90,6 +108,10 @@ public class AnaSayfa_Fragment extends Fragment {
         setEtkinlik = (TextView) view.findViewById(R.id.card_etkinlik_icerik);
         loadEtkinlik = (TextView) view.findViewById(R.id.card_etkinlik_loading);
         setBaslikEtkinlik = (TextView) view.findViewById(R.id.card_etkinlik_baslik);
+        corbaText = (TextView) view.findViewById(R.id.card_food_corba);
+        yemek1Text = (TextView) view.findViewById(R.id.card_food_yemek1);
+        yemek2Text = (TextView) view.findViewById(R.id.card_food_yemek2);
+        digerText = (TextView) view.findViewById(R.id.card_food_diger);
 
         anaSayfaButton = (Button) view.findViewById(R.id.ana_sayfa_button);
         anaSayfaButton.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +125,11 @@ public class AnaSayfa_Fragment extends Fragment {
         new getDuyuruJSON().execute();
         new getHaberJSON().execute();
         new getEtkinlikJSON().execute();
+        if (dayOfWeek != 1 && dayOfWeek != 7) {
+            new getYemekJSON().execute();
+        } else {
+
+        }
 
         viewFlipper = (ViewFlipper) view.findViewById(R.id.image_flipper);
         viewFlipper.setVisibility(View.INVISIBLE);
@@ -195,12 +222,8 @@ public class AnaSayfa_Fragment extends Fragment {
                     }
                     return true;
                 }
-            } catch (ParseException e1) {
+            } catch (ParseException | IOException | JSONException e1) {
                 e1.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
             return false;
         }
@@ -389,7 +412,7 @@ public class AnaSayfa_Fragment extends Fragment {
             loadEtkinlik.setVisibility(View.GONE);
             try {
                 if (!baslikEtkinlik.isEmpty()) {
-                    setBaslikEtkinlik.setText(gunEtkinlik + "\n" + months[Integer.parseInt(ayEtkinlik)-1]);
+                    setBaslikEtkinlik.setText(gunEtkinlik + "\n" + months[Integer.parseInt(ayEtkinlik) - 1]);
                     setEtkinlik.setText(baslikEtkinlik);
                     cardEtkinlik.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -416,6 +439,72 @@ public class AnaSayfa_Fragment extends Fragment {
                 emptyEtkinlik.setVisibility(View.VISIBLE);
             }
             super.onPostExecute(aVoid);
+        }
+    }
+
+    private class getYemekJSON extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            ServiceHandler sh = new ServiceHandler();
+            String jsonStr = sh.makeServiceCall(url_yemek, ServiceHandler.GET);
+            if (jsonStr != null) {
+                try {
+                    JSONObject jsonObj = new JSONObject(jsonStr);
+                    liste = jsonObj.getJSONArray(TAG_LISTE);
+                    for (int i = 0; i < 1; i++) {
+                        JSONObject listeobject = liste.getJSONObject(i);
+                        JSONArray yemekler = listeobject.getJSONArray(TAG_YEMEKLER);
+                        for (int j = 0; j < yemekler.length(); j++) {
+                            JSONObject yemeklerobject = yemekler.getJSONObject(j);
+                            genelYemek = yemeklerobject.getString(TAG_YEMEK_ISIM);
+                            cinsYemek = yemeklerobject.getString(TAG_CINS);
+                            switch (cinsYemek) {
+                                case "1":
+                                    corbaYemek = genelYemek;
+                                    break;
+                                case "2":
+                                    yemek1Yemek = genelYemek;
+                                    break;
+                                case "3":
+                                    yemek2Yemek = genelYemek;
+                                    break;
+                                case "4":
+                                    digerYemek = genelYemek;
+                                    break;
+                            }
+                        }
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                Log.d("jsonStrNull", "jsonStr variable is null.");
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            try {
+                corbaText.setTextColor(getResources().getColor(R.color.BrushedPurple));
+                yemek1Text.setTextColor(getResources().getColor(R.color.BrushedPurple));
+                yemek2Text.setTextColor(getResources().getColor(R.color.BrushedPurple));
+                digerText.setTextColor(getResources().getColor(R.color.BrushedPurple));
+                corbaText.setText(corbaYemek);
+                yemek1Text.setText(yemek1Yemek);
+                yemek2Text.setText(yemek2Yemek);
+                digerText.setText(digerYemek);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
