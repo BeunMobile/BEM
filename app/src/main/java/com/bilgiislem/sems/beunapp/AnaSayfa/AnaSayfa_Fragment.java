@@ -71,7 +71,6 @@ public class AnaSayfa_Fragment extends Fragment {
     JSONArray s1 = null;
     JSONArray liste = null;
 
-
     ArrayList<String> imageList;
     ArrayList<String> imageLinkList;
     ViewFlipper viewFlipper;
