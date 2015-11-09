@@ -26,7 +26,6 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
     LocationManager lm;
     String maps;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
