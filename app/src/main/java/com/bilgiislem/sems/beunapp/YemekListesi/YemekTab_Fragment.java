@@ -60,7 +60,7 @@ public class YemekTab_Fragment extends Fragment {
         buttonPdf.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), WebActivity.class);
-                intent.putExtra("web","https://docs.google.com/gview?embedded=true&url=http://w3.beun.edu.tr/dosyalar/ana_sayfa/ekim2015.pdf");
+                intent.putExtra("web","https://docs.google.com/gview?embedded=true&url=http://w3.beun.edu.tr/dosyalar/ana_sayfa/kasim2015.pdf");
                 startActivity(intent);
             }
         });
