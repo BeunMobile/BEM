@@ -18,10 +18,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/PurpleButtonBackGroundColor"
+        android:background="@color/BlueButtonBackGroundColor"
         android:text="@string/date_picker"
         android:textAllCaps="false"
-        android:textColor="@color/PurpleButtonTextColor" />
+        android:textColor="@color/BlueButtonTextColor" />
 
     <TextView
         android:id="@+id/empty_data"

@@ -8,7 +8,6 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -41,26 +40,6 @@ public class WebActivity extends AppCompatActivity {
         progressLine = (ProgressBar) findViewById(R.id.progressLine);
         toolbar.setNavigationIcon(android.R.drawable.ic_menu_close_clear_cancel);
         setSupportActionBar(toolbar);
-        switch (url) {
-            case "http://w3.beun.edu.tr/":
-                getSupportActionBar().setTitle(getResources().getString(R.string.title_section1));
-                break;
-            case "https://ekampus.beun.edu.tr/Yonetim/Kullanici/Giris?ReturnUrl=%2f":
-                getSupportActionBar().setTitle(getResources().getString(R.string.title_section7));
-                break;
-            case "http://stu.karaelmas.edu.tr/sm/src/login.php":
-                getSupportActionBar().setTitle(getResources().getString(R.string.title_section8));
-                break;
-            case "http://ue.beun.edu.tr/Account/Login?ReturnUrl=%2f":
-                getSupportActionBar().setTitle(getResources().getString(R.string.title_section9));
-                break;
-            case "https://docs.google.com/gview?embedded=true&url=http://w3.beun.edu.tr/dosyalar/ana_sayfa/ekim2015.pdf":
-                getSupportActionBar().setTitle(getResources().getString(R.string.monthly_list));
-                break;
-            default:
-                getSupportActionBar().setTitle(getResources().getString(R.string.title_section1));
-                break;
-        }
         noConnection = (TextView) findViewById(R.id.empty_data);
         webView = (WebView) findViewById(R.id.icerik_http_text);
         WebSettings settings = webView.getSettings();
@@ -71,7 +50,39 @@ public class WebActivity extends AppCompatActivity {
             webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         }
         settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
-        webView.setInitialScale(80);
+        switch (url) {
+            case "http://w3.beun.edu.tr/":
+                getSupportActionBar().setTitle(getResources().getString(R.string.title_main));
+                webView.setInitialScale(80);
+                break;
+            case "http://ogrenci.beun.edu.tr/":
+                getSupportActionBar().setTitle(getResources().getString(R.string.title_students));
+                break;
+            case "https://ekampus.beun.edu.tr/Yonetim/Kullanici/Giris?ReturnUrl=%2f":
+                getSupportActionBar().setTitle(getResources().getString(R.string.title_ekampus));
+                webView.setInitialScale(80);
+                break;
+            case "http://stu.karaelmas.edu.tr/sm/src/login.php":
+                getSupportActionBar().setTitle(getResources().getString(R.string.title_eposta));
+                webView.setInitialScale(80);
+                break;
+            case "https://posta.beun.edu.tr/":
+                getSupportActionBar().setTitle(getResources().getString(R.string.title_eposta));
+                webView.setInitialScale(80);
+                break;
+            case "http://ue.beun.edu.tr/Account/Login?ReturnUrl=%2f":
+                getSupportActionBar().setTitle(getResources().getString(R.string.title_eposta));
+                webView.setInitialScale(80);
+                break;
+            case "http://w3.beun.edu.tr/dosyalar/ana_sayfa/aralik2015-1.pdf":
+                getSupportActionBar().setTitle(getResources().getString(R.string.monthly_list));
+                webView.setInitialScale(80);
+                break;
+            default:
+                getSupportActionBar().setTitle(getResources().getString(R.string.title_main));
+                webView.setInitialScale(80);
+                break;
+        }
         settings.setBuiltInZoomControls(true);
         settings.setDisplayZoomControls(false);
         webView.loadUrl(url);

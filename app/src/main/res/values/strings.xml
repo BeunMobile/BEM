@@ -1,19 +1,21 @@
 <resources>
     <string name="app_name">Bülent Ecevit Üniversitesi</string>
 
-    <string name="title_section1">Ana Sayfa</string>
-    <string name="title_section2">Duyurular</string>
-    <string name="title_section3">Haberler</string>
-    <string name="title_section4">Etkinlik Takvimi</string>
-    <string name="title_section5">Yemek Listesi</string>
-    <string name="title_section6">Akademik Takvim</string>
-    <string name="title_section7">E-Kampüs</string>
-    <string name="title_section8">E-Posta</string>
-    <string name="title_section9">UZEM</string>
-    <string name="title_section10">Kampüs Görünümü</string>
+    <string name="title_main">Ana Sayfa</string>
+    <string name="title_announcements">Duyurular</string>
+    <string name="title_news">Haberler</string>
+    <string name="title_activitycalender">Etkinlik Takvimi</string>
+    <string name="title_foodlist">Yemek Listesi</string>
+    <string name="title_academiccalender">Akademik Takvim</string>
+    <string name="title_students">Öğrenci</string>
+    <string name="title_ekampus">E-Kampüs</string>
+    <string name="title_eposta">E-Posta</string>
+    <string name="title_uzem">UZEM</string>
+    <string name="title_campusview">Kampüs Görünümü</string>
     <string name="title_section_about1">İletişim</string>
     <string name="title_version">Versiyon : Beta</string>
-
+    <string name="title_karaelmasedutr">karaelmas.edu.tr</string>
+    <string name="title_beunedutr">beun.edu.tr</string>
 
     <string name="navigation_drawer_open">Menüyü aç</string>
     <string name="navigation_drawer_close">Menüyü kapat</string>
@@ -193,7 +195,7 @@
     <string name="developer">Şems Mustafa TURGUT</string>
     <string name="mobilbeun">mobil@beun.edu.tr</string>
     <string name="feedback">Geri Bildirim için :</string>
-    <string name="beta">Beta versiyonu : UMD-70</string>
+    <string name="beta">Beta versiyonu : UMD-80</string>
     <string name="developing">Tarafından geliştirilmiştir.</string>
 
 </resources>

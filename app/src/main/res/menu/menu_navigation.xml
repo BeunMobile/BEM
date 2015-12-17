@@ -9,25 +9,25 @@
             android:id="@+id/item_anasayfa"
             android:checked="false"
             android:icon="@drawable/ic_home"
-            android:title="@string/title_section1" />
+            android:title="@string/title_main" />
 
         <item
             android:id="@+id/item_duyurular"
             android:checked="false"
             android:icon="@drawable/ic_compose"
-            android:title="@string/title_section2" />
+            android:title="@string/title_announcements" />
 
         <item
             android:id="@+id/item_haberler"
             android:checked="false"
             android:icon="@drawable/ic_bookmarks"
-            android:title="@string/title_section3" />
+            android:title="@string/title_news" />
 
         <item
             android:id="@+id/item_etkinliktakvimi"
             android:checked="false"
             android:icon="@drawable/ic_calender"
-            android:title="@string/title_section4" />
+            android:title="@string/title_activitycalender" />
     </group>
     <group
         android:id="@+id/menu1"
@@ -36,27 +36,32 @@
             android:id="@+id/item_yemeklistesi"
             android:checked="false"
             android:icon="@drawable/ic_food"
-            android:title="@string/title_section5" />
+            android:title="@string/title_foodlist" />
         <item
             android:id="@+id/item_akademik"
             android:checked="false"
             android:icon="@drawable/ic_acedemic"
-            android:title="@string/title_section6" />
+            android:title="@string/title_academiccalender" />
+        <item
+            android:id="@+id/item_ogrenci"
+            android:checked="false"
+            android:icon="@drawable/ic_students"
+            android:title="@string/title_students" />
         <item
             android:id="@+id/item_ekampus"
             android:checked="false"
             android:icon="@drawable/ic_ekampus"
-            android:title="@string/title_section7" />
+            android:title="@string/title_ekampus" />
         <item
             android:id="@+id/item_eposta"
             android:checked="false"
             android:icon="@drawable/ic_email"
-            android:title="@string/title_section8" />
+            android:title="@string/title_eposta" />
         <item
             android:id="@+id/item_uzem"
             android:checked="false"
             android:icon="@drawable/ic_uzem"
-            android:title="@string/title_section9" />
+            android:title="@string/title_uzem" />
     </group>
     <group
         android:id="@+id/menu2"
@@ -65,7 +70,7 @@
             android:id="@+id/item_kampusgorunumu"
             android:checked="false"
             android:icon="@drawable/ic_navigate"
-            android:title="@string/title_section10" />
+            android:title="@string/title_campusview" />
         <item
             android:id="@+id/item_contact"
             android:checked="false"

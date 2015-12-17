@@ -1,7 +1,6 @@
 package com.bilgiislem.sems.beunapp.Hakkinda;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -25,11 +24,11 @@ public class Hakkinda_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_hakkinda, container, false);
         ((MainActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.about_about));
-        sems = (TextView) view.findViewById(R.id.sems_text);
+       // sems = (TextView) view.findViewById(R.id.sems_text);
         mobil = (TextView) view.findViewById(R.id.mobil_beun);
 
 
-        sems.setOnClickListener(new View.OnClickListener() {
+       /* sems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
@@ -39,7 +38,7 @@ public class Hakkinda_Fragment extends Fragment {
                 emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Geri Bildirim Açýklamasý :");
                 startActivity(Intent.createChooser(emailIntent, "E-Posta Gönder ..."));
             }
-        });
+        });*/
 
         mobil.setOnClickListener(new View.OnClickListener() {
             @Override

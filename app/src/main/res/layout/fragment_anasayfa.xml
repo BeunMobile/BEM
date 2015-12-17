@@ -9,10 +9,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/PurpleButtonBackGroundColor"
+        android:background="@color/BlueButtonBackGroundColor"
         android:text="@string/mainweb_page"
         android:textAllCaps="false"
-        android:textColor="@color/PurpleButtonTextColor" />
+        android:textColor="@color/BlueButtonTextColor" />
 
 
     <LinearLayout
@@ -114,7 +114,7 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
-                                    android:textColor="@color/BrushedPurple"
+                                    android:textColor="@color/BrushedBlue"
                                     android:textSize="16sp" />
 
                             </LinearLayout>
@@ -193,7 +193,7 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
-                                    android:textColor="@color/BrushedPurple"
+                                    android:textColor="@color/BrushedBlue"
                                     android:textSize="16sp" />
 
                             </LinearLayout>
@@ -269,7 +269,7 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical"
                                     android:padding="8dp"
-                                    android:textColor="@color/BrushedPurple"
+                                    android:textColor="@color/BrushedBlue"
                                     android:textSize="16sp" />
                             </LinearLayout>
                         </RelativeLayout>

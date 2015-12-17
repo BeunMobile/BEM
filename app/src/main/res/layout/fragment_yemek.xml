@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@color/PurpleThemeColor"
+        android:background="@color/BlueThemeColor"
         app:tabGravity="fill"
         app:tabIndicatorColor="@color/BrushedGold"
         app:tabMode="fixed"
@@ -32,10 +32,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/PurpleButtonBackGroundColor"
+        android:background="@color/BlueButtonBackGroundColor"
         android:text="@string/monthly_list"
         android:textAllCaps="false"
-        android:textColor="@color/PurpleButtonTextColor" />
+        android:textColor="@color/BlueButtonTextColor" />
 
 
 </RelativeLayout>

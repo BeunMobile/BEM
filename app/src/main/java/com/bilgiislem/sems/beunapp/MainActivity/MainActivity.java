@@ -10,15 +10,15 @@ import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.design.widget.NavigationView;
-
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -27,8 +27,8 @@ import com.bilgiislem.sems.beunapp.AkademikTakvim.Akademik_Fragment;
 import com.bilgiislem.sems.beunapp.AnaSayfa.AnaSayfa_Fragment;
 import com.bilgiislem.sems.beunapp.AnaSayfa.WebActivity;
 import com.bilgiislem.sems.beunapp.DHE.Duyurular_Fragment;
-import com.bilgiislem.sems.beunapp.DHE.Haberler_Fragment;
 import com.bilgiislem.sems.beunapp.DHE.Etkinlikler_Fragment;
+import com.bilgiislem.sems.beunapp.DHE.Haberler_Fragment;
 import com.bilgiislem.sems.beunapp.Hakkinda.Hakkinda_Fragment;
 import com.bilgiislem.sems.beunapp.Hakkinda.Iletisim_Fragment;
 import com.bilgiislem.sems.beunapp.KampusGorunumu.Kampus_Fragment;
@@ -120,72 +120,123 @@ public class MainActivity extends AppCompatActivity {
         objFragment = new AnaSayfa_Fragment();
         getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame, objFragment).commit();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                                                             @Override
+                                                             public boolean onNavigationItemSelected(MenuItem menuItem) {
+                                                                 drawerLayout.closeDrawers();
+                                                                 android.support.v4.app.Fragment objFragment = null;
+                                                                 switch (menuItem.getItemId()) {
+                                                                     case R.id.item_anasayfa:
+                                                                         objFragment = new AnaSayfa_Fragment();
+                                                                         getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in,
+                                                                                 R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out)
+                                                                                 .replace(R.id.frame, objFragment).addToBackStack(null).commit();
+                                                                         return true;
+                                                                     case R.id.item_duyurular:
+                                                                         objFragment = new Duyurular_Fragment();
+                                                                         getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in,
+                                                                                 R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out)
+                                                                                 .replace(R.id.frame, objFragment).addToBackStack(null).commit();
+                                                                         return true;
+                                                                     case R.id.item_haberler:
+                                                                         objFragment = new Haberler_Fragment();
+                                                                         getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in,
+                                                                                 R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out)
+                                                                                 .replace(R.id.frame, objFragment).addToBackStack(null).commit();
+                                                                         return true;
+                                                                     case R.id.item_etkinliktakvimi:
+                                                                         objFragment = new Etkinlikler_Fragment();
+                                                                         getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in,
+                                                                                 R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out)
+                                                                                 .replace(R.id.frame, objFragment).addToBackStack(null).commit();
+                                                                         return true;
+                                                                     case R.id.item_yemeklistesi:
+                                                                         objFragment = new YemekTab_Fragment();
+                                                                         getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in,
+                                                                                 R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out)
+                                                                                 .replace(R.id.frame, objFragment).addToBackStack(null).commit();
+                                                                         return true;
+                                                                     case R.id.item_akademik:
+                                                                         objFragment = new Akademik_Fragment();
+                                                                         getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in,
+                                                                                 R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out)
+                                                                                 .replace(R.id.frame, objFragment).addToBackStack(null).commit();
+                                                                         return true;
+                                                                     case R.id.item_ogrenci:
+                                                                         Intent intent_ogrenci = new Intent(MainActivity.this, WebActivity.class);
+                                                                         intent_ogrenci.putExtra("web", "http://ogrenci.beun.edu.tr/");
+                                                                         startActivity(intent_ogrenci);
+                                                                         return true;
+                                                                     case R.id.item_ekampus:
+                                                                         Intent intent_ekampus = new Intent(MainActivity.this, WebActivity.class);
+                                                                         intent_ekampus.putExtra("web",
+                                                                                 "https://ekampus.beun.edu.tr/Yonetim/Kullanici/Giris?ReturnUrl=%2f");
+                                                                         startActivity(intent_ekampus);
+                                                                         return true;
+                                                                     case R.id.item_eposta:
+                                                                         android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog
+                                                                                 .Builder(MainActivity.this);
+                                                                         builder.setTitle(R.string.title_eposta);
+                                                                         builder.setItems(R.array.e_mails, new DialogInterface.OnClickListener() {
+                                                                             public void onClick(DialogInterface dialog, int item) {
+                                                                                 switch (item) {
+                                                                                     case 0:
+                                                                                         Intent intent_eposta = new Intent(MainActivity.this, WebActivity.class);
+                                                                                         intent_eposta.putExtra("web", "http://stu.karaelmas.edu.tr/sm/src/login.php");
+                                                                                         startActivity(intent_eposta);
+                                                                                         break;
+                                                                                     case 1:
+                                                                                         Intent intent_eposta1 = new Intent(MainActivity.this, WebActivity.class);
+                                                                                         intent_eposta1.putExtra("web", "https://posta.beun.edu.tr/");
+                                                                                         startActivity(intent_eposta1);
+                                                                                         break;
+                                                                                     default:
+                                                                                         Log.e("Eposta", "Error");
+                                                                                 }
+                                                                             }
+                                                                         });
+                                                                         android.support.v7.app.AlertDialog alert = builder.create();
+                                                                         alert.show();
+                                                                         return true;
+                                                                     case R.id.item_uzem:
+                                                                         Intent intent_uzem = new Intent(MainActivity.this, WebActivity.class);
+                                                                         intent_uzem.putExtra("web", "http://ue.beun.edu.tr/Account/Login?ReturnUrl=%2f");
+                                                                         startActivity(intent_uzem);
+                                                                         return true;
+                                                                     case R.id.item_kampusgorunumu:
+                                                                         objFragment = new Kampus_Fragment();
+                                                                         getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in,
+                                                                                 R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame,
+                                                                                 objFragment).addToBackStack(null).commit();
+                                                                         return true;
+                                                                     case R.id.item_contact:
+                                                                         objFragment = new
+                                                                                 Iletisim_Fragment();
+                                                                         getSupportFragmentManager().
+                                                                                 beginTransaction().setCustomAnimations(R.anim.abc_fade_in,
+                                                                                 R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame,
+                                                                                 objFragment).addToBackStack(null).commit();
+                                                                         return true;
+                                                                     case R.id.item_about:
+                                                                         objFragment = new
+                                                                                 Hakkinda_Fragment();
+                                                                         getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in,
+                                                                                 R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame,
+                                                                                 objFragment).addToBackStack(null).commit();
+                                                                         return true;
+                                                                     default:
+                                                                         objFragment = new AnaSayfa_Fragment();
+                                                                         getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in,
+                                                                                 R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame,
+                                                                                 objFragment).addToBackStack(null).commit();
+                                                                         return true;
+                                                                 }
+                                                             }
+                                                         }
+        );
+        drawerLayout = (DrawerLayout)
 
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                drawerLayout.closeDrawers();
-                android.support.v4.app.Fragment objFragment = null;
-                switch (menuItem.getItemId()) {
-                    case R.id.item_anasayfa:
-                        objFragment = new AnaSayfa_Fragment();
-                        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame, objFragment).addToBackStack(null).commit();
-                        return true;
-                    case R.id.item_duyurular:
-                        objFragment = new Duyurular_Fragment();
-                        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame, objFragment).addToBackStack(null).commit();
-                        return true;
-                    case R.id.item_haberler:
-                        objFragment = new Haberler_Fragment();
-                        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame, objFragment).addToBackStack(null).commit();
-                        return true;
-                    case R.id.item_etkinliktakvimi:
-                        objFragment = new Etkinlikler_Fragment();
-                        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame, objFragment).addToBackStack(null).commit();
-                        return true;
-                    case R.id.item_yemeklistesi:
-                        objFragment = new YemekTab_Fragment();
-                        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame, objFragment).addToBackStack(null).commit();
-                        return true;
-                    case R.id.item_akademik:
-                        objFragment = new Akademik_Fragment();
-                        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame, objFragment).addToBackStack(null).commit();
-                        return true;
-                    case R.id.item_ekampus:
-                        Intent intent_ekampus = new Intent(MainActivity.this, WebActivity.class);
-                        intent_ekampus.putExtra("web", "https://ekampus.beun.edu.tr/Yonetim/Kullanici/Giris?ReturnUrl=%2f");
-                        startActivity(intent_ekampus);
-                        return true;
-                    case R.id.item_eposta:
-                        Intent intent_eposta = new Intent(MainActivity.this, WebActivity.class);
-                        intent_eposta.putExtra("web", "http://stu.karaelmas.edu.tr/sm/src/login.php");
-                        startActivity(intent_eposta);
-                        return true;
-                    case R.id.item_uzem:
-                        Intent intent_uzem = new Intent(MainActivity.this, WebActivity.class);
-                        intent_uzem.putExtra("web", "http://ue.beun.edu.tr/Account/Login?ReturnUrl=%2f");
-                        startActivity(intent_uzem);
-                        return true;
-                    case R.id.item_kampusgorunumu:
-                        objFragment = new Kampus_Fragment();
-                        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame, objFragment).addToBackStack(null).commit();
-                        return true;
-                    case R.id.item_contact:
-                        objFragment = new Iletisim_Fragment();
-                        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame, objFragment).addToBackStack(null).commit();
-                        return true;
-                    case R.id.item_about:
-                        objFragment = new Hakkinda_Fragment();
-                        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame, objFragment).addToBackStack(null).commit();
-                        return true;
-                    default:
-                        objFragment = new AnaSayfa_Fragment();
-                        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame, objFragment).addToBackStack(null).commit();
-                        return true;
-                }
-            }
-        });
+                findViewById(R.id.drawer);
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.openDrawer, R.string.closeDrawer) {
 
             @Override

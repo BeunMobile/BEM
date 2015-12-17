@@ -2,23 +2,23 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:colorPrimary">@color/PurpleThemeColor</item>
-        <item name="android:colorPrimaryDark">@color/PurpleThemeDarkColor</item>
+        <item name="android:colorPrimary">@color/BlueThemeColor</item>
+        <item name="android:colorPrimaryDark">@color/BlueThemeDarkColor</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <!-- Customize your theme here. -->
     </style>
 
     <style name="AppTheme2" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:colorPrimary">@color/PurpleThemeColor</item>
-        <item name="android:colorPrimaryDark">@color/PurpleThemeDarkColor</item>
-        <item name="android:statusBarColor">@color/PurpleThemeDarkColor</item>
+        <item name="android:colorPrimary">@color/BlueThemeColor</item>
+        <item name="android:colorPrimaryDark">@color/BlueThemeDarkColor</item>
+        <item name="android:statusBarColor">@color/BlueThemeDarkColor</item>
         <!-- Customize your theme here. -->
     </style>
 
     <style name="AppTheme3" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:colorPrimary">@color/PurpleThemeColor</item>
-        <item name="android:colorPrimaryDark">@color/PurpleThemeDarkColor</item>
-        <item name="android:statusBarColor">@color/PurpleThemeDarkColor</item>
+        <item name="android:colorPrimary">@color/BlueThemeColor</item>
+        <item name="android:colorPrimaryDark">@color/BlueThemeDarkColor</item>
+        <item name="android:statusBarColor">@color/BlueThemeDarkColor</item>
         <item name="android:homeAsUpIndicator">@drawable/abc_ic_ab_back_mtrl_am_alpha</item>
         <!-- Customize your theme here. -->
     </style>
@@ -30,8 +30,8 @@
 
 
     <style name="MainTheme" parent="MainTheme.Base">
-        <item name="android:colorPrimary">@color/PurpleThemeColor</item>
-        <item name="android:colorPrimaryDark">@color/PurpleThemeDarkColor</item>
+        <item name="android:colorPrimary">@color/BlueThemeColor</item>
+        <item name="android:colorPrimaryDark">@color/BlueThemeDarkColor</item>
         <item name="android:colorAccent">@color/AccentColor</item>
     </style>
 

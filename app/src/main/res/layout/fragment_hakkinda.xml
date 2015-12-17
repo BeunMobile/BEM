@@ -22,57 +22,13 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
                 android:text="@string/beun_title"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/BrushedTextColor"
-                android:textSize="22sp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
-
-            <TextView
-                android:id="@+id/sems_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/developer"
-                android:textColor="@color/BrushedPurple"
-                android:textSize="24sp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
-
-            <TextView
-                android:id="@+id/feedback_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:text="@string/feedback"
-                android:textColor="@color/BrushedPurple"
-                android:textSize="18sp"
-                android:layout_below="@+id/sems_text"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="22dp" />
-
-            <TextView
-                android:id="@+id/mobil_beun"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/feedback_title"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:text="@string/mobilbeun"
-                android:textColor="@color/BrushedPurple"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:text="@string/beta"
-                android:textColor="@color/BrushedGold"
-                android:textSize="18sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -86,25 +42,39 @@
                 android:textSize="22sp" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/feedback_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView4"
                 android:layout_centerHorizontal="true"
-                android:text="@string/software_title"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/BrushedTextColor"
-                android:textSize="22sp" />
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/feedback"
+                android:textColor="@color/BrushedBlue"
+                android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/mobil_beun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/developing"
-                android:textColor="@color/BrushedPurple"
-                android:id="@+id/textView2"
-                android:layout_below="@+id/sems_text"
-                android:layout_centerHorizontal="true" />
+                android:layout_below="@+id/feedback_title"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:text="@string/mobilbeun"
+                android:textColor="@color/BrushedBlue"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/beta"
+                android:textColor="@color/BrushedGold"
+                android:textSize="18sp" />
+
 
         </RelativeLayout>
 

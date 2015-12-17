@@ -35,7 +35,7 @@
                     android:gravity="center"
                     android:text="@string/genel_takvim"
                     android:textAllCaps="false"
-                    android:textColor="@color/BrushedPurple"
+                    android:textColor="@color/BrushedBlue"
                     android:textSize="25sp" />
             </android.support.v7.widget.CardView>
 
@@ -63,7 +63,7 @@
                     android:gravity="center"
                     android:text="@string/dis_takvim"
                     android:textAllCaps="false"
-                    android:textColor="@color/BrushedPurple"
+                    android:textColor="@color/BrushedBlue"
                     android:textSize="25sp" />
             </android.support.v7.widget.CardView>
         </LinearLayout>
@@ -91,7 +91,7 @@
                     android:gravity="center"
                     android:text="@string/enstitu_takvim"
                     android:textAllCaps="false"
-                    android:textColor="@color/BrushedPurple"
+                    android:textColor="@color/BrushedBlue"
                     android:textSize="25sp" />
             </android.support.v7.widget.CardView>
         </LinearLayout>
@@ -119,7 +119,7 @@
                     android:gravity="center"
                     android:text="@string/hazirlik_takvim"
                     android:textAllCaps="false"
-                    android:textColor="@color/BrushedPurple"
+                    android:textColor="@color/BrushedBlue"
                     android:textSize="25sp" />
             </android.support.v7.widget.CardView>
         </LinearLayout>
@@ -147,7 +147,7 @@
                     android:gravity="center"
                     android:text="@string/tip_takvim"
                     android:textAllCaps="false"
-                    android:textColor="@color/BrushedPurple"
+                    android:textColor="@color/BrushedBlue"
                     android:textSize="25sp" />
             </android.support.v7.widget.CardView>
         </LinearLayout>
@@ -175,7 +175,7 @@
                     android:gravity="center"
                     android:text="@string/uluslarasi_takvim"
                     android:textAllCaps="false"
-                    android:textColor="@color/BrushedPurple"
+                    android:textColor="@color/BrushedBlue"
                     android:textSize="25sp" />
             </android.support.v7.widget.CardView>
         </LinearLayout>
@@ -203,7 +203,7 @@
                     android:gravity="center"
                     android:text="@string/ygi_takvim"
                     android:textAllCaps="false"
-                    android:textColor="@color/BrushedPurple"
+                    android:textColor="@color/BrushedBlue"
                     android:textSize="25sp" />
             </android.support.v7.widget.CardView>
         </LinearLayout>
@@ -231,7 +231,7 @@
                     android:gravity="center"
                     android:text="@string/yaz_takvim"
                     android:textAllCaps="false"
-                    android:textColor="@color/BrushedPurple"
+                    android:textColor="@color/BrushedBlue"
                     android:textSize="25sp" />
             </android.support.v7.widget.CardView>
         </LinearLayout>
@@ -259,7 +259,7 @@
                     android:gravity="center"
                     android:text="@string/yetenek_takvim"
                     android:textAllCaps="false"
-                    android:textColor="@color/BrushedPurple"
+                    android:textColor="@color/BrushedBlue"
                     android:textSize="25sp" />
             </android.support.v7.widget.CardView>
         </LinearLayout>

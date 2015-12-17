@@ -493,10 +493,10 @@ public class AnaSayfa_Fragment extends Fragment {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             try {
-                corbaText.setTextColor(getResources().getColor(R.color.BrushedPurple));
-                yemek1Text.setTextColor(getResources().getColor(R.color.BrushedPurple));
-                yemek2Text.setTextColor(getResources().getColor(R.color.BrushedPurple));
-                digerText.setTextColor(getResources().getColor(R.color.BrushedPurple));
+                corbaText.setTextColor(getResources().getColor(R.color.BrushedBlue));
+                yemek1Text.setTextColor(getResources().getColor(R.color.BrushedBlue));
+                yemek2Text.setTextColor(getResources().getColor(R.color.BrushedBlue));
+                digerText.setTextColor(getResources().getColor(R.color.BrushedBlue));
                 corbaText.setText(corbaYemek);
                 yemek1Text.setText(yemek1Yemek);
                 yemek2Text.setText(yemek2Yemek);

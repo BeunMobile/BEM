@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="PurpleThemeColor">#6A0888</color>
-    <color name="PurpleThemeDarkColor">#6A0888</color>
-    <color name="PurpleButtonBackGroundColor">#6A0888</color>
+    <color name="BlueThemeColor">#FF152B6C</color>
+    <color name="BlueThemeDarkColor">#FF152B6C</color>
+    <color name="BlueButtonBackGroundColor">#FF152B6C</color>
 
-    <color name="PurpleButtonTextColor">#DCC6E0</color>
-    <color name="BrushedPurple">#9684A3</color>
+    <color name="BlueButtonTextColor">#C5CAE9</color>
+    <color name="BrushedBlue">#FF615164</color>
 
     <color name="BrushedGold">#DBCB8E</color>
     <color name="BrushedTextColor">#616161</color>
 
     <color name="BrushedGreenTextColor">#7BB0A6</color>
 
-    <color name="AccentColor">#FF9800</color>
-
+    <color name="AccentColor">#FFFF6464</color>
 
     <color name="black">#000</color>
     <color name="orange">#FA0</color>

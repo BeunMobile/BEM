@@ -30,7 +30,7 @@
         android:layout_height="match_parent"
         app:insetForeground="#4000"
         android:layout_gravity="start"
-        app:itemTextColor="@color/BrushedPurple"
+        app:itemTextColor="@color/BrushedBlue"
         app:menu="@menu/menu_navigation" />
 
 </android.support.v4.widget.DrawerLayout>

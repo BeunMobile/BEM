@@ -14,6 +14,11 @@
         <item>Güzel Sanatlar Fakültesi</item>
     </string-array>
 
+    <string-array name="e_mails">
+        <item>karaelmas.edu.tr</item>
+        <item>beun.edu.tr</item>
+    </string-array>
+
     <string-array name="months">
         <item>Ocak</item>
         <item>Şubat</item>
