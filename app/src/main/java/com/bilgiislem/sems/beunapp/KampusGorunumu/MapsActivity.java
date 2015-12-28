@@ -1,12 +1,20 @@
 package com.bilgiislem.sems.beunapp.KampusGorunumu;
 
+import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.R;
@@ -21,44 +29,53 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWindowClickListener {
 
+    private Context context;
+    private CoordinatorLayout coordinatorLayout;
     private GoogleMap googleMaps;
     String marker_title;
     LocationManager lm;
     String maps;
+    private static final int PERMISSION_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
+        context = getApplicationContext();
         maps = getIntent().getStringExtra("maps");
         setUpMapIfNeeded(maps);
-        googleMaps.setOnInfoWindowClickListener(this);
-        lm = (LocationManager) getSystemService(LOCATION_SERVICE);
-        boolean isGPS = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        boolean isNetwork = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        try {
+            googleMaps.setOnInfoWindowClickListener(this);
+            lm = (LocationManager) getSystemService(LOCATION_SERVICE);
+            boolean isGPS = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+            boolean isNetwork = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
-        if (!isNetwork && !isGPS) {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setMessage(R.string.location_decision);
+            if (!isNetwork && !isGPS) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setMessage(R.string.location_decision);
 
-            alertDialogBuilder.setPositiveButton("Hayýr,Teþekkürler.", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface arg0, int arg1) {
-                    Toast.makeText(MapsActivity.this, R.string.location, Toast.LENGTH_LONG).show();
-                }
-            });
+                alertDialogBuilder.setPositiveButton("Hayýr,Teþekkürler.", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        Toast.makeText(MapsActivity.this, R.string.location, Toast.LENGTH_LONG).show();
+                    }
+                });
 
-            alertDialogBuilder.setNegativeButton("Evet.", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    startActivityForResult(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS), 0);
-                }
-            });
+                alertDialogBuilder.setNegativeButton("Evet.", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivityForResult(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS), 0);
+                    }
+                });
 
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.show();
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        } catch (NullPointerException e) {
+            Log.d("NPE", "Maps " + e.toString());
         }
-
     }
 
     @Override
@@ -123,15 +140,56 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
         CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(41.450777, 31.762411)).zoom(17).tilt(50).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
         googleMaps.animateCamera(cameraUpdate);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            if (!checkPermission()) {
+
+                requestPermission();
+
+            } else {
+
+                Snackbar.make(coordinatorLayout, "Permission already granted.", Snackbar.LENGTH_LONG).show();
+
+            }
+
+            return;
+        }
         googleMaps.setMyLocationEnabled(true);
         googleMaps.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         Toast.makeText(this, getString(R.string.farabi_title), Toast.LENGTH_SHORT).show();
     }
 
+
     private void setUpIbni() {
         CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(41.4141777, 31.7042748)).zoom(18).tilt(50).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
         googleMaps.animateCamera(cameraUpdate);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            if (!checkPermission()) {
+
+                requestPermission();
+
+            } else {
+
+                Snackbar.make(coordinatorLayout, "Permission already granted.", Snackbar.LENGTH_LONG).show();
+
+            }
+
+            return;
+        }
         googleMaps.setMyLocationEnabled(true);
         googleMaps.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         Toast.makeText(this, getString(R.string.ibni_title), Toast.LENGTH_SHORT).show();
@@ -164,6 +222,49 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
                 break;*/
             default:
                 Toast.makeText(getApplicationContext(), R.string.beu3d_none, Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+    private boolean checkPermission() {
+        int result = ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION);
+        if (result == PackageManager.PERMISSION_GRANTED) {
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+    }
+
+    private void requestPermission() {
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+            Toast.makeText(context, "GPS permission allows us to access location data. Please allow in App Settings for additional functionality.",
+                    Toast.LENGTH_LONG).show();
+
+        } else {
+
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQUEST_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    Snackbar.make(coordinatorLayout, "Permission Granted, Now you can access location data.", Snackbar.LENGTH_LONG).show();
+
+                } else {
+
+                    Snackbar.make(coordinatorLayout, "Permission Denied, You cannot access location data.", Snackbar.LENGTH_LONG).show();
+
+                }
                 break;
         }
     }
