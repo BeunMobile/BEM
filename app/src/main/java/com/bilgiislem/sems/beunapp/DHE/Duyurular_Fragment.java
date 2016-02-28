@@ -11,10 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-
 import android.widget.ListAdapter;
 import android.widget.ListView;
-
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
@@ -24,17 +22,22 @@ import com.bilgiislem.sems.beunapp.DHE_Sources.ServiceHandler;
 import com.bilgiislem.sems.beunapp.MainActivity.MainActivity;
 import com.bilgiislem.sems.beunapp.R;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Duyurular_Fragment extends ListFragment {
 
     private static String url = "http://w3.beun.edu.tr/mobil-duyurular/";
+    private static String urlbeun = "http://w3.beun.edu.tr/";
     ListView listView;
     Button tdbutton;
     TextView emptyData, loadingData;
@@ -44,6 +47,8 @@ public class Duyurular_Fragment extends ListFragment {
     private static final String TAG_ADRES = "adres";
     JSONArray s1 = null;
     ArrayList<HashMap<String, String>> duyuruList;
+    List<String> uldli = new ArrayList<>();
+    List<String> urldli = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -72,6 +77,7 @@ public class Duyurular_Fragment extends ListFragment {
         return view;
     }
 
+
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
@@ -87,6 +93,7 @@ public class Duyurular_Fragment extends ListFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String adres2 = duyuruList.get(position).get("adres");
                 String baslik2 = duyuruList.get(position).get("baslik");
+                Log.d("Adres", adres2);
                 Intent intent = new Intent(getActivity(), IcerikActivity.class);
                 intent.putExtra("adres", adres2);
                 intent.putExtra("baslik", baslik2);
@@ -94,6 +101,7 @@ public class Duyurular_Fragment extends ListFragment {
             }
         });
         new getDuyuruJSON().execute();
+        //new getDuyuruHTML().execute();
         super.onActivityCreated(savedInstanceState);
     }
 
@@ -135,6 +143,45 @@ public class Duyurular_Fragment extends ListFragment {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
+            if (duyuruList.isEmpty()) {
+                emptyData.setVisibility(View.VISIBLE);
+            }
+            try {
+                ListAdapter adapter = new SimpleAdapter(
+                        getActivity(), duyuruList,
+                        R.layout.item_listview, new String[]{TAG_BASLIK}, new int[]{R.id.news});
+                setListAdapter(adapter);
+                listView.setVisibility(View.VISIBLE);
+                loadingData.setVisibility(View.GONE);
+            } catch (NullPointerException e) {
+                Log.d("NullPointer", "In this try.");
+            }
+        }
+    }
+
+
+    private class getDuyuruHTML extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                Document doc = Jsoup.connect(urlbeun).get();
+                for (Element element : doc.select("ul[class=dli]")) {
+                    HashMap<String, String> contact = new HashMap<String, String>();
+                    contact.put(TAG_BASLIK, element.text());
+                    contact.put(TAG_ADRES, element.select("li a").attr("abs:href"));
+                    duyuruList.add(contact);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Log.d("DuyuruList", duyuruList.toString());
             if (duyuruList.isEmpty()) {
                 emptyData.setVisibility(View.VISIBLE);
             }
