@@ -6,8 +6,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,7 +16,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.bilgiislem.sems.beunapp.DHE_Sources.GridViewSources.GridViewActivity;
@@ -43,7 +42,9 @@ public class IcerikActivity extends AppCompatActivity {
         baslik_plus = getIntent().getStringExtra("baslik");
         http_plus = getIntent().getStringExtra("adres");
         url = "http://w3.beun.edu.tr/veri" + http_plus;
+        //url = http_plus;
         url_share = "http://w3.beun.edu.tr" + http_plus;
+        //url_share = http_plus;
         setContentView(R.layout.activity_icerik);
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);

@@ -243,7 +243,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
 
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
 
-            Toast.makeText(context, "GPS permission allows us to access location data. Please allow in App Settings for additional functionality.",
+            Toast.makeText(context, "GPS izni harita servisini düzgün kullanmanýz için geçerlidir. Lütfen uygulama ayarlarýndan aktif ediniz.",
                     Toast.LENGTH_LONG).show();
 
         } else {
@@ -258,11 +258,11 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
             case PERMISSION_REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    Snackbar.make(coordinatorLayout, "Permission Granted, Now you can access location data.", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(coordinatorLayout, "Onay verildi þimdi lokasyon bilgilerinizi kullanabilirsiniz.", Snackbar.LENGTH_LONG).show();
 
                 } else {
 
-                    Snackbar.make(coordinatorLayout, "Permission Denied, You cannot access location data.", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(coordinatorLayout, "Onay verilmedi lokasyon bilgilerinizi kullanamazsýnýz.", Snackbar.LENGTH_LONG).show();
 
                 }
                 break;
