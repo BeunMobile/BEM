@@ -23,7 +23,7 @@ public class GBYActivity extends AppCompatActivity {
 
         android.support.v4.app.Fragment objFragment = null;
         objFragment = new GBYTab_Fragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame, objFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.gby_frame, objFragment).commit();
 
         loadingData = (TextView) findViewById(R.id.loading_data);
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);

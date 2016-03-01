@@ -79,6 +79,7 @@
     <string name="action_openweb">Chrome ile aç</string>
     <string name="action_share">Paylaş</string>
     <string name="action_close">Pencereyi kapat</string>
+    <string name="action_home">Ana Sayfa</string>
 
 
     //DialogMessages

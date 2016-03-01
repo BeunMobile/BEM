@@ -9,6 +9,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,7 +81,6 @@ public class AnaSayfa_Fragment extends Fragment {
 
     TextView emptyDuyuru, setDuyuru, loadDuyuru, emptyHaber, setHaber, loadHaber, emptyEtkinlik, setEtkinlik, loadEtkinlik, setBaslikEtkinlik, corbaText, yemek1Text, yemek2Text, digerText;
     CardView cardDuyuru, cardHaber, cardEtkinlik;
-    Button anaSayfaButton;
 
     String baslikDuyuru, adresDuyuru, baslikHaber, adresHaber, baslikEtkinlik, adresEtkinlik, gunEtkinlik, ayEtkinlik, genelYemek, cinsYemek, corbaYemek, yemek1Yemek, yemek2Yemek, digerYemek;
     String[] months;
@@ -112,14 +114,6 @@ public class AnaSayfa_Fragment extends Fragment {
         yemek2Text = (TextView) view.findViewById(R.id.card_food_yemek2);
         digerText = (TextView) view.findViewById(R.id.card_food_diger);
 
-        anaSayfaButton = (Button) view.findViewById(R.id.ana_sayfa_button);
-        anaSayfaButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), WebActivity.class);
-                intent.putExtra("web", "http://w3.beun.edu.tr/");
-                AnaSayfa_Fragment.this.startActivity(intent);
-            }
-        });
 
         new getDuyuruJSON().execute();
         new getHaberJSON().execute();
@@ -138,6 +132,12 @@ public class AnaSayfa_Fragment extends Fragment {
         FlipperEvents();
 
         return view;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     private void FlipperEvents() {
@@ -533,6 +533,24 @@ public class AnaSayfa_Fragment extends Fragment {
         } catch (NullPointerException e) {
             Log.d("NPE", e.toString());
         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(
+            Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.home_web_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_home:
+                Intent intent = new Intent(getActivity(), WebActivity.class);
+                intent.putExtra("web", "http://w3.beun.edu.tr/");
+                AnaSayfa_Fragment.this.startActivity(intent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public static String html2text(String html) {
