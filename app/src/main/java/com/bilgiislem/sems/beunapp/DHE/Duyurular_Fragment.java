@@ -102,7 +102,7 @@ public class Duyurular_Fragment extends ListFragment {
         super.onActivityCreated(savedInstanceState);
     }
 
-    private class getDuyuruJSON extends AsyncTask<Void, Void, Void> {
+  /*  private class getDuyuruJSON extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -155,7 +155,7 @@ public class Duyurular_Fragment extends ListFragment {
             }
         }
     }
-
+*/
 
     private class getDuyuruJsoup extends AsyncTask<Void, Void, Void> {
 

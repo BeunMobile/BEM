@@ -13,7 +13,7 @@
         android:id="@+id/progressLine"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="fill_parent"
-        android:background="@color/BlueThemeColor"
+        android:background="@color/PurpleThemeColor"
         android:layout_height="7dp"
         android:layout_below="@id/main_toolbar" />
 

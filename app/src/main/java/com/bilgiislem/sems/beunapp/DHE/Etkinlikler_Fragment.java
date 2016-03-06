@@ -106,7 +106,7 @@ public class Etkinlikler_Fragment extends ListFragment {
     /**
      * Async task class to get json by making HTTP call
      */
-    private class getEtkinlikJSON extends AsyncTask<Void, Void, Void> {
+    /*private class getEtkinlikJSON extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -159,17 +159,18 @@ public class Etkinlikler_Fragment extends ListFragment {
             }
         }
     }
-
+*/
     private class getEtkinlikJsoup extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected Void doInBackground(Void... params) {
+
             try {
                 Document doc = Jsoup.connect(urlbeun).get();
-                for (Element element : doc.select("ul[class=dli]")) {
+                for (Element element : doc.select("ul[id=takvimul]")) {
                     HashMap<String, String> contact = new HashMap<String, String>();
-                    contact.put(TAG_BASLIK, element.text());
-                    contact.put(TAG_ADRES, element.select("li a").attr("abs:href"));
+                    contact.put(TAG_BASLIK, element.select("li > div > ol > li > ol > li > a").select("span[class=ai1ec-event-title]").text());
+                    contact.put(TAG_ADRES, element.select("li > div > ol > li > ol > li").select("a").attr("abs:href"));
                     etkinlikList.add(contact);
                 }
             } catch (IOException e) {
@@ -192,7 +193,7 @@ public class Etkinlikler_Fragment extends ListFragment {
                 listView.setVisibility(View.VISIBLE);
                 loadingData.setVisibility(View.GONE);
             } catch (NullPointerException e) {
-                Log.d("NullPointer", "onPostExecute");
+                e.printStackTrace();
             }
         }
     }

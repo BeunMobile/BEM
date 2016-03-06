@@ -2,8 +2,8 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:colorPrimary">@color/BlueThemeColor</item>
-        <item name="android:colorPrimaryDark">@color/BlueThemeDarkColor</item>
+        <item name="android:colorPrimary">@color/PurpleThemeColor</item>
+        <item name="android:colorPrimaryDark">@color/PurpleThemeDarkColor</item>
         <item name="windowActionBar">false</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
@@ -12,8 +12,8 @@
     </style>
 
     <style name="AppTheme2" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:colorPrimary">@color/BlueThemeColor</item>
-        <item name="android:colorPrimaryDark">@color/BlueThemeDarkColor</item>
+        <item name="android:colorPrimary">@color/PurpleThemeColor</item>
+        <item name="android:colorPrimaryDark">@color/PurpleThemeDarkColor</item>
         <item name="windowActionBar">false</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
@@ -22,13 +22,13 @@
     </style>
 
     <style name="AppTheme3" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:colorPrimary">@color/BlueThemeColor</item>
-        <item name="android:colorPrimaryDark">@color/BlueThemeDarkColor</item>
+        <item name="android:colorPrimary">@color/PurpleThemeColor</item>
+        <item name="android:colorPrimaryDark">@color/PurpleThemeDarkColor</item>
         <item name="android:homeAsUpIndicator">@drawable/abc_ic_ab_back_material</item>
         <item name="windowActionBar">false</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@color/BlueThemeColor</item>
+        <item name="android:statusBarColor">@color/PurpleThemeColor</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -44,8 +44,8 @@
 
     <style name="MainTheme.Base" parent="Theme.AppCompat.NoActionBar">
         <item name="android:textColorPrimary">@color/abc_primary_text_material_dark</item>
-        <item name="colorPrimary">@color/BlueThemeColor</item>
-        <item name="colorPrimaryDark">@color/BlueThemeDarkColor</item>
+        <item name="colorPrimary">@color/PurpleThemeColor</item>
+        <item name="colorPrimaryDark">@color/PurpleThemeDarkColor</item>
         <item name="android:windowBackground">@color/primary_material_light</item>
         <item name="colorAccent">@color/BrushedGold</item>
     </style>

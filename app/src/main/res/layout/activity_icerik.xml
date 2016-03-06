@@ -44,10 +44,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/BlueButtonBackGroundColor"
+        android:background="@color/PurpleButtonBackgroundColor"
         android:text="@string/gallery"
         android:textAllCaps="false"
-        android:textColor="@color/BlueButtonTextColor" />
+        android:textColor="@color/PurpleButtonTextColor" />
 
 </RelativeLayout>
 

@@ -39,10 +39,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.TimeZone;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -56,10 +60,10 @@ public class AnaSayfa_Fragment extends Fragment {
     final int dayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
 
     private static String urlbeun = "http://w3.beun.edu.tr/";
-    private static String url_duyuru = "http://w3.beun.edu.tr/mobil-duyurular/";
-    private static String url_haber = "http://w3.beun.edu.tr/mobil-haberler/";
+    //private static String url_duyuru = "http://w3.beun.edu.tr/mobil-duyurular/";
+    //private static String url_haber = "http://w3.beun.edu.tr/mobil-haberler/";
     private static String url_etkinlik = "http://w3.beun.edu.tr/mobil-etkinlikler/";
-    private static String url_slider = "http://w3.beun.edu.tr/mobil-slayt/";
+    //private static String url_slider = "http://w3.beun.edu.tr/mobil-slayt/";
     String url_yemek = "http://w3.beun.edu.tr/yemek_listesi/";// veri/?ay=10&yil=2015&gun=30";
 
     private static final String TAG_S1 = "s1";
@@ -80,10 +84,12 @@ public class AnaSayfa_Fragment extends Fragment {
     ViewFlipper viewFlipper;
     private float lastX;
 
-    TextView emptyDuyuru, setDuyuru, loadDuyuru, emptyHaber, setHaber, loadHaber, emptyEtkinlik, setEtkinlik, loadEtkinlik, setBaslikEtkinlik, corbaText, yemek1Text, yemek2Text, digerText;
+    TextView emptyDuyuru, setDuyuru, loadDuyuru, emptyHaber, setHaber, loadHaber, emptyEtkinlik,
+            setEtkinlik, loadEtkinlik, setBaslikEtkinlik, corbaText, yemek1Text, yemek2Text, digerText;
     CardView cardDuyuru, cardHaber, cardEtkinlik;
 
-    String baslikDuyuru, adresDuyuru, baslikHaber, adresHaber, baslikEtkinlik, adresEtkinlik, gunEtkinlik, ayEtkinlik, genelYemek, cinsYemek, corbaYemek, yemek1Yemek, yemek2Yemek, digerYemek;
+    String baslikDuyuru, adresDuyuru, baslikHaber, adresHaber, baslikEtkinlik, adresEtkinlik,
+            gunEtkinlik, ayEtkinlik, genelYemek, cinsYemek, corbaYemek, yemek1Yemek, yemek2Yemek, digerYemek;
     String[] months;
 
     @Override
@@ -115,10 +121,11 @@ public class AnaSayfa_Fragment extends Fragment {
         yemek2Text = (TextView) view.findViewById(R.id.card_food_yemek2);
         digerText = (TextView) view.findViewById(R.id.card_food_diger);
 
+        new getAnasayfaJsoup().execute();
 
-        new getDuyuruJSON().execute();
-        new getHaberJSON().execute();
-        new getEtkinlikJSON().execute();
+        //new getDuyuruJSON().execute();
+        //new getHaberJSON().execute();
+        //new getEtkinlikJSON().execute();
         if (dayOfWeek != 1 && dayOfWeek != 7) {
             new getYemekJSON().execute();
         } else {
@@ -129,7 +136,7 @@ public class AnaSayfa_Fragment extends Fragment {
         viewFlipper.setVisibility(View.INVISIBLE);
         imageList = new ArrayList<String>();
         imageLinkList = new ArrayList<String>();
-        new JSONImageSlider().execute(url_slider);
+        //new JSONImageSlider().execute(url_slider);
         FlipperEvents();
 
         return view;
@@ -196,7 +203,7 @@ public class AnaSayfa_Fragment extends Fragment {
 
     }
 
-    class JSONImageSlider extends AsyncTask<String, Void, Boolean> {
+/*    private class JSONImageSlider extends AsyncTask<String, Void, Boolean> {
 
         @Override
         protected void onPreExecute() {
@@ -241,9 +248,159 @@ public class AnaSayfa_Fragment extends Fragment {
             }
 
         }
+    }*/
+
+    private class getAnasayfaJsoup extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            try {
+                Document doc = Jsoup.connect(urlbeun).get();
+                Elements slider = doc.select("div.jqslider > ul").select("li");
+
+                for (int i = 0; i < slider.size(); i++) {
+                    imageList.add(slider.get(i).select("img[src$=.jpg]").attr("abs:src"));
+                    imageLinkList.add(slider.get(i).select("a").attr("abs:href"));
+                }
+
+                int i = 0;
+                for (Element element : doc.select("ul[class=dli]")) {
+                    if (i == 1) {
+                        break;
+                    }
+                    baslikDuyuru = element.text();
+                    adresDuyuru = element.select("li a").attr("abs:href");
+                    i++;
+                }
+                i = 0;
+                for (Element element : doc.select("ul[class=eli]")) {
+                    if (i == 1) {
+                        break;
+                    }
+                    baslikHaber = element.text();
+                    adresHaber = element.select("li a").attr("abs:href");
+                    i++;
+                }
+                i = 0;
+                for (Element element : doc.select("ul[id=takvimul]")) {
+                    if (i == 1) {
+                        break;
+                    }
+                    baslikEtkinlik = element.select("li > div > ol > li > ol > li > a").select("span[class=ai1ec-event-title]").text();
+                    adresEtkinlik = element.select("li > div > ol > li > ol > li").select("a").attr("abs:href");
+                    i++;
+                }
+            } catch (ParseException | IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+
+            try {
+                viewFlipper.setVisibility(View.VISIBLE);
+                setFlipperImage(imageList);
+            } catch (NullPointerException | IllegalArgumentException e) {
+                Log.d("NPE", e.toString());
+            }
+
+            loadDuyuru.setVisibility(View.GONE);
+            try {
+                if (!baslikDuyuru.isEmpty()) {
+                    setDuyuru.setText(baslikDuyuru);
+                    cardDuyuru.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), IcerikActivity.class);
+                            intent.putExtra("adres", adresDuyuru);
+                            intent.putExtra("baslik", baslikDuyuru);
+                            startActivity(intent);
+                        }
+                    });
+                    setDuyuru.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), IcerikActivity.class);
+                            intent.putExtra("adres", adresDuyuru);
+                            intent.putExtra("baslik", baslikDuyuru);
+                            startActivity(intent);
+                        }
+                    });
+                } else {
+                    emptyDuyuru.setVisibility(View.VISIBLE);
+                }
+            } catch (NullPointerException e) {
+                emptyDuyuru.setVisibility(View.VISIBLE);
+            }
+
+            loadHaber.setVisibility(View.GONE);
+            try {
+                if (!baslikHaber.isEmpty()) {
+                    setHaber.setText(baslikHaber);
+                    cardHaber.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), IcerikActivity.class);
+                            intent.putExtra("adres", adresHaber);
+                            intent.putExtra("baslik", baslikHaber);
+                            startActivity(intent);
+                        }
+                    });
+                    setHaber.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), IcerikActivity.class);
+                            intent.putExtra("adres", adresHaber);
+                            intent.putExtra("baslik", baslikHaber);
+                            startActivity(intent);
+                        }
+                    });
+                } else {
+                    emptyHaber.setVisibility(View.VISIBLE);
+                }
+            } catch (NullPointerException e) {
+                emptyHaber.setVisibility(View.VISIBLE);
+            }
+
+            loadEtkinlik.setVisibility(View.GONE);
+            try {
+                if (!baslikEtkinlik.isEmpty()) {
+                    //setBaslikEtkinlik.setText(gunEtkinlik + "\n" + months[Integer.parseInt(ayEtkinlik) - 1]);
+                    setEtkinlik.setText(baslikEtkinlik);
+                    cardEtkinlik.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), IcerikActivity.class);
+                            intent.putExtra("adres", adresEtkinlik);
+                            intent.putExtra("baslik", baslikEtkinlik);
+                            startActivity(intent);
+                        }
+                    });
+                    setEtkinlik.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), IcerikActivity.class);
+                            intent.putExtra("adres", adresEtkinlik);
+                            intent.putExtra("baslik", baslikEtkinlik);
+                            startActivity(intent);
+                        }
+                    });
+                } else {
+                    emptyEtkinlik.setVisibility(View.VISIBLE);
+                }
+            } catch (NullPointerException e) {
+                emptyEtkinlik.setVisibility(View.VISIBLE);
+            }
+
+            super.onPostExecute(aVoid);
+        }
     }
 
-    private class getDuyuruJSON extends AsyncTask<Void, Void, Void> {
+    /*private class getDuyuruJSON extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
@@ -306,9 +463,9 @@ public class AnaSayfa_Fragment extends Fragment {
             }
             super.onPostExecute(aVoid);
         }
-    }
+    }*/
 
-    private class getHaberJSON extends AsyncTask<Void, Void, Void> {
+    /*private class getHaberJSON extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
@@ -371,7 +528,7 @@ public class AnaSayfa_Fragment extends Fragment {
             }
             super.onPostExecute(aVoid);
         }
-    }
+    }*/
 
 
     private class getEtkinlikJSON extends AsyncTask<Void, Void, Void> {

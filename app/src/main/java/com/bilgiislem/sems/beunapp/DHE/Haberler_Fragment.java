@@ -105,7 +105,7 @@ public class Haberler_Fragment extends ListFragment {
     /**
      * Async task class to get json by making HTTP call
      */
-    private class getHaberJSON extends AsyncTask<Void, Void, Void> {
+   /* private class getHaberJSON extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -157,7 +157,7 @@ public class Haberler_Fragment extends ListFragment {
                 Log.d("NullPointer", "List adapter.");
             }
         }
-    }
+    }*/
 
     private class getHaberJsoup extends AsyncTask<Void, Void, Void> {
 
@@ -165,7 +165,7 @@ public class Haberler_Fragment extends ListFragment {
         protected Void doInBackground(Void... params) {
             try {
                 Document doc = Jsoup.connect(urlbeun).get();
-                for (Element element : doc.select("ul[class=dli]")) {
+                for (Element element : doc.select("ul[class=eli]")) {
                     HashMap<String, String> contact = new HashMap<String, String>();
                     contact.put(TAG_BASLIK, element.text());
                     contact.put(TAG_ADRES, element.select("li a").attr("abs:href"));
