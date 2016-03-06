@@ -26,7 +26,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -34,6 +37,7 @@ import java.util.HashMap;
 public class Etkinlikler_Fragment extends ListFragment {
 
     private static String url = "http://w3.beun.edu.tr/mobil-etkinlikler/";
+    private static String urlbeun = "http://w3.beun.edu.tr/";
     ListView listView;
     Button tebutton;
     TextView emptyData, loadingData;
@@ -41,7 +45,7 @@ public class Etkinlikler_Fragment extends ListFragment {
     private static final String TAG_S1 = "s1";
     private static final String TAG_BASLIK = "baslik";
     private static final String TAG_ADRES = "adres";
-    JSONArray contacts = null;
+    JSONArray s1 = null;
     ArrayList<HashMap<String, String>> etkinlikList;
 
     @Override
@@ -92,7 +96,9 @@ public class Etkinlikler_Fragment extends ListFragment {
                 startActivity(intent);
             }
         });
-        new getEtkinlikJSON().execute();
+        //new getEtkinlikJSON().execute();
+        new getEtkinlikJsoup().execute();
+
         super.onActivityCreated(savedInstanceState);
     }
 
@@ -113,9 +119,9 @@ public class Etkinlikler_Fragment extends ListFragment {
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
-                    contacts = jsonObj.getJSONArray(TAG_S1);
-                    for (int i = 0; i < contacts.length(); i++) {
-                        JSONObject c = contacts.getJSONObject(i);
+                    s1 = jsonObj.getJSONArray(TAG_S1);
+                    for (int i = 0; i < s1.length(); i++) {
+                        JSONObject c = s1.getJSONObject(i);
                         String baslik = c.getString(TAG_BASLIK);
                         String adres = c.getString(TAG_ADRES);
                         HashMap<String, String> contact = new HashMap<String, String>();
@@ -150,6 +156,43 @@ public class Etkinlikler_Fragment extends ListFragment {
                 listView.setVisibility(View.VISIBLE);
             } catch (NullPointerException e) {
                 Log.d("NullPointer", "List adapter.");
+            }
+        }
+    }
+
+    private class getEtkinlikJsoup extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                Document doc = Jsoup.connect(urlbeun).get();
+                for (Element element : doc.select("ul[class=dli]")) {
+                    HashMap<String, String> contact = new HashMap<String, String>();
+                    contact.put(TAG_BASLIK, element.text());
+                    contact.put(TAG_ADRES, element.select("li a").attr("abs:href"));
+                    etkinlikList.add(contact);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            if (etkinlikList.isEmpty()) {
+                emptyData.setVisibility(View.VISIBLE);
+            }
+            try {
+                ListAdapter adapter = new SimpleAdapter(
+                        getActivity(), etkinlikList,
+                        R.layout.item_listview, new String[]{TAG_BASLIK}, new int[]{R.id.news});
+                setListAdapter(adapter);
+                listView.setVisibility(View.VISIBLE);
+                loadingData.setVisibility(View.GONE);
+            } catch (NullPointerException e) {
+                Log.d("NullPointer", "onPostExecute");
             }
         }
     }

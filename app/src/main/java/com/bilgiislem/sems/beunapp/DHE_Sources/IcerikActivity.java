@@ -24,6 +24,12 @@ import com.bilgiislem.sems.beunapp.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+import java.util.HashMap;
 
 public class IcerikActivity extends AppCompatActivity {
 
@@ -41,10 +47,10 @@ public class IcerikActivity extends AppCompatActivity {
 
         baslik_plus = getIntent().getStringExtra("baslik");
         http_plus = getIntent().getStringExtra("adres");
-        url = "http://w3.beun.edu.tr/veri" + http_plus;
-        //url = http_plus;
-        url_share = "http://w3.beun.edu.tr" + http_plus;
-        //url_share = http_plus;
+        //url = "http://w3.beun.edu.tr/veri" + http_plus;
+        url = http_plus;
+        //url_share = "http://w3.beun.edu.tr" + http_plus;
+        url_share = http_plus;
         setContentView(R.layout.activity_icerik);
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
@@ -57,22 +63,90 @@ public class IcerikActivity extends AppCompatActivity {
         webView.setVisibility(View.GONE);
         if (Build.VERSION.SDK_INT >= 19) {
             webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-        }
-        else {
+        } else {
             webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         }
         webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         galleryButton.setVisibility(View.GONE);
-        new JSONParse().execute();
+        //new JSONParse().execute();
+        new JsoupParse().execute();
     }
 
-
-    private class JSONParse extends AsyncTask<String, String, String> {
+    private class JsoupParse extends AsyncTask<String, String, String> {
 
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
+        protected String doInBackground(String... params) {
+            try {
+                Document doc = Jsoup.connect(url).get();
+                Elements element = doc.select("td[id=iicerik]");
+                String icerik = element.toString();
+                return icerik;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
+
+        @Override
+        protected void onPostExecute(String icerik) {
+            try {
+                String texticerik = html2text(icerik);
+                if (texticerik.startsWith("http://") || texticerik.startsWith("w3") || texticerik.startsWith("<p><a href=\"http://")) {
+                    webView.loadUrl(texticerik);
+                    webView.getSettings().setBuiltInZoomControls(true);
+                    webView.getSettings().setDisplayZoomControls(false);
+                } else if (icerik.contains("type=\"application/pdf\"")) {
+                    while (icerik.contains("type=\"application/pdf\"")) {
+                        int startIndex = icerik.indexOf("<p><object style=");
+                        int endIndex = icerik.indexOf("</object></p>");
+                        Log.d("startEnd", "" + startIndex + "+" + endIndex);
+                        String replaceStr = "";
+                        String toBeReplaced = icerik.substring(startIndex, endIndex + 9);
+                        icerik = icerik.replace(toBeReplaced, replaceStr);
+                        Log.d("icerik", icerik);
+                    }
+                    if (icerik.contains("/dosyalar/")) {
+                        String replacedicerik = icerik.replaceAll("../../../..", "http://w3.beun.edu.tr/");
+                        webView.loadDataWithBaseURL(null, replacedicerik, "text/html", "utf-8", null);
+                    } else {
+                        webView.loadDataWithBaseURL(null, icerik, "text/html", "utf-8", null);
+                    }
+                } else if (icerik.contains("/dosyalar/")) {
+                    String replacedicerik = icerik.replaceAll("../../../..", "http://w3.beun.edu.tr/");
+                    webView.loadDataWithBaseURL(null, replacedicerik, "text/html", "utf-8", null);
+                    webView.getSettings().setJavaScriptEnabled(true);
+                    webView.setWebViewClient(new MyWebViewClient());
+                } else {
+                    webView.loadDataWithBaseURL(null, icerik, "text/html", "utf-8", null);
+                    webView.getSettings().setJavaScriptEnabled(true);
+                    webView.setWebViewClient(new MyWebViewClient());
+                }
+                webView.setVisibility(View.VISIBLE);
+                loadingData.setVisibility(View.GONE);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        private class MyWebViewClient extends WebViewClient {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+                return true;
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                webView.setVisibility(View.VISIBLE);
+                loadingData.setVisibility(View.GONE);
+                webView.setBackgroundColor(Color.TRANSPARENT);
+            }
+        }
+    }
+
+    private class JSONParse extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... args) {

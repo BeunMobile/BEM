@@ -47,8 +47,6 @@ public class Duyurular_Fragment extends ListFragment {
     private static final String TAG_ADRES = "adres";
     JSONArray s1 = null;
     ArrayList<HashMap<String, String>> duyuruList;
-    List<String> uldli = new ArrayList<>();
-    List<String> urldli = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -93,15 +91,14 @@ public class Duyurular_Fragment extends ListFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String adres2 = duyuruList.get(position).get("adres");
                 String baslik2 = duyuruList.get(position).get("baslik");
-                Log.d("Adres", adres2);
                 Intent intent = new Intent(getActivity(), IcerikActivity.class);
                 intent.putExtra("adres", adres2);
                 intent.putExtra("baslik", baslik2);
                 startActivity(intent);
             }
         });
-        new getDuyuruJSON().execute();
-        //new getDuyuruHTML().execute();
+        //new getDuyuruJSON().execute();
+        new getDuyuruJsoup().execute();
         super.onActivityCreated(savedInstanceState);
     }
 
@@ -160,7 +157,7 @@ public class Duyurular_Fragment extends ListFragment {
     }
 
 
-    private class getDuyuruHTML extends AsyncTask<Void, Void, Void> {
+    private class getDuyuruJsoup extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected Void doInBackground(Void... params) {
@@ -181,7 +178,6 @@ public class Duyurular_Fragment extends ListFragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            Log.d("DuyuruList", duyuruList.toString());
             if (duyuruList.isEmpty()) {
                 emptyData.setVisibility(View.VISIBLE);
             }
@@ -193,7 +189,7 @@ public class Duyurular_Fragment extends ListFragment {
                 listView.setVisibility(View.VISIBLE);
                 loadingData.setVisibility(View.GONE);
             } catch (NullPointerException e) {
-                Log.d("NullPointer", "In this try.");
+                Log.d("NullPointer", "onPostExecute");
             }
         }
     }

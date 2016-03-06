@@ -55,6 +55,7 @@ public class AnaSayfa_Fragment extends Fragment {
     final int currentYear = localCalendar.get(Calendar.YEAR);
     final int dayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
 
+    private static String urlbeun = "http://w3.beun.edu.tr/";
     private static String url_duyuru = "http://w3.beun.edu.tr/mobil-duyurular/";
     private static String url_haber = "http://w3.beun.edu.tr/mobil-haberler/";
     private static String url_etkinlik = "http://w3.beun.edu.tr/mobil-etkinlikler/";

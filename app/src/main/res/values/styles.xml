@@ -24,7 +24,7 @@
     <style name="AppTheme3" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:colorPrimary">@color/BlueThemeColor</item>
         <item name="android:colorPrimaryDark">@color/BlueThemeDarkColor</item>
-        <item name="android:homeAsUpIndicator">@drawable/abc_ic_ab_back_mtrl_am_alpha</item>
+        <item name="android:homeAsUpIndicator">@drawable/abc_ic_ab_back_material</item>
         <item name="windowActionBar">false</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
