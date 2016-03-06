@@ -689,7 +689,7 @@ public class AnaSayfa_Fragment extends Fragment {
             viewFlipper.setOutAnimation(getActivity(), R.anim.slide_out_to_left);
             viewFlipper.setDisplayedChild(viewFlipper.getDisplayedChild() + 1);
         } catch (NullPointerException e) {
-            Log.d("NPE", e.toString());
+           e.printStackTrace();
         }
     }
 
