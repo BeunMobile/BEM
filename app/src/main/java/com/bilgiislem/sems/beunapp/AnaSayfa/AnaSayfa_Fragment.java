@@ -66,17 +66,17 @@ public class AnaSayfa_Fragment extends Fragment {
     //private static String url_slider = "http://w3.beun.edu.tr/mobil-slayt/";
     String url_yemek = "http://w3.beun.edu.tr/yemek_listesi/";// veri/?ay=10&yil=2015&gun=30";
 
-    private static final String TAG_S1 = "s1";
-    private static final String TAG_BASLIK = "baslik";
-    private static final String TAG_ADRES = "adres";
-    private static final String TAG_GUN = "gun";
-    private static final String TAG_AY = "ay";
+    //private static final String TAG_S1 = "s1";
+    //private static final String TAG_BASLIK = "baslik";
+    //private static final String TAG_ADRES = "adres";
+    //private static final String TAG_GUN = "gun";
+    //private static final String TAG_AY = "ay";
     private static final String TAG_LISTE = "liste";
     private static final String TAG_YEMEKLER = "yemekler";
     private static final String TAG_YEMEK_ISIM = "isim";
     private static final String TAG_CINS = "cins";
 
-    JSONArray s1 = null;
+    //JSONArray s1 = null;
     JSONArray liste = null;
 
     ArrayList<String> imageList;
@@ -531,7 +531,7 @@ public class AnaSayfa_Fragment extends Fragment {
     }*/
 
 
-    private class getEtkinlikJSON extends AsyncTask<Void, Void, Void> {
+  /*  private class getEtkinlikJSON extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
@@ -597,7 +597,7 @@ public class AnaSayfa_Fragment extends Fragment {
             }
             super.onPostExecute(aVoid);
         }
-    }
+    }*/
 
     private class getYemekJSON extends AsyncTask<Void, Void, Void> {
 

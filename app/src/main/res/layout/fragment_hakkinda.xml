@@ -25,7 +25,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
-                android:text="@string/beun_title"
+                android:text="@string/developer"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/BrushedTextColor"
                 android:textSize="22sp" />
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView3"
                 android:layout_centerHorizontal="true"
-                android:text="@string/bidb"
+                android:text="@string/developing"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/BrushedTextColor"
                 android:textSize="22sp" />
@@ -61,7 +61,7 @@
                 android:layout_below="@+id/feedback_title"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
-                android:text="@string/mobilbeun"
+                android:text="@string/feedbackemail"
                 android:textColor="@color/BrushedBlue"
                 android:textSize="18sp" />
 
