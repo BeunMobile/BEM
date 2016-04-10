@@ -22,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
@@ -79,8 +80,36 @@ public class GuzYariyili_Fragment extends Fragment {
 
             try {
                 Document doc = Jsoup.connect(urlJsoupData).get();
-                Elements tbody = doc.select("div#k-10 > div.tab-content > div#d-2-10 > table > tbody");
-                Log.d("tbody", tbody.toString());
+                feedsList = new ArrayList<>();
+                if (doc.toString() != null) {
+                    try {
+                        for (Element tbody : doc.select("div#k-10 > div.tab-content > div#d-2-10 > table > tbody > tr")) {
+                            String baslikStr = tbody.select("td a").text();
+                            FeedItem item = new FeedItem();
+                            Log.d("baslikStr", tbody.select("td a").text());
+                            item.setTitle(baslikStr);
+                            String firstDay = "";
+                            String firstMonth = "";
+                            String firstYear = "";
+                            String firstColor = "00ffffff";
+                            item.setFirstDay(firstDay);
+                            item.setFirstMonth(firstMonth);
+                            item.setFirstYear(firstYear);
+                            item.setFirstDateColor(firstColor);
+                            String secDay = "";
+                            String secMonth = "";
+                            String secYear = "";
+                            String secColor = "00ffffff";
+                            item.setSecDay(secDay);
+                            item.setSecMonth(secMonth);
+                            item.setSecYear(secYear);
+                            item.setSecDateColor(secColor);
+                            feedsList.add(item);
+                        }
+                    } catch (NullPointerException e) {
+                        e.printStackTrace();
+                    }
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -91,6 +120,16 @@ public class GuzYariyili_Fragment extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            adapter = new MyRecyclerAdapter(getActivity(), feedsList);
+            recyclerView.setAdapter(adapter);
+            loadingData.setVisibility(View.GONE);
+            try {
+                if (feedsList.isEmpty()) {
+                    emptyData.setVisibility(View.VISIBLE);
+                }
+            } catch (NullPointerException e) {
+                Log.d("NullPointer", "Null object reference.");
+            }
         }
     }
 

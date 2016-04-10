@@ -19,7 +19,7 @@
         <item name="android:colorPrimary">@color/PurpleThemeColor</item>
         <item name="android:colorPrimaryDark">@color/PurpleThemeDarkColor</item>
         <item name="android:statusBarColor">@color/PurpleThemeDarkColor</item>
-        <item name="android:homeAsUpIndicator">@drawable/abc_ic_ab_back_material</item>
+        <item name="android:homeAsUpIndicator">@drawable/abc_ic_ab_back_mtrl_am_alpha</item>
         <!-- Customize your theme here. -->
     </style>
 
