@@ -20,7 +20,12 @@ import com.bilgiislem.sems.beunapp.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +43,6 @@ public class GuzYariyili_Fragment extends Fragment {
     private static final String TAG_YIL = "yil";
     private static final String TAG_RENK = "renk";
 
-
     JSONArray AllJSONTakvimData = null, JSONTakvimSelectedData = null;
     JSONObject JSONBaslangicData = null, JSONBitisData = null;
     RecyclerView recyclerView;
@@ -46,11 +50,8 @@ public class GuzYariyili_Fragment extends Fragment {
     private MyRecyclerAdapter adapter;
     TextView loadingData, emptyData;
     String urlJSONData = "http://w3.beun.edu.tr/akademik_takvim/veri/?yil=2015";
+    String urlJsoupData = "http://w3.beun.edu.tr/akademik_takvim/?yil=2015";
     String donem = "1";
-
-    public GuzYariyili_Fragment() {
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,8 +62,36 @@ public class GuzYariyili_Fragment extends Fragment {
         emptyData.setVisibility(View.GONE);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        new getGuzJSON().execute();
+        //new getGuzJSON().execute();
+        new getGuzJsoup().execute();
         return view;
+    }
+
+    private class getGuzJsoup extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            try {
+                Document doc = Jsoup.connect(urlJsoupData).get();
+                Elements tbody = doc.select("div#k-10 > div.tab-content > div#d-2-10 > table > tbody");
+                Log.d("tbody", tbody.toString());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+        }
     }
 
     private class getGuzJSON extends AsyncTask<Void, Void, Void> {

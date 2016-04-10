@@ -71,7 +71,7 @@ public class WebActivity extends AppCompatActivity {
                 webView.setInitialScale(80);
                 break;
             case "http://ue.beun.edu.tr/Account/Login?ReturnUrl=%2f":
-                getSupportActionBar().setTitle(getResources().getString(R.string.title_eposta));
+                getSupportActionBar().setTitle(getResources().getString(R.string.title_uzem));
                 webView.setInitialScale(80);
                 break;
             case "http://w3.beun.edu.tr/dosyalar/ana_sayfa/aralik2015-1.pdf":

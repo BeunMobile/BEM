@@ -28,10 +28,13 @@ public class GBYActivity extends AppCompatActivity {
         loadingData = (TextView) findViewById(R.id.loading_data);
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(getIntent().getStringExtra("kategori_isim"));
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        try {
+            getSupportActionBar().setTitle(getIntent().getStringExtra("kategori_isim"));
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
     }
 
 

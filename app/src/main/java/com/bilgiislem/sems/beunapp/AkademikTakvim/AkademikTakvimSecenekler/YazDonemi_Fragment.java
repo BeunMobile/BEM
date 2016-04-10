@@ -49,10 +49,6 @@ public class YazDonemi_Fragment extends Fragment {
     String urlJSONData = "http://w3.beun.edu.tr/akademik_takvim/veri/?yil=2015";
     String donem = "2";
 
-    public YazDonemi_Fragment() {
-
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_gby_recyc, container, false);

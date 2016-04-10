@@ -36,7 +36,7 @@ public class Akademik_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), GBYActivity.class);
-                intent.putExtra("kategori_id", "10");
+                intent.putExtra("kategori_id", "k-10");
                 intent.putExtra("kategori_isim", getResources().getString(R.string.genel_takvim));
                 startActivity(intent);
             }
