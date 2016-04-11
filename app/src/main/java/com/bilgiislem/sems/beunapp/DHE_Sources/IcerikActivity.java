@@ -60,7 +60,7 @@ public class IcerikActivity extends AppCompatActivity {
         loadingData = (TextView) findViewById(R.id.loading_data);
         galleryButton = (Button) findViewById(R.id.gallery_button);
         webView = (WebView) findViewById(R.id.icerik_http_text);
-        webView.setVisibility(View.GONE);
+        webView.setVisibility(View.INVISIBLE);
         if (Build.VERSION.SDK_INT >= 19) {
             webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         } else {
