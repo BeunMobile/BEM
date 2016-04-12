@@ -38,7 +38,7 @@
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:paddingTop="10dp"
-                    android:text="@string/loading_yemek"
+                    android:text="@string/soon"
                     android:textColor="@color/BrushedGreenTextColor"
                     android:textSize="24sp"
                     android:textStyle="bold" />

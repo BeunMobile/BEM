@@ -33,26 +33,26 @@ import java.util.List;
 
 public class GuzYariyili_Fragment extends Fragment {
 
-    private static final String TAG_DONEM = "donem";
+    //private static final String TAG_DONEM = "donem";
     private static final String TAG_KATEGORIID = "kategori_id";
-    private static final String TAG_TAKVIM = "takvim";
-    private static final String TAG_BASLIK = "baslik";
-    private static final String TAG_BASLANGIC = "baslangic";
-    private static final String TAG_BITIS = "bitis";
-    private static final String TAG_GUN = "gun";
-    private static final String TAG_AY = "ay";
-    private static final String TAG_YIL = "yil";
-    private static final String TAG_RENK = "renk";
+    //private static final String TAG_TAKVIM = "takvim";
+    //private static final String TAG_BASLIK = "baslik";
+    //private static final String TAG_BASLANGIC = "baslangic";
+    //private static final String TAG_BITIS = "bitis";
+    //private static final String TAG_GUN = "gun";
+    //private static final String TAG_AY = "ay";
+    //private static final String TAG_YIL = "yil";
+    //private static final String TAG_RENK = "renk";
 
-    JSONArray AllJSONTakvimData = null, JSONTakvimSelectedData = null;
-    JSONObject JSONBaslangicData = null, JSONBitisData = null;
+    //JSONArray AllJSONTakvimData = null, JSONTakvimSelectedData = null;
+    //JSONObject JSONBaslangicData = null, JSONBitisData = null;
     RecyclerView recyclerView;
     private List<FeedItem> feedsList;
     private MyRecyclerAdapter adapter;
     TextView loadingData, emptyData;
-    String urlJSONData = "http://w3.beun.edu.tr/akademik_takvim/veri/?yil=2015";
+    //String urlJSONData = "http://w3.beun.edu.tr/akademik_takvim/veri/?yil=2015";
     String urlJsoupData = "http://w3.beun.edu.tr/akademik_takvim/?yil=2015";
-    String donem = "1";
+    //String donem = "1";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -77,40 +77,61 @@ public class GuzYariyili_Fragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... params) {
-
             try {
+                String kategori_id = getActivity().getIntent().getStringExtra(TAG_KATEGORIID);
                 Document doc = Jsoup.connect(urlJsoupData).get();
                 feedsList = new ArrayList<>();
-                if (doc.toString() != null) {
-                    try {
-                        for (Element tbody : doc.select("div#k-10 > div.tab-content > div#d-2-10 > table > tbody > tr")) {
-                            String baslikStr = tbody.select("td a").text();
+                try {
+                    if (doc.toString() != null) {
+                        for (Element tbody : doc.select("div#" + "k-" + kategori_id + " > div.tab-content > div#d-2-" + kategori_id + " > table > tbody > tr")) {
                             FeedItem item = new FeedItem();
-                            Log.d("baslikStr", tbody.select("td a").text());
-                            item.setTitle(baslikStr);
-                            String firstDay = "";
-                            String firstMonth = "";
-                            String firstYear = "";
-                            String firstColor = "00ffffff";
-                            item.setFirstDay(firstDay);
-                            item.setFirstMonth(firstMonth);
-                            item.setFirstYear(firstYear);
-                            item.setFirstDateColor(firstColor);
-                            String secDay = "";
-                            String secMonth = "";
-                            String secYear = "";
-                            String secColor = "00ffffff";
-                            item.setSecDay(secDay);
-                            item.setSecMonth(secMonth);
-                            item.setSecYear(secYear);
-                            item.setSecDateColor(secColor);
+
+                            String[] c2ss = new String[2];
+                            try {
+                                int i = 0;
+                                for (Element color : tbody.select("td")) {
+                                    String c2s = color.select("div").attr("style");
+                                    c2ss[i] = c2s.substring(c2s.indexOf("#") + 1, c2s.indexOf("#") + 7);
+                                    i++;
+                                }
+                            } catch (StringIndexOutOfBoundsException e) {
+                                e.printStackTrace();
+                            }
+
+                            String d2s = tbody.select("td div span span").text();
+                            String[] d2ss = d2s.split("\\s+");
+                            for (int j = 0; j < d2ss.length; j++) {
+                                if (d2ss.length > 0) {
+                                    item.setFirstDay(d2ss[0]);
+                                    item.setFirstMonth(d2ss[1]);
+                                    item.setFirstYear(d2ss[2]);
+                                    item.setFirstDateColor(c2ss[0]);
+                                } else {
+                                    item.setFirstDay("");
+                                    item.setFirstMonth("");
+                                    item.setFirstYear("");
+                                    item.setFirstDateColor("00ffffff");
+                                }
+                                if (d2ss.length > 3) {
+                                    item.setSecDay(d2ss[3]);
+                                    item.setSecMonth(d2ss[4]);
+                                    item.setSecYear(d2ss[5]);
+                                    item.setSecDateColor(c2ss[1]);
+                                } else {
+                                    item.setSecDay("");
+                                    item.setSecMonth("");
+                                    item.setSecYear("");
+                                    item.setSecDateColor("00ffffff");
+                                }
+                            }
+                            item.setTitle(tbody.select("td a").text());
                             feedsList.add(item);
                         }
-                    } catch (NullPointerException e) {
-                        e.printStackTrace();
                     }
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
+            } catch (IOException | NullPointerException e) {
                 e.printStackTrace();
             }
 
@@ -133,7 +154,7 @@ public class GuzYariyili_Fragment extends Fragment {
         }
     }
 
-    private class getGuzJSON extends AsyncTask<Void, Void, Void> {
+    /*private class getGuzJSON extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
@@ -234,5 +255,5 @@ public class GuzYariyili_Fragment extends Fragment {
                 Log.d("NullPointer", "Null object reference.");
             }
         }
-    }
+    }*/
 }

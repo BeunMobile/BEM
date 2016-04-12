@@ -34,4 +34,217 @@
         <item>Aralık</item>
     </string-array>
 
+    <string name="monthly_food">
+        1.04.2016\n
+        CUMA\n
+        Ezogelin Çorbası\n
+        159\n
+        Gar.Et Döner\n
+        999\n
+        Pirinç Pilavı\n
+        336\n
+        Meşrubat\n
+        78\n
+        4.04.2016\n
+        PAZARTESİ\n
+        Tarhana Çorba\n
+        160\n
+        Kıymalı Nohut\n
+        298\n
+        Şehriyeli Pilav\n
+        336\n
+        Ayran\n
+        84\n
+        5.04.2016\n
+        SALI\n
+        Ezogelin Çorba\n
+        159\n
+        Fırın Köfte\n
+        350\n
+        Salçalı Bulgur Pilavı\n
+        281\n
+        Yoğurt\n
+        164\n
+        6.04.2016\n
+        ÇARŞAMBA\n
+        Şehriye Çorba\n
+        148\n
+        Tavuk Sote Kavurma\n
+        320\n
+        Pilav\n
+        336\n
+        Meyve\n
+        98\n
+        7.04.2016\n
+        PERŞEMBE\n
+        Düğün Çorba\n
+        120\n
+        Patlıcan Musakka\n
+        365\n
+        Soslu Spagetti\n
+        326\n
+        Cacık\n
+        100\n
+        8.04.2016\n
+        CUMA\n
+        Mercimek Çorba\n
+        209\n
+        Sebzeli Kebap\n
+        335\n
+        Şehriyeli Pilav\n
+        336\n
+        Kakaolu Puding\n
+        386\n
+        11.04.2016\n
+        PAZARTESİ\n
+        Tavuk suyu çorba\n
+        165\n
+        Kuru Fasülye\n
+        345\n
+        Domatesli Bulgur Pilavı\n
+        281\n
+        Yoğurt\n
+        164\n
+        12.04.2016\n
+        SALI\n
+        K.Domates Çorba\n
+        175\n
+        Fırın Piliç Baget\n
+        335\n\
+        Sebzeli Pilav\n
+        335\n
+        Komposto\n
+        120\n
+        13.04.2016\n
+        ÇARŞAMBA\n
+        Ezogelin Çorba\n
+        159\n
+        Sebzeli Köfte\n
+        385\n
+        Peynirli Makarna\n
+        310\n
+        Mevsim Salata\n
+        70\n
+        14.04.2016\n
+        PERŞEMBE\n
+        Yayla Çorba\n
+        114\n
+        Etli Türlü\n
+        349\n
+        Bezelyeli Bulgur Pilavı\n
+        281\n
+        Sütlaç\n
+        285\n
+        15.04.2016\n
+        CUMA\n
+        Mercimek Çorba\n
+        209\n
+        Bahçıvan Kebap\n
+        369\n
+        Şehriyeli Pilav\n
+        336\n
+        Ayran\n
+        84\n
+        18.04.2016\n
+        PAZARTESİ\n
+        Kıtırlı Tarhana Çorba\n
+        160\n
+        Nohut\n
+        298\n
+        Şehriyeli Pilav\n
+        336\n
+        Cacık\n
+        100\n
+        19.04.2016\n
+        SALI\n
+        Mercimek Çorba\n
+        209\n
+        İzmir Köfte\n
+        360\n
+        Peynirli Erişte\n
+        330\n
+        Patates Salatası\n
+        70\n
+        20.04.2016\n
+        ÇARŞAMBA\n
+        Tutmaç Çorba\n
+        185\n
+        Tavuk Sote\n
+        330\n
+        Salçalı Makarna\n
+        281\n
+        Ayran\n
+        84\n
+        21.04.2016\n
+        PERŞEMBE\n
+        Bulgur Çorba\n
+        148\n
+        Patates Musakka\n
+        308
+        Bulgur Pilavı\n
+        281
+        Kemalpaşa Tatlısı\n
+        305\n
+        22.04.2016\n
+        CUMA\n
+        Ezogelin Çorba\n
+        159\n
+        Çoban Kavurma\n
+        311\n
+        Nohutlu Pilav\n
+        336\n
+        Yoğurt\n
+        164\n
+        25.04.2016\n
+        PAZARTESİ\n
+        Kıtırlı Domates Çorba\n
+        175\n
+        Kıymalı Kuru Fasülye\n
+        345\n
+        Pilav\n
+        336\n
+        Ayran\n
+        84\n
+        26.04.2016\n
+        SALI\n
+        Tel Şehriye Çorba\n
+        148\n
+        Sebzeli Fırın Tavuk But\n
+        349\n
+        Bezelyeli Bulgur Pilavı\n
+        281\n
+        Şekerpare\n
+        280\n
+        27.04.2016\n
+        ÇARŞAMBA\n
+        Ezogelin Çorba\n
+        159\n
+        Hasanpaşa Köfte\n
+        380\n
+        Salçalı Spagetti\n
+        326\n
+        Mevsim Salata\n
+        70\n
+        28.04.2016\n
+        PERŞEMBE\n
+        Bulgur Çorba\n
+        148\n
+        Kıymalı Taze Fasülye\n
+        230\n
+        Bulgur Pilavı\n
+        281\n
+        Komposto\n
+        120\n
+        29.04.2016\n
+        CUMA\n
+        Mercimek Çorba\n
+        209\n
+        Orman Kebap\n
+        369\n
+        Şehriyeli Pilav\n
+        336\n
+        Yoğurt\n
+        164\n
+    </string>
+
 </resources>

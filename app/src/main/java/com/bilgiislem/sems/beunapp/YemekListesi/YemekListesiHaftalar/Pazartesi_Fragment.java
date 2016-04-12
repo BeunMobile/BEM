@@ -56,9 +56,9 @@ public class Pazartesi_Fragment extends Fragment {
 
     Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
     final int dayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
-    final int dayOfMonth = localCalendar.get(Calendar.DAY_OF_MONTH);
-    final int weekOfMonth = localCalendar.get(Calendar.WEEK_OF_MONTH);
-    final int lastDayOfMonth = localCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+    //final int dayOfMonth = localCalendar.get(Calendar.DAY_OF_MONTH);
+    //final int weekOfMonth = localCalendar.get(Calendar.WEEK_OF_MONTH);
+    //final int lastDayOfMonth = localCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
     final int currentDay = localCalendar.get(Calendar.DATE);
     final int currentMonth = localCalendar.get(Calendar.MONTH) + 1;
     final int currentYear = localCalendar.get(Calendar.YEAR);

@@ -127,9 +127,11 @@ public class AnaSayfa_Fragment extends Fragment {
         //new getHaberJSON().execute();
         //new getEtkinlikJSON().execute();
         if (dayOfWeek != 1 && dayOfWeek != 7) {
-            new getYemekJSON().execute();
-        } else {
+            //new getYemekJSON().execute();
+            new getFoodString().execute();
 
+        } else {
+            Log.d("Saturday o", "r Sunday");
         }
 
         viewFlipper = (ViewFlipper) view.findViewById(R.id.image_flipper);
@@ -599,7 +601,44 @@ public class AnaSayfa_Fragment extends Fragment {
         }
     }*/
 
-    private class getYemekJSON extends AsyncTask<Void, Void, Void> {
+    private class getFoodString extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            String[] mFood = getResources().getString(R.string.monthly_food).split("\\n");
+            for (int i = 0; i < mFood.length; i++) {
+                if (mFood[i].equals(" " + currentDay + "." + "0" + currentMonth + "." + currentYear)) {
+                    corbaYemek = mFood[i + 2];
+                    yemek1Yemek = mFood[i + 4];
+                    yemek2Yemek = mFood[i + 6];
+                    digerYemek = mFood[i + 8];
+                } else {
+                    Log.d("mFood", mFood[i]);
+                }
+            }
+            Log.d("dmy", currentDay + "." + "0" + currentMonth + "." + currentYear);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            try {
+                corbaText.setTextColor(getResources().getColor(R.color.BrushedBlue));
+                yemek1Text.setTextColor(getResources().getColor(R.color.BrushedBlue));
+                yemek2Text.setTextColor(getResources().getColor(R.color.BrushedBlue));
+                digerText.setTextColor(getResources().getColor(R.color.BrushedBlue));
+                corbaText.setText(corbaYemek);
+                yemek1Text.setText(yemek1Yemek);
+                yemek2Text.setText(yemek2Yemek);
+                digerText.setText(digerYemek);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+   /* private class getYemekJSON extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
@@ -664,7 +703,7 @@ public class AnaSayfa_Fragment extends Fragment {
             }
         }
     }
-
+*/
 
     private void setFlipperImage(ArrayList<String> actorsList) {
         try {
@@ -689,7 +728,7 @@ public class AnaSayfa_Fragment extends Fragment {
             viewFlipper.setOutAnimation(getActivity(), R.anim.slide_out_to_left);
             viewFlipper.setDisplayedChild(viewFlipper.getDisplayedChild() + 1);
         } catch (NullPointerException e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
