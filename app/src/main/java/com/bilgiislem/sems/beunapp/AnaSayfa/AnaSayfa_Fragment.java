@@ -612,8 +612,6 @@ public class AnaSayfa_Fragment extends Fragment {
                     yemek1Yemek = mFood[i + 4];
                     yemek2Yemek = mFood[i + 6];
                     digerYemek = mFood[i + 8];
-                } else {
-                    Log.d("mFood", mFood[i]);
                 }
             }
             Log.d("dmy", currentDay + "." + "0" + currentMonth + "." + currentYear);

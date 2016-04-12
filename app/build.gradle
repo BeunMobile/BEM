@@ -11,11 +11,11 @@ android {
         exclude('META-INF/LICENSE')
     }
     defaultConfig {
-        applicationId "com.bilgiislem.sems.beunapp"
+        applicationId 'com.purplesoft.sems.beunapp'
         minSdkVersion 14
         targetSdkVersion 23
-        versionName '0.80'
-        versionCode 7
+        versionName '1.0'
+        versionCode 1
     }
     signingConfigs {
         release {

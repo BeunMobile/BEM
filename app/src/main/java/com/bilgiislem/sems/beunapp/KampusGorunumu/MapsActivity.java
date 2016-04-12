@@ -243,7 +243,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
 
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
 
-            Toast.makeText(context, "GPS izni harita servisini düzgün kullanmanýz için geçerlidir. Lütfen uygulama ayarlarýndan aktif ediniz.",
+            Toast.makeText(context, "GPS izni harita servisini düzgün kullanmanýz için geçerlidir. Lütfen cihaz ayarlarýdan uygulamaya izin veriniz.",
                     Toast.LENGTH_LONG).show();
 
         } else {
