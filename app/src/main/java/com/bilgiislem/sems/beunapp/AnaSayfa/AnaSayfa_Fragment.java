@@ -605,16 +605,20 @@ public class AnaSayfa_Fragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... params) {
-            String[] mFood = getResources().getString(R.string.monthly_food).split("\\n");
-            for (int i = 0; i < mFood.length; i++) {
-                if (mFood[i].equals(" " + currentDay + "." + "0" + currentMonth + "." + currentYear)) {
-                    corbaYemek = mFood[i + 2];
-                    yemek1Yemek = mFood[i + 4];
-                    yemek2Yemek = mFood[i + 6];
-                    digerYemek = mFood[i + 8];
+            try {
+                String[] mFood = getResources().getString(R.string.monthly_food).split("\\n");
+                for (int i = 0; i < mFood.length; i++) {
+                    if (mFood[i].equals(" " + currentDay + "." + "0" + currentMonth + "." + currentYear)) {
+                        corbaYemek = mFood[i + 2];
+                        yemek1Yemek = mFood[i + 4];
+                        yemek2Yemek = mFood[i + 6];
+                        digerYemek = mFood[i + 8];
+                    }
                 }
+                Log.d("dmy", currentDay + "." + "0" + currentMonth + "." + currentYear);
+            } catch (IllegalStateException | NullPointerException e) {
+                e.printStackTrace();
             }
-            Log.d("dmy", currentDay + "." + "0" + currentMonth + "." + currentYear);
             return null;
         }
 

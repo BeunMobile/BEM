@@ -46,13 +46,13 @@ public class Pazartesi_Fragment extends Fragment {
     TextView digerText;
     TextView digerCalText;
 
-    private static final String TAG_LISTE = "liste";
+    /*private static final String TAG_LISTE = "liste";
     private static final String TAG_YEMEKLER = "yemekler";
     private static final String TAG_YEMEK_ISIM = "isim";
     private static final String TAG_KALORI = "kalori";
     private static final String TAG_CINS = "cins";
     private static final String TAG_GUN = "gun";
-    private static final String TAG_TARIH = "tarih";
+    private static final String TAG_TARIH = "tarih";*/
 
     Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
     final int dayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
@@ -66,7 +66,7 @@ public class Pazartesi_Fragment extends Fragment {
     int whichWeek;
     int firstdayOfMonth;
 
-    List<String> corbaList = new ArrayList<>();
+   /* List<String> corbaList = new ArrayList<>();
     List<String> corbaCalList = new ArrayList<>();
 
     List<String> yemek1List = new ArrayList<>();
@@ -78,11 +78,12 @@ public class Pazartesi_Fragment extends Fragment {
     List<String> digerList = new ArrayList<>();
     List<String> digerCalList = new ArrayList<>();
 
-    List<String> tarihList = new ArrayList<>();
+    List<String> tarihList = new ArrayList<>();*/
     List<String> aylarTRList = Arrays.asList("Ocak", "Þubat", "Mart", "Nisan", "Mayýs",
             "Haziran", "Temmuz", "Aðustos", "Eylül", "Ekim", "Kasým", "Aralýk");
 
-    public String url;
+    public String url, currentDate, currentDayText;
+    public String corbaYemek, corbaCalYemek, yemek1Yemek, yemek1CalYemek, yemek2Yemek, yemek2CalYemek, digerYemek, digerCalYemek;
 
 
     @Nullable
@@ -116,15 +117,25 @@ public class Pazartesi_Fragment extends Fragment {
 
         //pazartesi==2
         if (dayOfWeek == 2) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + currentDay;
+            //url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + currentDay;
+            currentDate = " " + currentDay + "." + "0" + currentMonth + "." + currentYear;
+            currentDayText = currentDay + "";
         } else if (dayOfWeek == 3) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 1);
+            //url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 1);
+            currentDate = " " + (currentDay - 1) + "." + "0" + currentMonth + "." + currentYear;
+            currentDayText = (currentDay - 1) + "";
         } else if (dayOfWeek == 4) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 2);
+            //url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 2);
+            currentDate = " " + (currentDay - 2) + "." + "0" + currentMonth + "." + currentYear;
+            currentDayText = (currentDay - 2) + "";
         } else if (dayOfWeek == 5) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 3);
+            //url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 3);
+            currentDate = " " + (currentDay - 3) + "." + "0" + currentMonth + "." + currentYear;
+            currentDayText = (currentDay - 3) + "";
         } else if (dayOfWeek == 6) {
-            url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 4);
+            //url = "http://w3.beun.edu.tr/yemek_listesi/veri/?ay=" + currentMonth + "&yil=" + currentYear + "&gun=" + (currentDay - 4);
+            currentDate = " " + (currentDay - 4) + "." + "0" + currentMonth + "." + currentYear;
+            currentDayText = (currentDay - 4) + "";
         }
 
         if (!isOnline()) {
@@ -132,7 +143,8 @@ public class Pazartesi_Fragment extends Fragment {
             noconText.setVisibility(View.VISIBLE);
         } else {
             if (dayOfWeek != 1 && dayOfWeek != 7) {
-                new JSONParse().execute();
+                //new JSONParse().execute();
+                new getFoodString().execute();
             } else {
                 dateText.setVisibility(View.GONE);
                 weekendText.setVisibility(View.VISIBLE);
@@ -142,7 +154,61 @@ public class Pazartesi_Fragment extends Fragment {
         return view;
     }
 
-    private class JSONParse extends AsyncTask<Void, Void, Void> {
+    private class getFoodString extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                String[] mFood = getResources().getString(R.string.monthly_food).split("\\n");
+                for (int i = 0; i < mFood.length; i++) {
+                    if (mFood[i].equals(currentDate)) {
+                        corbaYemek = mFood[i + 2];
+                        corbaCalYemek = mFood[i + 3];
+                        yemek1Yemek = mFood[i + 4];
+                        yemek1CalYemek = mFood[i + 5];
+                        yemek2Yemek = mFood[i + 6];
+                        yemek2CalYemek = mFood[i + 7];
+                        digerYemek = mFood[i + 8];
+                        digerCalYemek = mFood[i + 9];
+                    }
+                }
+            } catch (IllegalStateException | NullPointerException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            try {
+                whichWeek = getNumberofSunday(currentYear + "-" + currentMonth + "-" + 1, currentYear + "-" + currentMonth + "-" + currentDay);
+                firstdayOfMonth = getFirstDateOfCurrentMonth();
+                dateText.setText(currentDayText + " " + aylarTRList.get(currentMonth - 1) + " " + currentYear);
+                corbaText.setText(corbaYemek);
+                corbaCalText.setText(corbaCalYemek + " kal");
+                yemek1Text.setText(yemek1Yemek);
+                yemek1CalText.setText(yemek1CalYemek + " kal");
+                yemek2Text.setText(yemek2Yemek);
+                yemek2CalText.setText(yemek2CalYemek + " kal");
+                digerText.setText(digerYemek);
+                digerCalText.setText(digerCalYemek + " kal");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            corbaText.setVisibility(View.VISIBLE);
+            corbaCalText.setVisibility(View.VISIBLE);
+            yemek1Text.setVisibility(View.VISIBLE);
+            yemek1CalText.setVisibility(View.VISIBLE);
+            yemek2Text.setVisibility(View.VISIBLE);
+            yemek2CalText.setVisibility(View.VISIBLE);
+            digerText.setVisibility(View.VISIBLE);
+            digerCalText.setVisibility(View.VISIBLE);
+        }
+    }
+
+    /*private class JSONParse extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -225,7 +291,7 @@ public class Pazartesi_Fragment extends Fragment {
             digerText.setVisibility(View.VISIBLE);
             digerCalText.setVisibility(View.VISIBLE);
         }
-    }
+    }*/
 
     public int getNumberofSunday(String d1, String d2) throws Exception {
         Date date1 = getDate(d1);

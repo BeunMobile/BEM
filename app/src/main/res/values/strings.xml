@@ -197,7 +197,7 @@
     <string name="developer">Şems Mustafa TURGUT</string>
     <string name="feedbackemail">mtdetroit@gmail.com</string>
     <string name="feedback">Geri Bildirim için :</string>
-    <string name="beta">Beta versiyonu : UMD-80</string>
+    <string name="version">Versiyonu : UMD-1.01</string>
     <string name="developing">Tarafından geliştirilmiştir.</string>
 
 </resources>

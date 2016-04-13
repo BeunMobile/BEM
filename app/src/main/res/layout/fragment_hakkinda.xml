@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:text="@string/beta"
+                android:text="@string/version"
                 android:textColor="@color/BrushedGold"
                 android:textSize="18sp" />
 
