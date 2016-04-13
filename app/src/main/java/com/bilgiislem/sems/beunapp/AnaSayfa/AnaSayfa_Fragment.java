@@ -752,8 +752,8 @@ public class AnaSayfa_Fragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    public static String html2text(String html) {
+    /*public static String html2text(String html) {
         return Jsoup.parse(html).text();
-    }
+    }*/
 
 }

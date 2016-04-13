@@ -11,6 +11,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -33,13 +36,13 @@ public class YemekTab_Fragment extends Fragment {
 
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
-    public static Button buttonPdf;
+    //public static Button buttonPdf;
     public static int int_items = 5;
 
     Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
     final int currentDayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
-    final int currentMonth = localCalendar.get(Calendar.MONTH) + 1;
-    final int currentYear = localCalendar.get(Calendar.YEAR);
+    //final int currentMonth = localCalendar.get(Calendar.MONTH) + 1;
+    //final int currentYear = localCalendar.get(Calendar.YEAR);
 
 
     @Nullable
@@ -52,7 +55,7 @@ public class YemekTab_Fragment extends Fragment {
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
 
 
-        final String cM = "" + currentMonth;
+        /*final String cM = "" + currentMonth;
         final String cY = "" + currentYear;
 
 
@@ -60,10 +63,10 @@ public class YemekTab_Fragment extends Fragment {
         buttonPdf.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), WebActivity.class);
-                intent.putExtra("web","https://docs.google.com/gview?embedded=true&url=http://w3.beun.edu.tr/dosyalar/ana_sayfa/nisan-yemek.pdf");
+                intent.putExtra("web", "https://docs.google.com/gview?embedded=true&url=http://w3.beun.edu.tr/dosyalar/ana_sayfa/nisan-yemek.pdf");
                 startActivity(intent);
             }
-        });
+        });*/
 
 
         /**
@@ -97,6 +100,12 @@ public class YemekTab_Fragment extends Fragment {
 
         return view;
 
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     class YemekListesiAdapter extends FragmentStatePagerAdapter {
@@ -159,5 +168,22 @@ public class YemekTab_Fragment extends Fragment {
         }
     }
 
+    @Override
+    public void onCreateOptionsMenu(
+            Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.food_month_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_food:
+                Intent intent = new Intent(getActivity(), WebActivity.class);
+                intent.putExtra("web", "https://docs.google.com/gview?embedded=true&url=http://w3.beun.edu.tr/dosyalar/ana_sayfa/nisan-yemek.pdf");
+                YemekTab_Fragment.this.startActivity(intent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }

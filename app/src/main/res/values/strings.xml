@@ -80,6 +80,7 @@
     <string name="action_share">Paylaş</string>
     <string name="action_close">Pencereyi kapat</string>
     <string name="action_home">Ana Sayfa</string>
+    <string name="action_food">Aylık Liste</string>
 
 
     //DialogMessages

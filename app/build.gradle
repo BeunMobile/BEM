@@ -14,8 +14,8 @@ android {
         applicationId 'com.purplesoft.sems.beunapp'
         minSdkVersion 14
         targetSdkVersion 23
-        versionName '1.02'
-        versionCode 3
+        versionName '1.03'
+        versionCode 4
     }
     signingConfigs {
         release {
