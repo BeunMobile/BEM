@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bilgiislem.sems.beunapp.MainActivity.MainActivity;
 import com.bilgiislem.sems.beunapp.R;
@@ -32,7 +33,9 @@ public class Akademik_Fragment extends Fragment {
         CardView yazok = (CardView) view.findViewById(R.id.card_yazok);
         CardView yeteneksi = (CardView) view.findViewById(R.id.card_yeteneksi);
 
-        gat.setOnClickListener(new View.OnClickListener() {
+        Toast.makeText(getActivity().getApplicationContext(), getString(R.string.closed_akademik), Toast.LENGTH_LONG).show();
+
+        /*gat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), GBYActivity.class);
@@ -174,11 +177,10 @@ public class Akademik_Fragment extends Fragment {
                 AlertDialog alert = builder.create();
                 alert.show();
             }
-        });
+        });*/
 
         return view;
     }
-
 
 
 }

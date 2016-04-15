@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bülent Ecevit Üniversitesi</string>
+    <string name="app_name">BEU Mobil</string>
 
     <string name="title_main">Ana Sayfa</string>
     <string name="title_announcements">Duyurular</string>
@@ -24,7 +24,7 @@
     //NavigationView
     <string name="closeDrawer">Menü</string>
     <string name="openDrawer">Menü kapalı</string>
-    <string name="ana_sayfa_title">Bülent Ecevit Üniversitesi</string>
+    <string name="ana_sayfa_title">BEU Mobil</string>
     <string name="duyuru_title">Duyurular</string>
     <string name="haber_title">Haberler</string>
     <string name="etkinlik_title">Etkinlik Takvimi</string>
@@ -72,6 +72,7 @@
     <string name="unexpected_error">Bir hatayla karşılaşıldı
         lütfen hakkında bölümünden geri bilidirim yapınız.</string>
     <string name="closed_restaurant">Yemekhane hafta sonu kapalıdır.\n  ¯\_(ツ)_/¯   </string>
+    <string name="closed_akademik">"Bu servisimiz geçici olarak servis dışıdır.\n\t\tEn kısa zamanda düzeltilecektir."</string>
 
 
     //Toolbar
@@ -107,7 +108,7 @@
     <string name="farabi_ust">Üst Kapı</string>
     <string name="farabi_alt">Alt Kapı</string>
     <string name="farabi_muhdekan">Mühendislik Fakültesi Dekanlığı</string>
-    <string name="farabi_giris">Bülent Ecevit Üniversitesi</string>
+    <string name="farabi_giris">BEU</string>
     <string name="farabi_3d">3 Boyutlu gezinmek için tıklayın.</string>
 
     //Farabi3D
@@ -195,10 +196,10 @@
     <string name="beun_title">Bülent Ecevit Üniversitesi</string>
     <string name="bidb">Bilgi İşlem Daire Başkanlığı</string>
     <string name="software_title">Yazılım Birimi</string>
-    <string name="developer">Şems Mustafa TURGUT</string>
+    <string name="developer">BEU Öğrencileri</string>
     <string name="feedbackemail">mtdetroit@gmail.com</string>
     <string name="feedback">Geri Bildirim için :</string>
-    <string name="version">Versiyonu : UMD-1.01</string>
-    <string name="developing">Tarafından geliştirilmiştir.</string>
+    <string name="version">Versiyonu : UMD-1.04</string>
+    <string name="developing">Tarafından geliştirilmiştir.\nTicari bir amaca yönelik değildir.\nVerilen bilgilerin kesinlikle resmi geçerliliği yoktur. \nProjemiz yakında kaynak kodlarını açacaktır.</string>
 
 </resources>

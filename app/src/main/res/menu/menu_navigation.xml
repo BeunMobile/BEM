@@ -1,34 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-    <group
-        android:id="@+id/menu"
-        android:checkableBehavior="none">
-        <item
-            android:id="@+id/item_anasayfa"
-            android:checked="false"
-            android:icon="@drawable/ic_home"
-            android:title="@string/title_main" />
-
-        <item
-            android:id="@+id/item_duyurular"
-            android:checked="false"
-            android:icon="@drawable/ic_compose"
-            android:title="@string/title_announcements" />
-
-        <item
-            android:id="@+id/item_haberler"
-            android:checked="false"
-            android:icon="@drawable/ic_bookmarks"
-            android:title="@string/title_news" />
-
-        <item
-            android:id="@+id/item_etkinliktakvimi"
-            android:checked="false"
-            android:icon="@drawable/ic_calender"
-            android:title="@string/title_activitycalender" />
-    </group>
     <group
         android:id="@+id/menu1"
         android:checkableBehavior="none">
@@ -71,11 +43,6 @@
             android:checked="false"
             android:icon="@drawable/ic_navigate"
             android:title="@string/title_campusview" />
-        <item
-            android:id="@+id/item_contact"
-            android:checked="false"
-            android:icon="@drawable/ic_contacts"
-            android:title="@string/title_section_about1" />
         <item
             android:id="@+id/item_about"
             android:checked="false"

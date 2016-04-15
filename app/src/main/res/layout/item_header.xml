@@ -5,49 +5,25 @@
     android:background="@drawable/background_view"
     android:orientation="vertical">
 
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/facebook_image"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:src="@drawable/ic_facebook"
-        app:border_color="#FF000000"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:text="BEU Mobil"
+        android:id="@+id/textView2"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/twitter_image"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:src="@drawable/ic_twitter"
-        app:border_color="#FF000000"
-        android:layout_marginLeft="8dp"
-        android:layout_alignTop="@+id/facebook_image"
-        android:layout_toRightOf="@+id/facebook_image"
-        android:layout_toEndOf="@+id/facebook_image" />
-
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/instagram_image"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:src="@drawable/ic_instagram"
-        app:border_color="#FF000000"
-        android:layout_marginLeft="8dp"
-        android:layout_alignTop="@+id/twitter_image"
-        android:layout_toRightOf="@+id/twitter_image"
-        android:layout_toEndOf="@+id/twitter_image" />
-
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/youtube_image"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:src="@drawable/ic_youtube"
-        app:border_color="#FF000000"
-        android:layout_marginLeft="8dp"
-        android:layout_alignTop="@+id/instagram_image"
-        android:layout_toRightOf="@+id/instagram_image"
-        android:layout_toEndOf="@+id/instagram_image" />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:text="@string/version"
+        android:id="@+id/textView5"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

@@ -84,6 +84,7 @@ public class BaharYariyili_Fragment extends Fragment {
             try {
                 String kategori_id = getActivity().getIntent().getStringExtra(TAG_KATEGORIID);
                 Document doc = Jsoup.connect(urlJsoupData).get();
+                Log.d("doc", doc.toString());
                 feedsList = new ArrayList<>();
                 try {
                     if (doc.toString() != null) {

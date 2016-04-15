@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-    CircleImageView facebook, twitter, instagram, youtube;
+    //CircleImageView facebook, twitter, instagram, youtube;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         View headerLayout =
                 navigationView.inflateHeaderView(R.layout.item_header);
 
-        facebook = (CircleImageView) headerLayout.findViewById(R.id.facebook_image);
+        /*facebook = (CircleImageView) headerLayout.findViewById(R.id.facebook_image);
         twitter = (CircleImageView) headerLayout.findViewById(R.id.twitter_image);
         instagram = (CircleImageView) headerLayout.findViewById(R.id.instagram_image);
         youtube = (CircleImageView) headerLayout.findViewById(R.id.youtube_image);
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), R.string.toast_youtube, Toast.LENGTH_SHORT).show();
                 openYoutubeApp();
             }
-        });
+        });*/
 
         if (!isOnline()) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         android.support.v4.app.Fragment objFragment = null;
-        objFragment = new AnaSayfa_Fragment();
+        objFragment = new YemekTab_Fragment();
         getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame, objFragment).commit();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
                                                              @Override
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                                                                  drawerLayout.closeDrawers();
                                                                  android.support.v4.app.Fragment objFragment = null;
                                                                  switch (menuItem.getItemId()) {
-                                                                     case R.id.item_anasayfa:
+                                                                     /*case R.id.item_anasayfa:
                                                                          objFragment = new AnaSayfa_Fragment();
                                                                          getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in,
                                                                                  R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out)
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                                                                          getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in,
                                                                                  R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out)
                                                                                  .replace(R.id.frame, objFragment).addToBackStack(null).commit();
-                                                                         return true;
+                                                                         return true;*/
                                                                      case R.id.item_yemeklistesi:
                                                                          objFragment = new YemekTab_Fragment();
                                                                          getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in,
@@ -208,14 +208,14 @@ public class MainActivity extends AppCompatActivity {
                                                                                  R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame,
                                                                                  objFragment).addToBackStack(null).commit();
                                                                          return true;
-                                                                     case R.id.item_contact:
+                                                                     /*case R.id.item_contact:
                                                                          objFragment = new
                                                                                  Iletisim_Fragment();
                                                                          getSupportFragmentManager().
                                                                                  beginTransaction().setCustomAnimations(R.anim.abc_fade_in,
                                                                                  R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame,
                                                                                  objFragment).addToBackStack(null).commit();
-                                                                         return true;
+                                                                         return true;*/
                                                                      case R.id.item_about:
                                                                          objFragment = new
                                                                                  Hakkinda_Fragment();
@@ -224,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
                                                                                  objFragment).addToBackStack(null).commit();
                                                                          return true;
                                                                      default:
-                                                                         objFragment = new AnaSayfa_Fragment();
+                                                                         objFragment = new YemekTab_Fragment();
                                                                          getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.abc_fade_in,
                                                                                  R.anim.abc_fade_out, R.anim.abc_fade_in, R.anim.abc_fade_out).replace(R.id.frame,
                                                                                  objFragment).addToBackStack(null).commit();
